@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ASTREX
 
-## Getting Started
+Интерактивная образовательная платформа по трейдингу и криптовалютам —
+«Duolingo для трейдинга». Архитектура и дизайн-решения описаны в
+[ARCHITECTURE.md](./ARCHITECTURE.md).
 
-First, run the development server:
+## Быстрый старт
 
 ```bash
+npm install
+cp .env.example .env   # заполнить переменные, см. ниже
+npx prisma generate
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Открыть [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Переменные окружения
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Переменная | Назначение |
+| --- | --- |
+| `DATABASE_URL` | Строка подключения PostgreSQL (Vercel Postgres / Neon / Supabase) |
+| `AUTH_SECRET` | Секрет для Auth.js, сгенерировать: `npx auth secret` |
+| `AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` | OAuth-креды Google (не обязательны для входа по email/паролю) |
 
-## Learn More
+## База данных
 
-To learn more about Next.js, take a look at the following resources:
+Схема данных — `prisma/schema.prisma`. После настройки `DATABASE_URL`:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npx prisma migrate dev --name init
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Prisma 7 использует driver adapters вместо встроенного query-движка —
+подключение к Postgres идёт через `@prisma/adapter-pg` (см. `src/lib/db.ts`).
 
-## Deploy on Vercel
+## Деплой на Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Создать Postgres-базу (Vercel Postgres, Neon или Supabase) и указать
+   `DATABASE_URL` в переменных окружения проекта на Vercel.
+2. Указать `AUTH_SECRET` (и опционально Google OAuth креды).
+3. Запустить `npx prisma migrate deploy` при первом деплое.
