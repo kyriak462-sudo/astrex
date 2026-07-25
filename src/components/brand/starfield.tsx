@@ -17,18 +17,30 @@ type Star = {
   delay: number;
   duration: number;
   opacity: number;
+  driftX: number;
+  driftY: number;
+  driftDuration: number;
+  driftDelay: number;
 };
 
 function generateStars(count: number, seed: number): Star[] {
   const rand = mulberry32(seed);
-  return Array.from({ length: count }, () => ({
-    x: rand() * 100,
-    y: rand() * 100,
-    size: rand() < 0.85 ? 1 : rand() < 0.97 ? 1.5 : 2,
-    delay: rand() * 8,
-    duration: 4 + rand() * 6,
-    opacity: 0.25 + rand() * 0.55,
-  }));
+  return Array.from({ length: count }, () => {
+    const angle = rand() * Math.PI * 2;
+    const distance = 10 + rand() * 22;
+    return {
+      x: rand() * 100,
+      y: rand() * 100,
+      size: rand() < 0.85 ? 1 : rand() < 0.97 ? 1.5 : 2,
+      delay: rand() * 8,
+      duration: 4 + rand() * 6,
+      opacity: 0.25 + rand() * 0.55,
+      driftX: Math.cos(angle) * distance,
+      driftY: Math.sin(angle) * distance,
+      driftDuration: 30 + rand() * 40,
+      driftDelay: rand() * -40,
+    };
+  });
 }
 
 const STARS = generateStars(140, 1337);
@@ -58,12 +70,14 @@ export function Starfield({ className }: { className?: string }) {
             top: `${star.y}%`,
             width: star.size,
             height: star.size,
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            ["--twinkle-min" as any]: star.opacity * 0.3,
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            ["--twinkle-max" as any]: star.opacity,
             opacity: star.opacity,
-            animation: `twinkle ${star.duration}s ease-in-out ${star.delay}s infinite`,
+            animation: `twinkle ${star.duration}s ease-in-out ${star.delay}s infinite, drift ${star.driftDuration}s ease-in-out ${star.driftDelay}s infinite`,
+            ...({
+              "--twinkle-min": star.opacity * 0.3,
+              "--twinkle-max": star.opacity,
+              "--drift-x": `${star.driftX}px`,
+              "--drift-y": `${star.driftY}px`,
+            } as React.CSSProperties),
           }}
         />
       ))}

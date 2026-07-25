@@ -1,29 +1,76 @@
+import { auth } from "@/lib/auth";
+import { db } from "@/lib/db";
 import { LessonPath, type PathLesson } from "@/components/learn/lesson-path";
 
-const DEMO_LESSONS: PathLesson[] = [
-  { id: "1", title: "Что такое трейдинг", status: "completed" },
-  { id: "2", title: "Виды рынков", status: "completed" },
-  { id: "3", title: "Как читать график", status: "completed" },
-  { id: "4", title: "Свечной анализ", status: "available" },
-  { id: "5", title: "Поддержка и сопротивление", status: "locked" },
-  { id: "6", title: "Тренд и его структура", status: "locked" },
-  { id: "7", title: "Риск-менеджмент", status: "locked" },
-  { id: "8", title: "Первая виртуальная сделка", status: "locked" },
-];
+export default async function LearnPage() {
+  const session = await auth();
 
-export default function LearnPage() {
+  const course = await db.course.findFirst({
+    where: { published: true },
+    orderBy: { order: "asc" },
+    include: {
+      modules: {
+        orderBy: { order: "asc" },
+        include: {
+          lessons: {
+            where: { published: true },
+            orderBy: { order: "asc" },
+          },
+        },
+      },
+    },
+  });
+
+  const completedLessonIds = new Set<string>();
+  if (session?.user?.id) {
+    const progress = await db.userLessonProgress.findMany({
+      where: { userId: session.user.id, status: "COMPLETED" },
+      select: { lessonId: true },
+    });
+    for (const p of progress) completedLessonIds.add(p.lessonId);
+  }
+
+  if (!course) {
+    return (
+      <div className="mx-auto max-w-2xl">
+        <p className="text-sm text-white/45">Курсы пока не добавлены.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="mx-auto max-w-2xl">
-      <div className="mb-8">
-        <p className="text-xs uppercase tracking-widest text-white/35">Модуль 1</p>
-        <h1 className="mt-1 text-2xl font-semibold text-white">Основы трейдинга</h1>
-        <p className="mt-2 text-sm text-white/45">
-          Изучите базовые понятия рынка и научитесь читать графики, прежде чем
-          переходить к стратегиям.
-        </p>
+      <div className="mb-10">
+        <p className="text-xs uppercase tracking-widest text-white/35">Курс</p>
+        <h1 className="mt-1 text-2xl font-semibold text-white">{course.title}</h1>
+        <p className="mt-2 text-sm text-white/45">{course.description}</p>
       </div>
 
-      <LessonPath lessons={DEMO_LESSONS} />
+      {course.modules.map((mod, moduleIndex) => {
+        const lessons: PathLesson[] = mod.lessons.map((lesson) => {
+          const completed = completedLessonIds.has(lesson.id);
+          const unlocked =
+            !lesson.requiredLessonId || completedLessonIds.has(lesson.requiredLessonId);
+
+          return {
+            id: lesson.id,
+            title: lesson.title,
+            status: completed ? "completed" : unlocked ? "available" : "locked",
+          };
+        });
+
+        return (
+          <div key={mod.id} className="mb-14">
+            <p className="text-xs uppercase tracking-widest text-white/35">
+              Модуль {moduleIndex + 1}
+            </p>
+            <h2 className="mt-1 text-lg font-medium text-white">{mod.title}</h2>
+            <div className="mt-6">
+              <LessonPath lessons={lessons} />
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }

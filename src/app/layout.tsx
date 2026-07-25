@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Starfield } from "@/components/brand/starfield";
+import { CryptoDrift } from "@/components/brand/crypto-drift";
 import { Providers } from "@/components/providers";
 import "./globals.css";
 
@@ -32,6 +33,7 @@ export default function RootLayout({
     >
       <body className="relative min-h-full flex flex-col bg-[var(--color-bg)] text-[var(--color-fg)]">
         <Starfield className="fixed" />
+        <CryptoDrift className="fixed" />
         <div className="relative z-10 flex min-h-full flex-1 flex-col">
           {children}
         </div>

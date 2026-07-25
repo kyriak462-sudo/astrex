@@ -2,16 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { GraduationCap, LineChart, CandlestickChart, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/brand/logo";
+import { navItems } from "@/components/app/nav-items";
 
-const items = [
-  { href: "/learn", label: "Обучение", icon: GraduationCap },
-  { href: "/market", label: "Виртуальный рынок", icon: LineChart },
-  { href: "/charts", label: "Анализ графиков", icon: CandlestickChart },
-  { href: "/profile", label: "Профиль", icon: User },
-];
+const labels: Record<string, string> = {
+  "/market": "Виртуальный рынок",
+  "/charts": "Анализ графиков",
+};
 
 export function Sidebar() {
   const pathname = usePathname();
@@ -23,7 +21,7 @@ export function Sidebar() {
       </Link>
 
       <nav className="mt-10 flex flex-col gap-1">
-        {items.map((item) => {
+        {navItems.map((item) => {
           const active = pathname?.startsWith(item.href);
           return (
             <Link
@@ -37,7 +35,7 @@ export function Sidebar() {
               )}
             >
               <item.icon className="h-4 w-4" strokeWidth={1.75} />
-              {item.label}
+              {labels[item.href] ?? item.label}
             </Link>
           );
         })}
