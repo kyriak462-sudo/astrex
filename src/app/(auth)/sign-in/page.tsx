@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import { Input, Label } from "@/components/ui/input";
+import { GoogleButton } from "@/components/auth/google-button";
 
 export default function SignInPage() {
   const router = useRouter();
@@ -41,7 +42,17 @@ export default function SignInPage() {
       <h1 className="text-xl font-semibold text-white">С возвращением</h1>
       <p className="mt-1 text-sm text-white/50">Войдите, чтобы продолжить обучение.</p>
 
-      <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+      <div className="mt-6">
+        <GoogleButton />
+      </div>
+
+      <div className="my-6 flex items-center gap-3">
+        <div className="h-px flex-1 bg-white/[0.08]" />
+        <span className="text-xs text-white/30">или по email</span>
+        <div className="h-px flex-1 bg-white/[0.08]" />
+      </div>
+
+      <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <Label htmlFor="email">Email</Label>
           <Input
