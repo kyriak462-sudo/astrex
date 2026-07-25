@@ -1,13 +1,23 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
+import { PrismaAdapter } from "@auth/prisma-adapter";
 import bcrypt from "bcryptjs";
 import { db } from "@/lib/db";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  adapter: PrismaAdapter(db),
   session: { strategy: "jwt" },
   pages: {
     signIn: "/sign-in",
+  },
+  events: {
+    async createUser({ user }) {
+      if (!user.id) return;
+      await db.virtualPortfolio.create({
+        data: { userId: user.id, balance: 10000 },
+      });
+    },
   },
   providers: [
     Google({
