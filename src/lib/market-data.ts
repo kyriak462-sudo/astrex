@@ -1,96 +1,79 @@
 export type Symbol = {
   ticker: string;
   name: string;
-  basePrice: number;
+  coingeckoId: string;
+  tvSymbol: string;
 };
 
 export const SYMBOLS: Symbol[] = [
-  { ticker: "BTC", name: "Bitcoin", basePrice: 64500 },
-  { ticker: "ETH", name: "Ethereum", basePrice: 3150 },
-  { ticker: "BNB", name: "BNB", basePrice: 580 },
-  { ticker: "SOL", name: "Solana", basePrice: 148 },
-  { ticker: "XRP", name: "XRP", basePrice: 0.55 },
-  { ticker: "ADA", name: "Cardano", basePrice: 0.44 },
-  { ticker: "DOGE", name: "Dogecoin", basePrice: 0.16 },
-  { ticker: "TON", name: "Toncoin", basePrice: 5.4 },
-  { ticker: "DOT", name: "Polkadot", basePrice: 6.3 },
-  { ticker: "AVAX", name: "Avalanche", basePrice: 34 },
+  { ticker: "BTC", name: "Bitcoin", coingeckoId: "bitcoin", tvSymbol: "BINANCE:BTCUSDT" },
+  { ticker: "ETH", name: "Ethereum", coingeckoId: "ethereum", tvSymbol: "BINANCE:ETHUSDT" },
+  { ticker: "BNB", name: "BNB", coingeckoId: "binancecoin", tvSymbol: "BINANCE:BNBUSDT" },
+  { ticker: "SOL", name: "Solana", coingeckoId: "solana", tvSymbol: "BINANCE:SOLUSDT" },
+  { ticker: "XRP", name: "XRP", coingeckoId: "ripple", tvSymbol: "BINANCE:XRPUSDT" },
+  { ticker: "ADA", name: "Cardano", coingeckoId: "cardano", tvSymbol: "BINANCE:ADAUSDT" },
+  { ticker: "DOGE", name: "Dogecoin", coingeckoId: "dogecoin", tvSymbol: "BINANCE:DOGEUSDT" },
+  { ticker: "TON", name: "Toncoin", coingeckoId: "the-open-network", tvSymbol: "BINANCE:TONUSDT" },
+  { ticker: "DOT", name: "Polkadot", coingeckoId: "polkadot", tvSymbol: "BINANCE:DOTUSDT" },
+  { ticker: "AVAX", name: "Avalanche", coingeckoId: "avalanche-2", tvSymbol: "BINANCE:AVAXUSDT" },
 ];
 
-export type Candle = {
-  time: number; // unix seconds
-  open: number;
-  high: number;
-  low: number;
-  close: number;
+// Fallback prices, used only if the live price API is unreachable.
+const FALLBACK_PRICES: Record<string, number> = {
+  BTC: 64500,
+  ETH: 3150,
+  BNB: 580,
+  SOL: 148,
+  XRP: 0.55,
+  ADA: 0.44,
+  DOGE: 0.16,
+  TON: 5.4,
+  DOT: 6.3,
+  AVAX: 34,
 };
 
-function hashString(s: string): number {
-  let h = 0;
-  for (let i = 0; i < s.length; i++) {
-    h = (Math.imul(31, h) + s.charCodeAt(i)) | 0;
+type PriceInfo = { price: number; changePct: number };
+
+let cache: { data: Record<string, PriceInfo>; expiresAt: number } | null = null;
+const CACHE_MS = 30_000;
+
+async function fetchAllPrices(): Promise<Record<string, PriceInfo>> {
+  if (cache && cache.expiresAt > Date.now()) return cache.data;
+
+  const ids = SYMBOLS.map((s) => s.coingeckoId).join(",");
+  const url = `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_24hr_change=true`;
+
+  try {
+    const res = await fetch(url, { next: { revalidate: 30 } });
+    if (!res.ok) throw new Error(`CoinGecko responded ${res.status}`);
+    const json = (await res.json()) as Record<string, { usd: number; usd_24h_change?: number }>;
+
+    const data: Record<string, PriceInfo> = {};
+    for (const s of SYMBOLS) {
+      const entry = json[s.coingeckoId];
+      data[s.ticker] = entry
+        ? { price: entry.usd, changePct: entry.usd_24h_change ?? 0 }
+        : { price: FALLBACK_PRICES[s.ticker], changePct: 0 };
+    }
+
+    cache = { data, expiresAt: Date.now() + CACHE_MS };
+    return data;
+  } catch {
+    const data: Record<string, PriceInfo> = {};
+    for (const s of SYMBOLS) {
+      data[s.ticker] = { price: FALLBACK_PRICES[s.ticker], changePct: 0 };
+    }
+    return data;
   }
-  return h >>> 0;
 }
 
-function mulberry32(seed: number) {
-  return function () {
-    seed |= 0;
-    seed = (seed + 0x6d2b79f5) | 0;
-    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
-    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
+export async function getCurrentPrice(ticker: string): Promise<PriceInfo> {
+  const prices = await fetchAllPrices();
+  return prices[ticker] ?? { price: 0, changePct: 0 };
 }
 
-const INTERVAL_MS = 60 * 60 * 1000; // 1h candles
-
-function closeAt(seed: number, basePrice: number, bucket: number): number {
-  const rand = mulberry32((seed ^ (bucket * 2654435761)) >>> 0);
-  const trend = Math.sin(bucket / 42) * 0.14 + Math.sin(bucket / 151 + (seed % 10)) * 0.07;
-  const noise = (rand() - 0.5) * 0.035;
-  return basePrice * (1 + trend + noise);
-}
-
-export function getCandles(ticker: string, count = 120): Candle[] {
-  const symbol = SYMBOLS.find((s) => s.ticker === ticker);
-  if (!symbol) return [];
-
-  const seed = hashString(ticker);
-  const nowBucket = Math.floor(Date.now() / INTERVAL_MS);
-  const startBucket = nowBucket - count + 1;
-
-  const candles: Candle[] = [];
-  let prevClose = closeAt(seed, symbol.basePrice, startBucket - 1);
-
-  for (let bucket = startBucket; bucket <= nowBucket; bucket++) {
-    const close = closeAt(seed, symbol.basePrice, bucket);
-    const open = prevClose;
-    const wickRand = mulberry32((seed ^ (bucket * 40503) ^ 0x9e3779b9) >>> 0);
-    const spread = Math.abs(close - open) + symbol.basePrice * 0.004;
-    const high = Math.max(open, close) + wickRand() * spread * 0.6;
-    const low = Math.min(open, close) - wickRand() * spread * 0.6;
-
-    candles.push({
-      time: bucket * (INTERVAL_MS / 1000),
-      open,
-      high,
-      low,
-      close,
-    });
-    prevClose = close;
-  }
-
-  return candles;
-}
-
-export function getCurrentPrice(ticker: string): { price: number; changePct: number } {
-  const candles = getCandles(ticker, 25);
-  if (candles.length === 0) return { price: 0, changePct: 0 };
-  const last = candles[candles.length - 1];
-  const first = candles[0];
-  const changePct = ((last.close - first.close) / first.close) * 100;
-  return { price: last.close, changePct };
+export async function getAllPrices(): Promise<Record<string, PriceInfo>> {
+  return fetchAllPrices();
 }
 
 export function formatPrice(price: number): string {

@@ -1,0 +1,141 @@
+import type { Dictionary } from "../dictionary";
+
+const tr: Dictionary = {
+  nav: {
+    howItWorks: "Nasıl çalışır",
+    features: "Özellikler",
+    market: "Sanal Piyasa",
+    signIn: "Giriş yap",
+    startFree: "Ücretsiz başla",
+  },
+  hero: {
+    badge: "Trading için Duolingo",
+    title: "Trading'i doğru şekilde, adım adım öğrenin",
+    subtitle:
+      "İnternette trading hakkında çok fazla dağınık bilgi var. ASTREX, öğrenmeyi ilk dersinizden güvenli işlem yapmaya kadar net ve yapılandırılmış bir yola dönüştürür.",
+    startFree: "Ücretsiz başla",
+    haveAccount: "Zaten hesabım var",
+  },
+  steps: {
+    title: "Öğrenme nasıl işliyor",
+    subtitle:
+      "Her kurs, bir sonraki adımın yalnızca öncekini tamamladıktan sonra açıldığı modüllerden ve derslerden oluşan bir yoldur.",
+    items: [
+      { title: "Dersleri tamamlayın", description: "Gereksiz ayrıntı içermeyen, kısa ve yapılandırılmış dersler." },
+      { title: "Pratikle pekiştirin", description: "Bilginin kalıcı olması için teorinin hemen ardından testler ve alıştırmalar." },
+      { title: "Piyasada işlem yapın", description: "Öğrendiklerinizi finansal risk olmadan sanal bir portföyde uygulayın." },
+      { title: "Seviye atlayın", description: "XP kazanın, serinizi koruyun ve yeni modüllerin kilidini açın." },
+    ],
+  },
+  features: {
+    title: "İhtiyacınız olan her şey tek bir yerde",
+    subtitle: "Onlarca dağınık kaynak arasında geçiş yapmadan teori, pratik ve geri bildirim.",
+    items: [
+      { title: "Yapılandırılmış dersler", description: "Temellerden ileri stratejilere kadar adım adım, kaosa yer yok." },
+      { title: "Alıştırmalar ve testler", description: "Her konuyu testler, örnek olaylar ve anlama kontrolleriyle pekiştirin." },
+      { title: "Sanal piyasa", description: "Gerçek para riski olmadan simüle edilmiş piyasada işlem açın ve hatalarınızdan öğrenin." },
+      { title: "Yapay zeka asistanı", description: "Sorular sorun, işlemlerinizi inceleyin ve terimlerin açıklamasını her an alın." },
+      { title: "Seriler ve motivasyon", description: "Günlük hedefler ve seriler sizi ritimde tutar — bir dil uygulaması gibi, ama trading için." },
+      { title: "XP ve başarılar", description: "Tamamladığınız her ders için XP kazanın ve başarıların kilidini açın." },
+    ],
+  },
+  marketPreview: {
+    title: "Risksiz pratik yapın",
+    subtitle:
+      "Gerçekçi piyasa dinamiklerine sahip sanal bir portföy, gerçek sermayeyi riske atmadan önce long ve short pozisyonlar açmanıza, P&L takip etmenize ve hatalardan öğrenmenize olanak tanır.",
+    startBalance: "10.000 $",
+    startBalanceCaption: "başlangıç sanal bakiyesi",
+    positionsCaption: "ve Short pozisyonlar",
+  },
+  cta: {
+    title: "Acemilikten trader olmaya giden yolculuğa başlayın",
+    subtitle: "Ücretsiz. Risksiz. Her adımda net bir yapıyla.",
+    button: "Ücretsiz başla",
+  },
+  footer: {
+    disclaimer: "Eğitim platformu. Yatırım tavsiyesi değildir.",
+  },
+  auth: {
+    signIn: {
+      title: "Tekrar hoş geldiniz",
+      subtitle: "Öğrenmeye devam etmek için giriş yapın.",
+      submit: "Giriş yap",
+      submitting: "Giriş yapılıyor…",
+      noAccount: "Hesabınız yok mu?",
+      createLink: "Oluşturun",
+      error: "Hatalı e-posta veya şifre.",
+    },
+    signUp: {
+      title: "Öğrenmeye başlayın",
+      subtitle: "Acemilikten ileri seviye trader olmaya giden yol.",
+      nameLabel: "Ad",
+      namePlaceholder: "Ahmet",
+      emailLabel: "E-posta",
+      emailPlaceholder: "you@example.com",
+      passwordLabel: "Şifre",
+      passwordPlaceholder: "En az 8 karakter",
+      submit: "Hesap oluştur",
+      submitting: "Hesap oluşturuluyor…",
+      haveAccount: "Zaten bir hesabınız var mı?",
+      signInLink: "Giriş yap",
+      genericError: "Hesap oluşturulamadı.",
+    },
+    orEmail: "veya e-posta ile",
+    google: "Google ile devam et",
+  },
+  dashboard: {
+    nav: {
+      learn: "Öğren",
+      market: "Piyasa",
+      charts: "Grafikler",
+      profile: "Profil",
+    },
+    level: "Seviye",
+    xp: "XP",
+    streakDays: "gün seri",
+    signOut: "Çıkış yap",
+  },
+  learn: {
+    course: "Kurs",
+    noCourses: "Henüz kurs eklenmedi.",
+    module: "Modül",
+  },
+  lesson: {
+    backToPath: "Yola geri dön",
+    checkYourself: "Kendinizi test edin",
+    alreadyCompleted: "Ders zaten tamamlandı",
+    completeButton: "Dersi tamamla",
+  },
+  market: {
+    title: "Sanal Piyasa",
+    subtitle: "Gerçek para riski olmadan simüle edilmiş verilerle işlem yapın.",
+    portfolioBalance: "Portföy bakiyesi",
+    amountLabel: "Tutar, $",
+    long: "Long",
+    short: "Short",
+    openPositions: "Açık pozisyonlar",
+    noPositions: "Henüz açık pozisyon yok.",
+    entryPrice: "Giriş",
+    closePosition: "Pozisyonu kapat",
+  },
+  charts: {
+    title: "Grafik Analizi",
+    subtitle: "Trend çizgileri ve seviyeleri doğrudan grafik üzerinde çizmeyi pratik yapın.",
+    tools: {
+      cursor: "İmleç",
+      trendline: "Trend çizgisi",
+      level: "Seviye",
+      clear: "Çizimleri temizle",
+    },
+    hints: {
+      firstPoint: "İlk noktaya tıklayın",
+      secondPoint: "İkinci noktaya tıklayın",
+      clickLevel: "Bir fiyat seviyesine tıklayın",
+    },
+  },
+  profile: {
+    title: "Profil",
+  },
+};
+
+export default tr;

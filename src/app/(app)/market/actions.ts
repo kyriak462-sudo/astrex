@@ -23,7 +23,7 @@ export async function openTrade(formData: FormData) {
   const portfolio = await getOrCreatePortfolio(session.user.id);
   if (amount > portfolio.balance) return;
 
-  const { price } = getCurrentPrice(symbol);
+  const { price } = await getCurrentPrice(symbol);
   if (!price) return;
 
   const quantity = amount / price;
@@ -59,7 +59,7 @@ export async function closeTrade(formData: FormData) {
   });
   if (!trade || trade.portfolio.userId !== session.user.id || trade.status !== "OPEN") return;
 
-  const { price } = getCurrentPrice(trade.symbol);
+  const { price } = await getCurrentPrice(trade.symbol);
   const notional = trade.entryPrice * trade.quantity;
   const pnl =
     trade.side === "LONG"

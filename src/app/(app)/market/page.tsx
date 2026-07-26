@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { SYMBOLS, getCandles, getCurrentPrice, formatPrice } from "@/lib/market-data";
-import { PriceChart } from "@/components/market/price-chart";
+import { SYMBOLS, getCurrentPrice, formatPrice } from "@/lib/market-data";
+import { TradingViewWidget } from "@/components/market/tradingview-widget";
 import { openTrade, closeTrade } from "./actions";
 
 export default async function MarketPage({
@@ -14,8 +14,7 @@ export default async function MarketPage({
   const symbol = SYMBOLS.find((s) => s.ticker === symbolParam) ?? SYMBOLS[0];
 
   const session = await auth();
-  const candles = getCandles(symbol.ticker);
-  const { price, changePct } = getCurrentPrice(symbol.ticker);
+  const { price, changePct } = await getCurrentPrice(symbol.ticker);
   const up = changePct >= 0;
 
   const portfolio = session?.user?.id
@@ -28,11 +27,19 @@ export default async function MarketPage({
   const balance = portfolio?.balance ?? 10000;
   const openTrades = portfolio?.trades ?? [];
 
+  const livePrices: Record<string, number> = {};
+  for (const trade of openTrades) {
+    if (!(trade.symbol in livePrices)) {
+      const { price: p } = await getCurrentPrice(trade.symbol);
+      livePrices[trade.symbol] = p;
+    }
+  }
+
   return (
     <div className="mx-auto max-w-5xl">
       <h1 className="text-2xl font-semibold text-white">Виртуальный рынок</h1>
       <p className="mt-2 text-sm text-white/45">
-        Торгуйте на симулированных данных без риска для реальных денег.
+        Торгуйте по реальным ценам на симулированном балансе без риска для реальных денег.
       </p>
 
       <div className="mt-6 flex flex-wrap gap-2">
@@ -52,8 +59,8 @@ export default async function MarketPage({
       </div>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_300px]">
-        <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02]">
-          <div className="flex items-center justify-between border-b border-white/[0.06] px-5 py-3.5">
+        <div>
+          <div className="mb-3 flex items-center justify-between">
             <div>
               <span className="font-medium text-white">{symbol.ticker}/USDT</span>
               <span className="ml-2 text-sm text-white/40">{symbol.name}</span>
@@ -64,11 +71,11 @@ export default async function MarketPage({
                 className={`text-xs ${up ? "text-[var(--color-up)]" : "text-[var(--color-down)]"}`}
               >
                 {up ? "+" : ""}
-                {changePct.toFixed(2)}%
+                {changePct.toFixed(2)}% (24ч)
               </div>
             </div>
           </div>
-          <PriceChart candles={candles} />
+          <TradingViewWidget symbol={symbol.tvSymbol} />
         </div>
 
         <div className="space-y-6">
@@ -123,7 +130,7 @@ export default async function MarketPage({
             ) : (
               <div className="space-y-3">
                 {openTrades.map((trade) => {
-                  const { price: livePrice } = getCurrentPrice(trade.symbol);
+                  const livePrice = livePrices[trade.symbol] ?? trade.entryPrice;
                   const pnl =
                     trade.side === "LONG"
                       ? (livePrice - trade.entryPrice) * trade.quantity
