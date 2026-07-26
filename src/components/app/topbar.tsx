@@ -1,4 +1,5 @@
 import { Flame, Zap } from "lucide-react";
+import { pluralizeDays } from "@/lib/pluralize";
 
 export function Topbar({
   xp,
@@ -30,7 +31,9 @@ export function Topbar({
 
       <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 px-2.5 py-1.5 text-xs text-white/60 sm:px-3">
         <Flame className="h-3.5 w-3.5 text-[var(--color-up)]" strokeWidth={2} />
-        <span className="hidden sm:inline">{streakCount} дней подряд</span>
+        <span className="hidden sm:inline">
+          {streakCount} {pluralizeDays(streakCount)} подряд
+        </span>
         <span className="sm:hidden">{streakCount}</span>
       </span>
     </header>

@@ -10,7 +10,7 @@ function mulberry32(seed: number) {
   };
 }
 
-const SYMBOLS = ["₿", "Ξ", "Ł", "Ð", "Ѕ"];
+const SYMBOLS = ["₿", "Ξ", "SOL", "PEPE"];
 
 type Coin = {
   symbol: string;
@@ -34,7 +34,7 @@ function generateCoins(count: number, seed: number): Coin[] {
       symbol: SYMBOLS[i % SYMBOLS.length],
       x: 8 + rand() * 84,
       y: 8 + rand() * 84,
-      size: 22 + rand() * 14,
+      size: 26 + rand() * 14,
       opacity: 0.08 + rand() * 0.1,
       driftX: Math.cos(angle) * distance,
       driftY: Math.sin(angle) * distance,
@@ -56,28 +56,31 @@ export function CryptoDrift({ className }: { className?: string }) {
         className
       )}
     >
-      {COINS.map((coin, i) => (
-        <span
-          key={i}
-          className="absolute flex items-center justify-center rounded-full border border-white/[0.14] font-mono text-white/[0.14]"
-          style={{
-            left: `${coin.x}%`,
-            top: `${coin.y}%`,
-            width: coin.size,
-            height: coin.size,
-            fontSize: coin.size * 0.46,
-            opacity: coin.opacity,
-            transform: `rotate(${coin.rotate}deg)`,
-            animation: `drift ${coin.driftDuration}s ease-in-out ${coin.driftDelay}s infinite`,
-            ...({
-              "--drift-x": `${coin.driftX}px`,
-              "--drift-y": `${coin.driftY}px`,
-            } as React.CSSProperties),
-          }}
-        >
-          {coin.symbol}
-        </span>
-      ))}
+      {COINS.map((coin, i) => {
+        const fontScale = coin.symbol.length <= 1 ? 0.44 : coin.symbol.length <= 3 ? 0.26 : 0.2;
+        return (
+          <span
+            key={i}
+            className="absolute flex items-center justify-center rounded-full border border-white/[0.14] font-mono font-medium tracking-tight text-white/[0.14]"
+            style={{
+              left: `${coin.x}%`,
+              top: `${coin.y}%`,
+              width: coin.size,
+              height: coin.size,
+              fontSize: coin.size * fontScale,
+              opacity: coin.opacity,
+              transform: `rotate(${coin.rotate}deg)`,
+              animation: `drift ${coin.driftDuration}s ease-in-out ${coin.driftDelay}s infinite`,
+              ...({
+                "--drift-x": `${coin.driftX}px`,
+                "--drift-y": `${coin.driftY}px`,
+              } as React.CSSProperties),
+            }}
+          >
+            {coin.symbol}
+          </span>
+        );
+      })}
     </div>
   );
 }

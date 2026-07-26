@@ -4,8 +4,7 @@ import { db } from "@/lib/db";
 import { Sidebar } from "@/components/app/sidebar";
 import { Topbar } from "@/components/app/topbar";
 import { MobileTabBar } from "@/components/app/mobile-tabbar";
-
-const XP_PER_LEVEL = 500;
+import { XP_PER_LEVEL } from "@/lib/gamification";
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
   const session = await auth();
