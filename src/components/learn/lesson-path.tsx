@@ -32,16 +32,20 @@ export function LessonPath({ lessons }: { lessons: PathLesson[] }) {
           >
             {points.slice(0, -1).map((p, i) => {
               const next = points[i + 1];
-              const midY = (p.y + next.y) / 2;
+              const edgeGap = NODE_SIZE / 2 + 8;
+              const startY = p.y + edgeGap;
+              const endY = next.y - edgeGap;
+              if (endY <= startY) return null;
+              const midY = (startY + endY) / 2;
               const traveled = lessons[i].status !== "locked" && lessons[i + 1].status !== "locked";
               return (
                 <path
                   key={i}
-                  d={`M ${p.x} ${p.y} C ${p.x} ${midY}, ${next.x} ${midY}, ${next.x} ${next.y}`}
+                  d={`M ${p.x} ${startY} C ${p.x} ${midY}, ${next.x} ${midY}, ${next.x} ${endY}`}
                   fill="none"
                   strokeWidth={5}
                   strokeLinecap="round"
-                  strokeDasharray="2 11"
+                  strokeDasharray="2 8"
                   className={
                     traveled
                       ? "stroke-[var(--color-up)]"

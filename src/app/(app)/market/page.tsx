@@ -3,9 +3,8 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { SYMBOLS, getCurrentPrice, getKlines, formatPrice } from "@/lib/market-data";
 import { TradeChart } from "@/components/market/trade-chart";
-import { openTrade, closeTrade, checkTriggers } from "./actions";
-
-const LEVERAGES = [1, 2, 5, 10, 20];
+import { TradeForm } from "@/components/market/trade-form";
+import { openTrade, closeTrade, checkTriggers, resetBalance } from "./actions";
 
 export default async function MarketPage({
   searchParams,
@@ -26,12 +25,13 @@ export default async function MarketPage({
   const portfolio = session?.user?.id
     ? await db.virtualPortfolio.findUnique({
         where: { userId: session.user.id },
-        include: { trades: { where: { status: "OPEN" }, orderBy: { openedAt: "desc" } } },
+        include: { trades: { orderBy: { openedAt: "desc" }, take: 50 } },
       })
     : null;
 
   const balance = portfolio?.balance ?? 10000;
-  const openTrades = portfolio?.trades ?? [];
+  const allTrades = portfolio?.trades ?? [];
+  const openTrades = allTrades.filter((t) => t.status === "OPEN");
 
   const livePrices: Record<string, number> = {};
   for (const trade of openTrades) {
@@ -102,90 +102,27 @@ export default async function MarketPage({
 
         <div className="space-y-6">
           <div className="rounded-2xl border border-black/10 bg-black/[0.02] p-5 dark:border-white/10 dark:bg-white/[0.02]">
-            <p className="text-xs text-neutral-400 dark:text-white/40">Баланс портфеля</p>
-            <p className="mt-1 text-2xl font-semibold text-neutral-900 dark:text-white">
-              ${balance.toLocaleString("ru-RU", { maximumFractionDigits: 2 })}
-            </p>
-
-            <form action={openTrade} className="mt-5 space-y-3">
-              <input type="hidden" name="symbol" value={symbol.ticker} />
+            <div className="flex items-start justify-between">
               <div>
-                <label className="mb-1.5 block text-xs font-medium text-neutral-500 dark:text-white/50">
-                  Сумма (маржа), $
-                </label>
-                <input
-                  type="number"
-                  name="amount"
-                  min={1}
-                  step="any"
-                  defaultValue={100}
-                  className="h-10 w-full rounded-lg border border-black/10 bg-black/[0.02] px-3 text-sm text-neutral-900 outline-none focus:border-black/30 dark:border-white/10 dark:bg-white/[0.03] dark:text-white dark:focus:border-white/30"
-                />
+                <p className="text-xs text-neutral-400 dark:text-white/40">Баланс портфеля</p>
+                <p className="mt-1 text-2xl font-semibold text-neutral-900 dark:text-white">
+                  {Number.isFinite(balance)
+                    ? `$${balance.toLocaleString("ru-RU", { maximumFractionDigits: 2 })}`
+                    : "$0.00"}
+                </p>
               </div>
-
-              <div>
-                <label className="mb-1.5 block text-xs font-medium text-neutral-500 dark:text-white/50">
-                  Плечо
-                </label>
-                <select
-                  name="leverage"
-                  defaultValue={1}
-                  className="h-10 w-full rounded-lg border border-black/10 bg-black/[0.02] px-3 text-sm text-neutral-900 outline-none focus:border-black/30 dark:border-white/10 dark:bg-white/[0.03] dark:text-white dark:focus:border-white/30"
-                >
-                  {LEVERAGES.map((lev) => (
-                    <option key={lev} value={lev} className="bg-white text-black dark:bg-black dark:text-white">
-                      {lev}x
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div className="grid grid-cols-2 gap-2">
-                <div>
-                  <label className="mb-1.5 block text-xs font-medium text-neutral-500 dark:text-white/50">
-                    Stop-Loss
-                  </label>
-                  <input
-                    type="number"
-                    name="stopLoss"
-                    step="any"
-                    placeholder="необязательно"
-                    className="h-10 w-full rounded-lg border border-black/10 bg-black/[0.02] px-3 text-sm text-neutral-900 outline-none placeholder:text-neutral-400 focus:border-black/30 dark:border-white/10 dark:bg-white/[0.03] dark:text-white dark:placeholder:text-white/25 dark:focus:border-white/30"
-                  />
-                </div>
-                <div>
-                  <label className="mb-1.5 block text-xs font-medium text-neutral-500 dark:text-white/50">
-                    Take-Profit
-                  </label>
-                  <input
-                    type="number"
-                    name="takeProfit"
-                    step="any"
-                    placeholder="необязательно"
-                    className="h-10 w-full rounded-lg border border-black/10 bg-black/[0.02] px-3 text-sm text-neutral-900 outline-none placeholder:text-neutral-400 focus:border-black/30 dark:border-white/10 dark:bg-white/[0.03] dark:text-white dark:placeholder:text-white/25 dark:focus:border-white/30"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-2 pt-1">
+              <form action={resetBalance}>
                 <button
                   type="submit"
-                  name="side"
-                  value="LONG"
-                  className="h-10 rounded-lg bg-[var(--color-up)] text-sm font-medium text-black transition-opacity hover:opacity-90"
+                  className="rounded-md border border-black/10 px-2.5 py-1.5 text-xs text-neutral-500 transition-colors hover:border-black/25 hover:text-neutral-900 dark:border-white/10 dark:text-white/50 dark:hover:border-white/25 dark:hover:text-white"
+                  title="Сбросить баланс до $10 000 и закрыть открытые позиции"
                 >
-                  Long
+                  Сбросить до $10 000
                 </button>
-                <button
-                  type="submit"
-                  name="side"
-                  value="SHORT"
-                  className="h-10 rounded-lg bg-[var(--color-down)] text-sm font-medium text-white transition-opacity hover:opacity-90"
-                >
-                  Short
-                </button>
-              </div>
-            </form>
+              </form>
+            </div>
+
+            <TradeForm symbol={symbol.ticker} price={price} action={openTrade} />
           </div>
 
           <div className="rounded-2xl border border-black/10 bg-black/[0.02] p-5 dark:border-white/10 dark:bg-white/[0.02]">
@@ -264,6 +201,79 @@ export default async function MarketPage({
             )}
           </div>
         </div>
+      </div>
+
+      <div className="mt-6 rounded-2xl border border-black/10 bg-black/[0.02] p-5 dark:border-white/10 dark:bg-white/[0.02]">
+        <p className="mb-3 text-xs uppercase tracking-widest text-neutral-400 dark:text-white/35">
+          История ордеров
+        </p>
+        {allTrades.length === 0 ? (
+          <p className="text-sm text-neutral-400 dark:text-white/35">Пока нет ни одной сделки.</p>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[560px] text-left text-sm">
+              <thead>
+                <tr className="text-xs uppercase tracking-wide text-neutral-400 dark:text-white/35">
+                  <th className="pb-2 pr-4 font-medium">Монета</th>
+                  <th className="pb-2 pr-4 font-medium">Сторона</th>
+                  <th className="pb-2 pr-4 font-medium">Цена входа</th>
+                  <th className="pb-2 pr-4 font-medium">Сумма</th>
+                  <th className="pb-2 pr-4 font-medium">PnL</th>
+                  <th className="pb-2 pr-4 font-medium">Статус</th>
+                  <th className="pb-2 font-medium">Дата</th>
+                </tr>
+              </thead>
+              <tbody>
+                {allTrades.map((trade) => {
+                  const margin = (trade.entryPrice * trade.quantity) / trade.leverage;
+                  const livePrice = livePrices[trade.symbol] ?? trade.entryPrice;
+                  const pnl =
+                    trade.status === "OPEN"
+                      ? trade.side === "LONG"
+                        ? (livePrice - trade.entryPrice) * trade.quantity
+                        : (trade.entryPrice - livePrice) * trade.quantity
+                      : (trade.pnl ?? 0);
+                  const pnlUp = pnl >= 0;
+                  return (
+                    <tr
+                      key={trade.id}
+                      className="border-t border-black/[0.06] text-neutral-700 dark:border-white/[0.06] dark:text-white/70"
+                    >
+                      <td className="py-2 pr-4 text-neutral-900 dark:text-white">{trade.symbol}</td>
+                      <td className="py-2 pr-4">
+                        <span
+                          className={
+                            trade.side === "LONG"
+                              ? "text-[var(--color-up)]"
+                              : "text-[var(--color-down)]"
+                          }
+                        >
+                          {trade.side === "LONG" ? "Long" : "Short"}
+                        </span>{" "}
+                        <span className="text-neutral-400 dark:text-white/35">{trade.leverage}x</span>
+                      </td>
+                      <td className="py-2 pr-4 font-mono">${formatPrice(trade.entryPrice)}</td>
+                      <td className="py-2 pr-4 font-mono">
+                        ${Number.isFinite(margin) ? margin.toFixed(2) : "0.00"}
+                      </td>
+                      <td
+                        className={`py-2 pr-4 font-mono ${pnlUp ? "text-[var(--color-up)]" : "text-[var(--color-down)]"}`}
+                      >
+                        {Number.isFinite(pnl) ? `${pnlUp ? "+" : ""}${pnl.toFixed(2)}$` : "—"}
+                      </td>
+                      <td className="py-2 pr-4 text-xs text-neutral-400 dark:text-white/35">
+                        {trade.status === "OPEN" ? "Открыта" : "Закрыта"}
+                      </td>
+                      <td className="py-2 text-xs text-neutral-400 dark:text-white/35">
+                        {new Date(trade.openedAt).toLocaleDateString("ru-RU")}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </div>
   );

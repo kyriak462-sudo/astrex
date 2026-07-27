@@ -5,10 +5,12 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { getCurrentPrice } from "@/lib/market-data";
 
+const STARTING_BALANCE = 10000;
+
 async function getOrCreatePortfolio(userId: string) {
   const existing = await db.virtualPortfolio.findUnique({ where: { userId } });
   if (existing) return existing;
-  return db.virtualPortfolio.create({ data: { userId, balance: 10000 } });
+  return db.virtualPortfolio.create({ data: { userId, balance: STARTING_BALANCE } });
 }
 
 async function settleTrade(
@@ -22,12 +24,23 @@ async function settleTrade(
   },
   exitPrice: number
 ) {
+  if (!Number.isFinite(exitPrice) || exitPrice <= 0) return;
+
   const margin = (trade.entryPrice * trade.quantity) / trade.leverage;
   const pnl =
     trade.side === "LONG"
       ? (exitPrice - trade.entryPrice) * trade.quantity
       : (trade.entryPrice - exitPrice) * trade.quantity;
   const returned = Math.max(0, margin + pnl);
+
+  if (!Number.isFinite(returned) || !Number.isFinite(pnl)) {
+    console.error(`settleTrade: non-finite result for trade ${trade.id}, refusing to update balance`);
+    await db.virtualTrade.update({
+      where: { id: trade.id },
+      data: { status: "CLOSED", exitPrice, pnl: 0, closedAt: new Date() },
+    });
+    return;
+  }
 
   await db.$transaction([
     db.virtualTrade.update({
@@ -52,7 +65,7 @@ export async function checkTriggers(userId: string) {
   for (const trade of portfolio.trades) {
     if (!trade.stopLoss && !trade.takeProfit) continue;
     const { price } = await getCurrentPrice(trade.symbol);
-    if (!price) continue;
+    if (!price || !Number.isFinite(price)) continue;
 
     const hitStop =
       trade.stopLoss != null &&
@@ -81,15 +94,16 @@ export async function openTrade(formData: FormData) {
   const stopLoss = stopLossInput ? Number(stopLossInput) : null;
   const takeProfit = takeProfitInput ? Number(takeProfitInput) : null;
 
-  if (!symbol || !amount || amount <= 0) return;
+  if (!symbol || !Number.isFinite(amount) || amount <= 0) return;
 
   const portfolio = await getOrCreatePortfolio(session.user.id);
-  if (amount > portfolio.balance) return;
+  if (!Number.isFinite(portfolio.balance) || amount > portfolio.balance) return;
 
   const { price } = await getCurrentPrice(symbol);
-  if (!price) return;
+  if (!price || !Number.isFinite(price) || price <= 0) return;
 
   const quantity = (amount * leverage) / price;
+  if (!Number.isFinite(quantity) || quantity <= 0) return;
 
   await db.$transaction([
     db.virtualTrade.create({
@@ -126,7 +140,27 @@ export async function closeTrade(formData: FormData) {
   if (!trade || trade.portfolio.userId !== session.user.id || trade.status !== "OPEN") return;
 
   const { price } = await getCurrentPrice(trade.symbol);
+  if (!price || !Number.isFinite(price) || price <= 0) return;
+
   await settleTrade(trade, price);
+
+  revalidatePath("/market");
+}
+
+/** Resets the caller's virtual portfolio balance back to the starting amount and clears open trades. */
+export async function resetBalance() {
+  const session = await auth();
+  if (!session?.user?.id) return;
+
+  const portfolio = await getOrCreatePortfolio(session.user.id);
+
+  await db.$transaction([
+    db.virtualTrade.deleteMany({ where: { portfolioId: portfolio.id, status: "OPEN" } }),
+    db.virtualPortfolio.update({
+      where: { id: portfolio.id },
+      data: { balance: STARTING_BALANCE },
+    }),
+  ]);
 
   revalidatePath("/market");
 }

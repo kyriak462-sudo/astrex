@@ -82,8 +82,8 @@ enum CourseLevel {
 model Course {
   id          String      @id @default(cuid())
   slug        String      @unique
-  title       String
-  description String
+  title       Json
+  description Json
   level       CourseLevel @default(BEGINNER)
   order       Int         @default(0)
   published   Boolean     @default(false)
@@ -97,7 +97,7 @@ model Course {
 model Module {
   id       String   @id @default(cuid())
   courseId String
-  title    String
+  title    Json
   order    Int      @default(0)
 
   course   Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
@@ -110,8 +110,8 @@ model Lesson {
   id               String   @id @default(cuid())
   moduleId         String
   slug             String
-  title            String
-  summary          String?
+  title            Json
+  summary          Json?
   content          Json
   order            Int      @default(0)
   xpReward         Int      @default(10)
@@ -141,7 +141,7 @@ model Question {
   id            String       @id @default(cuid())
   lessonId      String
   type          QuestionType @default(SINGLE_CHOICE)
-  prompt        String
+  prompt        Json
   options       Json
   correctAnswer Json
   explanation   String?
