@@ -58,13 +58,13 @@ export function Starfield({ className }: { className?: string }) {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255,255,255,0.05), transparent 60%)",
+            "radial-gradient(ellipse 80% 60% at 50% -10%, var(--decor-glow), transparent 60%)",
         }}
       />
       {STARS.map((star, i) => (
         <span
           key={i}
-          className="absolute rounded-full bg-white"
+          className="absolute rounded-full bg-neutral-900 dark:bg-white"
           style={{
             left: `${star.x}%`,
             top: `${star.y}%`,

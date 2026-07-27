@@ -27,18 +27,26 @@ export function TradeChart({
   useEffect(() => {
     if (!containerRef.current) return;
 
+    const rootStyles = getComputedStyle(document.documentElement);
+    const isDark = document.documentElement.classList.contains("dark");
+    const textColor = rootStyles.getPropertyValue("--color-fg-muted").trim() || "rgba(255,255,255,0.4)";
+    const borderColor = rootStyles.getPropertyValue("--color-border").trim() || "rgba(255,255,255,0.08)";
+    const gridColor = isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)";
+    const upColor = rootStyles.getPropertyValue("--color-up").trim() || "#14e08a";
+    const downColor = rootStyles.getPropertyValue("--color-down").trim() || "#ff3b4e";
+
     const chart = createChart(containerRef.current, {
       height,
       layout: {
         background: { color: "transparent" },
-        textColor: "rgba(255,255,255,0.4)",
+        textColor,
       },
       grid: {
-        vertLines: { color: "rgba(255,255,255,0.04)" },
-        horzLines: { color: "rgba(255,255,255,0.04)" },
+        vertLines: { color: gridColor },
+        horzLines: { color: gridColor },
       },
-      rightPriceScale: { borderColor: "rgba(255,255,255,0.08)" },
-      timeScale: { borderColor: "rgba(255,255,255,0.08)", timeVisible: true },
+      rightPriceScale: { borderColor },
+      timeScale: { borderColor, timeVisible: true },
     });
 
     const levels = [entryPrice, stopLoss, takeProfit].filter(
@@ -55,11 +63,11 @@ export function TradeChart({
     };
 
     const series = chart.addSeries(CandlestickSeries, {
-      upColor: "#14e08a",
-      downColor: "#ff3b4e",
+      upColor,
+      downColor,
       borderVisible: false,
-      wickUpColor: "#14e08a",
-      wickDownColor: "#ff3b4e",
+      wickUpColor: upColor,
+      wickDownColor: downColor,
       autoscaleInfoProvider,
     });
 
@@ -72,7 +80,7 @@ export function TradeChart({
       lines.push(
         series.createPriceLine({
           price: entryPrice,
-          color: "rgba(255,255,255,0.7)",
+          color: rootStyles.getPropertyValue("--color-fg-muted").trim() || "rgba(255,255,255,0.7)",
           lineWidth: 1,
           lineStyle: 2,
           axisLabelVisible: true,
@@ -84,7 +92,7 @@ export function TradeChart({
       lines.push(
         series.createPriceLine({
           price: stopLoss,
-          color: "#ff3b4e",
+          color: downColor,
           lineWidth: 1,
           lineStyle: 2,
           axisLabelVisible: true,
@@ -96,7 +104,7 @@ export function TradeChart({
       lines.push(
         series.createPriceLine({
           price: takeProfit,
-          color: "#14e08a",
+          color: upColor,
           lineWidth: 1,
           lineStyle: 2,
           axisLabelVisible: true,
@@ -120,7 +128,7 @@ export function TradeChart({
   return (
     <div
       ref={containerRef}
-      className="w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02]"
+      className="w-full overflow-hidden rounded-2xl border border-black/10 bg-black/[0.02] dark:border-white/10 dark:bg-white/[0.02]"
     />
   );
 }

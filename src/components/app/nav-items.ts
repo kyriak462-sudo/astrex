@@ -5,8 +5,5 @@ export const navItems = [
   { href: "/market", label: "Рынок", icon: LineChart },
   { href: "/charts", label: "Графики", icon: CandlestickChart },
   { href: "/profile", label: "Профиль", icon: User },
-];
-
-export const secondaryNavItems = [
   { href: "/settings", label: "Настройки", icon: Settings },
 ];

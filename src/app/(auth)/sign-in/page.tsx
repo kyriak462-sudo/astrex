@@ -38,18 +38,20 @@ export default function SignInPage() {
   }
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-7">
-      <h1 className="text-xl font-semibold text-white">С возвращением</h1>
-      <p className="mt-1 text-sm text-white/50">Войдите, чтобы продолжить обучение.</p>
+    <div className="rounded-2xl border border-black/10 bg-black/[0.02] p-7 dark:border-white/10 dark:bg-white/[0.02]">
+      <h1 className="text-xl font-semibold text-neutral-900 dark:text-white">С возвращением</h1>
+      <p className="mt-1 text-sm text-neutral-500 dark:text-white/50">
+        Войдите, чтобы продолжить обучение.
+      </p>
 
       <div className="mt-6">
         <GoogleButton />
       </div>
 
       <div className="my-6 flex items-center gap-3">
-        <div className="h-px flex-1 bg-white/[0.08]" />
-        <span className="text-xs text-white/30">или по email</span>
-        <div className="h-px flex-1 bg-white/[0.08]" />
+        <div className="h-px flex-1 bg-black/[0.08] dark:bg-white/[0.08]" />
+        <span className="text-xs text-neutral-400 dark:text-white/30">или по email</span>
+        <div className="h-px flex-1 bg-black/[0.08] dark:bg-white/[0.08]" />
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -83,9 +85,9 @@ export default function SignInPage() {
         </Button>
       </form>
 
-      <p className="mt-6 text-center text-sm text-white/40">
+      <p className="mt-6 text-center text-sm text-neutral-500 dark:text-white/40">
         Нет аккаунта?{" "}
-        <Link href="/sign-up" className="text-white hover:underline">
+        <Link href="/sign-up" className="text-neutral-900 hover:underline dark:text-white">
           Создать
         </Link>
       </p>

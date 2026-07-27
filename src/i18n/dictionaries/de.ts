@@ -89,6 +89,7 @@ const de: Dictionary = {
       market: "Markt",
       charts: "Charts",
       profile: "Profil",
+      settings: "Einstellungen",
     },
     level: "Level",
     xp: "XP",

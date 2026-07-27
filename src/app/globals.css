@@ -16,6 +16,8 @@
   --color-down: #e11d3f;
   --color-down-dim: rgba(225, 29, 63, 0.1);
 
+  --decor-glow: rgba(0, 0, 0, 0.05);
+
   color-scheme: light;
 }
 
@@ -32,6 +34,8 @@
   --color-up-dim: rgba(20, 224, 138, 0.12);
   --color-down: #ff3b4e;
   --color-down-dim: rgba(255, 59, 78, 0.12);
+
+  --decor-glow: rgba(255, 255, 255, 0.05);
 
   color-scheme: dark;
 }
@@ -66,12 +70,7 @@ body {
 }
 
 .astrex-decor {
-  opacity: 0;
   transition: opacity 0.3s ease;
-}
-
-.dark .astrex-decor {
-  opacity: 1;
 }
 
 ::selection {

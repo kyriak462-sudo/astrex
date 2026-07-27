@@ -46,17 +46,19 @@ export default async function LessonPage({
     <div className="mx-auto max-w-2xl">
       <Link
         href="/learn"
-        className="inline-flex items-center gap-1.5 text-sm text-white/40 hover:text-white/70"
+        className="inline-flex items-center gap-1.5 text-sm text-neutral-500 hover:text-neutral-900 dark:text-white/40 dark:hover:text-white/70"
       >
         <ArrowLeft className="h-4 w-4" /> Назад к пути
       </Link>
 
-      <p className="mt-6 text-xs uppercase tracking-widest text-white/35">
+      <p className="mt-6 text-xs uppercase tracking-widest text-neutral-400 dark:text-white/35">
         {lesson.module.title}
       </p>
-      <h1 className="mt-1 text-2xl font-semibold text-white">{lesson.title}</h1>
+      <h1 className="mt-1 text-2xl font-semibold text-neutral-900 dark:text-white">
+        {lesson.title}
+      </h1>
       {lesson.summary && (
-        <p className="mt-2 text-sm text-white/50">{lesson.summary}</p>
+        <p className="mt-2 text-sm text-neutral-500 dark:text-white/50">{lesson.summary}</p>
       )}
 
       <div className="mt-8">
@@ -65,7 +67,7 @@ export default async function LessonPage({
 
       {lesson.questions.length > 0 && (
         <div className="mt-10">
-          <p className="mb-4 text-xs uppercase tracking-widest text-white/35">
+          <p className="mb-4 text-xs uppercase tracking-widest text-neutral-400 dark:text-white/35">
             Проверьте себя
           </p>
           <LessonQuiz
@@ -79,7 +81,7 @@ export default async function LessonPage({
         </div>
       )}
 
-      <div className="mt-10 border-t border-white/[0.06] pt-6">
+      <div className="mt-10 border-t border-black/[0.06] pt-6 dark:border-white/[0.06]">
         {isCompleted ? (
           <p className="text-sm text-[var(--color-up)]">Урок уже пройден ✓</p>
         ) : (

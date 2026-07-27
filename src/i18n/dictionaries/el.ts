@@ -89,6 +89,7 @@ const el: Dictionary = {
       market: "Αγορά",
       charts: "Γραφήματα",
       profile: "Προφίλ",
+      settings: "Ρυθμίσεις",
     },
     level: "Επίπεδο",
     xp: "XP",

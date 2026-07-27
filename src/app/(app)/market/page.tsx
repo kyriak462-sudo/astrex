@@ -46,8 +46,10 @@ export default async function MarketPage({
 
   return (
     <div className="mx-auto max-w-5xl">
-      <h1 className="text-2xl font-semibold text-white">Виртуальный рынок</h1>
-      <p className="mt-2 text-sm text-white/45">
+      <h1 className="text-2xl font-semibold text-neutral-900 dark:text-white">
+        Виртуальный рынок
+      </h1>
+      <p className="mt-2 text-sm text-neutral-500 dark:text-white/45">
         Торгуйте по реальным ценам на симулированном балансе без риска для реальных денег.
       </p>
 
@@ -58,8 +60,8 @@ export default async function MarketPage({
             href={`/market?symbol=${s.ticker}`}
             className={`rounded-full border px-3.5 py-1.5 text-sm transition-colors ${
               s.ticker === symbol.ticker
-                ? "border-white/25 bg-white text-black"
-                : "border-white/10 text-white/55 hover:border-white/25 hover:text-white"
+                ? "border-black/25 bg-neutral-900 text-white dark:border-white/25 dark:bg-white dark:text-black"
+                : "border-black/10 text-neutral-500 hover:border-black/25 hover:text-neutral-900 dark:border-white/10 dark:text-white/55 dark:hover:border-white/25 dark:hover:text-white"
             }`}
           >
             {s.ticker}
@@ -71,11 +73,17 @@ export default async function MarketPage({
         <div>
           <div className="mb-3 flex items-center justify-between">
             <div>
-              <span className="font-medium text-white">{symbol.ticker}/USDT</span>
-              <span className="ml-2 text-sm text-white/40">{symbol.name}</span>
+              <span className="font-medium text-neutral-900 dark:text-white">
+                {symbol.ticker}/USDT
+              </span>
+              <span className="ml-2 text-sm text-neutral-400 dark:text-white/40">
+                {symbol.name}
+              </span>
             </div>
             <div className="text-right">
-              <div className="font-mono text-sm text-white">${formatPrice(price)}</div>
+              <div className="font-mono text-sm text-neutral-900 dark:text-white">
+                ${formatPrice(price)}
+              </div>
               <div
                 className={`text-xs ${up ? "text-[var(--color-up)]" : "text-[var(--color-down)]"}`}
               >
@@ -93,16 +101,16 @@ export default async function MarketPage({
         </div>
 
         <div className="space-y-6">
-          <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5">
-            <p className="text-xs text-white/40">Баланс портфеля</p>
-            <p className="mt-1 text-2xl font-semibold text-white">
+          <div className="rounded-2xl border border-black/10 bg-black/[0.02] p-5 dark:border-white/10 dark:bg-white/[0.02]">
+            <p className="text-xs text-neutral-400 dark:text-white/40">Баланс портфеля</p>
+            <p className="mt-1 text-2xl font-semibold text-neutral-900 dark:text-white">
               ${balance.toLocaleString("ru-RU", { maximumFractionDigits: 2 })}
             </p>
 
             <form action={openTrade} className="mt-5 space-y-3">
               <input type="hidden" name="symbol" value={symbol.ticker} />
               <div>
-                <label className="mb-1.5 block text-xs font-medium text-white/50">
+                <label className="mb-1.5 block text-xs font-medium text-neutral-500 dark:text-white/50">
                   Сумма (маржа), $
                 </label>
                 <input
@@ -111,19 +119,21 @@ export default async function MarketPage({
                   min={1}
                   step="any"
                   defaultValue={100}
-                  className="h-10 w-full rounded-lg border border-white/10 bg-white/[0.03] px-3 text-sm text-white outline-none focus:border-white/30"
+                  className="h-10 w-full rounded-lg border border-black/10 bg-black/[0.02] px-3 text-sm text-neutral-900 outline-none focus:border-black/30 dark:border-white/10 dark:bg-white/[0.03] dark:text-white dark:focus:border-white/30"
                 />
               </div>
 
               <div>
-                <label className="mb-1.5 block text-xs font-medium text-white/50">Плечо</label>
+                <label className="mb-1.5 block text-xs font-medium text-neutral-500 dark:text-white/50">
+                  Плечо
+                </label>
                 <select
                   name="leverage"
                   defaultValue={1}
-                  className="h-10 w-full rounded-lg border border-white/10 bg-white/[0.03] px-3 text-sm text-white outline-none focus:border-white/30"
+                  className="h-10 w-full rounded-lg border border-black/10 bg-black/[0.02] px-3 text-sm text-neutral-900 outline-none focus:border-black/30 dark:border-white/10 dark:bg-white/[0.03] dark:text-white dark:focus:border-white/30"
                 >
                   {LEVERAGES.map((lev) => (
-                    <option key={lev} value={lev} className="bg-black">
+                    <option key={lev} value={lev} className="bg-white text-black dark:bg-black dark:text-white">
                       {lev}x
                     </option>
                   ))}
@@ -132,7 +142,7 @@ export default async function MarketPage({
 
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="mb-1.5 block text-xs font-medium text-white/50">
+                  <label className="mb-1.5 block text-xs font-medium text-neutral-500 dark:text-white/50">
                     Stop-Loss
                   </label>
                   <input
@@ -140,11 +150,11 @@ export default async function MarketPage({
                     name="stopLoss"
                     step="any"
                     placeholder="необязательно"
-                    className="h-10 w-full rounded-lg border border-white/10 bg-white/[0.03] px-3 text-sm text-white outline-none placeholder:text-white/25 focus:border-white/30"
+                    className="h-10 w-full rounded-lg border border-black/10 bg-black/[0.02] px-3 text-sm text-neutral-900 outline-none placeholder:text-neutral-400 focus:border-black/30 dark:border-white/10 dark:bg-white/[0.03] dark:text-white dark:placeholder:text-white/25 dark:focus:border-white/30"
                   />
                 </div>
                 <div>
-                  <label className="mb-1.5 block text-xs font-medium text-white/50">
+                  <label className="mb-1.5 block text-xs font-medium text-neutral-500 dark:text-white/50">
                     Take-Profit
                   </label>
                   <input
@@ -152,7 +162,7 @@ export default async function MarketPage({
                     name="takeProfit"
                     step="any"
                     placeholder="необязательно"
-                    className="h-10 w-full rounded-lg border border-white/10 bg-white/[0.03] px-3 text-sm text-white outline-none placeholder:text-white/25 focus:border-white/30"
+                    className="h-10 w-full rounded-lg border border-black/10 bg-black/[0.02] px-3 text-sm text-neutral-900 outline-none placeholder:text-neutral-400 focus:border-black/30 dark:border-white/10 dark:bg-white/[0.03] dark:text-white dark:placeholder:text-white/25 dark:focus:border-white/30"
                   />
                 </div>
               </div>
@@ -178,12 +188,14 @@ export default async function MarketPage({
             </form>
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5">
-            <p className="mb-3 text-xs uppercase tracking-widest text-white/35">
+          <div className="rounded-2xl border border-black/10 bg-black/[0.02] p-5 dark:border-white/10 dark:bg-white/[0.02]">
+            <p className="mb-3 text-xs uppercase tracking-widest text-neutral-400 dark:text-white/35">
               Открытые позиции
             </p>
             {openTrades.length === 0 ? (
-              <p className="text-sm text-white/35">Пока нет открытых позиций.</p>
+              <p className="text-sm text-neutral-400 dark:text-white/35">
+                Пока нет открытых позиций.
+              </p>
             ) : (
               <div className="space-y-3">
                 {openTrades.map((trade) => {
@@ -196,10 +208,10 @@ export default async function MarketPage({
                   return (
                     <div
                       key={trade.id}
-                      className="rounded-lg border border-white/[0.06] p-3 text-sm"
+                      className="rounded-lg border border-black/[0.06] p-3 text-sm dark:border-white/[0.06]"
                     >
                       <div className="flex items-center justify-between">
-                        <span className="text-white">
+                        <span className="text-neutral-900 dark:text-white">
                           {trade.symbol} ·{" "}
                           <span
                             className={
@@ -210,14 +222,16 @@ export default async function MarketPage({
                           >
                             {trade.side === "LONG" ? "Long" : "Short"}
                           </span>{" "}
-                          <span className="text-white/35">{trade.leverage}x</span>
+                          <span className="text-neutral-400 dark:text-white/35">
+                            {trade.leverage}x
+                          </span>
                         </span>
                         <span className={pnlUp ? "text-[var(--color-up)]" : "text-[var(--color-down)]"}>
                           {pnlUp ? "+" : ""}
                           {pnl.toFixed(2)} $
                         </span>
                       </div>
-                      <p className="mt-1 text-xs text-white/35">
+                      <p className="mt-1 text-xs text-neutral-400 dark:text-white/35">
                         Вход: ${formatPrice(trade.entryPrice)}
                       </p>
                       {(trade.stopLoss || trade.takeProfit) && (
@@ -238,7 +252,7 @@ export default async function MarketPage({
                         <input type="hidden" name="tradeId" value={trade.id} />
                         <button
                           type="submit"
-                          className="w-full rounded-md border border-white/10 py-1.5 text-xs text-white/60 transition-colors hover:border-white/25 hover:text-white"
+                          className="w-full rounded-md border border-black/10 py-1.5 text-xs text-neutral-500 transition-colors hover:border-black/25 hover:text-neutral-900 dark:border-white/10 dark:text-white/60 dark:hover:border-white/25 dark:hover:text-white"
                         >
                           Закрыть позицию
                         </button>

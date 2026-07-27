@@ -5,6 +5,13 @@ import { DEFAULT_LOCALE, isLocale, LOCALE_COOKIE, LOCALES } from "@/i18n/locales
 import { SignOutButton } from "@/components/app/sign-out-button";
 import { setLocale, setTheme } from "./actions";
 
+const optionClass = (active: boolean) =>
+  `rounded-lg border px-4 py-2.5 text-sm transition-colors ${
+    active
+      ? "border-black/25 bg-neutral-900 text-white dark:border-white/25 dark:bg-white dark:text-black"
+      : "border-black/10 text-neutral-600 hover:border-black/25 hover:text-neutral-900 dark:border-white/10 dark:text-white/60 dark:hover:border-white/25 dark:hover:text-white"
+  }`;
+
 export default async function SettingsPage() {
   const session = await auth();
   const store = await cookies();
@@ -17,46 +24,29 @@ export default async function SettingsPage() {
 
   return (
     <div className="mx-auto max-w-2xl">
-      <h1 className="text-2xl font-semibold text-white">Настройки</h1>
-      <p className="mt-2 text-sm text-white/45">Внешний вид и базовые параметры аккаунта.</p>
+      <h1 className="text-2xl font-semibold text-neutral-900 dark:text-white">Настройки</h1>
+      <p className="mt-2 text-sm text-neutral-500 dark:text-white/45">
+        Внешний вид и базовые параметры аккаунта.
+      </p>
 
-      <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-        <p className="text-sm font-medium text-white">Тема оформления</p>
-        <p className="mt-1 text-xs text-white/40">
-          Влияет на посадочную страницу, экраны входа и навигацию. Рабочая область (уроки,
-          рынок, графики) остаётся тёмной для удобства чтения данных и графиков.
+      <div className="mt-8 rounded-2xl border border-black/10 bg-black/[0.02] p-6 dark:border-white/10 dark:bg-white/[0.02]">
+        <p className="text-sm font-medium text-neutral-900 dark:text-white">Тема оформления</p>
+        <p className="mt-1 text-xs text-neutral-500 dark:text-white/40">
+          Меняет весь интерфейс платформы — тёмный космический вид или светлый.
         </p>
         <form action={setTheme} className="mt-4 flex gap-3">
-          <button
-            type="submit"
-            name="theme"
-            value="dark"
-            className={`rounded-lg border px-4 py-2.5 text-sm transition-colors ${
-              theme === "dark"
-                ? "border-white/25 bg-white text-black"
-                : "border-white/10 text-white/60 hover:border-white/25 hover:text-white"
-            }`}
-          >
+          <button type="submit" name="theme" value="dark" className={optionClass(theme === "dark")}>
             Тёмная
           </button>
-          <button
-            type="submit"
-            name="theme"
-            value="light"
-            className={`rounded-lg border px-4 py-2.5 text-sm transition-colors ${
-              theme === "light"
-                ? "border-white/25 bg-white text-black"
-                : "border-white/10 text-white/60 hover:border-white/25 hover:text-white"
-            }`}
-          >
+          <button type="submit" name="theme" value="light" className={optionClass(theme === "light")}>
             Светлая
           </button>
         </form>
       </div>
 
-      <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-        <p className="text-sm font-medium text-white">Язык интерфейса</p>
-        <p className="mt-1 text-xs text-white/40">
+      <div className="mt-6 rounded-2xl border border-black/10 bg-black/[0.02] p-6 dark:border-white/10 dark:bg-white/[0.02]">
+        <p className="text-sm font-medium text-neutral-900 dark:text-white">Язык интерфейса</p>
+        <p className="mt-1 text-xs text-neutral-500 dark:text-white/40">
           Полный перевод текста уроков — в разработке. Сейчас на выбранный язык переводится
           интерфейс платформы.
         </p>
@@ -67,11 +57,7 @@ export default async function SettingsPage() {
               type="submit"
               name="locale"
               value={l.code}
-              className={`rounded-lg border px-3 py-2.5 text-sm transition-colors ${
-                l.code === locale
-                  ? "border-white/25 bg-white text-black"
-                  : "border-white/10 text-white/60 hover:border-white/25 hover:text-white"
-              }`}
+              className={optionClass(l.code === locale)}
             >
               {l.label}
             </button>
@@ -79,9 +65,11 @@ export default async function SettingsPage() {
         </form>
       </div>
 
-      <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-        <p className="text-sm font-medium text-white">Аккаунт</p>
-        <p className="mt-1 text-xs text-white/40">{session?.user?.email ?? "—"}</p>
+      <div className="mt-6 rounded-2xl border border-black/10 bg-black/[0.02] p-6 dark:border-white/10 dark:bg-white/[0.02]">
+        <p className="text-sm font-medium text-neutral-900 dark:text-white">Аккаунт</p>
+        <p className="mt-1 text-xs text-neutral-500 dark:text-white/40">
+          {session?.user?.email ?? "—"}
+        </p>
         <div className="mt-4">
           <SignOutButton />
         </div>

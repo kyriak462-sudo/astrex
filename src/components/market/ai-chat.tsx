@@ -59,10 +59,12 @@ export function AiChat({ symbol, symbolName }: { symbol: string; symbolName: str
   }
 
   return (
-    <div className="flex flex-col rounded-2xl border border-white/10 bg-white/[0.02]">
-      <div className="border-b border-white/10 px-5 py-3">
-        <p className="text-sm font-medium text-white">ИИ-аналитик · {symbolName}</p>
-        <p className="mt-0.5 text-xs text-white/40">
+    <div className="flex flex-col rounded-2xl border border-black/10 bg-black/[0.02] dark:border-white/10 dark:bg-white/[0.02]">
+      <div className="border-b border-black/10 px-5 py-3 dark:border-white/10">
+        <p className="text-sm font-medium text-neutral-900 dark:text-white">
+          ИИ-аналитик · {symbolName}
+        </p>
+        <p className="mt-0.5 text-xs text-neutral-500 dark:text-white/40">
           Тренд, уровни поддержки/сопротивления и возможные причины движения цены.
         </p>
       </div>
@@ -72,7 +74,7 @@ export function AiChat({ symbol, symbolName }: { symbol: string; symbolName: str
         className="flex max-h-96 min-h-48 flex-col gap-3 overflow-y-auto px-5 py-4"
       >
         {messages.length === 0 && (
-          <p className="text-sm text-white/30">
+          <p className="text-sm text-neutral-400 dark:text-white/30">
             Например: «Какой сейчас тренд?», «Какие уровни цена не смогла пробить?» или «Почему
             монета сейчас растёт/падает?»
           </p>
@@ -82,8 +84,8 @@ export function AiChat({ symbol, symbolName }: { symbol: string; symbolName: str
             key={i}
             className={`max-w-[90%] whitespace-pre-wrap rounded-xl px-3.5 py-2 text-sm leading-relaxed ${
               m.role === "user"
-                ? "self-end bg-white text-black"
-                : "self-start bg-white/[0.05] text-white/85"
+                ? "self-end bg-neutral-900 text-white dark:bg-white dark:text-black"
+                : "self-start bg-black/[0.04] text-neutral-800 dark:bg-white/[0.05] dark:text-white/85"
             }`}
           >
             {m.content || (m.role === "assistant" && loading ? "…" : "")}
@@ -91,17 +93,17 @@ export function AiChat({ symbol, symbolName }: { symbol: string; symbolName: str
         ))}
       </div>
 
-      <form onSubmit={sendMessage} className="flex gap-2 border-t border-white/10 p-3">
+      <form onSubmit={sendMessage} className="flex gap-2 border-t border-black/10 p-3 dark:border-white/10">
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Спросите про этот актив..."
-          className="h-10 flex-1 rounded-lg border border-white/10 bg-white/[0.03] px-3 text-sm text-white outline-none placeholder:text-white/25 focus:border-white/30"
+          className="h-10 flex-1 rounded-lg border border-black/10 bg-black/[0.02] px-3 text-sm text-neutral-900 outline-none placeholder:text-neutral-400 focus:border-black/30 dark:border-white/10 dark:bg-white/[0.03] dark:text-white dark:placeholder:text-white/25 dark:focus:border-white/30"
         />
         <button
           type="submit"
           disabled={loading || !input.trim()}
-          className="h-10 shrink-0 rounded-lg bg-white px-4 text-sm font-medium text-black transition-opacity hover:opacity-90 disabled:opacity-40"
+          className="h-10 shrink-0 rounded-lg bg-neutral-900 px-4 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-40 dark:bg-white dark:text-black"
         >
           →
         </button>

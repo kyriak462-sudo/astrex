@@ -72,6 +72,7 @@ export type Dictionary = {
       market: string;
       charts: string;
       profile: string;
+      settings: string;
     };
     level: string;
     xp: string;

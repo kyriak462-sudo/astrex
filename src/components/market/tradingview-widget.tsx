@@ -21,6 +21,8 @@ export function TradingViewWidget({
     widgetDiv.style.width = "100%";
     containerRef.current.appendChild(widgetDiv);
 
+    const isDark = document.documentElement.classList.contains("dark");
+
     const script = document.createElement("script");
     script.type = "text/javascript";
     script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
@@ -31,12 +33,12 @@ export function TradingViewWidget({
       symbol,
       interval: "60",
       timezone: "Etc/UTC",
-      theme: "dark",
+      theme: isDark ? "dark" : "light",
       style: "1",
       locale: "ru",
-      backgroundColor: "rgba(5, 5, 5, 1)",
-      gridColor: "rgba(255, 255, 255, 0.06)",
-      toolbar_bg: "#050505",
+      backgroundColor: isDark ? "rgba(5, 5, 5, 1)" : "rgba(251, 251, 251, 1)",
+      gridColor: isDark ? "rgba(255, 255, 255, 0.06)" : "rgba(0, 0, 0, 0.06)",
+      toolbar_bg: isDark ? "#050505" : "#fbfbfb",
       enable_publishing: false,
       hide_top_toolbar: false,
       hide_side_toolbar: false,
@@ -52,7 +54,7 @@ export function TradingViewWidget({
 
   return (
     <div
-      className="tradingview-widget-container overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02]"
+      className="tradingview-widget-container overflow-hidden rounded-2xl border border-black/10 bg-black/[0.02] dark:border-white/10 dark:bg-white/[0.02]"
       ref={containerRef}
       style={{ height }}
     />

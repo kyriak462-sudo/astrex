@@ -89,6 +89,7 @@ const ru: Dictionary = {
       market: "Рынок",
       charts: "Графики",
       profile: "Профиль",
+      settings: "Настройки",
     },
     level: "Уровень",
     xp: "XP",

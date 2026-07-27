@@ -89,6 +89,7 @@ const tr: Dictionary = {
       market: "Piyasa",
       charts: "Grafikler",
       profile: "Profil",
+      settings: "Ayarlar",
     },
     level: "Seviye",
     xp: "XP",

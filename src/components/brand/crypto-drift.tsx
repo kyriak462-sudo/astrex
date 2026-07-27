@@ -61,7 +61,7 @@ export function CryptoDrift({ className }: { className?: string }) {
         return (
           <span
             key={i}
-            className="absolute flex items-center justify-center rounded-full border border-white/50 font-mono font-medium tracking-tight text-white/60"
+            className="absolute flex items-center justify-center rounded-full border border-black/50 font-mono font-medium tracking-tight text-black/60 dark:border-white/50 dark:text-white/60"
             style={{
               left: `${coin.x}%`,
               top: `${coin.y}%`,

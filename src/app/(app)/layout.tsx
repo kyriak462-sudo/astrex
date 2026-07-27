@@ -30,7 +30,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
 
   return (
     <div className="flex flex-1">
-      <Sidebar nav={dict.dashboard.nav} />
+      <Sidebar nav={dict.dashboard.nav} settingsLabel={dict.dashboard.nav.settings} />
       <div className="flex flex-1 flex-col">
         <Topbar
           xp={xp}
@@ -41,11 +41,11 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           levelLabel={dict.dashboard.level}
           streakDaysLabel={dict.dashboard.streakDays}
         />
-        <main className="dark flex-1 bg-[var(--color-bg)] px-4 py-6 pb-24 text-[var(--color-fg)] sm:px-6 sm:py-8 md:pb-8">
+        <main className="relative flex-1 px-4 py-6 pb-24 sm:px-6 sm:py-8 md:pb-8">
           {children}
         </main>
       </div>
-      <MobileTabBar nav={dict.dashboard.nav} />
+      <MobileTabBar nav={dict.dashboard.nav} settingsLabel={dict.dashboard.nav.settings} />
     </div>
   );
 }

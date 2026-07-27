@@ -33,7 +33,7 @@ export default async function LearnPage() {
   if (!course) {
     return (
       <div className="mx-auto max-w-2xl">
-        <p className="text-sm text-white/45">Курсы пока не добавлены.</p>
+        <p className="text-sm text-neutral-500 dark:text-white/45">Курсы пока не добавлены.</p>
       </div>
     );
   }
@@ -41,9 +41,13 @@ export default async function LearnPage() {
   return (
     <div className="mx-auto max-w-2xl">
       <div className="mb-10">
-        <p className="text-xs uppercase tracking-widest text-white/35">Курс</p>
-        <h1 className="mt-1 text-2xl font-semibold text-white">{course.title}</h1>
-        <p className="mt-2 text-sm text-white/45">{course.description}</p>
+        <p className="text-xs uppercase tracking-widest text-neutral-400 dark:text-white/35">
+          Курс
+        </p>
+        <h1 className="mt-1 text-2xl font-semibold text-neutral-900 dark:text-white">
+          {course.title}
+        </h1>
+        <p className="mt-2 text-sm text-neutral-500 dark:text-white/45">{course.description}</p>
       </div>
 
       {course.modules.map((mod, moduleIndex) => {
@@ -61,10 +65,12 @@ export default async function LearnPage() {
 
         return (
           <div key={mod.id} className="mb-14">
-            <p className="text-xs uppercase tracking-widest text-white/35">
+            <p className="text-xs uppercase tracking-widest text-neutral-400 dark:text-white/35">
               Модуль {moduleIndex + 1}
             </p>
-            <h2 className="mt-1 text-lg font-medium text-white">{mod.title}</h2>
+            <h2 className="mt-1 text-lg font-medium text-neutral-900 dark:text-white">
+              {mod.title}
+            </h2>
             <div className="mt-6">
               <LessonPath lessons={lessons} />
             </div>

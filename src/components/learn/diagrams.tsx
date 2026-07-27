@@ -1,8 +1,9 @@
 const UP = "var(--color-up)";
 const DOWN = "var(--color-down)";
-const GRID = "rgba(255,255,255,0.08)";
-const LINE = "rgba(255,255,255,0.35)";
-const LABEL = "rgba(255,255,255,0.55)";
+const GRID = "var(--color-border)";
+const LINE = "var(--color-fg-subtle)";
+const LABEL = "var(--color-fg-muted)";
+const DOT = "var(--color-fg)";
 
 type Candle = {
   x: number;
@@ -42,14 +43,14 @@ function DiagramFrame({
   label: string;
 }) {
   return (
-    <div className="overflow-hidden rounded-xl border border-white/10 bg-white/[0.02]">
+    <div className="overflow-hidden rounded-xl border border-black/10 bg-black/[0.02] dark:border-white/10 dark:bg-white/[0.02]">
       <svg viewBox="0 0 400 220" className="w-full">
         <line x1="0" y1="55" x2="400" y2="55" stroke={GRID} strokeWidth={1} />
         <line x1="0" y1="110" x2="400" y2="110" stroke={GRID} strokeWidth={1} />
         <line x1="0" y1="165" x2="400" y2="165" stroke={GRID} strokeWidth={1} />
         {children}
       </svg>
-      <div className="border-t border-white/[0.06] px-4 py-2 text-center text-xs text-white/40">
+      <div className="border-t border-black/[0.06] px-4 py-2 text-center text-xs text-neutral-500 dark:border-white/[0.06] dark:text-white/40">
         {label}
       </div>
     </div>
@@ -132,20 +133,20 @@ export function TrendStructureDiagram() {
         stroke={UP}
         strokeWidth={1.75}
       />
-      <circle cx={80} cy={90} r={3} fill="white" />
+      <circle cx={80} cy={90} r={3} fill={DOT} />
       <text x={80} y={82} fontSize={9} fill={LABEL} textAnchor="middle">
         HH
       </text>
-      <circle cx={130} cy={110} r={3} fill="white" />
+      <circle cx={130} cy={110} r={3} fill={DOT} />
       <text x={130} y={124} fontSize={9} fill={LABEL} textAnchor="middle">
         HL
       </text>
-      <circle cx={180} cy={50} r={3} fill="white" />
+      <circle cx={180} cy={50} r={3} fill={DOT} />
       <text x={180} y={42} fontSize={9} fill={LABEL} textAnchor="middle">
         HH
       </text>
       <line x1={180} y1={50} x2={330} y2={50} stroke={LINE} strokeWidth={1} strokeDasharray="3 3" />
-      <circle cx={230} cy={75} r={3} fill="white" />
+      <circle cx={230} cy={75} r={3} fill={DOT} />
       <text x={230} y={89} fontSize={9} fill={LABEL} textAnchor="middle">
         HL
       </text>

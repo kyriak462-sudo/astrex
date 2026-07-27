@@ -20,8 +20,8 @@ function SymbolTabs({
           href={`/charts?${paramName}=${s.ticker}${otherParams}`}
           className={`rounded-full border px-3 py-1 text-xs transition-colors ${
             s.ticker === active.ticker
-              ? "border-white/25 bg-white text-black"
-              : "border-white/10 text-white/55 hover:border-white/25 hover:text-white"
+              ? "border-black/25 bg-neutral-900 text-white dark:border-white/25 dark:bg-white dark:text-black"
+              : "border-black/10 text-neutral-500 hover:border-black/25 hover:text-neutral-900 dark:border-white/10 dark:text-white/55 dark:hover:border-white/25 dark:hover:text-white"
           }`}
         >
           {s.ticker}
@@ -37,8 +37,8 @@ async function ChartPanel({ symbol }: { symbol: Symbol }) {
 
   return (
     <div className="flex items-center gap-3 text-sm">
-      <span className="font-medium text-white">{symbol.ticker}/USDT</span>
-      <span className="font-mono text-white/60">${formatPrice(price)}</span>
+      <span className="font-medium text-neutral-900 dark:text-white">{symbol.ticker}/USDT</span>
+      <span className="font-mono text-neutral-500 dark:text-white/60">${formatPrice(price)}</span>
       <span className={up ? "text-[var(--color-up)]" : "text-[var(--color-down)]"}>
         {up ? "+" : ""}
         {changePct.toFixed(2)}% (24ч)
@@ -58,8 +58,10 @@ export default async function ChartsPage({
 
   return (
     <div className="mx-auto max-w-6xl">
-      <h1 className="text-2xl font-semibold text-white">Анализ графиков</h1>
-      <p className="mt-2 text-sm text-white/45">
+      <h1 className="text-2xl font-semibold text-neutral-900 dark:text-white">
+        Анализ графиков
+      </h1>
+      <p className="mt-2 text-sm text-neutral-500 dark:text-white/45">
         Полноценные графики TradingView с реальными данными и встроенными инструментами
         рисования: трендовые линии, уровни Фибоначчи, фигуры, индикаторы и другое. Сравнивайте
         два актива или два таймфрейма одновременно.
@@ -70,10 +72,8 @@ export default async function ChartsPage({
           <SymbolTabs active={symbol1} paramName="symbol1" otherParams={`&symbol2=${symbol2.ticker}`} />
           <ChartPanel symbol={symbol1} />
         </div>
-        <div className="grid gap-4 lg:grid-cols-[1fr_340px]">
-          <TradingViewWidget symbol={symbol1.tvSymbol} height={520} />
-          <AiChat symbol={symbol1.ticker} symbolName={symbol1.name} />
-        </div>
+        <TradingViewWidget symbol={symbol1.tvSymbol} height={520} />
+        <AiChat symbol={symbol1.ticker} symbolName={symbol1.name} />
       </div>
 
       <div className="mt-10 space-y-3">

@@ -4,12 +4,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/brand/logo";
-import { navItems, secondaryNavItems } from "@/components/app/nav-items";
+import { navItems } from "@/components/app/nav-items";
 
 export function Sidebar({
   nav,
+  settingsLabel,
 }: {
   nav?: { learn: string; market: string; charts: string; profile: string };
+  settingsLabel?: string;
 }) {
   const pathname = usePathname();
   const labels: Record<string, string> = {
@@ -17,6 +19,7 @@ export function Sidebar({
     "/market": nav?.market ?? "Рынок",
     "/charts": nav?.charts ?? "Графики",
     "/profile": nav?.profile ?? "Профиль",
+    "/settings": settingsLabel ?? "Настройки",
   };
 
   return (
@@ -41,27 +44,6 @@ export function Sidebar({
             >
               <item.icon className="h-4 w-4" strokeWidth={1.75} />
               {labels[item.href] ?? item.label}
-            </Link>
-          );
-        })}
-      </nav>
-
-      <nav className="mt-auto flex flex-col gap-1 pt-6">
-        {secondaryNavItems.map((item) => {
-          const active = pathname?.startsWith(item.href);
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={cn(
-                "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors",
-                active
-                  ? "bg-black/[0.06] text-neutral-900 dark:bg-white/[0.06] dark:text-white"
-                  : "text-neutral-500 hover:bg-black/[0.03] hover:text-neutral-900 dark:text-white/50 dark:hover:bg-white/[0.03] dark:hover:text-white/80"
-              )}
-            >
-              <item.icon className="h-4 w-4" strokeWidth={1.75} />
-              {item.label}
             </Link>
           );
         })}

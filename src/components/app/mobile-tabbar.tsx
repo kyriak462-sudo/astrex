@@ -3,14 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { navItems, secondaryNavItems } from "@/components/app/nav-items";
-
-const allItems = [...navItems, ...secondaryNavItems];
+import { navItems } from "@/components/app/nav-items";
 
 export function MobileTabBar({
   nav,
+  settingsLabel,
 }: {
   nav?: { learn: string; market: string; charts: string; profile: string };
+  settingsLabel?: string;
 }) {
   const pathname = usePathname();
   const labels: Record<string, string> = {
@@ -18,6 +18,7 @@ export function MobileTabBar({
     "/market": nav?.market ?? "Рынок",
     "/charts": nav?.charts ?? "Графики",
     "/profile": nav?.profile ?? "Профиль",
+    "/settings": settingsLabel ?? "Настройки",
   };
 
   return (
@@ -25,7 +26,7 @@ export function MobileTabBar({
       className="fixed inset-x-0 bottom-0 z-20 flex border-t border-white/[0.08] bg-black/80 backdrop-blur-md md:hidden"
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
-      {allItems.map((item) => {
+      {navItems.map((item) => {
         const active = pathname?.startsWith(item.href);
         return (
           <Link

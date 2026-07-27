@@ -7,7 +7,7 @@ export function LessonContentBlocks({ blocks }: { blocks: ContentBlock[] }) {
       {blocks.map((block, i) => {
         if (block.type === "paragraph") {
           return (
-            <p key={i} className="text-sm leading-relaxed text-white/70">
+            <p key={i} className="text-sm leading-relaxed text-neutral-700 dark:text-white/70">
               {block.text}
             </p>
           );
@@ -17,8 +17,11 @@ export function LessonContentBlocks({ blocks }: { blocks: ContentBlock[] }) {
           return (
             <ul key={i} className="space-y-2">
               {block.items.map((item, j) => (
-                <li key={j} className="flex gap-2.5 text-sm leading-relaxed text-white/70">
-                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-white/40" />
+                <li
+                  key={j}
+                  className="flex gap-2.5 text-sm leading-relaxed text-neutral-700 dark:text-white/70"
+                >
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-black/40 dark:bg-white/40" />
                   {item}
                 </li>
               ))}
@@ -33,7 +36,9 @@ export function LessonContentBlocks({ blocks }: { blocks: ContentBlock[] }) {
             <div key={i}>
               <Diagram />
               {block.caption && (
-                <p className="mt-2 text-xs text-white/35">{block.caption}</p>
+                <p className="mt-2 text-xs text-neutral-400 dark:text-white/35">
+                  {block.caption}
+                </p>
               )}
             </div>
           );

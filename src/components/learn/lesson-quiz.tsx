@@ -19,8 +19,11 @@ export function LessonQuiz({ questions }: { questions: Question[] }) {
       {questions.map((q) => {
         const selected = answers[q.id];
         return (
-          <div key={q.id} className="rounded-xl border border-white/10 bg-white/[0.02] p-5">
-            <p className="text-sm font-medium text-white">{q.prompt}</p>
+          <div
+            key={q.id}
+            className="rounded-xl border border-black/10 bg-black/[0.02] p-5 dark:border-white/10 dark:bg-white/[0.02]"
+          >
+            <p className="text-sm font-medium text-neutral-900 dark:text-white">{q.prompt}</p>
             <div className="mt-4 space-y-2">
               {q.options.map((option) => {
                 const isSelected = selected === option;
@@ -33,10 +36,14 @@ export function LessonQuiz({ questions }: { questions: Question[] }) {
                     onClick={() => setAnswers((prev) => ({ ...prev, [q.id]: option }))}
                     className={cn(
                       "flex w-full items-center justify-between rounded-lg border px-3.5 py-2.5 text-left text-sm transition-colors",
-                      !showState && "border-white/10 text-white/70 hover:border-white/25",
+                      !showState &&
+                        "border-black/10 text-neutral-700 hover:border-black/25 dark:border-white/10 dark:text-white/70 dark:hover:border-white/25",
                       showState && isCorrect && "border-[var(--color-up)]/50 bg-[var(--color-up-dim)] text-[var(--color-up)]",
                       showState && isSelected && !isCorrect && "border-[var(--color-down)]/50 bg-[var(--color-down-dim)] text-[var(--color-down)]",
-                      showState && !isSelected && !isCorrect && "border-white/[0.06] text-white/30"
+                      showState &&
+                        !isSelected &&
+                        !isCorrect &&
+                        "border-black/[0.06] text-neutral-400 dark:border-white/[0.06] dark:text-white/30"
                     )}
                   >
                     {option}
