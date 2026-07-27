@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { SYMBOLS, getCurrentPrice, formatPrice } from "@/lib/market-data";
-import { TradingViewWidget } from "@/components/market/tradingview-widget";
-import { openTrade, closeTrade } from "./actions";
+import { SYMBOLS, getCurrentPrice, getKlines, formatPrice } from "@/lib/market-data";
+import { TradeChart } from "@/components/market/trade-chart";
+import { openTrade, closeTrade, checkTriggers } from "./actions";
+
+const LEVERAGES = [1, 2, 5, 10, 20];
 
 export default async function MarketPage({
   searchParams,
@@ -14,6 +16,10 @@ export default async function MarketPage({
   const symbol = SYMBOLS.find((s) => s.ticker === symbolParam) ?? SYMBOLS[0];
 
   const session = await auth();
+  if (session?.user?.id) {
+    await checkTriggers(session.user.id);
+  }
+
   const { price, changePct } = await getCurrentPrice(symbol.ticker);
   const up = changePct >= 0;
 
@@ -34,6 +40,9 @@ export default async function MarketPage({
       livePrices[trade.symbol] = p;
     }
   }
+
+  const candles = await getKlines(symbol.ticker);
+  const activeTradeForSymbol = openTrades.find((t) => t.symbol === symbol.ticker);
 
   return (
     <div className="mx-auto max-w-5xl">
@@ -58,7 +67,7 @@ export default async function MarketPage({
         ))}
       </div>
 
-      <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_300px]">
+      <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_320px]">
         <div>
           <div className="mb-3 flex items-center justify-between">
             <div>
@@ -75,7 +84,12 @@ export default async function MarketPage({
               </div>
             </div>
           </div>
-          <TradingViewWidget symbol={symbol.tvSymbol} />
+          <TradeChart
+            candles={candles}
+            entryPrice={activeTradeForSymbol?.entryPrice}
+            stopLoss={activeTradeForSymbol?.stopLoss}
+            takeProfit={activeTradeForSymbol?.takeProfit}
+          />
         </div>
 
         <div className="space-y-6">
@@ -89,7 +103,7 @@ export default async function MarketPage({
               <input type="hidden" name="symbol" value={symbol.ticker} />
               <div>
                 <label className="mb-1.5 block text-xs font-medium text-white/50">
-                  Сумма, $
+                  Сумма (маржа), $
                 </label>
                 <input
                   type="number"
@@ -100,7 +114,50 @@ export default async function MarketPage({
                   className="h-10 w-full rounded-lg border border-white/10 bg-white/[0.03] px-3 text-sm text-white outline-none focus:border-white/30"
                 />
               </div>
+
+              <div>
+                <label className="mb-1.5 block text-xs font-medium text-white/50">Плечо</label>
+                <select
+                  name="leverage"
+                  defaultValue={1}
+                  className="h-10 w-full rounded-lg border border-white/10 bg-white/[0.03] px-3 text-sm text-white outline-none focus:border-white/30"
+                >
+                  {LEVERAGES.map((lev) => (
+                    <option key={lev} value={lev} className="bg-black">
+                      {lev}x
+                    </option>
+                  ))}
+                </select>
+              </div>
+
               <div className="grid grid-cols-2 gap-2">
+                <div>
+                  <label className="mb-1.5 block text-xs font-medium text-white/50">
+                    Stop-Loss
+                  </label>
+                  <input
+                    type="number"
+                    name="stopLoss"
+                    step="any"
+                    placeholder="необязательно"
+                    className="h-10 w-full rounded-lg border border-white/10 bg-white/[0.03] px-3 text-sm text-white outline-none placeholder:text-white/25 focus:border-white/30"
+                  />
+                </div>
+                <div>
+                  <label className="mb-1.5 block text-xs font-medium text-white/50">
+                    Take-Profit
+                  </label>
+                  <input
+                    type="number"
+                    name="takeProfit"
+                    step="any"
+                    placeholder="необязательно"
+                    className="h-10 w-full rounded-lg border border-white/10 bg-white/[0.03] px-3 text-sm text-white outline-none placeholder:text-white/25 focus:border-white/30"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2 pt-1">
                 <button
                   type="submit"
                   name="side"
@@ -152,7 +209,8 @@ export default async function MarketPage({
                             }
                           >
                             {trade.side === "LONG" ? "Long" : "Short"}
-                          </span>
+                          </span>{" "}
+                          <span className="text-white/35">{trade.leverage}x</span>
                         </span>
                         <span className={pnlUp ? "text-[var(--color-up)]" : "text-[var(--color-down)]"}>
                           {pnlUp ? "+" : ""}
@@ -162,6 +220,20 @@ export default async function MarketPage({
                       <p className="mt-1 text-xs text-white/35">
                         Вход: ${formatPrice(trade.entryPrice)}
                       </p>
+                      {(trade.stopLoss || trade.takeProfit) && (
+                        <div className="mt-1 flex gap-3 text-xs">
+                          {trade.stopLoss && (
+                            <span className="text-[var(--color-down)]">
+                              SL: ${formatPrice(trade.stopLoss)}
+                            </span>
+                          )}
+                          {trade.takeProfit && (
+                            <span className="text-[var(--color-up)]">
+                              TP: ${formatPrice(trade.takeProfit)}
+                            </span>
+                          )}
+                        </div>
+                      )}
                       <form action={closeTrade} className="mt-2">
                         <input type="hidden" name="tradeId" value={trade.id} />
                         <button

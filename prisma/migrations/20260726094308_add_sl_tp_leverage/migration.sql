@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "VirtualTrade" ADD COLUMN     "leverage" DOUBLE PRECISION NOT NULL DEFAULT 1,
+ADD COLUMN     "stopLoss" DOUBLE PRECISION,
+ADD COLUMN     "takeProfit" DOUBLE PRECISION;

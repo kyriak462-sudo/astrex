@@ -230,6 +230,9 @@ model VirtualTrade {
   entryPrice  Float
   exitPrice   Float?
   quantity    Float
+  leverage    Float       @default(1)
+  stopLoss    Float?
+  takeProfit  Float?
   status      TradeStatus @default(OPEN)
   pnl         Float?
   openedAt    DateTime    @default(now())

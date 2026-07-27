@@ -11,6 +11,63 @@ async function getOrCreatePortfolio(userId: string) {
   return db.virtualPortfolio.create({ data: { userId, balance: 10000 } });
 }
 
+async function settleTrade(
+  trade: {
+    id: string;
+    portfolioId: string;
+    entryPrice: number;
+    quantity: number;
+    leverage: number;
+    side: "LONG" | "SHORT";
+  },
+  exitPrice: number
+) {
+  const margin = (trade.entryPrice * trade.quantity) / trade.leverage;
+  const pnl =
+    trade.side === "LONG"
+      ? (exitPrice - trade.entryPrice) * trade.quantity
+      : (trade.entryPrice - exitPrice) * trade.quantity;
+  const returned = Math.max(0, margin + pnl);
+
+  await db.$transaction([
+    db.virtualTrade.update({
+      where: { id: trade.id },
+      data: { status: "CLOSED", exitPrice, pnl, closedAt: new Date() },
+    }),
+    db.virtualPortfolio.update({
+      where: { id: trade.portfolioId },
+      data: { balance: { increment: returned } },
+    }),
+  ]);
+}
+
+/** Auto-closes any open trades whose stop-loss or take-profit has been hit by the live price. */
+export async function checkTriggers(userId: string) {
+  const portfolio = await db.virtualPortfolio.findUnique({
+    where: { userId },
+    include: { trades: { where: { status: "OPEN" } } },
+  });
+  if (!portfolio || portfolio.trades.length === 0) return;
+
+  for (const trade of portfolio.trades) {
+    if (!trade.stopLoss && !trade.takeProfit) continue;
+    const { price } = await getCurrentPrice(trade.symbol);
+    if (!price) continue;
+
+    const hitStop =
+      trade.stopLoss != null &&
+      (trade.side === "LONG" ? price <= trade.stopLoss : price >= trade.stopLoss);
+    const hitTarget =
+      trade.takeProfit != null &&
+      (trade.side === "LONG" ? price >= trade.takeProfit : price <= trade.takeProfit);
+
+    if (hitStop || hitTarget) {
+      const exitPrice = hitStop ? trade.stopLoss! : trade.takeProfit!;
+      await settleTrade(trade, exitPrice);
+    }
+  }
+}
+
 export async function openTrade(formData: FormData) {
   const session = await auth();
   if (!session?.user?.id) return;
@@ -18,6 +75,12 @@ export async function openTrade(formData: FormData) {
   const symbol = String(formData.get("symbol"));
   const side = String(formData.get("side")) === "SHORT" ? "SHORT" : "LONG";
   const amount = Number(formData.get("amount"));
+  const leverage = Math.min(20, Math.max(1, Number(formData.get("leverage")) || 1));
+  const stopLossInput = formData.get("stopLoss");
+  const takeProfitInput = formData.get("takeProfit");
+  const stopLoss = stopLossInput ? Number(stopLossInput) : null;
+  const takeProfit = takeProfitInput ? Number(takeProfitInput) : null;
+
   if (!symbol || !amount || amount <= 0) return;
 
   const portfolio = await getOrCreatePortfolio(session.user.id);
@@ -26,7 +89,7 @@ export async function openTrade(formData: FormData) {
   const { price } = await getCurrentPrice(symbol);
   if (!price) return;
 
-  const quantity = amount / price;
+  const quantity = (amount * leverage) / price;
 
   await db.$transaction([
     db.virtualTrade.create({
@@ -36,6 +99,9 @@ export async function openTrade(formData: FormData) {
         side,
         entryPrice: price,
         quantity,
+        leverage,
+        stopLoss: stopLoss ?? undefined,
+        takeProfit: takeProfit ?? undefined,
         status: "OPEN",
       },
     }),
@@ -60,22 +126,7 @@ export async function closeTrade(formData: FormData) {
   if (!trade || trade.portfolio.userId !== session.user.id || trade.status !== "OPEN") return;
 
   const { price } = await getCurrentPrice(trade.symbol);
-  const notional = trade.entryPrice * trade.quantity;
-  const pnl =
-    trade.side === "LONG"
-      ? (price - trade.entryPrice) * trade.quantity
-      : (trade.entryPrice - price) * trade.quantity;
-
-  await db.$transaction([
-    db.virtualTrade.update({
-      where: { id: trade.id },
-      data: { status: "CLOSED", exitPrice: price, pnl, closedAt: new Date() },
-    }),
-    db.virtualPortfolio.update({
-      where: { id: trade.portfolioId },
-      data: { balance: { increment: notional + pnl } },
-    }),
-  ]);
+  await settleTrade(trade, price);
 
   revalidatePath("/market");
 }

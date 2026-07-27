@@ -13,7 +13,7 @@ export const SYMBOLS: Symbol[] = [
   { ticker: "XRP", name: "XRP", coingeckoId: "ripple", tvSymbol: "BINANCE:XRPUSDT" },
   { ticker: "ADA", name: "Cardano", coingeckoId: "cardano", tvSymbol: "BINANCE:ADAUSDT" },
   { ticker: "DOGE", name: "Dogecoin", coingeckoId: "dogecoin", tvSymbol: "BINANCE:DOGEUSDT" },
-  { ticker: "TON", name: "Toncoin", coingeckoId: "the-open-network", tvSymbol: "BINANCE:TONUSDT" },
+  { ticker: "LTC", name: "Litecoin", coingeckoId: "litecoin", tvSymbol: "BINANCE:LTCUSDT" },
   { ticker: "DOT", name: "Polkadot", coingeckoId: "polkadot", tvSymbol: "BINANCE:DOTUSDT" },
   { ticker: "AVAX", name: "Avalanche", coingeckoId: "avalanche-2", tvSymbol: "BINANCE:AVAXUSDT" },
 ];
@@ -27,7 +27,7 @@ const FALLBACK_PRICES: Record<string, number> = {
   XRP: 0.55,
   ADA: 0.44,
   DOGE: 0.16,
-  TON: 5.4,
+  LTC: 95,
   DOT: 6.3,
   AVAX: 34,
 };
@@ -74,6 +74,32 @@ export async function getCurrentPrice(ticker: string): Promise<PriceInfo> {
 
 export async function getAllPrices(): Promise<Record<string, PriceInfo>> {
   return fetchAllPrices();
+}
+
+export type Candle = {
+  time: number; // unix seconds
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+};
+
+export async function getKlines(ticker: string, interval = "1h", limit = 150): Promise<Candle[]> {
+  const url = `https://api.binance.com/api/v3/klines?symbol=${ticker}USDT&interval=${interval}&limit=${limit}`;
+  try {
+    const res = await fetch(url, { next: { revalidate: 60 } });
+    if (!res.ok) throw new Error(`Binance responded ${res.status}`);
+    const rows = (await res.json()) as [number, string, string, string, string, ...unknown[]][];
+    return rows.map((r) => ({
+      time: Math.floor(r[0] / 1000),
+      open: Number(r[1]),
+      high: Number(r[2]),
+      low: Number(r[3]),
+      close: Number(r[4]),
+    }));
+  } catch {
+    return [];
+  }
 }
 
 export function formatPrice(price: number): string {
