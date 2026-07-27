@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Starfield } from "@/components/brand/starfield";
 import { CryptoDrift } from "@/components/brand/crypto-drift";
 import { Providers } from "@/components/providers";
+import { isTheme, THEME_COOKIE } from "@/lib/theme";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -21,15 +23,20 @@ export const metadata: Metadata = {
     "Astrex — интерактивная образовательная платформа по трейдингу и криптовалютам. Уроки, тесты, виртуальный рынок и AI-помощник на пути от новичка до продвинутого трейдера.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const themeCookie = cookieStore.get(THEME_COOKIE)?.value;
+  const theme = isTheme(themeCookie) ? themeCookie : "dark";
+
   return (
     <html
       lang="ru"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
+      suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased ${theme === "dark" ? "dark" : ""}`}
     >
       <body className="relative min-h-full flex flex-col bg-[var(--color-bg)] text-[var(--color-fg)]">
         <Starfield className="fixed" />

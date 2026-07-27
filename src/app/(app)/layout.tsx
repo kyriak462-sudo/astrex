@@ -1,10 +1,13 @@
 import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Sidebar } from "@/components/app/sidebar";
 import { Topbar } from "@/components/app/topbar";
 import { MobileTabBar } from "@/components/app/mobile-tabbar";
 import { XP_PER_LEVEL } from "@/lib/gamification";
+import { DEFAULT_LOCALE, isLocale, LOCALE_COOKIE } from "@/i18n/locales";
+import { getDictionary } from "@/i18n/get-dictionary";
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
   const session = await auth();
@@ -20,19 +23,29 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   const streakCount = user?.streakCount ?? 0;
   const xpToNextLevel = level * XP_PER_LEVEL;
 
+  const store = await cookies();
+  const localeCookie = store.get(LOCALE_COOKIE)?.value ?? "";
+  const locale = isLocale(localeCookie) ? localeCookie : DEFAULT_LOCALE;
+  const dict = await getDictionary(locale);
+
   return (
     <div className="flex flex-1">
-      <Sidebar />
+      <Sidebar nav={dict.dashboard.nav} />
       <div className="flex flex-1 flex-col">
         <Topbar
           xp={xp}
           level={level}
           streakCount={streakCount}
           xpToNextLevel={xpToNextLevel}
+          locale={locale}
+          levelLabel={dict.dashboard.level}
+          streakDaysLabel={dict.dashboard.streakDays}
         />
-        <main className="flex-1 px-4 py-6 pb-24 sm:px-6 sm:py-8 md:pb-8">{children}</main>
+        <main className="dark flex-1 bg-[var(--color-bg)] px-4 py-6 pb-24 text-[var(--color-fg)] sm:px-6 sm:py-8 md:pb-8">
+          {children}
+        </main>
       </div>
-      <MobileTabBar />
+      <MobileTabBar nav={dict.dashboard.nav} />
     </div>
   );
 }

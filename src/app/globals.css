@@ -1,6 +1,25 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
+  --color-bg: #fbfbfb;
+  --color-bg-elevated: #f2f2f3;
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border-strong: rgba(0, 0, 0, 0.16);
+  --color-fg: #0a0a0a;
+  --color-fg-muted: rgba(10, 10, 10, 0.6);
+  --color-fg-subtle: rgba(10, 10, 10, 0.4);
+
+  --color-up: #0ea968;
+  --color-up-dim: rgba(14, 169, 104, 0.1);
+  --color-down: #e11d3f;
+  --color-down-dim: rgba(225, 29, 63, 0.1);
+
+  color-scheme: light;
+}
+
+.dark {
   --color-bg: #050505;
   --color-bg-elevated: #0a0a0c;
   --color-border: rgba(255, 255, 255, 0.08);
@@ -13,6 +32,8 @@
   --color-up-dim: rgba(20, 224, 138, 0.12);
   --color-down: #ff3b4e;
   --color-down-dim: rgba(255, 59, 78, 0.12);
+
+  color-scheme: dark;
 }
 
 @theme inline {
@@ -38,13 +59,19 @@
   border-color: var(--color-border);
 }
 
-html {
-  color-scheme: dark;
-}
-
 body {
   background: var(--color-bg);
   color: var(--color-fg);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.astrex-decor {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.dark .astrex-decor {
+  opacity: 1;
 }
 
 ::selection {

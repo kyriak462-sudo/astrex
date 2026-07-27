@@ -102,6 +102,35 @@ export async function getKlines(ticker: string, interval = "1h", limit = 150): P
   }
 }
 
+export type TrendContext = {
+  price: number;
+  changePct: number;
+  recentHigh: number;
+  recentLow: number;
+  trend: "восходящий" | "нисходящий" | "боковой (флэт)";
+  trendPct: number;
+};
+
+export function computeTrendContext(
+  candles: Candle[],
+  price: number,
+  changePct: number
+): TrendContext {
+  const highs = candles.map((c) => c.high);
+  const lows = candles.map((c) => c.low);
+  const closes = candles.map((c) => c.close);
+
+  const recentHigh = highs.length ? Math.max(...highs) : price;
+  const recentLow = lows.length ? Math.min(...lows) : price;
+
+  const lookback = Math.min(24, Math.max(closes.length - 1, 0));
+  const pastClose = closes.length > lookback ? closes[closes.length - 1 - lookback] : price;
+  const trendPct = pastClose ? ((price - pastClose) / pastClose) * 100 : 0;
+  const trend = trendPct > 1 ? "восходящий" : trendPct < -1 ? "нисходящий" : "боковой (флэт)";
+
+  return { price, changePct, recentHigh, recentLow, trend, trendPct };
+}
+
 export function formatPrice(price: number): string {
   if (price >= 100) return price.toFixed(2);
   if (price >= 1) return price.toFixed(3);

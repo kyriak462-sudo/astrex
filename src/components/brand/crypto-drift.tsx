@@ -52,7 +52,7 @@ export function CryptoDrift({ className }: { className?: string }) {
     <div
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute inset-0 overflow-hidden",
+        "astrex-decor pointer-events-none absolute inset-0 overflow-hidden",
         className
       )}
     >

@@ -4,20 +4,25 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/brand/logo";
-import { navItems } from "@/components/app/nav-items";
+import { navItems, secondaryNavItems } from "@/components/app/nav-items";
 
-const labels: Record<string, string> = {
-  "/market": "Виртуальный рынок",
-  "/charts": "Анализ графиков",
-};
-
-export function Sidebar() {
+export function Sidebar({
+  nav,
+}: {
+  nav?: { learn: string; market: string; charts: string; profile: string };
+}) {
   const pathname = usePathname();
+  const labels: Record<string, string> = {
+    "/learn": nav?.learn ?? "Обучение",
+    "/market": nav?.market ?? "Рынок",
+    "/charts": nav?.charts ?? "Графики",
+    "/profile": nav?.profile ?? "Профиль",
+  };
 
   return (
-    <aside className="hidden w-60 shrink-0 flex-col border-r border-white/[0.06] px-4 py-6 md:flex">
+    <aside className="hidden w-60 shrink-0 flex-col border-r border-black/[0.06] px-4 py-6 dark:border-white/[0.06] md:flex">
       <Link href="/learn" className="px-2">
-        <Logo />
+        <Logo className="text-neutral-900 dark:text-white" />
       </Link>
 
       <nav className="mt-10 flex flex-col gap-1">
@@ -30,12 +35,33 @@ export function Sidebar() {
               className={cn(
                 "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors",
                 active
-                  ? "bg-white/[0.06] text-white"
-                  : "text-white/50 hover:bg-white/[0.03] hover:text-white/80"
+                  ? "bg-black/[0.06] text-neutral-900 dark:bg-white/[0.06] dark:text-white"
+                  : "text-neutral-500 hover:bg-black/[0.03] hover:text-neutral-900 dark:text-white/50 dark:hover:bg-white/[0.03] dark:hover:text-white/80"
               )}
             >
               <item.icon className="h-4 w-4" strokeWidth={1.75} />
               {labels[item.href] ?? item.label}
+            </Link>
+          );
+        })}
+      </nav>
+
+      <nav className="mt-auto flex flex-col gap-1 pt-6">
+        {secondaryNavItems.map((item) => {
+          const active = pathname?.startsWith(item.href);
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={cn(
+                "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors",
+                active
+                  ? "bg-black/[0.06] text-neutral-900 dark:bg-white/[0.06] dark:text-white"
+                  : "text-neutral-500 hover:bg-black/[0.03] hover:text-neutral-900 dark:text-white/50 dark:hover:bg-white/[0.03] dark:hover:text-white/80"
+              )}
+            >
+              <item.icon className="h-4 w-4" strokeWidth={1.75} />
+              {item.label}
             </Link>
           );
         })}

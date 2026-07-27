@@ -14,6 +14,7 @@ export const LOCALES = [
 export type Locale = (typeof LOCALES)[number]["code"];
 
 export const DEFAULT_LOCALE: Locale = "ru";
+export const LOCALE_COOKIE = "astrex-locale";
 
 export function isLocale(value: string): value is Locale {
   return LOCALES.some((l) => l.code === value);

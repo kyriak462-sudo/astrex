@@ -23,7 +23,7 @@ export function HeroChart() {
   const areaPath = `${linePath} L${width},${height} L0,${height} Z`;
 
   return (
-    <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02]">
+    <div className="dark relative w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02]">
       <div className="flex items-center justify-between border-b border-white/[0.06] px-5 py-3.5">
         <span className="font-mono text-xs tracking-wide text-white/40">BTC/USDT</span>
         <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--color-up-dim)] px-2.5 py-1 text-xs font-medium text-[var(--color-up)]">
