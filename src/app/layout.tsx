@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Starfield } from "@/components/brand/starfield";
 import { CryptoDrift } from "@/components/brand/crypto-drift";
 import { Providers } from "@/components/providers";
+import { CookieConsentBanner } from "@/components/legal/cookie-consent";
 import { isTheme, THEME_COOKIE } from "@/lib/theme";
 import "./globals.css";
 
@@ -44,6 +45,7 @@ export default async function RootLayout({
         <div className="relative z-10 flex min-h-full flex-1 flex-col">
           {children}
         </div>
+        <CookieConsentBanner />
       </body>
     </html>
   );

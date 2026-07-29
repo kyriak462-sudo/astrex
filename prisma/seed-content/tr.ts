@@ -36,20 +36,20 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Trading, uzun vadeli yatırımdan temelde nasıl farklıdır?",
               options: [
-                "Trading, kısa vadeli ve sık işlemler içerir",
                 "Trading yalnızca bankalara açıktır",
+                "Trading, kısa vadeli ve sık işlemler içerir",
                 "Trading risk içermez",
               ],
               correctAnswer: "Trading, kısa vadeli ve sık işlemler içerir",
             },
             {
               prompt: "Klasik yatırımcının aksine, kim bir varlığın fiyat düşüşünden de kazanç sağlayabilir?",
-              options: ["Kısa (short) pozisyon açan trader", "Yalnızca bankalar", "Yalnızca market-maker'lar"],
+              options: ["Yalnızca market-maker'lar", "Kısa (short) pozisyon açan trader", "Yalnızca bankalar"],
               correctAnswer: "Kısa (short) pozisyon açan trader",
             },
             {
               prompt: "Market-maker'lar piyasada neyi sağlar?",
-              options: ["Diğer katılımcıların işlemleri için likidite", "Devlet düzenlemesi", "Sabit varlık kuru"],
+              options: ["Sabit varlık kuru", "Devlet düzenlemesi", "Diğer katılımcıların işlemleri için likidite"],
               correctAnswer: "Diğer katılımcıların işlemleri için likidite",
             },
           ],
@@ -77,17 +77,17 @@ export const COURSE_TR: CourseSeed = {
           questions: [
             {
               prompt: "Kripto piyasası hisse senedi piyasasından nasıl farklıdır?",
-              options: ["Hafta sonu dahil 7/24 çalışır", "Yalnızca hafta içi gündüz işlem görür", "Tamamen devlet tarafından düzenlenir"],
+              options: ["Tamamen devlet tarafından düzenlenir", "Yalnızca hafta içi gündüz işlem görür", "Hafta sonu dahil 7/24 çalışır"],
               correctAnswer: "Hafta sonu dahil 7/24 çalışır",
             },
             {
               prompt: "Forex piyasasında ne işlem görür?",
-              options: ["Döviz çiftleri", "Şirket hisseleri", "Emtialar"],
+              options: ["Şirket hisseleri", "Emtialar", "Döviz çiftleri"],
               correctAnswer: "Döviz çiftleri",
             },
             {
               prompt: "Sayılan piyasalardan hangisi genellikle en yüksek volatiliteye sahiptir?",
-              options: ["Kripto para piyasası", "Devlet tahvili piyasası", "G7 döviz çiftleri"],
+              options: ["Devlet tahvili piyasası", "Kripto para piyasası", "G7 döviz çiftleri"],
               correctAnswer: "Kripto para piyasası",
             },
           ],
@@ -118,14 +118,14 @@ export const COURSE_TR: CourseSeed = {
           questions: [
             {
               prompt: "Fiyat grafiğinin dikey ekseninde ne gösterilir?",
-              options: ["Varlığın fiyatı", "İşlem hacmi", "Trader sayısı"],
+              options: ["Varlığın fiyatı", "Trader sayısı", "İşlem hacmi"],
               correctAnswer: "Varlığın fiyatı",
             },
             {
               prompt: "Zaman dilimi (timeframe) nedir?",
               options: [
-                "Grafikteki tek bir öğenin temsil ettiği zaman aralığı",
                 "Bir borsanın adı",
+                "Grafikteki tek bir öğenin temsil ettiği zaman aralığı",
                 "Bir emir türü",
               ],
               correctAnswer: "Grafikteki tek bir öğenin temsil ettiği zaman aralığı",
@@ -134,8 +134,8 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Traderlar neden aynı anda birden fazla zaman dilimini analiz eder?",
               options: [
                 "Hem trendin genel resmini hem de doğru giriş noktasını aynı anda görmek için",
-                "Bunun pratik bir anlamı yoktur",
                 "Borsa komisyonlarından kaçınmak için",
+                "Bunun pratik bir anlamı yoktur",
               ],
               correctAnswer: "Hem trendin genel resmini hem de doğru giriş noktasını aynı anda görmek için",
             },
@@ -160,27 +160,27 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Mumun gövdesi neyi gösterir?",
               options: [
+                "Piyasa katılımcısı sayısı",
                 "Açılış ve kapanış fiyatı arasındaki aralık",
                 "Maksimum işlem hacmi",
-                "Piyasa katılımcısı sayısı",
               ],
               correctAnswer: "Açılış ve kapanış fiyatı arasındaki aralık",
             },
             {
               prompt: "Mumun gölgeleri (fitilleri) neyi gösterir?",
               options: [
+                "Gün içindeki işlem sayısını",
                 "Gövdenin dışındaki fiyat aralığını — dönem içindeki en yüksek ve en düşük değeri",
                 "Ortalama işlem hacmini",
-                "Gün içindeki işlem sayısını",
               ],
               correctAnswer: "Gövdenin dışındaki fiyat aralığını — dönem içindeki en yüksek ve en düşük değeri",
             },
             {
               prompt: "Fiyat düşüşünden sonra oluşan uzun bir alt gölge neyin işareti olabilir?",
               options: [
+                "İşlem hacmi sıfırdı",
                 "Alıcılar fiyatı aşağıdan aktif biçimde satın aldı — bir dönüş mümkün",
                 "Piyasa kesinlikle düşmeye devam edecek",
-                "İşlem hacmi sıfırdı",
               ],
               correctAnswer: "Alıcılar fiyatı aşağıdan aktif biçimde satın aldı — bir dönüş mümkün",
             },
@@ -205,18 +205,18 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Destek seviyesi nedir?",
               options: [
+                "İşlem komisyonu",
                 "Alıcıların tarihsel olarak düşüşü durdurduğu fiyat",
                 "Borsanın açılış fiyatı",
-                "İşlem komisyonu",
               ],
               correctAnswer: "Alıcıların tarihsel olarak düşüşü durdurduğu fiyat",
             },
             {
               prompt: "Bir direnç seviyesi yukarı kırıldıktan sonra genellikle ne olur?",
               options: [
-                "Genellikle yeni bir destek haline gelir",
-                "Ortadan kaybolur ve fiyatı bir daha etkilemez",
                 "Fiyatın anında geri dönmesi gerekir",
+                "Ortadan kaybolur ve fiyatı bir daha etkilemez",
+                "Genellikle yeni bir destek haline gelir",
               ],
               correctAnswer: "Genellikle yeni bir destek haline gelir",
             },
@@ -224,8 +224,8 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Grafikte güvenilir seviyeler nasıl doğru çizilir?",
               options: [
                 "Tek bir noktaya değil, fiyatın birden çok temasına göre",
-                "Kesinlikle grafiğin tam ortasına göre",
                 "Yalnızca dakikalık zaman diliminde",
+                "Kesinlikle grafiğin tam ortasına göre",
               ],
               correctAnswer: "Tek bir noktaya değil, fiyatın birden çok temasına göre",
             },
@@ -250,17 +250,17 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Yükselen trend neden oluşur?",
               options: [
+                "Yalnızca art arda gelen yeşil mumlardan",
                 "Birbirini izleyen daha yüksek zirveler ve diplerden",
                 "Yüksekliği aynı olan mumlardan",
-                "Yalnızca art arda gelen yeşil mumlardan",
               ],
               correctAnswer: "Birbirini izleyen daha yüksek zirveler ve diplerden",
             },
             {
               prompt: "Yatay trend (flat) nedir?",
               options: [
-                "Fiyatın belirgin bir yön olmadan bir aralıkta hareket etmesi",
                 "Fiyatın keskin bir şekilde düşmesi",
+                "Fiyatın belirgin bir yön olmadan bir aralıkta hareket etmesi",
                 "Borsada işlemlerin durdurulduğu bir dönem",
               ],
               correctAnswer: "Fiyatın belirgin bir yön olmadan bir aralıkta hareket etmesi",
@@ -268,9 +268,9 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Neden \"trend senin dostundur\" denir?",
               options: [
-                "Trend yönünde işlem yapmak istatistiksel olarak daha fazla başarı şansı verir",
-                "Trend asla yön değiştirmez",
                 "Bu, pratik bir anlamı olmayan sadece bir söz öbeğidir",
+                "Trend asla yön değiştirmez",
+                "Trend yönünde işlem yapmak istatistiksel olarak daha fazla başarı şansı verir",
               ],
               correctAnswer: "Trend yönünde işlem yapmak istatistiksel olarak daha fazla başarı şansı verir",
             },
@@ -295,9 +295,9 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Düşük işlem hacminde gerçekleşen bir fiyat yükselişi neyin işaretidir?",
               options: [
-                "Hareket zayıftır ve doğrulanmamış olabilir",
                 "Bu, giriş için en güvenilir sinyaldir",
                 "Varlığın likiditesi maksimum düzeydedir",
+                "Hareket zayıftır ve doğrulanmamış olabilir",
               ],
               correctAnswer: "Hareket zayıftır ve doğrulanmamış olabilir",
             },
@@ -305,17 +305,17 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Piyasa likiditesi nedir?",
               options: [
                 "Bir varlığı fiyatını fazla etkilemeden kolayca alıp satabilme",
-                "Dolaşımdaki toplam coin miktarı",
                 "Borsanın işlem komisyonu",
+                "Dolaşımdaki toplam coin miktarı",
               ],
               correctAnswer: "Bir varlığı fiyatını fazla etkilemeden kolayca alıp satabilme",
             },
             {
               prompt: "Düşük likiditeli bir varlıkla çalışan trader için tehlike nedir?",
               options: [
+                "Garanti kâr",
                 "İşlem gerçekleşirken büyük bir slippage yaşanması",
                 "Komisyonların tamamen ortadan kalkması",
-                "Garanti kâr",
               ],
               correctAnswer: "İşlem gerçekleşirken büyük bir slippage yaşanması",
             },
@@ -348,23 +348,23 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Stop-loss neden gereklidir?",
               options: [
-                "İşlemdeki zararı önceden sınırlamak için",
-                "Pozisyon büyüklüğünü artırmak için",
                 "Kârı garanti etmek için",
+                "Pozisyon büyüklüğünü artırmak için",
+                "İşlemdeki zararı önceden sınırlamak için",
               ],
               correctAnswer: "İşlemdeki zararı önceden sınırlamak için",
             },
             {
               prompt: "Tek bir işlemde depozitonun genellikle yüzde kaçının riske atılması önerilir?",
-              options: ["%1-2", "%25-30", "Depozitonun tamamı"],
+              options: ["%25-30", "Depozitonun tamamı", "%1-2"],
               correctAnswer: "%1-2",
             },
             {
               prompt: "1:3 risk/kazanç oranı ne anlama gelir?",
               options: [
-                "Potansiyel kâr, riskten 3 kat daha büyüktür",
-                "Risk, kârdan 3 kat daha büyüktür",
                 "İşlem 3 saat sonra kapanacaktır",
+                "Risk, kârdan 3 kat daha büyüktür",
+                "Potansiyel kâr, riskten 3 kat daha büyüktür",
               ],
               correctAnswer: "Potansiyel kâr, riskten 3 kat daha büyüktür",
             },
@@ -394,23 +394,23 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "SMA ile EMA arasındaki fark nedir?",
               options: [
+                "Aralarında fark yoktur, ikisi aynı şeydir",
                 "EMA, son fiyatlara daha fazla ağırlık verir",
                 "SMA yalnızca dakikalık grafikte çalışır",
-                "Aralarında fark yoktur, ikisi aynı şeydir",
               ],
               correctAnswer: "EMA, son fiyatlara daha fazla ağırlık verir",
             },
             {
               prompt: "Fiyatın hareketli ortalamanın üzerinde olması neyin işaretidir?",
-              options: ["Trend muhtemelen yükseliş yönündedir", "Varlık kesinlikle aşırı değerlenmiştir", "İşlem hacmi sıfırdır"],
+              options: ["Trend muhtemelen yükseliş yönündedir", "İşlem hacmi sıfırdır", "Varlık kesinlikle aşırı değerlenmiştir"],
               correctAnswer: "Trend muhtemelen yükseliş yönündedir",
             },
             {
               prompt: "\"Altın kesişim\" (golden cross) nedir?",
               options: [
-                "Kısa MA'nın uzun MA'yı yukarı kesmesi — boğa sinyali",
                 "Yeni bir coin'in listelendiği an",
                 "Fiyatın sıfır çizgisini kesmesi",
+                "Kısa MA'nın uzun MA'yı yukarı kesmesi — boğa sinyali",
               ],
               correctAnswer: "Kısa MA'nın uzun MA'yı yukarı kesmesi — boğa sinyali",
             },
@@ -434,20 +434,20 @@ export const COURSE_TR: CourseSeed = {
           questions: [
             {
               prompt: "RSI göstergesi hangi aralıkta çalışır?",
-              options: ["0 ile 100 arasında", "-1 ile 1 arasında", "0 ile 10000 arasında"],
+              options: ["-1 ile 1 arasında", "0 ile 100 arasında", "0 ile 10000 arasında"],
               correctAnswer: "0 ile 100 arasında",
             },
             {
               prompt: "70'in üzerindeki bir RSI genellikle ne anlama gelir?",
-              options: ["Varlık aşırı alım bölgesindedir", "Varlık satılamaz durumdadır", "İşlem hacmi sıfıra düşmüştür"],
+              options: ["İşlem hacmi sıfıra düşmüştür", "Varlık satılamaz durumdadır", "Varlık aşırı alım bölgesindedir"],
               correctAnswer: "Varlık aşırı alım bölgesindedir",
             },
             {
               prompt: "RSI uyumsuzluğu (divergence) nedir?",
               options: [
+                "Göstergenin teknik arızası",
                 "Fiyat ve göstergenin farklı yönlerde hareket etmesi — olası bir dönüş sinyali",
                 "Fiyat ve gösterge hareketinin tam olarak örtüşmesi",
-                "Göstergenin teknik arızası",
               ],
               correctAnswer: "Fiyat ve göstergenin farklı yönlerde hareket etmesi — olası bir dönüş sinyali",
             },
@@ -471,24 +471,24 @@ export const COURSE_TR: CourseSeed = {
           questions: [
             {
               prompt: "Birçok trader düzeltme için hangi Fibonacci seviyesini kilit olarak kabul eder?",
-              options: ["%61.8", "%10", "%100"],
+              options: ["%61.8", "%100", "%10"],
               correctAnswer: "%61.8",
             },
             {
               prompt: "Fibonacci düzeltmeleri ne için kullanılır?",
               options: [
                 "Trend içindeki geri çekilmede giriş noktaları aramak için",
-                "Borsa komisyonunu hesaplamak için",
                 "Haberlerin yayınlanacağı kesin zamanı belirlemek için",
+                "Borsa komisyonunu hesaplamak için",
               ],
               correctAnswer: "Trend içindeki geri çekilmede giriş noktaları aramak için",
             },
             {
               prompt: "Fibonacci uzantıları ne için gereklidir?",
               options: [
-                "Fiyatın dürtünün ötesindeki hareket hedeflerini belirlemek için",
-                "Stop-loss büyüklüğünü yüzde olarak belirlemek için",
                 "İşlem hacmini göstermek için",
+                "Stop-loss büyüklüğünü yüzde olarak belirlemek için",
+                "Fiyatın dürtünün ötesindeki hareket hedeflerini belirlemek için",
               ],
               correctAnswer: "Fiyatın dürtünün ötesindeki hareket hedeflerini belirlemek için",
             },
@@ -514,22 +514,22 @@ export const COURSE_TR: CourseSeed = {
               prompt: "\"Omuz baş omuz\" formasyonu neyin sinyalini verir?",
               options: [
                 "Yükselen trendin olası dönüşü",
-                "Yükselişin garanti devamı",
                 "Borsada işlemlerin durdurulması",
+                "Yükselişin garanti devamı",
               ],
               correctAnswer: "Yükselen trendin olası dönüşü",
             },
             {
               prompt: "\"Çift tepe\" formasyonunun gerçekleştiğini ne doğrular?",
-              options: ["Boyun çizgisinin aşağı yönlü kırılması", "Üçüncü bir zirvenin oluşması", "Hacmin tam zirvede artması"],
+              options: ["Üçüncü bir zirvenin oluşması", "Boyun çizgisinin aşağı yönlü kırılması", "Hacmin tam zirvede artması"],
               correctAnswer: "Boyun çizgisinin aşağı yönlü kırılması",
             },
             {
               prompt: "Bir formasyonun kırılmasını doğrularken hacim neden önemlidir?",
               options: [
+                "Hacim yalnızca günlük zaman diliminde gereklidir",
                 "Hacim olmadan kırılma daha sık sahte çıkar",
                 "Hacmin formasyonlar üzerinde hiçbir etkisi yoktur",
-                "Hacim yalnızca günlük zaman diliminde gereklidir",
               ],
               correctAnswer: "Hacim olmadan kırılma daha sık sahte çıkar",
             },
@@ -553,21 +553,21 @@ export const COURSE_TR: CourseSeed = {
           questions: [
             {
               prompt: "\"Bayrak\" (flag) formasyonu en çok hangi yönde sonuçlanır?",
-              options: ["Önceki trend yönünde", "Her zaman kesinlikle aşağı yönde", "Rastgele bir yönde"],
+              options: ["Her zaman kesinlikle aşağı yönde", "Önceki trend yönünde", "Rastgele bir yönde"],
               correctAnswer: "Önceki trend yönünde",
             },
             {
               prompt: "Üçgenlerin, bayrakların ve dikdörtgenlerin ortak noktası nedir?",
               options: [
-                "Trend içindeki duraklama/konsolidasyonlardır",
                 "Her zaman dönüş sinyalidirler",
                 "Yalnızca forex'te görülürler",
+                "Trend içindeki duraklama/konsolidasyonlardır",
               ],
               correctAnswer: "Trend içindeki duraklama/konsolidasyonlardır",
             },
             {
               prompt: "Bir üçgenden gerçek bir çıkışa genellikle ne eşlik eder?",
-              options: ["Hacimde bir artış", "Hacmin tamamen yok olması", "İşlemlerin durdurulması"],
+              options: ["Hacimde bir artış", "İşlemlerin durdurulması", "Hacmin tamamen yok olması"],
               correctAnswer: "Hacimde bir artış",
             },
           ],
@@ -590,20 +590,20 @@ export const COURSE_TR: CourseSeed = {
           questions: [
             {
               prompt: "\"Yukarıdan aşağıya\" yönteminde analize genellikle hangi zaman diliminden başlanır?",
-              options: ["Büyük zaman diliminden (örneğin günlük)", "Dakikalık zaman diliminden", "Rastgele herhangi birinden"],
+              options: ["Rastgele herhangi birinden", "Büyük zaman diliminden (örneğin günlük)", "Dakikalık zaman diliminden"],
               correctAnswer: "Büyük zaman diliminden (örneğin günlük)",
             },
             {
               prompt: "Çoklu zaman dilimi analizinde küçük zaman dilimi neden gereklidir?",
-              options: ["İşleme doğru bir şekilde girmek için", "Büyük zaman diliminin yerini tamamen almak için", "Borsa komisyonunu hesaplamak için"],
+              options: ["İşleme doğru bir şekilde girmek için", "Borsa komisyonunu hesaplamak için", "Büyük zaman diliminin yerini tamamen almak için"],
               correctAnswer: "İşleme doğru bir şekilde girmek için",
             },
             {
               prompt: "Büyük zaman dilimi göz ardı edilirse ne olabilir?",
               options: [
-                "Ana trende karşı işlem yapmak",
                 "Kârın otomatik olarak artması",
                 "Hiçbir şey, bunun önemi yoktur",
+                "Ana trende karşı işlem yapmak",
               ],
               correctAnswer: "Ana trende karşı işlem yapmak",
             },
@@ -628,9 +628,9 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "\"Revenge trading\" nedir?",
               options: [
+                "Borsanın komisyonu iade etmesi",
                 "Zararı duygusal işlemlerle hemen telafi etme girişimi",
                 "Hedge fonların resmi stratejisi",
-                "Borsanın komisyonu iade etmesi",
               ],
               correctAnswer: "Zararı duygusal işlemlerle hemen telafi etme girişimi",
             },
@@ -638,14 +638,14 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Trader neden bir işlem günlüğü tutmalıdır?",
               options: [
                 "Hataları analiz etmek ve stratejiyi geliştirmek için",
-                "Bu, borsanın bir gerekliliğidir",
                 "Vergileri azaltmak için",
+                "Bu, borsanın bir gerekliliğidir",
               ],
               correctAnswer: "Hataları analiz etmek ve stratejiyi geliştirmek için",
             },
             {
               prompt: "Zararlı bir pozisyonu çok uzun süre tutmaya en çok hangi duygu yol açar?",
-              options: ["Dönüş umudu ve zararı kesinleştirme korkusu", "Sıkılma", "Borsanın haklı olduğuna dair güven"],
+              options: ["Sıkılma", "Borsanın haklı olduğuna dair güven", "Dönüş umudu ve zararı kesinleştirme korkusu"],
               correctAnswer: "Dönüş umudu ve zararı kesinleştirme korkusu",
             },
           ],
@@ -669,8 +669,8 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Bir işlem açmadan önce ne belirlenmelidir?",
               options: [
-                "Giriş noktası, stop-loss ve kâr hedefi",
                 "Yalnızca giriş noktası",
+                "Giriş noktası, stop-loss ve kâr hedefi",
                 "Önceden hiçbir şey belirlemeye gerek yoktur",
               ],
               correctAnswer: "Giriş noktası, stop-loss ve kâr hedefi",
@@ -678,9 +678,9 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Neden önce sanal bakiyede pratik yapılmalıdır?",
               options: [
-                "Stratejiyi gerçek para riski olmadan uygulamak için",
                 "Sanal bakiye daha fazla kâr sağlar",
                 "Bu, yasal bir zorunluluktur",
+                "Stratejiyi gerçek para riski olmadan uygulamak için",
               ],
               correctAnswer: "Stratejiyi gerçek para riski olmadan uygulamak için",
             },
@@ -688,8 +688,8 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Bir işlem kapatıldıktan hemen sonra ne yapmak önemlidir?",
               options: [
                 "İşlemi analiz etmek ve sonucu günlüğe kaydetmek",
-                "Hemen zıt yönde bir işlem açmak",
                 "İşlem geçmişini silmek",
+                "Hemen zıt yönde bir işlem açmak",
               ],
               correctAnswer: "İşlemi analiz etmek ve sonucu günlüğe kaydetmek",
             },
@@ -727,24 +727,24 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Piyasa, FED'in faiz artırımına genellikle nasıl tepki verir?",
               options: [
-                "Riskli varlıklar (kripto dahil) çoğunlukla düşer",
-                "Kripto piyasası faize hiç tepki vermez",
                 "Bitcoin faiz artışında her zaman yükselir",
+                "Kripto piyasası faize hiç tepki vermez",
+                "Riskli varlıklar (kripto dahil) çoğunlukla düşer",
               ],
               correctAnswer: "Riskli varlıklar (kripto dahil) çoğunlukla düşer",
             },
             {
               prompt: "FOMC nedir?",
               options: [
-                "FED'in faiz oranı kararlarını alan komitesi",
                 "ABD'nin en büyük kripto borsası",
+                "FED'in faiz oranı kararlarını alan komitesi",
                 "Piyasa volatilite endeksi",
               ],
               correctAnswer: "FED'in faiz oranı kararlarını alan komitesi",
             },
             {
               prompt: "Para politikasındaki gevşemeye piyasa jargonunda ne denir?",
-              options: ["\"Güvercin\" (dovish) politika", "\"Şahin\" (hawkish) politika", "\"Nötr\" emisyon"],
+              options: ["\"Nötr\" emisyon", "\"Şahin\" (hawkish) politika", "\"Güvercin\" (dovish) politika"],
               correctAnswer: "\"Güvercin\" (dovish) politika",
             },
           ],
@@ -772,24 +772,24 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "CPI endeksi neyi ölçer?",
               options: [
+                "Borsadaki işlem hacmini",
                 "Tüketici mal ve hizmet sepetindeki fiyat değişimini",
                 "Bitcoin'in dolar karşısındaki kurunu",
-                "Borsadaki işlem hacmini",
               ],
               correctAnswer: "Tüketici mal ve hizmet sepetindeki fiyat değişimini",
             },
             {
               prompt: "Piyasa, beklentinin üzerinde açıklanan bir CPI verisine genellikle nasıl tepki verir?",
               options: [
-                "Riskli varlıklar daha çok düşer",
-                "Piyasa CPI'ye asla tepki vermez",
                 "Kripto piyasası işlemleri otomatik olarak durdurur",
+                "Piyasa CPI'ye asla tepki vermez",
+                "Riskli varlıklar daha çok düşer",
               ],
               correctAnswer: "Riskli varlıklar daha çok düşer",
             },
             {
               prompt: "FED'in kendisinin tercih ettiği enflasyon göstergesi hangisidir?",
-              options: ["PCE", "DXY", "RSI"],
+              options: ["RSI", "PCE", "DXY"],
               correctAnswer: "PCE",
             },
           ],
@@ -814,8 +814,8 @@ export const COURSE_TR: CourseSeed = {
               prompt: "DXY endeksi neyi ölçer?",
               options: [
                 "ABD dolarının diğer para birimlerinden oluşan bir sepete karşı gücünü",
-                "Bitcoin'in volatilitesini",
                 "Kripto piyasasının toplam piyasa değerini",
+                "Bitcoin'in volatilitesini",
               ],
               correctAnswer: "ABD dolarının diğer para birimlerinden oluşan bir sepete karşı gücünü",
             },
@@ -823,16 +823,16 @@ export const COURSE_TR: CourseSeed = {
               prompt: "DXY ve Bitcoin hareketleri genellikle nasıl ilişkilidir?",
               options: [
                 "Çoğunlukla zıt yönlerde hareket ederler",
-                "Her zaman tamamen eşzamanlı hareket ederler",
                 "Aralarında hiçbir ilişki yoktur",
+                "Her zaman tamamen eşzamanlı hareket ederler",
               ],
               correctAnswer: "Çoğunlukla zıt yönlerde hareket ederler",
             },
             {
               prompt: "DXY endeksindeki keskin bir yükseliş neyin habercisi olabilir?",
               options: [
-                "Kripto piyasasındaki olası bir düzeltmenin",
                 "Bitcoin'in garanti yükselişinin",
+                "Kripto piyasasındaki olası bir düzeltmenin",
                 "Borsanın teknik arızasının",
               ],
               correctAnswer: "Kripto piyasasındaki olası bir düzeltmenin",
@@ -858,8 +858,8 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Son yıllarda Bitcoin en çok hangi varlık sınıfıyla korelasyon gösteriyor?",
               options: [
-                "Yüksek teknoloji hisseleriyle (Nasdaq)",
                 "Devlet tahvilleriyle",
+                "Yüksek teknoloji hisseleriyle (Nasdaq)",
                 "Hiçbir şeyle korelasyon göstermiyor",
               ],
               correctAnswer: "Yüksek teknoloji hisseleriyle (Nasdaq)",
@@ -867,18 +867,18 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "BTC ile Nasdaq arasındaki yüksek korelasyon ne anlama gelir?",
               options: [
-                "Genellikle aynı yönde hareket ederler",
-                "Zıt yönlerde hareket etmek zorundadırlar",
                 "BTC, Nasdaq endeksinin yerini tamamen alır",
+                "Zıt yönlerde hareket etmek zorundadırlar",
+                "Genellikle aynı yönde hareket ederler",
               ],
               correctAnswer: "Genellikle aynı yönde hareket ederler",
             },
             {
               prompt: "BTC'nin hisse senedi piyasasıyla olan korelasyonunu geçici olarak ne zayıflatabilir?",
               options: [
+                "Saat diliminin değişmesi",
                 "Kripto'ya özgü olaylar (borsa hack'i, düzenleyici haberler)",
                 "Borsada bir tatil günü",
-                "Saat diliminin değişmesi",
               ],
               correctAnswer: "Kripto'ya özgü olaylar (borsa hack'i, düzenleyici haberler)",
             },
@@ -903,8 +903,8 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Trader için ekonomik takvim ne işe yarar?",
               options: [
-                "Piyasayı etkileyen önemli haberlerin tarihlerini takip etmek için",
                 "Kişisel tatil planlamak için",
+                "Piyasayı etkileyen önemli haberlerin tarihlerini takip etmek için",
                 "Teknik analizin yerini tamamen almak için",
               ],
               correctAnswer: "Piyasayı etkileyen önemli haberlerin tarihlerini takip etmek için",
@@ -912,20 +912,73 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "NFP nedir?",
               options: [
-                "ABD'nin tarım dışı istihdam raporu",
-                "Yeni bir kriptografik protokol",
                 "Korku ve açgözlülük endeksi",
+                "Yeni bir kriptografik protokol",
+                "ABD'nin tarım dışı istihdam raporu",
               ],
               correctAnswer: "ABD'nin tarım dışı istihdam raporu",
             },
             {
               prompt: "Yüksek önemdeki bir haber açıklanmadan önce yapılması akıllıca olan nedir?",
               options: [
-                "Riski azaltmak veya yeni işlemlerden kaçınmak",
                 "Pozisyon büyüklüğünü maksimuma çıkarmak",
+                "Riski azaltmak veya yeni işlemlerden kaçınmak",
                 "Stop-loss'ları kapatmak",
               ],
               correctAnswer: "Riski azaltmak veya yeni işlemlerden kaçınmak",
+            },
+          ],
+        },
+        {
+          slug: "etf",
+          title: "ETF",
+          summary: "Borsa yatırım fonu nedir ve kripto ETF onayları piyasayı neden hareket ettirir.",
+          xpReward: 20,
+          content: [
+            {
+              type: "paragraph",
+              text: "ETF (Exchange-Traded Fund, borsa yatırım fonu), borsada sıradan bir hisse senedi gibi işlem gören, ancak bir dayanak varlığın veya varlık sepetinin değerini takip eden bir finansal araçtır. Spot kripto ETF, yatırımcıların bitcoin gibi bir varlığı doğrudan satın almadan veya saklamadan o varlığın fiyat hareketine maruz kalmasını sağlar — fonun yönetim şirketi dayanak varlığı bizzat elinde bulundurur.",
+            },
+            {
+              type: "paragraph",
+              text: "Düzenleyicilerin (örneğin ABD'de SEC) spot bitcoin veya ethereum ETF'lerini onaylaması piyasa için önemli bir olay olarak kabul edilir: kripto parayı doğrudan tutmanın uygun olmadığı veya yasak olduğu kurumsal ve bireysel yatırımcılara varlığa erişim imkanı açar. Trader'lar bu tür ETF'lere günlük giren ve çıkan fon miktarlarını kurumsal talebin bir göstergesi olarak kullanır.",
+            },
+            {
+              type: "list",
+              items: [
+                "Bir ETF, bir dayanak varlığın değerini takip eder ancak geleneksel bir borsada sıradan bir hisse senedi gibi işlem görür",
+                "Spot ETF, yönetim şirketinin dayanak varlığı gerçekten elinde bulundurduğu anlamına gelir",
+                "Kripto ETF'lere günlük giren ve çıkan fonlar kurumsal talebin göstergesi olarak kullanılır",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "ETF nedir?",
+              options: [
+                "Bir tür kripto para cüzdanı",
+                "Bir blok zinciri uzlaşı protokolü",
+                "Hisse senedi gibi işlem gören ve bir dayanak varlığın değerini takip eden bir finansal araç",
+              ],
+              correctAnswer: "Hisse senedi gibi işlem gören ve bir dayanak varlığın değerini takip eden bir finansal araç",
+            },
+            {
+              prompt: "Spot kripto ETF bir yatırımcıya ne sağlar?",
+              options: [
+                "Bir varlığı kendisi satın almadan ve saklamadan o varlığın fiyat hareketine maruz kalma",
+                "Garantili sabit bir getiri",
+                "Bir blok zincirinin yönetiminde oy hakkı",
+              ],
+              correctAnswer: "Bir varlığı kendisi satın almadan ve saklamadan o varlığın fiyat hareketine maruz kalma",
+            },
+            {
+              prompt: "Trader'lar kripto ETF giriş/çıkış verilerini nasıl kullanır?",
+              options: [
+                "Varlığa yönelik kurumsal talebin göstergesi olarak",
+                "Hacim ve volatilite analizinin yerine",
+                "Ertesi günün fiyatı için kesin bir tahmin olarak",
+              ],
+              correctAnswer: "Varlığa yönelik kurumsal talebin göstergesi olarak",
             },
           ],
         },
@@ -956,8 +1009,8 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Fair Value Gap (FVG) nedir?",
               options: [
                 "Keskin bir dürtü nedeniyle 1. ve 3. mumun kuyrukları arasında oluşan boşluk",
-                "Bir stop-loss seviyesi",
                 "Bir hacim göstergesi",
+                "Bir stop-loss seviyesi",
               ],
               correctAnswer: "Keskin bir dürtü nedeniyle 1. ve 3. mumun kuyrukları arasında oluşan boşluk",
             },
@@ -965,14 +1018,14 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Piyasa daha sonra imbalance bölgesiyle genellikle ne yapar?",
               options: [
                 "Geri döner ve onu kısmen veya tamamen \"kapatır\"",
-                "Ona bir daha asla değmez",
                 "Onu grafikten otomatik olarak siler",
+                "Ona bir daha asla değmez",
               ],
               correctAnswer: "Geri döner ve onu kısmen veya tamamen \"kapatır\"",
             },
             {
               prompt: "Klasik FVG formasyonu kaç mumdan oluşur?",
-              options: ["Üç mumdan", "Bir mumdan", "Yedi mumdan"],
+              options: ["Bir mumdan", "Yedi mumdan", "Üç mumdan"],
               correctAnswer: "Üç mumdan",
             },
           ],
@@ -1000,18 +1053,18 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Grafikte likidite en çok nerede birikir?",
               options: [
+                "Yalnızca haber mumlarında",
                 "Eşit zirveler/dipler ve belirgin destek/direnç seviyelerinin yakınında",
                 "Nedensiz olarak tam olarak aralığın ortasında",
-                "Yalnızca haber mumlarında",
               ],
               correctAnswer: "Eşit zirveler/dipler ve belirgin destek/direnç seviyelerinin yakınında",
             },
             {
               prompt: "Buy-side likidite nedir?",
               options: [
-                "Yerel zirvelerin üzerinde bulunan short pozisyoncuların stop'ları",
-                "Yerel diplerin altındaki long pozisyoncuların stop'ları",
                 "Borsanın alım komisyonu",
+                "Yerel diplerin altındaki long pozisyoncuların stop'ları",
+                "Yerel zirvelerin üzerinde bulunan short pozisyoncuların stop'ları",
               ],
               correctAnswer: "Yerel zirvelerin üzerinde bulunan short pozisyoncuların stop'ları",
             },
@@ -1019,8 +1072,8 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Büyük oyuncuların piyasada likiditeye neden ihtiyacı vardır?",
               options: [
                 "Büyük bir pozisyonu güçlü bir slippage olmadan açmak veya kapatmak için",
-                "İşlemleri tamamen durdurmak için",
                 "Bunun büyük oyuncularla bir ilgisi yoktur",
+                "İşlemleri tamamen durdurmak için",
               ],
               correctAnswer: "Büyük bir pozisyonu güçlü bir slippage olmadan açmak veya kapatmak için",
             },
@@ -1047,26 +1100,26 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Liquidity sweep'in hemen ardından fiyata genellikle ne olur?",
               options: [
                 "Delinme yönünün tersine keskin bir dönüş",
-                "Fiyat her zaman delinme yönünde hareketine devam eder",
                 "Hiçbir şey, hacim sıfıra düşer",
+                "Fiyat her zaman delinme yönünde hareketine devam eder",
               ],
               correctAnswer: "Delinme yönünün tersine keskin bir dönüş",
             },
             {
               prompt: "Liquidity sweep'in hedefi en çok hangi bölge olur?",
               options: [
-                "Bekleyen emirlerin bulunduğu bölge — örneğin eşit zirveler/dipler",
-                "Seviyesiz rastgele bir aralığın ortası",
                 "Sıfır likiditeye sahip bir bölge",
+                "Seviyesiz rastgele bir aralığın ortası",
+                "Bekleyen emirlerin bulunduğu bölge — örneğin eşit zirveler/dipler",
               ],
               correctAnswer: "Bekleyen emirlerin bulunduğu bölge — örneğin eşit zirveler/dipler",
             },
             {
               prompt: "Yeni başlayanların bir sweep gördüklerinde yaptığı tipik hata nedir?",
               options: [
+                "İşleme girmeden önce stop-loss belirlemek",
                 "Olası bir dönüşü hesaba katmadan kırılma yönünde işleme girmek",
                 "Kârlı bir pozisyonu çok erken kapatmak",
-                "İşleme girmeden önce stop-loss belirlemek",
               ],
               correctAnswer: "Olası bir dönüşü hesaba katmadan kırılma yönünde işleme girmek",
             },
@@ -1092,27 +1145,27 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Change of Character (CHoCH) neyin sinyalini verir?",
               options: [
-                "Mevcut trendin olası dönüşü",
                 "Trendin hızlanarak devam etmesi",
                 "Piyasada likidite bulunmaması",
+                "Mevcut trendin olası dönüşü",
               ],
               correctAnswer: "Mevcut trendin olası dönüşü",
             },
             {
               prompt: "Break of Structure (BOS) neyi doğrular?",
               options: [
-                "Mevcut trendin devamını",
                 "İşlemlerin otomatik olarak durmasını",
                 "Önceki tüm seviyelerin geçersiz olmasını",
+                "Mevcut trendin devamını",
               ],
               correctAnswer: "Mevcut trendin devamını",
             },
             {
               prompt: "Yükselen trendin yapısı neden oluşur?",
               options: [
-                "Higher High ve Higher Low'dan",
-                "Lower High ve Lower Low'dan",
                 "Yüksekliği aynı olan mumlardan",
+                "Lower High ve Lower Low'dan",
+                "Higher High ve Higher Low'dan",
               ],
               correctAnswer: "Higher High ve Higher Low'dan",
             },
@@ -1137,27 +1190,27 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Order block nedir?",
               options: [
-                "Güçlü bir dürtü hareketinden önceki son ters yönlü mum",
                 "Bir işlem hacmi göstergesi",
                 "Gecikmeli gerçekleşen bir borsa emri türü",
+                "Güçlü bir dürtü hareketinden önceki son ters yönlü mum",
               ],
               correctAnswer: "Güçlü bir dürtü hareketinden önceki son ters yönlü mum",
             },
             {
               prompt: "Traderlar order block'ları genellikle nasıl kullanır?",
               options: [
+                "Borsa komisyonunu hesaplamak için",
                 "Fiyat geri döndüğünde potansiyel giriş bölgeleri olarak",
                 "Bir enflasyon göstergesi olarak",
-                "Borsa komisyonunu hesaplamak için",
               ],
               correctAnswer: "Fiyat geri döndüğünde potansiyel giriş bölgeleri olarak",
             },
             {
               prompt: "Boğa order block'u ayı order block'undan nasıl farklıdır?",
               options: [
+                "Yalnızca günlük zaman diliminde ortaya çıkar",
                 "Aşağı yönlü değil, yukarı yönlü bir dürtüden önce oluşur",
                 "Her zaman boyut olarak daha büyüktür",
-                "Yalnızca günlük zaman diliminde ortaya çıkar",
               ],
               correctAnswer: "Aşağı yönlü değil, yukarı yönlü bir dürtüden önce oluşur",
             },
@@ -1195,9 +1248,9 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "1:3 Risk/Reward oranı ne anlama gelir?",
               options: [
+                "Art arda 3 işlem açılması gerekir",
                 "Potansiyel kâr, potansiyel riskin 3 katıdır",
                 "İşlem 3 saat sonra kapanır",
-                "Art arda 3 işlem açılması gerekir",
               ],
               correctAnswer: "Potansiyel kâr, potansiyel riskin 3 katıdır",
             },
@@ -1205,8 +1258,8 @@ export const COURSE_TR: CourseSeed = {
               prompt: "1:3 R/R oranına sahip bir sistem neden %40 kazanma oranıyla bile kârlı olabilir?",
               options: [
                 "Kazanan işlemlerdeki kâr, kaybeden işlemlerdeki zararı karşılar",
-                "Çünkü %40 her zaman %33'ten yüksektir",
                 "Çünkü borsa komisyonları düşer",
+                "Çünkü %40 her zaman %33'ten yüksektir",
               ],
               correctAnswer: "Kazanan işlemlerdeki kâr, kaybeden işlemlerdeki zararı karşılar",
             },
@@ -1214,8 +1267,8 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Trader işlemin Risk/Reward oranını ne zaman hesaplamalıdır?",
               options: [
                 "İşleme girmeden önce",
-                "Yalnızca işlem kapandıktan sonra",
                 "R/R hesaplamak zorunlu değildir",
+                "Yalnızca işlem kapandıktan sonra",
               ],
               correctAnswer: "İşleme girmeden önce",
             },
@@ -1248,9 +1301,9 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Pozisyon büyüklüğü öncelikle neye bağlı olmalıdır?",
               options: [
-                "Depozitonun yüzdesi cinsinden kabul edilebilir riske",
                 "Kartta ne kadar para olduğuna",
                 "Traderın o anki ruh haline",
+                "Depozitonun yüzdesi cinsinden kabul edilebilir riske",
               ],
               correctAnswer: "Depozitonun yüzdesi cinsinden kabul edilebilir riske",
             },
@@ -1258,17 +1311,17 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Stop-loss giriş fiyatından daha uzağa konursa pozisyon büyüklüğüne ne olur?",
               options: [
                 "Aynı dolar riskinde pozisyon hacmi azalmalıdır",
-                "Pozisyon hacmi artmalıdır",
                 "Pozisyon hacmi stopa olan mesafeyle ilişkili değildir",
+                "Pozisyon hacmi artmalıdır",
               ],
               correctAnswer: "Aynı dolar riskinde pozisyon hacmi azalmalıdır",
             },
             {
               prompt: "Bir işlemde depozitonun genellikle ne kadarının riske edilmesi önerilir?",
               options: [
-                "%1-2",
-                "%25-30",
                 "%50",
+                "%25-30",
+                "%1-2",
               ],
               correctAnswer: "%1-2",
             },
@@ -1301,18 +1354,18 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Stop-loss'un temel işlevi nedir?",
               options: [
-                "Zararı önceden bilinen bir tutarla sınırlamak",
-                "İşlemin kârını artırmak",
                 "Pozisyonu otomatik olarak iki katına çıkarmak",
+                "İşlemin kârını artırmak",
+                "Zararı önceden bilinen bir tutarla sınırlamak",
               ],
               correctAnswer: "Zararı önceden bilinen bir tutarla sınırlamak",
             },
             {
               prompt: "Stop-loss seviyesini belirlemenin en doğru yolu nedir?",
               options: [
-                "Piyasa yapısına (destek/direnç seviyelerine) dayanarak",
-                "İstenen kâr tutarına dayanarak",
                 "Rastgele bir sayıya dayanarak",
+                "İstenen kâr tutarına dayanarak",
+                "Piyasa yapısına (destek/direnç seviyelerine) dayanarak",
               ],
               correctAnswer: "Piyasa yapısına (destek/direnç seviyelerine) dayanarak",
             },
@@ -1320,8 +1373,8 @@ export const COURSE_TR: CourseSeed = {
               prompt: "İşlemde düşüş yaşanırken yeni başlayanlar için tipik hata nedir?",
               options: [
                 "\"İşleme daha fazla şans vermek\" için stop-loss'u fiyattan uzaklaştırmak",
-                "İşlemi tam olarak stopta kapatmak",
                 "Girişten önce riski hesaplamak",
+                "İşlemi tam olarak stopta kapatmak",
               ],
               correctAnswer: "\"İşleme daha fazla şans vermek\" için stop-loss'u fiyattan uzaklaştırmak",
             },
@@ -1354,27 +1407,27 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Take Profit seviyesi neye dayanmalıdır?",
               options: [
+                "İşlemde geçirilen saat sayısına",
                 "Grafik yapısına: direnç, destek veya likidite seviyelerine",
                 "Traderın hoşuna giden rastgele bir sayıya",
-                "İşlemde geçirilen saat sayısına",
               ],
               correctAnswer: "Grafik yapısına: direnç, destek veya likidite seviyelerine",
             },
             {
               prompt: "Traderlar neden pozisyonun kısmi kapatılmasını kullanır?",
               options: [
-                "Kârın bir kısmını sabitleyip kalanının hareket etmeye devam etmesine izin vermek için",
-                "Borsa komisyonunu artırmak için",
                 "İşlemi mutlaka zararla kapatmak için",
+                "Borsa komisyonunu artırmak için",
+                "Kârın bir kısmını sabitleyip kalanının hareket etmeye devam etmesine izin vermek için",
               ],
               correctAnswer: "Kârın bir kısmını sabitleyip kalanının hareket etmeye devam etmesine izin vermek için",
             },
             {
               prompt: "İlk kâr hedefine ulaşıldıktan sonra stop-loss'a genellikle ne yapılır?",
               options: [
-                "Elde edilen kârı korumak için başabaşa taşınır",
                 "Tamamen kaldırılır",
                 "Fiyattan daha da uzaklaştırılır",
+                "Elde edilen kârı korumak için başabaşa taşınır",
               ],
               correctAnswer: "Elde edilen kârı korumak için başabaşa taşınır",
             },
@@ -1407,27 +1460,27 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Trading'de tek bir zararı algılamanın en doğru yolu nedir?",
               options: [
+                "İşlem günlüğü tutmayı bırakmak için bir neden olarak",
                 "Ticaret sisteminin beklenen istatistiksel maliyeti olarak",
                 "Bir sonraki işlemin hacmini hemen iki katına çıkarmak gerektiğinin işareti olarak",
-                "İşlem günlüğü tutmayı bırakmak için bir neden olarak",
               ],
               correctAnswer: "Ticaret sisteminin beklenen istatistiksel maliyeti olarak",
             },
             {
               prompt: "Zarardan hemen sonra \"telafi etme\" girişimi genellikle neye yol açar?",
               options: [
+                "Önceki işlemin otomatik olarak iptaline",
                 "Artan riske ve yeni zararlara",
                 "Garantili kâra",
-                "Önceki işlemin otomatik olarak iptaline",
               ],
               correctAnswer: "Artan riske ve yeni zararlara",
             },
             {
               prompt: "Traderın duyguları ticaret kararlarından ayırmasına ne yardımcı olur?",
               options: [
-                "İşlem başına önceden belirlenen risk ve günlük tutma",
-                "İşlem analizinden tamamen vazgeçmek",
                 "Her zarardan sonra kaldıracı artırmak",
+                "İşlem analizinden tamamen vazgeçmek",
+                "İşlem başına önceden belirlenen risk ve günlük tutma",
               ],
               correctAnswer: "İşlem başına önceden belirlenen risk ve günlük tutma",
             },
@@ -1465,8 +1518,8 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Trading'de FOMO nedir?",
               options: [
-                "Kârlı bir fiyat hareketini kaçırma korkusu",
                 "Teknik bir hacim göstergesi",
+                "Kârlı bir fiyat hareketini kaçırma korkusu",
                 "Bir borsa emri türü",
               ],
               correctAnswer: "Kârlı bir fiyat hareketini kaçırma korkusu",
@@ -1474,8 +1527,8 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Trader FOMO etkisiyle fiyat hareketinin hangi aşamasında işleme girer?",
               options: [
-                "Dönüş riskinin zaten yüksek olduğu, hareketin sonuna yakın bir noktada",
                 "Hareketin en başında",
+                "Dönüş riskinin zaten yüksek olduğu, hareketin sonuna yakın bir noktada",
                 "Hareket henüz başlamadan önce",
               ],
               correctAnswer: "Dönüş riskinin zaten yüksek olduğu, hareketin sonuna yakın bir noktada",
@@ -1483,9 +1536,9 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "FOMO'nun trader kararları üzerindeki etkisini azaltmaya ne yardımcı olur?",
               options: [
-                "Önceden belirlenmiş bir plan ve giriş koşulları",
                 "Başkalarının kârlı işlemlerini sürekli takip etmek",
                 "Ani bir yükseliş anında kaldıracı artırmak",
+                "Önceden belirlenmiş bir plan ve giriş koşulları",
               ],
               correctAnswer: "Önceden belirlenmiş bir plan ve giriş koşulları",
             },
@@ -1518,27 +1571,27 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Açgözlülük açık bir işlemin yönetiminde en çok nasıl kendini gösterir?",
               options: [
-                "Trader daha fazla kâr umarak önceden konmuş Take Profit'i iptal eder",
                 "Trader işlemi tam olarak plana göre kapatır",
                 "Trader pozisyon hacmini azaltır",
+                "Trader daha fazla kâr umarak önceden konmuş Take Profit'i iptal eder",
               ],
               correctAnswer: "Trader daha fazla kâr umarak önceden konmuş Take Profit'i iptal eder",
             },
             {
               prompt: "Açgözlülük kârlı bir işlemde en çok hangi sonuca yol açar?",
               options: [
-                "İşlem döner ve stopta veya sıfırda kapanır",
-                "Kâr garantili olarak artar",
                 "Borsa komisyonu düşer",
+                "Kâr garantili olarak artar",
+                "İşlem döner ve stopta veya sıfırda kapanır",
               ],
               correctAnswer: "İşlem döner ve stopta veya sıfırda kapanır",
             },
             {
               prompt: "Trading'de açgözlülüğe karşı en önemli araç nedir?",
               options: [
-                "Önceden hazırlanmış işlem planına uymak",
-                "Take Profit koymaktan tamamen vazgeçmek",
                 "Her kârlı işlemden sonra kaldıracı artırmak",
+                "Take Profit koymaktan tamamen vazgeçmek",
+                "Önceden hazırlanmış işlem planına uymak",
               ],
               correctAnswer: "Önceden hazırlanmış işlem planına uymak",
             },
@@ -1572,26 +1625,26 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Korku kârlı bir işlemin yönetimini en çok nasıl etkiler?",
               options: [
                 "Trader en küçük bir düşüşte işlemi çok erken kapatır",
-                "Trader işlemi plandan çok daha uzun tutar",
                 "Trader pozisyon hacmini artırır",
+                "Trader işlemi plandan çok daha uzun tutar",
               ],
               correctAnswer: "Trader en küçük bir düşüşte işlemi çok erken kapatır",
             },
             {
               prompt: "Açık bir pozisyonun yönetiminde korkuyu ne güçlendirir?",
               options: [
+                "İşlem günlüğü tutmak",
                 "Depozitoya göre çok büyük pozisyon hacmi",
                 "Depozitonun %1-2'si kadar önceden belirlenmiş risk",
-                "İşlem günlüğü tutmak",
               ],
               correctAnswer: "Depozitoya göre çok büyük pozisyon hacmi",
             },
             {
               prompt: "Trading'de korku açgözlülükten temel olarak nasıl farklıdır?",
               options: [
-                "Korku çok temkinli davranmaya ve stratejiye uygun işlemleri kaçırmaya zorlar",
-                "Korku ve açgözlülük tamamen aynı kararlara yol açar",
                 "Korku pozisyon hacmini açgözlülükten daha güçlü artırır",
+                "Korku ve açgözlülük tamamen aynı kararlara yol açar",
+                "Korku çok temkinli davranmaya ve stratejiye uygun işlemleri kaçırmaya zorlar",
               ],
               correctAnswer: "Korku çok temkinli davranmaya ve stratejiye uygun işlemleri kaçırmaya zorlar",
             },
@@ -1624,26 +1677,26 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Trading bağlamında disiplin nedir?",
               options: [
+                "Maksimum kaldıraç kullanımı",
                 "Önceden belirlenmiş kurallara tutarlı bir şekilde uymak",
                 "Fiyat yönünü tahmin edebilme yeteneği",
-                "Maksimum kaldıraç kullanımı",
               ],
               correctAnswer: "Önceden belirlenmiş kurallara tutarlı bir şekilde uymak",
             },
             {
               prompt: "İyi bir strateji bile disiplin olmadan neden işe yaramaz?",
               options: [
-                "Çünkü işlem plana göre gitmediğinde kurallar ihlal edilir",
-                "Çünkü stratejiler her zaman aynı derecede iyi çalışır",
                 "Çünkü disiplinin sonuç üzerinde etkisi yoktur",
+                "Çünkü stratejiler her zaman aynı derecede iyi çalışır",
+                "Çünkü işlem plana göre gitmediğinde kurallar ihlal edilir",
               ],
               correctAnswer: "Çünkü işlem plana göre gitmediğinde kurallar ihlal edilir",
             },
             {
               prompt: "Zamanla disiplini güçlendirmeye ne yardımcı olur?",
               options: [
-                "Kendi kurallarına uyulup uyulmadığının düzenli analizi",
                 "İşlem analizinden tamamen vazgeçmek",
+                "Kendi kurallarına uyulup uyulmadığının düzenli analizi",
                 "Her işlemden sonra kuralları sürekli değiştirmek",
               ],
               correctAnswer: "Kendi kurallarına uyulup uyulmadığının düzenli analizi",
@@ -1677,27 +1730,27 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Trading'de duygusal kontrol ile ne kastedilir?",
               options: [
-                "Duygulara rağmen plana göre hareket edebilme becerisi, tam yokluğu değil",
                 "İşlem sırasında herhangi bir duygunun tamamen yokluğu",
                 "Diğer traderların duygularını tahmin edebilme yeteneği",
+                "Duygulara rağmen plana göre hareket edebilme becerisi, tam yokluğu değil",
               ],
               correctAnswer: "Duygulara rağmen plana göre hareket edebilme becerisi, tam yokluğu değil",
             },
             {
               prompt: "Günlük işlem sayısı sınırı tradera nasıl yardımcı olur?",
               options: [
-                "Art arda gelen duygusal kararlar (tilt) riskini azaltır",
-                "Gün sonunda kârı garanti eder",
                 "Stop-loss ihtiyacını tamamen ortadan kaldırır",
+                "Gün sonunda kârı garanti eder",
+                "Art arda gelen duygusal kararlar (tilt) riskini azaltır",
               ],
               correctAnswer: "Art arda gelen duygusal kararlar (tilt) riskini azaltır",
             },
             {
               prompt: "İşlem günlüğünde işlem sırasındaki duygusal durum neden kaydedilir?",
               options: [
-                "Gelecekte tekrarlayan duygusal hataları tespit etmek için",
                 "Bu, işleme girmek için borsanın bir gerekliliğidir",
                 "Bu, ticaret analizine hiçbir şekilde yardımcı olmaz",
+                "Gelecekte tekrarlayan duygusal hataları tespit etmek için",
               ],
               correctAnswer: "Gelecekte tekrarlayan duygusal hataları tespit etmek için",
             },
@@ -1735,9 +1788,9 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "RSI hangi değer aralığında ölçülür?",
               options: [
-                "0'dan 100'e",
                 "-1'den 1'e",
                 "0'dan 10.000'e",
+                "0'dan 100'e",
               ],
               correctAnswer: "0'dan 100'e",
             },
@@ -1745,17 +1798,17 @@ export const COURSE_TR: CourseSeed = {
               prompt: "70'in üzerindeki bir RSI değeri geleneksel olarak ne anlama gelir?",
               options: [
                 "Potansiyel bir aşırı alım bölgesi",
-                "Fiyatın kesinlikle aşağı döneceği garantisi",
                 "İşlem hacminin yokluğu",
+                "Fiyatın kesinlikle aşağı döneceği garantisi",
               ],
               correctAnswer: "Potansiyel bir aşırı alım bölgesi",
             },
             {
               prompt: "Fiyat ile RSI arasındaki diverjans neyin sinyali olabilir?",
               options: [
-                "Mevcut hareket ivmesinin zayıflaması",
                 "Göstergenin teknik bir hatası",
                 "Varlığın işlem gördüğü borsanın değişmesi",
+                "Mevcut hareket ivmesinin zayıflaması",
               ],
               correctAnswer: "Mevcut hareket ivmesinin zayıflaması",
             },
@@ -1788,8 +1841,8 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "MACD göstergesi neye dayanır?",
               options: [
-                "İki üstel hareketli ortalama arasındaki farka",
                 "Açık pozisyon hacmine",
+                "İki üstel hareketli ortalama arasındaki farka",
                 "Ağdaki aktif cüzdan sayısına",
               ],
               correctAnswer: "İki üstel hareketli ortalama arasındaki farka",
@@ -1798,8 +1851,8 @@ export const COURSE_TR: CourseSeed = {
               prompt: "MACD histogramı neyi gösterir?",
               options: [
                 "MACD çizgisi ile sinyal çizgisi arasındaki farkı",
-                "Günlük toplam işlem hacmini",
                 "Borsadaki açık pozisyon sayısını",
+                "Günlük toplam işlem hacmini",
               ],
               correctAnswer: "MACD çizgisi ile sinyal çizgisi arasındaki farkı",
             },
@@ -1807,8 +1860,8 @@ export const COURSE_TR: CourseSeed = {
               prompt: "MACD çizgisinin sıfır seviyesini kesmesi neyle ilişkilendirilir?",
               options: [
                 "Trend yönünün değişimiyle",
-                "Yeni bir token listelemesiyle",
                 "Borsa komisyonundaki değişiklikle",
+                "Yeni bir token listelemesiyle",
               ],
               correctAnswer: "Trend yönünün değişimiyle",
             },
@@ -1841,8 +1894,8 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "EMA, basit hareketli ortalamadan (SMA) nasıl farklıdır?",
               options: [
-                "EMA son fiyatlara daha fazla ağırlık verir ve değişimlere daha hızlı tepki verir",
                 "EMA fiyatı hiç hesaba katmaz",
+                "EMA son fiyatlara daha fazla ağırlık verir ve değişimlere daha hızlı tepki verir",
                 "EMA her zaman yalnızca hacme göre hesaplanır",
               ],
               correctAnswer: "EMA son fiyatlara daha fazla ağırlık verir ve değişimlere daha hızlı tepki verir",
@@ -1850,18 +1903,18 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Traderlar neden aynı anda farklı periyotlarda birden fazla EMA kullanır?",
               options: [
+                "Bu hiçbir faydalı bilgi sağlamaz",
                 "Trend yönünü ve dinamik destek/direnç bölgelerini değerlendirmek için",
                 "Borsa komisyonunu azaltmak için",
-                "Bu hiçbir faydalı bilgi sağlamaz",
               ],
               correctAnswer: "Trend yönünü ve dinamik destek/direnç bölgelerini değerlendirmek için",
             },
             {
               prompt: "Hızlı ve yavaş EMA'nın kesişiminin bir sinyal olarak dezavantajı nedir?",
               options: [
-                "Sinyal, mevcut fiyat hareketine göre gecikmelidir",
-                "Sinyal hareket başlamadan önce ortaya çıkar",
                 "Sinyal grafikte görülemez",
+                "Sinyal hareket başlamadan önce ortaya çıkar",
+                "Sinyal, mevcut fiyat hareketine göre gecikmelidir",
               ],
               correctAnswer: "Sinyal, mevcut fiyat hareketine göre gecikmelidir",
             },
@@ -1895,26 +1948,26 @@ export const COURSE_TR: CourseSeed = {
               prompt: "SMA nasıl hesaplanır?",
               options: [
                 "Belirli sayıda periyot boyunca kapanış fiyatının aritmetik ortalaması olarak",
-                "Bir aylık tüm işlem hacimlerinin toplamı olarak",
                 "Günün en yüksek ve en düşük değeri arasındaki fark olarak",
+                "Bir aylık tüm işlem hacimlerinin toplamı olarak",
               ],
               correctAnswer: "Belirli sayıda periyot boyunca kapanış fiyatının aritmetik ortalaması olarak",
             },
             {
               prompt: "SMA, fiyata tepki verme hızı açısından EMA'dan nasıl farklıdır?",
               options: [
-                "SMA daha yavaş tepki verir, çünkü tüm periyotlar eşit ağırlığa sahiptir",
-                "SMA her zaman EMA'dan daha hızlı tepki verir",
                 "Tepki hızında bir fark yoktur",
+                "SMA her zaman EMA'dan daha hızlı tepki verir",
+                "SMA daha yavaş tepki verir, çünkü tüm periyotlar eşit ağırlığa sahiptir",
               ],
               correctAnswer: "SMA daha yavaş tepki verir, çünkü tüm periyotlar eşit ağırlığa sahiptir",
             },
             {
               prompt: "Günlük zaman diliminde SMA 200 genellikle ne için kullanılır?",
               options: [
-                "Genel boğa veya ayı piyasasının bir göstergesi olarak",
                 "Borsa komisyonunu hesaplamak için",
                 "Bir tokenin listelenme zamanını tam olarak belirlemek için",
+                "Genel boğa veya ayı piyasasının bir göstergesi olarak",
               ],
               correctAnswer: "Genel boğa veya ayı piyasasının bir göstergesi olarak",
             },
@@ -1947,27 +2000,27 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "VWAP, basit hareketli ortalamanın aksine neyi dikkate alır?",
               options: [
-                "Her fiyat seviyesindeki işlem hacmini",
                 "Yalnızca günün en yüksek fiyatını",
                 "Yalnızca önceki günün kapanış fiyatını",
+                "Her fiyat seviyesindeki işlem hacmini",
               ],
               correctAnswer: "Her fiyat seviyesindeki işlem hacmini",
             },
             {
               prompt: "VWAP'ın üzerinde bulunan bir fiyat nasıl yorumlanır?",
               options: [
-                "Ortalama hacimli seviyeye kıyasla görece pahalı olarak",
                 "Garantili bir alım sinyali olarak",
                 "İşlemlerin durduğunun bir işareti olarak",
+                "Ortalama hacimli seviyeye kıyasla görece pahalı olarak",
               ],
               correctAnswer: "Ortalama hacimli seviyeye kıyasla görece pahalı olarak",
             },
             {
               prompt: "Büyük emirleri gerçekleştirirken en çok kimler VWAP'a göre hareket eder?",
               options: [
-                "Kurumsal traderlar",
                 "Yalnızca yeni başlayan traderlar",
                 "Yalnızca proje pazarlamacıları",
+                "Kurumsal traderlar",
               ],
               correctAnswer: "Kurumsal traderlar",
             },
@@ -2000,27 +2053,27 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "ATR göstergesi neyi ölçer?",
               options: [
-                "Bir varlığın ortalama volatilitesini (hareket genliğini)",
-                "Trend yönünü",
                 "Ağdaki aktif adres sayısını",
+                "Trend yönünü",
+                "Bir varlığın ortalama volatilitesini (hareket genliğini)",
               ],
               correctAnswer: "Bir varlığın ortalama volatilitesini (hareket genliğini)",
             },
             {
               prompt: "Yüksek bir ATR değeri neyi gösterir?",
               options: [
-                "Artmış volatilite ve büyük fiyat dalgalanmalarını",
-                "Borsanın düşük likiditesini",
                 "Varlığın yakında listeden kaldırılacağını",
+                "Borsanın düşük likiditesini",
+                "Artmış volatilite ve büyük fiyat dalgalanmalarını",
               ],
               correctAnswer: "Artmış volatilite ve büyük fiyat dalgalanmalarını",
             },
             {
               prompt: "Traderlar pratikte ATR'yi en çok ne için kullanır?",
               options: [
-                "Mevcut volatiliteyi dikkate alarak stop-loss büyüklüğünü hesaplamak için",
                 "Bir tokenin tam listelenme fiyatını belirlemek için",
                 "Ağ komisyonunu hesaplamak için",
+                "Mevcut volatiliteyi dikkate alarak stop-loss büyüklüğünü hesaplamak için",
               ],
               correctAnswer: "Mevcut volatiliteyi dikkate alarak stop-loss büyüklüğünü hesaplamak için",
             },
@@ -2053,8 +2106,8 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Bollinger Bands neden oluşur?",
               options: [
-                "Bir hareketli ortalama ve standart sapmaya dayanan iki bantdan",
                 "Üç bağımsız hacim çizgisinden",
+                "Bir hareketli ortalama ve standart sapmaya dayanan iki bantdan",
                 "Tek bir kapanış fiyatı çizgisinden",
               ],
               correctAnswer: "Bir hareketli ortalama ve standart sapmaya dayanan iki bantdan",
@@ -2063,17 +2116,17 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Bollinger Bands'e göre güçlü bir fiyat hareketinden önce genellikle ne olur?",
               options: [
                 "Bantların daralması (sıkışması)",
-                "Bantların maksimuma kadar genişlemesi",
                 "Bantların grafikten tamamen kaybolması",
+                "Bantların maksimuma kadar genişlemesi",
               ],
               correctAnswer: "Bantların daralması (sıkışması)",
             },
             {
               prompt: "Fiyatın Bollinger üst bandına değmesi kesin bir aşağı dönüş anlamına gelir mi?",
               options: [
+                "Evet, ama yalnızca haftalık zaman diliminde",
                 "Hayır, güçlü bir trendde fiyat bant boyunca uzun süre hareket edebilir",
                 "Evet, bu her zaman yüzde yüz kesin bir dönüş sinyalidir",
-                "Evet, ama yalnızca haftalık zaman diliminde",
               ],
               correctAnswer: "Hayır, güçlü bir trendde fiyat bant boyunca uzun süre hareket edebilir",
             },
@@ -2111,8 +2164,8 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Hacim neden fiyat hareketinin bağımsız bir teyidi olarak kabul edilir?",
               options: [
-                "Fiyatın kendisinden türetilmeyip katılımcıların gerçek aktivitesini yansıttığı için",
                 "Çünkü hacim her zaman fiyatla birlikte artar",
+                "Fiyatın kendisinden türetilmeyip katılımcıların gerçek aktivitesini yansıttığı için",
                 "Çünkü hacim piyasa değerinin yüzdesi olarak ölçülür",
               ],
               correctAnswer: "Fiyatın kendisinden türetilmeyip katılımcıların gerçek aktivitesini yansıttığı için",
@@ -2120,18 +2173,18 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Hangi seviye kırılımı daha az güvenilir kabul edilir?",
               options: [
+                "Kırılımın güvenilirliği hacme bağlı değildir",
                 "Düşük hacimde gerçekleşen kırılım",
                 "Yüksek hacimde gerçekleşen kırılım",
-                "Kırılımın güvenilirliği hacme bağlı değildir",
               ],
               correctAnswer: "Düşük hacimde gerçekleşen kırılım",
             },
             {
               prompt: "Ani hacim artışları genellikle neyle örtüşür?",
               options: [
+                "Tokenin isim değişikliğiyle",
                 "Piyasanın kilit dönüş noktalarıyla",
                 "Yalnızca borsanın teknik arızalarıyla",
-                "Tokenin isim değişikliğiyle",
               ],
               correctAnswer: "Piyasanın kilit dönüş noktalarıyla",
             },
@@ -2164,27 +2217,27 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Pozitif delta ne gösterir?",
               options: [
-                "Agresif alımların satımlara üstün geldiğini",
                 "Gelecekte fiyatın kesin olarak yükseleceğini",
                 "İşlem aktivitesinin yokluğunu",
+                "Agresif alımların satımlara üstün geldiğini",
               ],
               correctAnswer: "Agresif alımların satımlara üstün geldiğini",
             },
             {
               prompt: "Negatif delta ile birlikte gerçekleşen bir fiyat yükselişi ne hakkında bilgi verebilir?",
               options: [
-                "Yükseliş yeni alımlarla değil kısa pozisyonların kapatılmasıyla sağlanıyor olabilir",
-                "Borsada teknik bir hata olduğu hakkında",
                 "Deltanın yanlış hesaplandığı hakkında",
+                "Borsada teknik bir hata olduğu hakkında",
+                "Yükseliş yeni alımlarla değil kısa pozisyonların kapatılmasıyla sağlanıyor olabilir",
               ],
               correctAnswer: "Yükseliş yeni alımlarla değil kısa pozisyonların kapatılmasıyla sağlanıyor olabilir",
             },
             {
               prompt: "Hacim deltası tam olarak neyi ölçer?",
               options: [
-                "Agresif emirler üzerinden alıcı ve satıcı baskısını",
-                "Varlığın toplam piyasa değerini",
                 "Tokenin sahip sayısını",
+                "Varlığın toplam piyasa değerini",
+                "Agresif emirler üzerinden alıcı ve satıcı baskısını",
               ],
               correctAnswer: "Agresif emirler üzerinden alıcı ve satıcı baskısını",
             },
@@ -2218,8 +2271,8 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Open Interest neyi gösterir?",
               options: [
                 "Henüz kapatılmamış toplam açık sözleşme sayısını",
-                "Borsanın tüm tarihindeki toplam işlem hacmini",
                 "Borsanın kayıtlı kullanıcı sayısını",
+                "Borsanın tüm tarihindeki toplam işlem hacmini",
               ],
               correctAnswer: "Henüz kapatılmamış toplam açık sözleşme sayısını",
             },
@@ -2227,16 +2280,16 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Fiyat ve Open Interest'in aynı anda artması genellikle neyi gösterir?",
               options: [
                 "Yeni sermaye girişini ve trendin güçlenmesini",
-                "Borsanın teknik bir arızasını",
                 "Volatilitenin sıfıra düşmesini",
+                "Borsanın teknik bir arızasını",
               ],
               correctAnswer: "Yeni sermaye girişini ve trendin güçlenmesini",
             },
             {
               prompt: "Open Interest'teki ani bir düşüş genellikle neyle ilişkilidir?",
               options: [
-                "Açık pozisyonların kitlesel likidasyonuyla",
                 "Listeye yeni bir token eklenmesiyle",
+                "Açık pozisyonların kitlesel likidasyonuyla",
                 "Borsanın planlı güncellemesiyle",
               ],
               correctAnswer: "Açık pozisyonların kitlesel likidasyonuyla",
@@ -2270,9 +2323,9 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Funding Rate perpetual vadeli işlemlerde hangi işlevi görür?",
               options: [
-                "Sözleşme fiyatını spot piyasa fiyatına yakın tutar",
                 "Borsanın para çekme komisyonunu belirler",
                 "Maksimum kaldıracı belirler",
+                "Sözleşme fiyatını spot piyasa fiyatına yakın tutar",
               ],
               correctAnswer: "Sözleşme fiyatını spot piyasa fiyatına yakın tutar",
             },
@@ -2280,17 +2333,17 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Sürekli olarak yüksek pozitif fonlama ne anlama gelir?",
               options: [
                 "Piyasa, fazla long pozisyonla aşırı ısınmıştır",
-                "Piyasada hiç trader bulunmamaktadır",
                 "Varlığın fiyatı kesinlikle daha da yükselecektir",
+                "Piyasada hiç trader bulunmamaktadır",
               ],
               correctAnswer: "Piyasa, fazla long pozisyonla aşırı ısınmıştır",
             },
             {
               prompt: "Funding Rate pozitif olduğunda kim kime ödeme yapar?",
               options: [
-                "Uzun pozisyon sahipleri kısa pozisyon sahiplerine öder",
                 "Borsa tüm traderlara eşit şekilde öder",
                 "Kısa pozisyon sahipleri uzun pozisyon sahiplerine öder",
+                "Uzun pozisyon sahipleri kısa pozisyon sahiplerine öder",
               ],
               correctAnswer: "Uzun pozisyon sahipleri kısa pozisyon sahiplerine öder",
             },
@@ -2323,8 +2376,8 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Bir pozisyon likide edildiğinde ne olur?",
               options: [
-                "Borsa, marj yetersizliği nedeniyle pozisyonu zorla kapatır",
                 "Trader pozisyonu gönüllü olarak kârla kapatır",
+                "Borsa, marj yetersizliği nedeniyle pozisyonu zorla kapatır",
                 "Borsa pozisyon hacmini otomatik olarak iki katına çıkarır",
               ],
               correctAnswer: "Borsa, marj yetersizliği nedeniyle pozisyonu zorla kapatır",
@@ -2332,18 +2385,18 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Kademeli likidasyonlar fiyat hareketini neden güçlendirir?",
               options: [
+                "Likidasyonlar fiyat hareketini her zaman tamamen durdurur",
                 "Pozisyonların kapatılması hareket yönünde ek baskı yaratır",
                 "Likidasyonların fiyat üzerinde hiçbir etkisi yoktur",
-                "Likidasyonlar fiyat hareketini her zaman tamamen durdurur",
               ],
               correctAnswer: "Pozisyonların kapatılması hareket yönünde ek baskı yaratır",
             },
             {
               prompt: "Traderlar likidasyon haritalarını (heatmap) ne için kullanır?",
               options: [
+                "Kârdan alınan vergiyi hesaplamak için",
                 "Ani fiyat hareketi riskinin yüksek olduğu bölgeleri değerlendirmek için",
                 "Bir sonraki halvingin tam tarihini öğrenmek için",
-                "Kârdan alınan vergiyi hesaplamak için",
               ],
               correctAnswer: "Ani fiyat hareketi riskinin yüksek olduğu bölgeleri değerlendirmek için",
             },
@@ -2381,27 +2434,27 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Balina cüzdanlarının hareketlerini takip etmek neden mümkündür?",
               options: [
+                "Bu yalnızca düzenleyiciler için mümkündür",
                 "Blok zincirindeki tüm işlemler herkese açık olarak erişilebilirdir",
                 "Borsalar müşterilerinin kişisel verilerini her gün yayınlar",
-                "Bu yalnızca düzenleyiciler için mümkündür",
               ],
               correctAnswer: "Blok zincirindeki tüm işlemler herkese açık olarak erişilebilirdir",
             },
             {
               prompt: "Borsaya yapılan büyük bir token transferi genellikle nasıl yorumlanır?",
               options: [
-                "Potansiyel bir satış hazırlığı olarak",
                 "Uzun vadeli tutmanın garantili bir sinyali olarak",
                 "Ağın teknik bir hatası olarak",
+                "Potansiyel bir satış hazırlığı olarak",
               ],
               correctAnswer: "Potansiyel bir satış hazırlığı olarak",
             },
             {
               prompt: "Balina hareket verilerini kullanmanın en doğru yolu nedir?",
               options: [
-                "Diğer analiz türleriyle birlikte ek bir sinyal olarak",
                 "İşleme girmek için tek ve yeterli sinyal olarak",
                 "Bu tür veriler işe yaramaz ve dikkate alınmamalıdır",
+                "Diğer analiz türleriyle birlikte ek bir sinyal olarak",
               ],
               correctAnswer: "Diğer analiz türleriyle birlikte ek bir sinyal olarak",
             },
@@ -2435,25 +2488,25 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Borsa girişi (exchange inflow) neye denir?",
               options: [
                 "Borsa cüzdanlarına transfer edilen coin miktarı",
-                "Bir günde madenciler tarafından çıkarılan coin miktarı",
                 "Borsanın yeni kullanıcı sayısı",
+                "Bir günde madenciler tarafından çıkarılan coin miktarı",
               ],
               correctAnswer: "Borsa cüzdanlarına transfer edilen coin miktarı",
             },
             {
               prompt: "Borsalardan sürekli coin çıkışı genellikle hangi piyasa aşamasıyla ilişkilendirilir?",
               options: [
+                "Yeni bir tokenin listelenmesiyle",
                 "Birikim aşamasıyla",
                 "Panik satış aşamasıyla",
-                "Yeni bir tokenin listelenmesiyle",
               ],
               correctAnswer: "Birikim aşamasıyla",
             },
             {
               prompt: "Borsaya büyük bir tutarın ani, tek seferlik girişinden genellikle sonra ne gelir?",
               options: [
-                "Yerel fiyat volatilitesi",
                 "İşlemlerin tamamen durması",
+                "Yerel fiyat volatilitesi",
                 "Borsa komisyonlarının otomatik olarak düşmesi",
               ],
               correctAnswer: "Yerel fiyat volatilitesi",
@@ -2487,27 +2540,27 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "TVL göstergesi neyi ölçer?",
               options: [
-                "Bir protokolün akıllı sözleşmelerinde kilitli varlıkların toplam değerini",
-                "Ağın tüm zamanlardaki toplam işlem sayısını",
                 "Projede çalışan geliştirici sayısını",
+                "Ağın tüm zamanlardaki toplam işlem sayısını",
+                "Bir protokolün akıllı sözleşmelerinde kilitli varlıkların toplam değerini",
               ],
               correctAnswer: "Bir protokolün akıllı sözleşmelerinde kilitli varlıkların toplam değerini",
             },
             {
               prompt: "Yeni sermaye girmese bile TVL neden artabilir?",
               options: [
+                "TVL yeni sermaye girişi olmadan artamaz",
                 "Zaten kilitli olan varlıkların fiyatındaki artış nedeniyle",
                 "Toplam piyasa değerindeki düşüş nedeniyle",
-                "TVL yeni sermaye girişi olmadan artamaz",
               ],
               correctAnswer: "Zaten kilitli olan varlıkların fiyatındaki artış nedeniyle",
             },
             {
               prompt: "Traderlar bir protokolün TVL'sindeki ani bir düşüşü genellikle nasıl yorumlar?",
               options: [
+                "TVL, protokolün durumuyla hiçbir şekilde ilişkili değildir",
                 "Potansiyel olarak endişe verici bir sinyal olarak (sermaye çıkışı veya varlık fiyatındaki düşüş)",
                 "Kesinlikle olumlu bir alım sinyali olarak",
-                "TVL, protokolün durumuyla hiçbir şekilde ilişkili değildir",
               ],
               correctAnswer: "Potansiyel olarak endişe verici bir sinyal olarak (sermaye çıkışı veya varlık fiyatındaki düşüş)",
             },
@@ -2540,9 +2593,9 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Stabilcoinleri çoğu diğer kripto paradan ayıran nedir?",
               options: [
-                "Kurlarının istikrarlı bir varlığa, genellikle ABD dolarına sabitlenmiş olması",
                 "Cüzdanlar arasında transfer edilememeleri",
                 "Yalnızca blok zinciri dışında var olmaları",
+                "Kurlarının istikrarlı bir varlığa, genellikle ABD dolarına sabitlenmiş olması",
               ],
               correctAnswer: "Kurlarının istikrarlı bir varlığa, genellikle ABD dolarına sabitlenmiş olması",
             },
@@ -2550,8 +2603,8 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Stabilcoinler kripto piyasasında hangi işlevi görür?",
               options: [
                 "Piyasa içinde hesap birimi ve değer saklama aracı işlevi",
-                "Tek madencilik yöntemi işlevi",
                 "Blok zinciri konsensüs mekanizmasının yerine geçme işlevi",
+                "Tek madencilik yöntemi işlevi",
               ],
               correctAnswer: "Piyasa içinde hesap birimi ve değer saklama aracı işlevi",
             },
@@ -2559,8 +2612,8 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Borsalardaki stabilcoin rezervlerindeki artış neye işaret edebilir?",
               options: [
                 "Piyasanın potansiyel satın alma gücündeki artışa",
-                "Stabilcoinde teknik bir arızaya",
                 "Borsadaki işlemlerin tamamen durmasına",
+                "Stabilcoinde teknik bir arızaya",
               ],
               correctAnswer: "Piyasanın potansiyel satın alma gücündeki artışa",
             },
@@ -2594,17 +2647,17 @@ export const COURSE_TR: CourseSeed = {
               prompt: "On-chain metrikler, fiyat ve borsa hacmi gibi salt piyasa verilerinden nasıl farklıdır?",
               options: [
                 "Doğrudan blok zincirinden elde edilir ve gerçek ağ aktivitesini yansıtır",
-                "Piyasa verileriyle tamamen aynıdır",
                 "Yalnızca borsa sahiplerine açıktır",
+                "Piyasa verileriyle tamamen aynıdır",
               ],
               correctAnswer: "Doğrudan blok zincirinden elde edilir ve gerçek ağ aktivitesini yansıtır",
             },
             {
               prompt: "Görece sakin bir fiyat sırasında ağın aktif adreslerindeki artış neye işaret edebilir?",
               options: [
-                "Ağın temel kullanımının arttığına",
                 "Blok zincirinde teknik bir bozulmaya",
                 "İşlemlerin tamamen durmasına",
+                "Ağın temel kullanımının arttığına",
               ],
               correctAnswer: "Ağın temel kullanımının arttığına",
             },
@@ -2612,8 +2665,8 @@ export const COURSE_TR: CourseSeed = {
               prompt: "On-chain metrikler hangi analiz ufku için genellikle en uygunudur?",
               options: [
                 "Orta ve uzun vadeli analiz için",
-                "Yalnızca dakika hassasiyetinde giriş zamanlaması için",
                 "On-chain metrikler pratikte hiçbir yerde kullanılmaz",
+                "Yalnızca dakika hassasiyetinde giriş zamanlaması için",
               ],
               correctAnswer: "Orta ve uzun vadeli analiz için",
             },
@@ -2651,27 +2704,27 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Trader neden işlem günlüğü tutmalıdır?",
               options: [
-                "İşlemleri seçici hafıza yerine nesnel olarak kaydetmek için",
-                "İşlem açmak için borsanın bir gerekliliğidir",
                 "Günlük yalnızca vergi beyannamesi için gereklidir",
+                "İşlem açmak için borsanın bir gerekliliğidir",
+                "İşlemleri seçici hafıza yerine nesnel olarak kaydetmek için",
               ],
               correctAnswer: "İşlemleri seçici hafıza yerine nesnel olarak kaydetmek için",
             },
             {
               prompt: "İşlemin sonucu dışında günlük kaydında mutlaka neyin yer alması gerekir?",
               options: [
+                "Kullanılan cihazın adı",
                 "İşleme giriş nedeni",
                 "Yalnızca dolar cinsinden nihai kâr",
-                "Kullanılan cihazın adı",
               ],
               correctAnswer: "İşleme giriş nedeni",
             },
             {
               prompt: "İşlem günlüğünün düzenli analizi ne sağlar?",
               options: [
-                "Tekrarlayan düzenlilikleri ve hataları bulmayı sağlar",
                 "Depozito hacmini otomatik olarak artırır",
                 "Gelecekte zarar eden işlem olmayacağını garanti eder",
+                "Tekrarlayan düzenlilikleri ve hataları bulmayı sağlar",
               ],
               correctAnswer: "Tekrarlayan düzenlilikleri ve hataları bulmayı sağlar",
             },
@@ -2704,27 +2757,27 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Ticaret stratejisinin tanımına mutlaka neler dahil edilmelidir?",
               options: [
+                "Traderın favori kripto paralarının listesi",
                 "Giriş, çıkış koşulları ve risk yönetimi kuralları",
                 "Yalnızca aylık istenen kâr tutarı",
-                "Traderın favori kripto paralarının listesi",
               ],
               correctAnswer: "Giriş, çıkış koşulları ve risk yönetimi kuralları",
             },
             {
               prompt: "Strateji neden belirsiz değil, somut olmalıdır?",
               options: [
+                "Diğer traderlardan gizlenebilmesi için",
                 "Açıklanabilmesi ve geçmiş verilerle test edilebilmesi için",
                 "Kuralların belirsizliğinin bir önemi yoktur",
-                "Diğer traderlardan gizlenebilmesi için",
               ],
               correctAnswer: "Açıklanabilmesi ve geçmiş verilerle test edilebilmesi için",
             },
             {
               prompt: "İyi bir strateji işlemlerin %100'ünde kârlı olmalı mıdır?",
               options: [
-                "Hayır, önemli olan genel olarak pozitif matematiksel beklentidir",
-                "Evet, aksi halde strateji işe yaramaz sayılır",
                 "Evet, ama yalnızca günlük zaman diliminde",
+                "Evet, aksi halde strateji işe yaramaz sayılır",
+                "Hayır, önemli olan genel olarak pozitif matematiksel beklentidir",
               ],
               correctAnswer: "Hayır, önemli olan genel olarak pozitif matematiksel beklentidir",
             },
@@ -2757,9 +2810,9 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Bir ticaret stratejisinin backtesti nedir?",
               options: [
-                "Strateji kurallarının geçmiş fiyat verileriyle test edilmesi",
-                "Minimum depozito ile gerçek işlem yapma",
                 "Diğer traderlara strateji hakkında anket yapma",
+                "Minimum depozito ile gerçek işlem yapma",
+                "Strateji kurallarının geçmiş fiyat verileriyle test edilmesi",
               ],
               correctAnswer: "Strateji kurallarının geçmiş fiyat verileriyle test edilmesi",
             },
@@ -2767,17 +2820,17 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Başarılı bir backtest gelecekte aynı sonucu garanti eder mi?",
               options: [
                 "Hayır, geçmiş sonuçlar geleceği garanti etmez",
-                "Evet, backtest sonucu gerçek trading'de her zaman tekrarlanır",
                 "Garanti eder, ama yalnızca hisse senetleri için",
+                "Evet, backtest sonucu gerçek trading'de her zaman tekrarlanır",
               ],
               correctAnswer: "Hayır, geçmiş sonuçlar geleceği garanti etmez",
             },
             {
               prompt: "Backtesting bağlamında overfitting (aşırı uyarlama) nedir?",
               options: [
+                "Stop-loss olmadan işlem yapmak",
                 "Kuralların belirli bir tarihsel döneme aşırı derecede uyarlanması",
                 "Çok az sayıda gösterge kullanılması",
-                "Stop-loss olmadan işlem yapmak",
               ],
               correctAnswer: "Kuralların belirli bir tarihsel döneme aşırı derecede uyarlanması",
             },
@@ -2810,26 +2863,26 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Forward test'in backtestten temel farkı nedir?",
               options: [
+                "Aralarında bir fark yoktur",
                 "Forward test, stratejinin geliştirilmesinde kullanılmamış yeni verilerle yapılır",
                 "Forward test her zaman yalnızca gerçek büyük bir depozito ile yapılır",
-                "Aralarında bir fark yoktur",
               ],
               correctAnswer: "Forward test, stratejinin geliştirilmesinde kullanılmamış yeni verilerle yapılır",
             },
             {
               prompt: "Forward test, backtestin aksine neyin tespit edilmesine yardımcı olur?",
               options: [
+                "Borsanın para çekme komisyonunu",
                 "Stratejinin geçmiş verilere aşırı uyarlanmasını",
                 "Bir sonraki halving'in kesin tarihini",
-                "Borsanın para çekme komisyonunu",
               ],
               correctAnswer: "Stratejinin geçmiş verilere aşırı uyarlanmasını",
             },
             {
               prompt: "Backtest ve forward test sonuçları arasındaki büyük fark ne anlama gelir?",
               options: [
-                "Strateji büyük olasılıkla geçmiş verilere fazla hassas biçimde uyarlanmıştır",
                 "Stratejinin kesinlikle güvenilir olduğu anlamına gelir",
+                "Strateji büyük olasılıkla geçmiş verilere fazla hassas biçimde uyarlanmıştır",
                 "Stratejinin değerlendirilmesi için bir önemi yoktur",
               ],
               correctAnswer: "Strateji büyük olasılıkla geçmiş verilere fazla hassas biçimde uyarlanmıştır",
@@ -2863,9 +2916,9 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Bir ticaret stratejisinin winrate'i neyi gösterir?",
               options: [
-                "Toplam işlem sayısına göre kârlı işlemlerin oranını",
-                "Tüm zamanların dolar cinsinden toplam kârını",
                 "O anda açık olan işlem sayısını",
+                "Tüm zamanların dolar cinsinden toplam kârını",
+                "Toplam işlem sayısına göre kârlı işlemlerin oranını",
               ],
               correctAnswer: "Toplam işlem sayısına göre kârlı işlemlerin oranını",
             },
@@ -2873,17 +2926,17 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Winrate neden ortalama R/R'den bağımsız değerlendirilemez?",
               options: [
                 "Düşük R/R ile yüksek bir winrate, yüksek R/R ile düşük bir winrate ile aynı sonucu verebilir",
-                "Winrate ve R/R her zaman birbirinin tamamen aynısıdır",
                 "R/R nihai sonucu hiçbir şekilde etkilemez",
+                "Winrate ve R/R her zaman birbirinin tamamen aynısıdır",
               ],
               correctAnswer: "Düşük R/R ile yüksek bir winrate, yüksek R/R ile düşük bir winrate ile aynı sonucu verebilir",
             },
             {
               prompt: "Maksimum drawdown metriği neyi gösterir?",
               options: [
-                "Depozitonun trading'in en kötü döneminde ne kadar azaldığını",
-                "Stratejinin nihai yıllık getirisini",
                 "Portföydeki varlık sayısını",
+                "Stratejinin nihai yıllık getirisini",
+                "Depozitonun trading'in en kötü döneminde ne kadar azaldığını",
               ],
               correctAnswer: "Depozitonun trading'in en kötü döneminde ne kadar azaldığını",
             },
@@ -2921,17 +2974,17 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Bir projenin tokenomics'i neyi tanımlar?",
               options: [
+                "Tokenin işlem gördüğü borsaların listesini",
                 "Tokenin ekonomik modelini: arz, dağıtım ve sahiplere yönelik teşvikleri",
                 "Yalnızca blok zincirinin teknik altyapısını",
-                "Tokenin işlem gördüğü borsaların listesini",
               ],
               correctAnswer: "Tokenin ekonomik modelini: arz, dağıtım ve sahiplere yönelik teşvikleri",
             },
             {
               prompt: "Tokenomics'in hangi faktörü sürekli satış baskısı riski yaratır?",
               options: [
-                "Ekipte kısa kilitleme süresiyle büyük bir token payının bulunması",
                 "Ekipte hiç token bulunmaması",
+                "Ekipte kısa kilitleme süresiyle büyük bir token payının bulunması",
                 "Tokenin maksimum arzının sıfır olması",
               ],
               correctAnswer: "Ekipte kısa kilitleme süresiyle büyük bir token payının bulunması",
@@ -2939,9 +2992,9 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Tokenomics analizi, projenin teknoloji analizine kıyasla ne kadar önemlidir?",
               options: [
-                "Daha az önemli değildir ve teknolojiyle eşit derecede dikkate alınmalıdır",
                 "Tokenomics, bir projenin değerlendirilmesi için önemli değildir",
                 "Yalnızca blok zinciri olmayan projeler için önemlidir",
+                "Daha az önemli değildir ve teknolojiyle eşit derecede dikkate alınmalıdır",
               ],
               correctAnswer: "Daha az önemli değildir ve teknolojiyle eşit derecede dikkate alınmalıdır",
             },
@@ -2974,9 +3027,9 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "FDV nasıl hesaplanır?",
               options: [
-                "Tokenlerin maksimum arzına mevcut fiyattan göre",
                 "Yalnızca belirli bir borsada işlem gören tokenlere göre",
                 "Son 24 saatteki işlem hacmine göre",
+                "Tokenlerin maksimum arzına mevcut fiyattan göre",
               ],
               correctAnswer: "Tokenlerin maksimum arzına mevcut fiyattan göre",
             },
@@ -2984,8 +3037,8 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Piyasa değeri ile FDV arasındaki büyük fark ne anlama gelir?",
               options: [
                 "Arzın henüz dolaşıma sürülmemiş önemli bir kısmının bulunduğu anlamına gelir",
-                "Tokenin zaten tamamen unlock edildiği anlamına gelir",
                 "Fiyat hesaplamasında teknik bir hata olduğu anlamına gelir",
+                "Tokenin zaten tamamen unlock edildiği anlamına gelir",
               ],
               correctAnswer: "Arzın henüz dolaşıma sürülmemiş önemli bir kısmının bulunduğu anlamına gelir",
             },
@@ -2993,8 +3046,8 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Hangi tokenler için piyasa değeri/FDV oranına dikkatlice bakmak özellikle önemlidir?",
               options: [
                 "Dolaşımdaki arz oranı düşük yeni tokenler için",
-                "Yalnızca stabilcoinler için",
                 "Piyasa değeri/FDV oranının pratik bir önemi yoktur",
+                "Yalnızca stabilcoinler için",
               ],
               correctAnswer: "Dolaşımdaki arz oranı düşük yeni tokenler için",
             },
@@ -3027,9 +3080,9 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Token vesting nedir?",
               options: [
+                "Yeni tokenlerin madenciliğini yapma yöntemi",
                 "Tokenlerin belirlenen bir takvime göre kademeli olarak unlock edilmesi mekanizması",
                 "Projenin tüm tokenlerinin tek seferde satılması",
-                "Yeni tokenlerin madenciliğini yapma yöntemi",
               ],
               correctAnswer: "Tokenlerin belirlenen bir takvime göre kademeli olarak unlock edilmesi mekanizması",
             },
@@ -3037,17 +3090,17 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Vesting takviminde cliff nedir?",
               options: [
                 "Takvimin başında tokenlerin tamamen kilitli olduğu dönem",
-                "Kalan tüm tokenlerin nihai unlock'u",
                 "Tokenlerin erken çekilmesi için alınan komisyon",
+                "Kalan tüm tokenlerin nihai unlock'u",
               ],
               correctAnswer: "Takvimin başında tokenlerin tamamen kilitli olduğu dönem",
             },
             {
               prompt: "Projeler ekip ve yatırımcılar için neden vesting kullanır?",
               options: [
+                "Bu, her blok zincirinin teknik bir gerekliliğidir",
                 "Listeleme sonrasında tokenleri hemen satma isteğini azaltmak için",
                 "Ekibin projeye katılımını tamamen dışlamak için",
-                "Bu, her blok zincirinin teknik bir gerekliliğidir",
               ],
               correctAnswer: "Listeleme sonrasında tokenleri hemen satma isteğini azaltmak için",
             },
@@ -3080,9 +3133,9 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Token unlock anında ne olur?",
               options: [
+                "Borsa varlığın işlemlerini geçici olarak durdurur",
                 "Daha önce kilitli olan bir sonraki token bölümü transfere uygun hale gelir",
                 "Projenin tüm tokenleri yok edilir",
-                "Borsa varlığın işlemlerini geçici olarak durdurur",
               ],
               correctAnswer: "Daha önce kilitli olan bir sonraki token bölümü transfere uygun hale gelir",
             },
@@ -3090,16 +3143,16 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Token unlock'u ne zaman fiyat üzerinde belirgin baskı yaratabilir?",
               options: [
                 "Hacmi mevcut işlem hacmine göre büyük olduğunda",
-                "Unlock'lar fiyatı hiçbir zaman etkilemez",
                 "Yalnızca unlock gece gerçekleşirse",
+                "Unlock'lar fiyatı hiçbir zaman etkilemez",
               ],
               correctAnswer: "Hacmi mevcut işlem hacmine göre büyük olduğunda",
             },
             {
               prompt: "Traderlar neden bir tokenin unlock takvimini takip eder?",
               options: [
-                "Bu, bir altcoin pozisyonu tutarken risk yönetiminin bir parçasıdır",
                 "Unlock takviminin pratik bir uygulaması yoktur",
+                "Bu, bir altcoin pozisyonu tutarken risk yönetiminin bir parçasıdır",
                 "Kâr üzerindeki vergileri kesin olarak hesaplamak için",
               ],
               correctAnswer: "Bu, bir altcoin pozisyonu tutarken risk yönetiminin bir parçasıdır",
@@ -3133,26 +3186,26 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Token emisyonu nedir?",
               options: [
+                "Bir cüzdanın gerçekliğinin doğrulanması süreci",
                 "Yeni tokenlerin dolaşıma çıkarılması süreci",
                 "Bir tokenin borsadan tamamen kaldırılması süreci",
-                "Bir cüzdanın gerçekliğinin doğrulanması süreci",
               ],
               correctAnswer: "Yeni tokenlerin dolaşıma çıkarılması süreci",
             },
             {
               prompt: "Buna karşılık gelen bir talep artışı olmadan yüksek emisyonda ne olur?",
               options: [
+                "Tokenin toplam arzı azalır",
                 "Fiyat üzerinde kalıcı, uzun vadeli bir baskı oluşur",
                 "Tokenin fiyatı kesin olarak yükselir",
-                "Tokenin toplam arzı azalır",
               ],
               correctAnswer: "Fiyat üzerinde kalıcı, uzun vadeli bir baskı oluşur",
             },
             {
               prompt: "Bazı projeler neden token yakma mekanizması getirir?",
               options: [
-                "Emisyonun arz üzerindeki etkisini kısmen dengelemek için",
                 "Ağın çalışmasını tamamen durdurmak için",
+                "Emisyonun arz üzerindeki etkisini kısmen dengelemek için",
                 "Bu, borsaların token listelemesi için bir gerekliliğidir",
               ],
               correctAnswer: "Emisyonun arz üzerindeki etkisini kısmen dengelemek için",
@@ -3192,8 +3245,8 @@ export const COURSE_TR: CourseSeed = {
               prompt: "DEX, merkezi bir borsadan temel olarak nasıl farklıdır?",
               options: [
                 "DEX, kullanıcı fonlarını merkezi olarak saklayan biri olmadan akıllı sözleşmeler aracılığıyla çalışır",
-                "DEX'te işlem yapmak mümkün değildir",
                 "DEX'ler yalnızca kurumsal yatırımcılara açıktır",
+                "DEX'te işlem yapmak mümkün değildir",
               ],
               correctAnswer: "DEX, kullanıcı fonlarını merkezi olarak saklayan biri olmadan akıllı sözleşmeler aracılığıyla çalışır",
             },
@@ -3201,17 +3254,17 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Varlıklar üzerindeki kontrol açısından DEX üzerinden işlem yapmanın temel avantajı nedir?",
               options: [
                 "Kullanıcı, işlem anına kadar fonlar üzerindeki kontrolünü korur",
-                "DEX kesinlikle komisyon almaz",
                 "DEX otomatik olarak her türlü dolandırıcılığa karşı koruma sağlar",
+                "DEX kesinlikle komisyon almaz",
               ],
               correctAnswer: "Kullanıcı, işlem anına kadar fonlar üzerindeki kontrolünü korur",
             },
             {
               prompt: "DEX kullanırken cüzdan güvenliğinin sorumluluğu kimdedir?",
               options: [
-                "Tamamen kullanıcının kendisinde",
                 "Tamamen protokol geliştiricilerinde",
                 "Sorumluluk otomatik olarak borsa tarafından sigortalanır",
+                "Tamamen kullanıcının kendisinde",
               ],
               correctAnswer: "Tamamen kullanıcının kendisinde",
             },
@@ -3244,27 +3297,27 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "AMM, bir varlığın fiyatını nasıl belirler?",
               options: [
-                "Havuzdaki token oranına dayalı matematiksel bir formülle",
                 "Merkezi bir borsada olduğu gibi bir emir defteri ile",
                 "Token sahiplerinin oylamasıyla",
+                "Havuzdaki token oranına dayalı matematiksel bir formülle",
               ],
               correctAnswer: "Havuzdaki token oranına dayalı matematiksel bir formülle",
             },
             {
               prompt: "Bir AMM havuzunda likidite sağlayıcıları ne kazanır?",
               options: [
-                "Havuzun işlem komisyonlarından bir pay",
                 "Risksiz, garantili sabit bir yıllık faiz oranı",
                 "Protokolü tek başına yönetme hakkı",
+                "Havuzun işlem komisyonlarından bir pay",
               ],
               correctAnswer: "Havuzun işlem komisyonlarından bir pay",
             },
             {
               prompt: "AMM bağlamında slippage (kayma) nedir?",
               options: [
-                "Havuzun büyüklüğüne göre büyük bir işlemde işlem fiyatının piyasa fiyatından sapması",
-                "Ağın işlem onayı için aldığı komisyon",
                 "Bir ağ düğümünün işlemi işleme sürecindeki gecikme",
+                "Ağın işlem onayı için aldığı komisyon",
+                "Havuzun büyüklüğüne göre büyük bir işlemde işlem fiyatının piyasa fiyatından sapması",
               ],
               correctAnswer: "Havuzun büyüklüğüne göre büyük bir işlemde işlem fiyatının piyasa fiyatından sapması",
             },
@@ -3297,9 +3350,9 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Staking, Proof-of-Stake ağlarında hangi rolü oynar?",
               options: [
+                "Yalnızca projenin pazarlaması için kullanılır",
                 "İşlemlerin onaylanmasına ve ağın güvenliğinin sağlanmasına yardımcı olur",
                 "Blok zincirine olan ihtiyacın tamamen yerini alır",
-                "Yalnızca projenin pazarlaması için kullanılır",
               ],
               correctAnswer: "İşlemlerin onaylanmasına ve ağın güvenliğinin sağlanmasına yardımcı olur",
             },
@@ -3307,8 +3360,8 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Staking getirisi genellikle neyle ifade edilir?",
               options: [
                 "Yıllık yüzde ile (APR/APY)",
-                "Yalnızca yılda bir kez sabit bir dolar tutarıyla",
                 "Staking getirisi hiçbir zaman sayısal olarak ifade edilmez",
+                "Yalnızca yılda bir kez sabit bir dolar tutarıyla",
               ],
               correctAnswer: "Yıllık yüzde ile (APR/APY)",
             },
@@ -3316,8 +3369,8 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Staking getirisi genellikle kısmen neyin sayesinde oluşur?",
               options: [
                 "Yeni tokenlerin emisyonu sayesinde",
-                "Yalnızca merkezi borsaların komisyonları sayesinde",
                 "Devletin vergi teşvikleri sayesinde",
+                "Yalnızca merkezi borsaların komisyonları sayesinde",
               ],
               correctAnswer: "Yeni tokenlerin emisyonu sayesinde",
             },
@@ -3351,26 +3404,26 @@ export const COURSE_TR: CourseSeed = {
               prompt: "DeFi kredilendirmesinde borç alandan genellikle ne istenir?",
               options: [
                 "Kredi tutarını aşan fazla bir teminat",
-                "Banka üzerinden kimlik doğrulaması",
                 "Merkezi bir borsadan garanti",
+                "Banka üzerinden kimlik doğrulaması",
               ],
               correctAnswer: "Kredi tutarını aşan fazla bir teminat",
             },
             {
               prompt: "Teminatın değeri belirli bir eşiğin altına düşerse ne olur?",
               options: [
-                "Protokol, borcu kapatmak için teminatı otomatik olarak likide eder",
                 "Kredi herhangi bir sonuç doğurmadan otomatik olarak iptal edilir",
                 "Protokol kredi tutarını otomatik olarak artırır",
+                "Protokol, borcu kapatmak için teminatı otomatik olarak likide eder",
               ],
               correctAnswer: "Protokol, borcu kapatmak için teminatı otomatik olarak likide eder",
             },
             {
               prompt: "DeFi kredilendirme sisteminde faizi kim alır?",
               options: [
+                "DeFi kredilendirmesinde faiz kimseye ödenmez",
                 "Protokol aracılığıyla varlıklarını ödünç veren kullanıcılar",
                 "Yalnızca protokol geliştiricileri",
-                "DeFi kredilendirmesinde faiz kimseye ödenmez",
               ],
               correctAnswer: "Protokol aracılığıyla varlıklarını ödünç veren kullanıcılar",
             },
@@ -3403,17 +3456,17 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Yield farming nedir?",
               options: [
-                "Varlıkları farklı DeFi protokollerine yerleştirerek maksimum getiri arayan bir strateji",
-                "Özel donanımlarla bitcoin madenciliği yapma yöntemi",
                 "Kripto projelerine devlet sübvansiyon programı",
+                "Özel donanımlarla bitcoin madenciliği yapma yöntemi",
+                "Varlıkları farklı DeFi protokollerine yerleştirerek maksimum getiri arayan bir strateji",
               ],
               correctAnswer: "Varlıkları farklı DeFi protokollerine yerleştirerek maksimum getiri arayan bir strateji",
             },
             {
               prompt: "Farming'de çok yüksek vaat edilen getiri genellikle neyle ilişkilidir?",
               options: [
-                "Artan riskle (token oynaklığı, sözleşme riski, impermanent loss)",
                 "Risk olmamasıyla",
+                "Artan riskle (token oynaklığı, sözleşme riski, impermanent loss)",
                 "Devletin getiri garantisiyle",
               ],
               correctAnswer: "Artan riskle (token oynaklığı, sözleşme riski, impermanent loss)",
@@ -3421,9 +3474,9 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Impermanent loss (geçici kayıp) nedir?",
               options: [
-                "Varlıkların fiyat oranındaki değişimle ilişkili, likidite havuzlarına özgü bir risk",
                 "Token transferi için ağ komisyonu",
                 "Her staking işleminde garantili bir zarar",
+                "Varlıkların fiyat oranındaki değişimle ilişkili, likidite havuzlarına özgü bir risk",
               ],
               correctAnswer: "Varlıkların fiyat oranındaki değişimle ilişkili, likidite havuzlarına özgü bir risk",
             },
@@ -3461,17 +3514,17 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Projeler launchpad platformlarını ne için kullanır?",
               options: [
-                "İlk token dağıtımı ve likidite çekmek için",
-                "Yalnızca blok zinciri teknik desteği için",
                 "Yatırımcı çekmekten tamamen vazgeçmek için",
+                "Yalnızca blok zinciri teknik desteği için",
+                "İlk token dağıtımı ve likidite çekmek için",
               ],
               correctAnswer: "İlk token dağıtımı ve likidite çekmek için",
             },
             {
               prompt: "Bir launchpad'deki lansmana erişim için katılımcılardan genellikle ne istenir?",
               options: [
-                "Platformun koşullarını yerine getirmek, örneğin yerel tokeni stake etmek",
                 "Finansal analist diplomasına sahip olmak",
+                "Platformun koşullarını yerine getirmek, örneğin yerel tokeni stake etmek",
                 "Tüzel kişilik kaydı yaptırmak",
               ],
               correctAnswer: "Platformun koşullarını yerine getirmek, örneğin yerel tokeni stake etmek",
@@ -3479,9 +3532,9 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "İyi bir launchpad itibarı, üzerinden lanse edilen tokenin başarısını garanti eder mi?",
               options: [
-                "Hayır, proje yine de ayrıca değerlendirilmelidir",
                 "Evet, bu yüzde yüz başarı garantisidir",
                 "Evet, ama yalnızca Bitcoin üzerindeki projeler için",
+                "Hayır, proje yine de ayrıca değerlendirilmelidir",
               ],
               correctAnswer: "Hayır, proje yine de ayrıca değerlendirilmelidir",
             },
@@ -3514,9 +3567,9 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "ICO modeli nedir?",
               options: [
+                "Bitcoin madenciliği süreci",
                 "Yeni bir tokenin projenin erken aşamasında doğrudan yatırımcılara satılması",
                 "Kripto paraların devlet tarafından düzenlenmesi",
-                "Bitcoin madenciliği süreci",
               ],
               correctAnswer: "Yeni bir tokenin projenin erken aşamasında doğrudan yatırımcılara satılması",
             },
@@ -3524,17 +3577,17 @@ export const COURSE_TR: CourseSeed = {
               prompt: "ICO, kripto endüstrisinde hangi tarihsel rolü oynadı?",
               options: [
                 "Kripto paralarda ilk crowdfunding biçimlerinden biri oldu",
-                "Borsa işlemlerinin yerini tamamen aldı",
                 "Blok zinciri teknolojisinin iptaline yol açtı",
+                "Borsa işlemlerinin yerini tamamen aldı",
               ],
               correctAnswer: "Kripto paralarda ilk crowdfunding biçimlerinden biri oldu",
             },
             {
               prompt: "2017 ICO dalgasındaki zayıf düzenleme neye yol açtı?",
               options: [
-                "Gerçek bir ürünü olmayan yüksek oranda projeye",
-                "Yatırımcılar için risklerin tamamen ortadan kalkmasına",
                 "Tüm ülkelerde tüm kripto paraların derhal yasaklanmasına",
+                "Yatırımcılar için risklerin tamamen ortadan kalkmasına",
+                "Gerçek bir ürünü olmayan yüksek oranda projeye",
               ],
               correctAnswer: "Gerçek bir ürünü olmayan yüksek oranda projeye",
             },
@@ -3567,27 +3620,27 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "IDO genellikle ne aracılığıyla gerçekleştirilir?",
               options: [
+                "Merkezi bir piyasa düzenleyicisi aracılığıyla",
                 "Merkeziyetsiz bir borsa veya launchpad platformu aracılığıyla",
                 "Yalnızca geleneksel bir banka aracılığıyla",
-                "Merkezi bir piyasa düzenleyicisi aracılığıyla",
               ],
               correctAnswer: "Merkeziyetsiz bir borsa veya launchpad platformu aracılığıyla",
             },
             {
               prompt: "IDO, listeleme açısından klasik ICO'dan nasıl farklıdır?",
               options: [
-                "Likiditenin hemen eklenmesi sayesinde listeleme daha hızlı ve daha şeffaf gerçekleşir",
-                "IDO hiçbir zaman token listelemesi içermez",
                 "ICO ile IDO arasında bir fark yoktur",
+                "IDO hiçbir zaman token listelemesi içermez",
+                "Likiditenin hemen eklenmesi sayesinde listeleme daha hızlı ve daha şeffaf gerçekleşir",
               ],
               correctAnswer: "Likiditenin hemen eklenmesi sayesinde listeleme daha hızlı ve daha şeffaf gerçekleşir",
             },
             {
               prompt: "IDO'da işlemler başladıktan hemen sonra tokenin fiyatına genellikle ne olur?",
               options: [
-                "Yüksek talep nedeniyle ani oynaklık",
-                "Fiyat her zaman kusursuz biçimde istikrarlı kalır",
                 "İşlemler otomatik olarak bir gün süreyle durdurulur",
+                "Fiyat her zaman kusursuz biçimde istikrarlı kalır",
+                "Yüksek talep nedeniyle ani oynaklık",
               ],
               correctAnswer: "Yüksek talep nedeniyle ani oynaklık",
             },
@@ -3620,26 +3673,26 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Token airdrop'u nedir?",
               options: [
-                "Tokenlerin belirli bir kullanıcı grubu arasında ücretsiz dağıtımı",
-                "Proje haberlerine ücretli abonelik",
                 "Kripto para işlemlerine zorunlu vergi",
+                "Proje haberlerine ücretli abonelik",
+                "Tokenlerin belirli bir kullanıcı grubu arasında ücretsiz dağıtımı",
               ],
               correctAnswer: "Tokenlerin belirli bir kullanıcı grubu arasında ücretsiz dağıtımı",
             },
             {
               prompt: "Projeler airdrop yoluyla kullanıcıları genellikle ne için ödüllendirir?",
               options: [
+                "Cüzdanı ağdan silmek için",
                 "Protokolün erken kullanımı veya test ağına katılım için",
                 "Proje hakkında olumsuz yorumlar için",
-                "Cüzdanı ağdan silmek için",
               ],
               correctAnswer: "Protokolün erken kullanımı veya test ağına katılım için",
             },
             {
               prompt: "Potansiyel bir airdrop'ta kullanıcıyı hangi işaret uyarmalıdır?",
               options: [
-                "Tokenleri almak için fon veya özel anahtar gönderme talebi",
                 "Kullanıcıdan herhangi bir talepte bulunulmaması",
+                "Tokenleri almak için fon veya özel anahtar gönderme talebi",
                 "Cüzdan adresinin herkese açık bir listede basitçe kontrol edilmesi",
               ],
               correctAnswer: "Tokenleri almak için fon veya özel anahtar gönderme talebi",
@@ -3673,27 +3726,27 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Yeni bir kripto projesinin temel kontrolü genellikle neyle başlar?",
               options: [
+                "Yalnızca projenin logosunun incelenmesiyle",
                 "Ekibin, ürünün ve erken yatırımcıların analiziyle",
                 "Maksimum miktarda token derhal satın alınmasıyla",
-                "Yalnızca projenin logosunun incelenmesiyle",
               ],
               correctAnswer: "Ekibin, ürünün ve erken yatırımcıların analiziyle",
             },
             {
               prompt: "Projenin gerçek ilerlemesinin daha güvenilir bir göstergesi genellikle hangi sinyal olarak kabul edilir?",
               options: [
+                "Başka bir doğrulama olmadan sosyal medyadaki takipçi sayısı",
                 "Açık kod depolarındaki geliştirme aktivitesi",
                 "Pazarlama gönderilerindeki gösterişli vaatlerin sayısı",
-                "Başka bir doğrulama olmadan sosyal medyadaki takipçi sayısı",
               ],
               correctAnswer: "Açık kod depolarındaki geliştirme aktivitesi",
             },
             {
               prompt: "Bir projenin ilk değerlendirmesinde tokenomics'e neden dikkat edilmelidir?",
               options: [
+                "Tokenomics yalnızca blok zinciri olmayan projeler için önemlidir",
                 "Dengeli bir tokenomics, gelecekteki satış baskısı riskini azaltır",
                 "Tokenomics, projenin riskleriyle hiçbir şekilde ilişkili değildir",
-                "Tokenomics yalnızca blok zinciri olmayan projeler için önemlidir",
               ],
               correctAnswer: "Dengeli bir tokenomics, gelecekteki satış baskısı riskini azaltır",
             },
@@ -3731,17 +3784,17 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Bir strateji olarak scalping'in temel özelliği nedir?",
               options: [
-                "Her birinden küçük bir kâr elde edilen çok sayıda kısa işlem",
                 "Pozisyonun aylarca tutulması",
                 "Grafik analizinden tamamen vazgeçilmesi",
+                "Her birinden küçük bir kâr elde edilen çok sayıda kısa işlem",
               ],
               correctAnswer: "Her birinden küçük bir kâr elde edilen çok sayıda kısa işlem",
             },
             {
               prompt: "Borsa komisyonları scalper için neden özellikle önemlidir?",
               options: [
-                "İşlem sıklığının yüksek olması nedeniyle nihai getiriyi önemli ölçüde etkilerler",
                 "Scalping her borsada komisyonlardan tamamen muaftır",
+                "İşlem sıklığının yüksek olması nedeniyle nihai getiriyi önemli ölçüde etkilerler",
                 "Komisyonlar yalnızca pozisyon bir aydan fazla tutulduğunda önemlidir",
               ],
               correctAnswer: "İşlem sıklığının yüksek olması nedeniyle nihai getiriyi önemli ölçüde etkilerler",
@@ -3749,9 +3802,9 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Scalping'de kullanılan bir enstrüman için özellikle ne önemlidir?",
               options: [
-                "Yüksek likidite ve hızlı emir yürütme",
-                "Mümkün olduğunca düşük likidite",
                 "Gerçek zamanlı fiyat grafiğinin olmaması",
+                "Mümkün olduğunca düşük likidite",
+                "Yüksek likidite ve hızlı emir yürütme",
               ],
               correctAnswer: "Yüksek likidite ve hızlı emir yürütme",
             },
@@ -3784,27 +3837,27 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Day trading'in temel kuralı nedir?",
               options: [
-                "Tüm pozisyonlar aynı işlem günü içinde kapatılır",
                 "Pozisyonlar mutlaka birkaç hafta tutulur",
                 "İşlemler yalnızca ayda bir kez açılır",
+                "Tüm pozisyonlar aynı işlem günü içinde kapatılır",
               ],
               correctAnswer: "Tüm pozisyonlar aynı işlem günü içinde kapatılır",
             },
             {
               prompt: "Pozisyonların bir sonraki güne taşınmaması hangi riski ortadan kaldırır?",
               options: [
-                "Gece fiyat gap'i riski",
                 "Borsa komisyonu riski",
                 "Token adının değişmesi riski",
+                "Gece fiyat gap'i riski",
               ],
               correctAnswer: "Gece fiyat gap'i riski",
             },
             {
               prompt: "Day trading, kâr hedefleri açısından scalping'den nasıl farklıdır?",
               options: [
-                "Day trading'de işlem başına genellikle daha geniş kâr hedefleri vardır",
-                "Her iki stratejinin kâr hedefleri tamamen aynıdır",
                 "Day trading kâr hedefi içermez",
+                "Her iki stratejinin kâr hedefleri tamamen aynıdır",
+                "Day trading'de işlem başına genellikle daha geniş kâr hedefleri vardır",
               ],
               correctAnswer: "Day trading'de işlem başına genellikle daha geniş kâr hedefleri vardır",
             },
@@ -3837,8 +3890,8 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Swing trading'de tipik pozisyon tutma süresi nedir?",
               options: [
-                "Birkaç günden birkaç haftaya kadar",
                 "Birkaç saniyeden birkaç dakikaya kadar",
+                "Birkaç günden birkaç haftaya kadar",
                 "İstisnasız birkaç yıl",
               ],
               correctAnswer: "Birkaç günden birkaç haftaya kadar",
@@ -3846,8 +3899,8 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Swing traderlar analiz için en sık hangi zaman dilimlerini kullanır?",
               options: [
-                "Daha üst zaman dilimleri, örneğin H4 ve D1",
                 "Yalnızca tik grafiği",
+                "Daha üst zaman dilimleri, örneğin H4 ve D1",
                 "Yalnızca dakikalık zaman dilimi",
               ],
               correctAnswer: "Daha üst zaman dilimleri, örneğin H4 ve D1",
@@ -3855,9 +3908,9 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Swing trading'deki pozisyonlar, tutma süresinin uzunluğu nedeniyle hangi özel riske maruz kalır?",
               options: [
-                "Gece ve hafta sonu fiyat gap'i riskine",
                 "Emrin anlık yürütülmesi riskine",
                 "Hiçbir oynaklık olmaması riskine",
+                "Gece ve hafta sonu fiyat gap'i riskine",
               ],
               correctAnswer: "Gece ve hafta sonu fiyat gap'i riskine",
             },
@@ -3890,17 +3943,17 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Position trading öncelikle neye odaklanır?",
               options: [
-                "Büyük, uzun vadeli trendleri yakalamaya",
                 "Dakikalık fiyat dalgalanmalarına",
                 "Borsalar arasında gerçek zamanlı arbitraja",
+                "Büyük, uzun vadeli trendleri yakalamaya",
               ],
               correctAnswer: "Büyük, uzun vadeli trendleri yakalamaya",
             },
             {
               prompt: "Pozisyon traderı, uzun tutma ufku nedeniyle neye hazırlıklı olmalıdır?",
               options: [
-                "Genel trend içindeki ara drawdown'lara",
                 "Herhangi bir fiyat dalgalanmasının tamamen olmamasına",
+                "Genel trend içindeki ara drawdown'lara",
                 "İşlemin her gün sonunda mutlaka kapatılmasına",
               ],
               correctAnswer: "Genel trend içindeki ara drawdown'lara",
@@ -3908,8 +3961,8 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Position trading'de hangi tür analiz özellikle önemli bir rol oynar?",
               options: [
-                "Makroekonomik ve temel analiz",
                 "Yalnızca son bir dakikanın emir defteri analizi",
+                "Makroekonomik ve temel analiz",
                 "Herhangi bir analiz gerekli değildir",
               ],
               correctAnswer: "Makroekonomik ve temel analiz",
@@ -3944,25 +3997,25 @@ export const COURSE_TR: CourseSeed = {
               prompt: "Liquidity Sweep stratejisi hangi fikre dayanır?",
               options: [
                 "Bir seviyenin yanlış kırılımı, likidite toplanması ve ardından fiyatın dönmesine",
-                "Seviye analizi yapmadan pozisyonun sürekli tutulmasına",
                 "Her türlü destek ve direnç seviyesinin göz ardı edilmesine",
+                "Seviye analizi yapmadan pozisyonun sürekli tutulmasına",
               ],
               correctAnswer: "Bir seviyenin yanlış kırılımı, likidite toplanması ve ardından fiyatın dönmesine",
             },
             {
               prompt: "Bir seviye kırılımının gerçek bir kırılım değil de tam olarak bir sweep olduğunu ne doğrular?",
               options: [
-                "Kırılımdan sonra fiyatın hızlı bir şekilde aralığın içine geri dönmesi",
-                "Fiyat hareketinin seviyenin çok ötesinde devam etmesi",
                 "Kırılımda hacmin tamamen olmaması",
+                "Fiyat hareketinin seviyenin çok ötesinde devam etmesi",
+                "Kırılımdan sonra fiyatın hızlı bir şekilde aralığın içine geri dönmesi",
               ],
               correctAnswer: "Kırılımdan sonra fiyatın hızlı bir şekilde aralığın içine geri dönmesi",
             },
             {
               prompt: "Bu stratejiyi kullanan bir trader işlemi genellikle ne zaman açar?",
               options: [
-                "Fiyatın aralığın içine dönüşü doğrulandıktan sonra",
                 "Doğrulama beklemeden, seviyeye değildiği anda hemen",
+                "Fiyatın aralığın içine dönüşü doğrulandıktan sonra",
                 "Yalnızca işlem haftası kapandıktan sonra",
               ],
               correctAnswer: "Fiyatın aralığın içine dönüşü doğrulandıktan sonra",
@@ -3996,27 +4049,27 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Breakout (kırılım) stratejisi neye dayanır?",
               options: [
-                "Önemli bir seviyenin onaylanmış kırılımı yönünde girişe",
                 "Yalnızca kırılımın tersine girişe",
                 "Destek ve direnç seviyelerinin tamamen göz ardı edilmesine",
+                "Önemli bir seviyenin onaylanmış kırılımı yönünde girişe",
               ],
               correctAnswer: "Önemli bir seviyenin onaylanmış kırılımı yönünde girişe",
             },
             {
               prompt: "Gerçek bir kırılımın onayı olarak genellikle ne kullanılır, yanlış bir kırılımın değil?",
               options: [
-                "Artan hacim ve seviyenin dışında mumun kapanışı",
-                "Mumun kapanışı olmadan fiyatın seviyeye basitçe dokunması",
                 "Hacmin sıfıra düşmesi",
+                "Mumun kapanışı olmadan fiyatın seviyeye basitçe dokunması",
+                "Artan hacim ve seviyenin dışında mumun kapanışı",
               ],
               correctAnswer: "Artan hacim ve seviyenin dışında mumun kapanışı",
             },
             {
               prompt: "Traderlar bazen girişten önce kırılan seviyenin yeniden test edilmesini neden bekler?",
               options: [
-                "Yanlış bir kırılımda giriş yapma riskini azaltmak için",
-                "Retest'in giriş için hiçbir önemi yoktur",
                 "İşlem komisyonunu kesin olarak artırmak için",
+                "Retest'in giriş için hiçbir önemi yoktur",
+                "Yanlış bir kırılımda giriş yapma riskini azaltmak için",
               ],
               correctAnswer: "Yanlış bir kırılımda giriş yapma riskini azaltmak için",
             },
@@ -4049,8 +4102,8 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Mean Reversion stratejisi hangi fikre dayanır?",
               options: [
-                "Ortalama değerden güçlü şekilde sapan fiyat, ona geri dönme eğilimindedir",
                 "Fiyat hiçbir zaman ortalama değere geri dönmez",
+                "Ortalama değerden güçlü şekilde sapan fiyat, ona geri dönme eğilimindedir",
                 "Fiyat her zaman aynı yönde sonsuza kadar hareketine devam eder",
               ],
               correctAnswer: "Ortalama değerden güçlü şekilde sapan fiyat, ona geri dönme eğilimindedir",
@@ -4058,18 +4111,18 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Mean reversion stratejisi genellikle hangi piyasa türünde daha iyi çalışır?",
               options: [
+                "Traderın kendisinden başka hiçbir katılımcının olmadığı bir piyasada",
                 "Yatay piyasada",
                 "Yalnızca hiperenflasyon dönemlerinde",
-                "Traderın kendisinden başka hiçbir katılımcının olmadığı bir piyasada",
               ],
               correctAnswer: "Yatay piyasada",
             },
             {
               prompt: "Traderlar mean reversion'da giriş noktalarını bulmak için hangi araçları sıklıkla birleştirir?",
               options: [
+                "Yalnızca sosyal medya haberleri",
                 "RSI gibi osilatörler ve ortalamadan sapma bantları",
                 "Yalnızca borsa komisyon verileri",
-                "Yalnızca sosyal medya haberleri",
               ],
               correctAnswer: "RSI gibi osilatörler ve ortalamadan sapma bantları",
             },
@@ -4107,8 +4160,8 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Sanal hesaptaki final uygulamasının temel amacı nedir?",
               options: [
-                "Trading'e tutarlı ve disiplinli bir yaklaşım sergilemek",
                 "Ne pahasına olursa olsun mümkün olan en yüksek kârı elde etmek",
+                "Trading'e tutarlı ve disiplinli bir yaklaşım sergilemek",
                 "Analiz yapmadan mümkün olduğunca çok işlem yapmak",
               ],
               correctAnswer: "Trading'e tutarlı ve disiplinli bir yaklaşım sergilemek",
@@ -4116,18 +4169,18 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Bu aşamada her işlemin açılmasından önce ne gelmelidir?",
               options: [
+                "Kaldıracın maksimuma çıkarılması",
                 "Önceden belirlenmiş bir giriş ve çıkış planı",
                 "Analiz yapmadan rastgele bir varlık seçimi",
-                "Kaldıracın maksimuma çıkarılması",
               ],
               correctAnswer: "Önceden belirlenmiş bir giriş ve çıkış planı",
             },
             {
               prompt: "Kurs materyaline göre pozisyon büyüklüğü neyle belirlenir?",
               options: [
-                "İstenen kâra değil, işlem başına kabul edilebilir riske göre",
                 "Yalnızca traderın sezgisiyle",
                 "İşlem anındaki dolar kuruyla",
+                "İstenen kâra değil, işlem başına kabul edilebilir riske göre",
               ],
               correctAnswer: "İstenen kâra değil, işlem başına kabul edilebilir riske göre",
             },
@@ -4160,27 +4213,27 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Kursun modüllerinin sıralı olarak tamamlanması neden önerilir?",
               options: [
-                "Her sonraki modül, önceki modüllerden edinilen bilgiye dayanır",
-                "Modüllerin tamamlanma sırasının hiçbir önemi yoktur",
                 "Bu yalnızca XP kazanmak için gereklidir",
+                "Modüllerin tamamlanma sırasının hiçbir önemi yoktur",
+                "Her sonraki modül, önceki modüllerden edinilen bilgiye dayanır",
               ],
               correctAnswer: "Her sonraki modül, önceki modüllerden edinilen bilgiye dayanır",
             },
             {
               prompt: "Kursun bazı modüllerinin atlanması neye yol açabilir?",
               options: [
-                "Sonraki aşamalarda ortaya çıkacak bilgi boşluklarına",
-                "Bunun sonraki öğrenme üzerinde hiçbir etkisi yoktur",
                 "Öğrenim görmeden otomatik olarak sertifika almaya",
+                "Bunun sonraki öğrenme üzerinde hiçbir etkisi yoktur",
+                "Sonraki aşamalarda ortaya çıkacak bilgi boşluklarına",
               ],
               correctAnswer: "Sonraki aşamalarda ortaya çıkacak bilgi boşluklarına",
             },
             {
               prompt: "Kursun tamamen bitirilmesi için ne gereklidir?",
               options: [
+                "Kursun ilk dersini açmak yeterlidir",
                 "Yalnızca seçilen modüllerin değil, tüm görevlerin tamamlanması",
                 "Seçilen herhangi bir modülün tamamlanması",
-                "Kursun ilk dersini açmak yeterlidir",
               ],
               correctAnswer: "Yalnızca seçilen modüllerin değil, tüm görevlerin tamamlanması",
             },
@@ -4213,17 +4266,17 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "\"Trader Yolu\" kursunun tam olarak tamamlanması neyi kapsar?",
               options: [
-                "Piyasanın temel kavramlarından analiz ve strateji konusundaki ileri düzey konulara kadar olan yolu",
                 "Yalnızca cüzdanla çalışmanın temellerini",
                 "Yalnızca kripto paraların hukuki yönlerini",
+                "Piyasanın temel kavramlarından analiz ve strateji konusundaki ileri düzey konulara kadar olan yolu",
               ],
               correctAnswer: "Piyasanın temel kavramlarından analiz ve strateji konusundaki ileri düzey konulara kadar olan yolu",
             },
             {
               prompt: "Kursu tamamlamak gerçek trading deneyiminin yerini tutar mı?",
               options: [
-                "Hayır, kurs bir temeldir ve gerçek deneyim daha fazla pratik gerektirir",
                 "Evet, kurs her türlü pratiğin tamamen yerini tutar",
+                "Hayır, kurs bir temeldir ve gerçek deneyim daha fazla pratik gerektirir",
                 "Evet, ama yalnızca 10x üzerindeki kaldıraçlı işlemler için",
               ],
               correctAnswer: "Hayır, kurs bir temeldir ve gerçek deneyim daha fazla pratik gerektirir",
@@ -4231,9 +4284,9 @@ export const COURSE_TR: CourseSeed = {
             {
               prompt: "Kurs tamamlandıktan sonra yapmaya devam etmesi önerilen nedir?",
               options: [
+                "Risk yönetiminden derhal vazgeçmek",
                 "İşlem günlüğü tutmak ve kendi kararlarını sürekli analiz etmek",
                 "Kendi trading'ini analiz etmeyi tamamen bırakmak",
-                "Risk yönetiminden derhal vazgeçmek",
               ],
               correctAnswer: "İşlem günlüğü tutmak ve kendi kararlarını sürekli analiz etmek",
             },

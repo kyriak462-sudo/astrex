@@ -80,7 +80,7 @@ export function getMaxLeverage(ticker: string): number {
   return ticker === "BTC" || ticker === "ETH" ? 100 : 20;
 }
 
-export const TIMEFRAMES = ["5m", "15m", "1h", "4h", "1d"] as const;
+export const TIMEFRAMES = ["1m", "5m", "15m", "30m", "1h", "4h", "1d", "1w"] as const;
 export type Timeframe = (typeof TIMEFRAMES)[number];
 
 export function isTimeframe(value: string | undefined): value is Timeframe {
@@ -146,4 +146,84 @@ export function formatPrice(price: number): string {
   if (price >= 100) return price.toFixed(2);
   if (price >= 1) return price.toFixed(3);
   return price.toFixed(5);
+}
+
+export type OrderBook = {
+  bids: [number, number][]; // [price, qty]
+  asks: [number, number][];
+};
+
+export async function getOrderBook(ticker: string, limit = 20): Promise<OrderBook> {
+  const url = `https://api.binance.com/api/v3/depth?symbol=${ticker}USDT&limit=${limit}`;
+  try {
+    const res = await fetch(url, { cache: "no-store" });
+    if (!res.ok) throw new Error(`Binance responded ${res.status}`);
+    const json = (await res.json()) as { bids: [string, string][]; asks: [string, string][] };
+    return {
+      bids: json.bids.map(([p, q]) => [Number(p), Number(q)]),
+      asks: json.asks.map(([p, q]) => [Number(p), Number(q)]),
+    };
+  } catch {
+    return { bids: [], asks: [] };
+  }
+}
+
+export type RecentTrade = {
+  price: number;
+  qty: number;
+  time: number;
+  isBuyerMaker: boolean;
+};
+
+export async function getRecentTrades(ticker: string, limit = 30): Promise<RecentTrade[]> {
+  const url = `https://api.binance.com/api/v3/trades?symbol=${ticker}USDT&limit=${limit}`;
+  try {
+    const res = await fetch(url, { cache: "no-store" });
+    if (!res.ok) throw new Error(`Binance responded ${res.status}`);
+    const rows = (await res.json()) as {
+      price: string;
+      qty: string;
+      time: number;
+      isBuyerMaker: boolean;
+    }[];
+    return rows
+      .map((r) => ({
+        price: Number(r.price),
+        qty: Number(r.qty),
+        time: r.time,
+        isBuyerMaker: r.isBuyerMaker,
+      }))
+      .reverse();
+  } catch {
+    return [];
+  }
+}
+
+export type Ticker24h = {
+  highPrice: number;
+  lowPrice: number;
+  volume: number;
+  priceChangePercent: number;
+};
+
+export async function getTicker24h(ticker: string): Promise<Ticker24h> {
+  const url = `https://api.binance.com/api/v3/ticker/24hr?symbol=${ticker}USDT`;
+  try {
+    const res = await fetch(url, { next: { revalidate: 30 } });
+    if (!res.ok) throw new Error(`Binance responded ${res.status}`);
+    const json = (await res.json()) as {
+      highPrice: string;
+      lowPrice: string;
+      volume: string;
+      priceChangePercent: string;
+    };
+    return {
+      highPrice: Number(json.highPrice),
+      lowPrice: Number(json.lowPrice),
+      volume: Number(json.volume),
+      priceChangePercent: Number(json.priceChangePercent),
+    };
+  } catch {
+    return { highPrice: 0, lowPrice: 0, volume: 0, priceChangePercent: 0 };
+  }
 }

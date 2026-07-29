@@ -60,24 +60,60 @@ export async function checkTriggers(userId: string) {
     where: { userId },
     include: { trades: { where: { status: "OPEN" } } },
   });
+  if (portfolio && portfolio.trades.length > 0) {
+    for (const trade of portfolio.trades) {
+      if (!trade.stopLoss && !trade.takeProfit) continue;
+      const { price } = await getCurrentPrice(trade.symbol);
+      if (!price || !Number.isFinite(price)) continue;
+
+      const hitStop =
+        trade.stopLoss != null &&
+        (trade.side === "LONG" ? price <= trade.stopLoss : price >= trade.stopLoss);
+      const hitTarget =
+        trade.takeProfit != null &&
+        (trade.side === "LONG" ? price >= trade.takeProfit : price <= trade.takeProfit);
+
+      if (hitStop || hitTarget) {
+        const exitPrice = hitStop ? trade.stopLoss! : trade.takeProfit!;
+        await settleTrade(trade, exitPrice);
+      }
+    }
+  }
+
+  await checkPendingOrders(userId);
+}
+
+/** Fires STOP_LIMIT triggers and fills LIMIT/triggered-STOP_LIMIT orders once price crosses their level. */
+async function checkPendingOrders(userId: string) {
+  const portfolio = await db.virtualPortfolio.findUnique({
+    where: { userId },
+    include: { trades: { where: { status: "PENDING" } } },
+  });
   if (!portfolio || portfolio.trades.length === 0) return;
 
-  for (const trade of portfolio.trades) {
-    if (!trade.stopLoss && !trade.takeProfit) continue;
-    const { price } = await getCurrentPrice(trade.symbol);
+  for (const order of portfolio.trades) {
+    const { price } = await getCurrentPrice(order.symbol);
     if (!price || !Number.isFinite(price)) continue;
 
-    const hitStop =
-      trade.stopLoss != null &&
-      (trade.side === "LONG" ? price <= trade.stopLoss : price >= trade.stopLoss);
-    const hitTarget =
-      trade.takeProfit != null &&
-      (trade.side === "LONG" ? price >= trade.takeProfit : price <= trade.takeProfit);
-
-    if (hitStop || hitTarget) {
-      const exitPrice = hitStop ? trade.stopLoss! : trade.takeProfit!;
-      await settleTrade(trade, exitPrice);
+    if (order.orderType === "STOP_LIMIT" && !order.triggered) {
+      const hitTrigger =
+        order.triggerPrice != null &&
+        (order.side === "LONG" ? price >= order.triggerPrice : price <= order.triggerPrice);
+      if (!hitTrigger) continue;
+      await db.virtualTrade.update({ where: { id: order.id }, data: { triggered: true } });
+      continue;
     }
+
+    const fillable = order.orderType === "LIMIT" || (order.orderType === "STOP_LIMIT" && order.triggered);
+    if (!fillable) continue;
+
+    const canFill = order.side === "LONG" ? price <= order.entryPrice : price >= order.entryPrice;
+    if (!canFill) continue;
+
+    await db.virtualTrade.update({
+      where: { id: order.id },
+      data: { status: "OPEN", openedAt: new Date() },
+    });
   }
 }
 
@@ -93,16 +129,35 @@ export async function openTrade(formData: FormData) {
   const takeProfitInput = formData.get("takeProfit");
   const stopLoss = stopLossInput ? Number(stopLossInput) : null;
   const takeProfit = takeProfitInput ? Number(takeProfitInput) : null;
+  const orderTypeInput = String(formData.get("orderType") ?? "MARKET");
+  const orderType = orderTypeInput === "LIMIT" || orderTypeInput === "STOP_LIMIT" ? orderTypeInput : "MARKET";
 
   if (!symbol || !Number.isFinite(amount) || amount <= 0) return;
 
   const portfolio = await getOrCreatePortfolio(session.user.id);
   if (!Number.isFinite(portfolio.balance) || amount > portfolio.balance) return;
 
-  const { price } = await getCurrentPrice(symbol);
-  if (!price || !Number.isFinite(price) || price <= 0) return;
+  const { price: marketPrice } = await getCurrentPrice(symbol);
+  if (!marketPrice || !Number.isFinite(marketPrice) || marketPrice <= 0) return;
 
-  const quantity = (amount * leverage) / price;
+  let entryPrice = marketPrice;
+  let triggerPrice: number | null = null;
+  let status: "OPEN" | "PENDING" = "OPEN";
+
+  if (orderType === "LIMIT" || orderType === "STOP_LIMIT") {
+    const limitPriceInput = Number(formData.get("limitPrice"));
+    if (!Number.isFinite(limitPriceInput) || limitPriceInput <= 0) return;
+    entryPrice = limitPriceInput;
+    status = "PENDING";
+
+    if (orderType === "STOP_LIMIT") {
+      const triggerInput = Number(formData.get("triggerPrice"));
+      if (!Number.isFinite(triggerInput) || triggerInput <= 0) return;
+      triggerPrice = triggerInput;
+    }
+  }
+
+  const quantity = (amount * leverage) / entryPrice;
   if (!Number.isFinite(quantity) || quantity <= 0) return;
 
   await db.$transaction([
@@ -111,12 +166,14 @@ export async function openTrade(formData: FormData) {
         portfolioId: portfolio.id,
         symbol,
         side,
-        entryPrice: price,
+        orderType,
+        entryPrice,
+        triggerPrice: triggerPrice ?? undefined,
         quantity,
         leverage,
         stopLoss: stopLoss ?? undefined,
         takeProfit: takeProfit ?? undefined,
-        status: "OPEN",
+        status,
       },
     }),
     db.virtualPortfolio.update({
@@ -220,6 +277,98 @@ export async function setTradeLevel(
   revalidatePath("/market");
 }
 
+/** Cancels the caller's own pending (LIMIT/STOP_LIMIT) order and refunds its reserved margin. */
+export async function cancelOrder(formData: FormData) {
+  const session = await auth();
+  if (!session?.user?.id) return;
+
+  const tradeId = String(formData.get("tradeId"));
+  const order = await db.virtualTrade.findUnique({
+    where: { id: tradeId },
+    include: { portfolio: true },
+  });
+  if (!order || order.portfolio.userId !== session.user.id || order.status !== "PENDING") return;
+
+  const margin = (order.entryPrice * order.quantity) / order.leverage;
+
+  await db.$transaction([
+    db.virtualTrade.update({ where: { id: order.id }, data: { status: "CANCELLED" } }),
+    db.virtualPortfolio.update({
+      where: { id: order.portfolioId },
+      data: { balance: { increment: Number.isFinite(margin) ? margin : 0 } },
+    }),
+  ]);
+
+  revalidatePath("/market");
+}
+
+/** Closes an open position at the current price, then immediately opens the opposite side with the same size. */
+export async function reverseTrade(formData: FormData) {
+  const session = await auth();
+  if (!session?.user?.id) return;
+
+  const tradeId = String(formData.get("tradeId"));
+  const trade = await db.virtualTrade.findUnique({
+    where: { id: tradeId },
+    include: { portfolio: true },
+  });
+  if (!trade || trade.portfolio.userId !== session.user.id || trade.status !== "OPEN") return;
+
+  const { price } = await getCurrentPrice(trade.symbol);
+  if (!price || !Number.isFinite(price) || price <= 0) return;
+
+  const margin = (trade.entryPrice * trade.quantity) / trade.leverage;
+  await settleTrade(trade, price);
+
+  const portfolio = await db.virtualPortfolio.findUnique({ where: { id: trade.portfolioId } });
+  if (!portfolio || !Number.isFinite(margin) || margin > portfolio.balance) return;
+
+  const newSide = trade.side === "LONG" ? "SHORT" : "LONG";
+  const quantity = (margin * trade.leverage) / price;
+  if (!Number.isFinite(quantity) || quantity <= 0) return;
+
+  await db.$transaction([
+    db.virtualTrade.create({
+      data: {
+        portfolioId: trade.portfolioId,
+        symbol: trade.symbol,
+        side: newSide,
+        orderType: "MARKET",
+        entryPrice: price,
+        quantity,
+        leverage: trade.leverage,
+        status: "OPEN",
+      },
+    }),
+    db.virtualPortfolio.update({
+      where: { id: trade.portfolioId },
+      data: { balance: { decrement: margin } },
+    }),
+  ]);
+
+  revalidatePath("/market");
+}
+
+/** Closes every open position for the caller's portfolio at current market prices. */
+export async function closeAllTrades() {
+  const session = await auth();
+  if (!session?.user?.id) return;
+
+  const portfolio = await db.virtualPortfolio.findUnique({
+    where: { userId: session.user.id },
+    include: { trades: { where: { status: "OPEN" } } },
+  });
+  if (!portfolio) return;
+
+  for (const trade of portfolio.trades) {
+    const { price } = await getCurrentPrice(trade.symbol);
+    if (!price || !Number.isFinite(price) || price <= 0) continue;
+    await settleTrade(trade, price);
+  }
+
+  revalidatePath("/market");
+}
+
 /** Resets the caller's virtual portfolio balance back to the starting amount and clears open trades. */
 export async function resetBalance() {
   const session = await auth();
@@ -228,7 +377,7 @@ export async function resetBalance() {
   const portfolio = await getOrCreatePortfolio(session.user.id);
 
   await db.$transaction([
-    db.virtualTrade.deleteMany({ where: { portfolioId: portfolio.id, status: "OPEN" } }),
+    db.virtualTrade.deleteMany({ where: { portfolioId: portfolio.id, status: { in: ["OPEN", "PENDING"] } } }),
     db.virtualPortfolio.update({
       where: { id: portfolio.id },
       data: { balance: STARTING_BALANCE },

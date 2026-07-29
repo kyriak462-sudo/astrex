@@ -2,7 +2,8 @@
 
 import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
-import { auth } from "@/lib/auth";
+import { redirect } from "next/navigation";
+import { auth, signOut } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { isTheme, THEME_COOKIE } from "@/lib/theme";
 import { isLocale, LOCALE_COOKIE } from "@/i18n/locales";
@@ -40,4 +41,14 @@ export async function setAvatar(formData: FormData) {
     data: { avatarId: value },
   });
   revalidatePath("/", "layout");
+}
+
+/** Permanently deletes the caller's account and all associated personal data. */
+export async function deleteAccount() {
+  const session = await auth();
+  if (!session?.user?.id) return;
+
+  await db.user.delete({ where: { id: session.user.id } });
+  await signOut({ redirect: false });
+  redirect("/");
 }

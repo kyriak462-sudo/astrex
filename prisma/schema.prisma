@@ -64,6 +64,13 @@ model User {
   streakCount    Int       @default(0)
   lastActiveDate DateTime?
 
+  consentGiven          Boolean   @default(false)
+  consentAt             DateTime?
+  privacyPolicyVersion  String?
+  termsVersion          String?
+  signupIp              String?
+  signupUserAgent       String?
+
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
 
@@ -219,25 +226,36 @@ enum TradeSide {
 }
 
 enum TradeStatus {
+  PENDING
   OPEN
   CLOSED
+  CANCELLED
+}
+
+enum OrderType {
+  MARKET
+  LIMIT
+  STOP_LIMIT
 }
 
 model VirtualTrade {
-  id          String      @id @default(cuid())
-  portfolioId String
-  symbol      String
-  side        TradeSide
-  entryPrice  Float
-  exitPrice   Float?
-  quantity    Float
-  leverage    Float       @default(1)
-  stopLoss    Float?
-  takeProfit  Float?
-  status      TradeStatus @default(OPEN)
-  pnl         Float?
-  openedAt    DateTime    @default(now())
-  closedAt    DateTime?
+  id           String      @id @default(cuid())
+  portfolioId  String
+  symbol       String
+  side         TradeSide
+  orderType    OrderType   @default(MARKET)
+  entryPrice   Float
+  triggerPrice Float?
+  triggered    Boolean     @default(false)
+  exitPrice    Float?
+  quantity     Float
+  leverage     Float       @default(1)
+  stopLoss     Float?
+  takeProfit   Float?
+  status       TradeStatus @default(OPEN)
+  pnl          Float?
+  openedAt     DateTime    @default(now())
+  closedAt     DateTime?
 
   portfolio   VirtualPortfolio @relation(fields: [portfolioId], references: [id], onDelete: Cascade)
 

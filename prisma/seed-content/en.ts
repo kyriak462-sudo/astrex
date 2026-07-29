@@ -36,20 +36,20 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What fundamentally distinguishes trading from long-term investing?",
               options: [
-                "Trading involves frequent trades over short time horizons",
                 "Trading is only available to banks",
+                "Trading involves frequent trades over short time horizons",
                 "Trading carries no risk",
               ],
               correctAnswer: "Trading involves frequent trades over short time horizons",
             },
             {
               prompt: "Unlike a classic investor, who can profit even when an asset's price falls?",
-              options: ["A trader who opens short positions", "Only banks", "Only market makers"],
+              options: ["Only market makers", "A trader who opens short positions", "Only banks"],
               correctAnswer: "A trader who opens short positions",
             },
             {
               prompt: "What do market makers provide in the market?",
-              options: ["Liquidity for other participants' trades", "Government regulation", "A fixed asset price"],
+              options: ["A fixed asset price", "Government regulation", "Liquidity for other participants' trades"],
               correctAnswer: "Liquidity for other participants' trades",
             },
           ],
@@ -77,17 +77,17 @@ export const COURSE_EN: CourseSeed = {
           questions: [
             {
               prompt: "How does the crypto market differ from the stock market?",
-              options: ["It operates 24/7 with no days off", "It only trades on weekday afternoons", "It's fully regulated by the government"],
+              options: ["It's fully regulated by the government", "It only trades on weekday afternoons", "It operates 24/7 with no days off"],
               correctAnswer: "It operates 24/7 with no days off",
             },
             {
               prompt: "What is traded on the Forex market?",
-              options: ["Currency pairs", "Company stocks", "Raw commodities"],
+              options: ["Company stocks", "Raw commodities", "Currency pairs"],
               correctAnswer: "Currency pairs",
             },
             {
               prompt: "Which of the listed markets is usually the most volatile?",
-              options: ["Cryptocurrency", "The government bond market", "G7 currency pairs"],
+              options: ["The government bond market", "Cryptocurrency", "G7 currency pairs"],
               correctAnswer: "Cryptocurrency",
             },
           ],
@@ -118,14 +118,14 @@ export const COURSE_EN: CourseSeed = {
           questions: [
             {
               prompt: "What is shown on the vertical axis of a price chart?",
-              options: ["The asset's price", "Trading volume", "The number of traders"],
+              options: ["The asset's price", "The number of traders", "Trading volume"],
               correctAnswer: "The asset's price",
             },
             {
               prompt: "What is a timeframe?",
               options: [
-                "The period of time represented by one element of the chart",
                 "The name of an exchange",
+                "The period of time represented by one element of the chart",
                 "A type of order",
               ],
               correctAnswer: "The period of time represented by one element of the chart",
@@ -134,8 +134,8 @@ export const COURSE_EN: CourseSeed = {
               prompt: "Why do traders analyze several timeframes at once?",
               options: [
                 "To see the overall trend picture and a precise entry point at the same time",
-                "It has no practical purpose",
                 "To avoid exchange fees",
+                "It has no practical purpose",
               ],
               correctAnswer: "To see the overall trend picture and a precise entry point at the same time",
             },
@@ -160,27 +160,27 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What does the body of a candle show?",
               options: [
+                "The number of market participants",
                 "The range between the open and close price",
                 "The maximum trading volume",
-                "The number of market participants",
               ],
               correctAnswer: "The range between the open and close price",
             },
             {
               prompt: "What do the wicks (shadows) of a candle show?",
               options: [
+                "The number of trades in a day",
                 "The price range beyond the body — the high and low for the period",
                 "The average trading volume",
-                "The number of trades in a day",
               ],
               correctAnswer: "The price range beyond the body — the high and low for the period",
             },
             {
               prompt: "What might a long lower wick after a price drop indicate?",
               options: [
+                "Trading volume was zero",
                 "Buyers actively bought up the price from below — a reversal is possible",
                 "The market will definitely continue falling",
-                "Trading volume was zero",
               ],
               correctAnswer: "Buyers actively bought up the price from below — a reversal is possible",
             },
@@ -205,18 +205,18 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What is a support level?",
               options: [
+                "A trading fee",
                 "A price where buyers have historically halted a decline",
                 "The exchange's opening price",
-                "A trading fee",
               ],
               correctAnswer: "A price where buyers have historically halted a decline",
             },
             {
               prompt: "What usually happens to a resistance level after it's broken to the upside?",
               options: [
-                "It often becomes new support",
-                "It disappears and no longer affects the price",
                 "The price is guaranteed to instantly return",
+                "It disappears and no longer affects the price",
+                "It often becomes new support",
               ],
               correctAnswer: "It often becomes new support",
             },
@@ -224,8 +224,8 @@ export const COURSE_EN: CourseSeed = {
               prompt: "How should reliable levels be drawn on a chart?",
               options: [
                 "Based on multiple price touches, not a single point",
-                "Strictly in the center of the chart",
                 "Only on the 1-minute timeframe",
+                "Strictly in the center of the chart",
               ],
               correctAnswer: "Based on multiple price touches, not a single point",
             },
@@ -250,17 +250,17 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What does an uptrend consist of?",
               options: [
+                "Only green candles in a row",
                 "A sequence of higher highs and higher lows",
                 "Candles of the same height",
-                "Only green candles in a row",
               ],
               correctAnswer: "A sequence of higher highs and higher lows",
             },
             {
               prompt: "What is a sideways trend (range)?",
               options: [
-                "Price movement within a range with no clear direction",
                 "A sharp price decline",
+                "Price movement within a range with no clear direction",
                 "A pause in exchange trading",
               ],
               correctAnswer: "Price movement within a range with no clear direction",
@@ -268,9 +268,9 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "Why do people say \"the trend is your friend\"?",
               options: [
-                "Trading with the trend statistically offers better odds of success",
-                "A trend never changes direction",
                 "It's just a figure of speech with no practical meaning",
+                "A trend never changes direction",
+                "Trading with the trend statistically offers better odds of success",
               ],
               correctAnswer: "Trading with the trend statistically offers better odds of success",
             },
@@ -295,9 +295,9 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What does a price increase on low trading volume suggest?",
               options: [
-                "The move is weak and may not be confirmed",
                 "It's the most reliable entry signal",
                 "The asset's liquidity is at its maximum",
+                "The move is weak and may not be confirmed",
               ],
               correctAnswer: "The move is weak and may not be confirmed",
             },
@@ -305,17 +305,17 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What is market liquidity?",
               options: [
                 "The ease of buying/selling an asset without significantly affecting its price",
-                "The total number of coins in circulation",
                 "The exchange's trading fee",
+                "The total number of coins in circulation",
               ],
               correctAnswer: "The ease of buying/selling an asset without significantly affecting its price",
             },
             {
               prompt: "What risk does a trader face when working with a low-liquidity asset?",
               options: [
+                "Guaranteed profit",
                 "Significant slippage when executing a trade",
                 "A complete absence of fees",
-                "Guaranteed profit",
               ],
               correctAnswer: "Significant slippage when executing a trade",
             },
@@ -348,23 +348,23 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "Why is a stop-loss needed?",
               options: [
-                "To limit the loss on a trade in advance",
-                "To increase position size",
                 "To guarantee profit",
+                "To increase position size",
+                "To limit the loss on a trade in advance",
               ],
               correctAnswer: "To limit the loss on a trade in advance",
             },
             {
               prompt: "What percentage of the deposit is usually recommended to risk on one trade?",
-              options: ["1–2%", "25–30%", "The entire deposit"],
+              options: ["25–30%", "The entire deposit", "1–2%"],
               correctAnswer: "1–2%",
             },
             {
               prompt: "What does a risk/reward ratio of 1:3 mean?",
               options: [
-                "Potential profit is 3 times greater than the risk",
-                "Risk is 3 times greater than the profit",
                 "The trade will close after 3 hours",
+                "Risk is 3 times greater than the profit",
+                "Potential profit is 3 times greater than the risk",
               ],
               correctAnswer: "Potential profit is 3 times greater than the risk",
             },
@@ -394,23 +394,23 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What is the difference between SMA and EMA?",
               options: [
+                "There's no difference, they're the same thing",
                 "EMA gives more weight to recent prices",
                 "SMA only works on the 1-minute chart",
-                "There's no difference, they're the same thing",
               ],
               correctAnswer: "EMA gives more weight to recent prices",
             },
             {
               prompt: "What does it suggest when the price is above the moving average?",
-              options: ["The trend is likely upward", "The asset is definitely overvalued", "Trading volume is zero"],
+              options: ["The trend is likely upward", "Trading volume is zero", "The asset is definitely overvalued"],
               correctAnswer: "The trend is likely upward",
             },
             {
               prompt: "What is called a \"golden cross\"?",
               options: [
-                "A short MA crossing above a long MA — a bullish signal",
                 "The moment a new coin is listed",
                 "The price crossing the zero line",
+                "A short MA crossing above a long MA — a bullish signal",
               ],
               correctAnswer: "A short MA crossing above a long MA — a bullish signal",
             },
@@ -434,20 +434,20 @@ export const COURSE_EN: CourseSeed = {
           questions: [
             {
               prompt: "What range does the RSI indicator operate in?",
-              options: ["From 0 to 100", "From -1 to 1", "From 0 to 10,000"],
+              options: ["From -1 to 1", "From 0 to 100", "From 0 to 10,000"],
               correctAnswer: "From 0 to 100",
             },
             {
               prompt: "What does an RSI above 70 usually mean?",
-              options: ["The asset is in the overbought zone", "The asset cannot be sold", "Trading volume has fallen to zero"],
+              options: ["Trading volume has fallen to zero", "The asset cannot be sold", "The asset is in the overbought zone"],
               correctAnswer: "The asset is in the overbought zone",
             },
             {
               prompt: "What is RSI divergence?",
               options: [
+                "A technical glitch in the indicator",
                 "Price and the indicator move in different directions — a signal of a possible reversal",
                 "Price and the indicator move in complete sync",
-                "A technical glitch in the indicator",
               ],
               correctAnswer: "Price and the indicator move in different directions — a signal of a possible reversal",
             },
@@ -471,24 +471,24 @@ export const COURSE_EN: CourseSeed = {
           questions: [
             {
               prompt: "Which Fibonacci level do many traders consider key for a retracement?",
-              options: ["61.8%", "10%", "100%"],
+              options: ["61.8%", "100%", "10%"],
               correctAnswer: "61.8%",
             },
             {
               prompt: "What are Fibonacci retracements used for?",
               options: [
                 "Looking for entry points on a pullback within a trend",
-                "Calculating the exchange fee",
                 "Determining the exact time news will be published",
+                "Calculating the exchange fee",
               ],
               correctAnswer: "Looking for entry points on a pullback within a trend",
             },
             {
               prompt: "What are Fibonacci extensions used for?",
               options: [
-                "Determining price targets beyond the impulse",
-                "Determining stop-loss size in percentage terms",
                 "Showing trading volume",
+                "Determining stop-loss size in percentage terms",
+                "Determining price targets beyond the impulse",
               ],
               correctAnswer: "Determining price targets beyond the impulse",
             },
@@ -514,22 +514,22 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What does the \"head and shoulders\" pattern signal?",
               options: [
                 "A likely reversal of an uptrend",
-                "Guaranteed continuation of the rally",
                 "A halt in exchange trading",
+                "Guaranteed continuation of the rally",
               ],
               correctAnswer: "A likely reversal of an uptrend",
             },
             {
               prompt: "What confirms that a \"double top\" pattern has played out?",
-              options: ["A break of the neckline to the downside", "The appearance of a third peak", "A volume increase at the very top"],
+              options: ["The appearance of a third peak", "A break of the neckline to the downside", "A volume increase at the very top"],
               correctAnswer: "A break of the neckline to the downside",
             },
             {
               prompt: "Why is volume important when confirming a pattern breakout?",
               options: [
+                "Volume only matters on the daily timeframe",
                 "Without volume, a breakout is more often false",
                 "Volume has no effect on patterns at all",
-                "Volume only matters on the daily timeframe",
               ],
               correctAnswer: "Without volume, a breakout is more often false",
             },
@@ -553,21 +553,21 @@ export const COURSE_EN: CourseSeed = {
           questions: [
             {
               prompt: "In which direction does a \"flag\" pattern most often resolve?",
-              options: ["In the direction of the prior trend", "Always strictly downward", "In a random direction"],
+              options: ["Always strictly downward", "In the direction of the prior trend", "In a random direction"],
               correctAnswer: "In the direction of the prior trend",
             },
             {
               prompt: "What do triangles, flags, and rectangles have in common?",
               options: [
-                "They are pauses/consolidations within a trend",
                 "They are always reversal signals",
                 "They only occur on forex",
+                "They are pauses/consolidations within a trend",
               ],
               correctAnswer: "They are pauses/consolidations within a trend",
             },
             {
               prompt: "What most often accompanies a genuine breakout from a triangle?",
-              options: ["A spike in volume", "A complete absence of volume", "A halt in trading"],
+              options: ["A spike in volume", "A halt in trading", "A complete absence of volume"],
               correctAnswer: "A spike in volume",
             },
           ],
@@ -590,20 +590,20 @@ export const COURSE_EN: CourseSeed = {
           questions: [
             {
               prompt: "Which timeframe does the \"top-down\" analysis method usually start with?",
-              options: ["The higher one (for example, daily)", "The 1-minute one", "Any random one"],
+              options: ["Any random one", "The higher one (for example, daily)", "The 1-minute one"],
               correctAnswer: "The higher one (for example, daily)",
             },
             {
               prompt: "Why is a lower timeframe needed in multi-timeframe analysis?",
-              options: ["For a precise trade entry", "To completely replace the higher timeframe", "To calculate the exchange fee"],
+              options: ["For a precise trade entry", "To calculate the exchange fee", "To completely replace the higher timeframe"],
               correctAnswer: "For a precise trade entry",
             },
             {
               prompt: "What can happen if you ignore the higher timeframe?",
               options: [
-                "Trading against the main trend",
                 "An automatic increase in profit",
                 "Nothing, it doesn't matter",
+                "Trading against the main trend",
               ],
               correctAnswer: "Trading against the main trend",
             },
@@ -628,9 +628,9 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What is \"revenge trading\"?",
               options: [
+                "A fee refund from the exchange",
                 "Trying to immediately recover a loss through emotional trades",
                 "An official hedge fund strategy",
-                "A fee refund from the exchange",
               ],
               correctAnswer: "Trying to immediately recover a loss through emotional trades",
             },
@@ -638,14 +638,14 @@ export const COURSE_EN: CourseSeed = {
               prompt: "Why should a trader keep a trading journal?",
               options: [
                 "To analyze mistakes and improve the strategy",
-                "It's an exchange requirement",
                 "To reduce taxes",
+                "It's an exchange requirement",
               ],
               correctAnswer: "To analyze mistakes and improve the strategy",
             },
             {
               prompt: "Which emotion most often causes traders to hold a losing position too long?",
-              options: ["Hope for a reversal and fear of locking in the loss", "Boredom", "Confidence in the exchange being right"],
+              options: ["Boredom", "Confidence in the exchange being right", "Hope for a reversal and fear of locking in the loss"],
               correctAnswer: "Hope for a reversal and fear of locking in the loss",
             },
           ],
@@ -669,8 +669,8 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What should you determine before opening a trade?",
               options: [
-                "Entry point, stop-loss, and profit target",
                 "Only the entry point",
+                "Entry point, stop-loss, and profit target",
                 "Nothing needs to be determined in advance",
               ],
               correctAnswer: "Entry point, stop-loss, and profit target",
@@ -678,9 +678,9 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "Why practice on a virtual balance first?",
               options: [
-                "To work out a strategy without risking real money",
                 "A virtual balance yields more profit",
                 "It's a mandatory legal requirement",
+                "To work out a strategy without risking real money",
               ],
               correctAnswer: "To work out a strategy without risking real money",
             },
@@ -688,8 +688,8 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What's important to do right after closing a trade?",
               options: [
                 "Analyze it and record the result in a journal",
-                "Immediately open the opposite trade",
                 "Delete the trade history",
+                "Immediately open the opposite trade",
               ],
               correctAnswer: "Analyze it and record the result in a journal",
             },
@@ -727,24 +727,24 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "How does the market usually react to a Fed rate hike?",
               options: [
-                "Risky assets (including crypto) most often fall",
-                "The crypto market doesn't react to rates at all",
                 "Bitcoin always rises when rates are hiked",
+                "The crypto market doesn't react to rates at all",
+                "Risky assets (including crypto) most often fall",
               ],
               correctAnswer: "Risky assets (including crypto) most often fall",
             },
             {
               prompt: "What is the FOMC?",
               options: [
-                "The Fed committee that makes interest rate decisions",
                 "The largest crypto exchange in the US",
+                "The Fed committee that makes interest rate decisions",
                 "A market volatility index",
               ],
               correctAnswer: "The Fed committee that makes interest rate decisions",
             },
             {
               prompt: "What is the easing of monetary policy called in market slang?",
-              options: ["\"Dovish\" policy", "\"Hawkish\" policy", "\"Neutral\" issuance"],
+              options: ["\"Neutral\" issuance", "\"Hawkish\" policy", "\"Dovish\" policy"],
               correctAnswer: "\"Dovish\" policy",
             },
           ],
@@ -772,24 +772,24 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What does the CPI index measure?",
               options: [
+                "Trading volume on the exchange",
                 "Changes in the prices of a consumer basket of goods and services",
                 "The bitcoin-to-dollar exchange rate",
-                "Trading volume on the exchange",
               ],
               correctAnswer: "Changes in the prices of a consumer basket of goods and services",
             },
             {
               prompt: "How does the market usually react when CPI comes in above forecast?",
               options: [
-                "Risky assets more often fall",
-                "The market never reacts to CPI",
                 "The crypto market automatically halts trading",
+                "The market never reacts to CPI",
+                "Risky assets more often fall",
               ],
               correctAnswer: "Risky assets more often fall",
             },
             {
               prompt: "Which inflation gauge is considered the Fed's own preferred indicator?",
-              options: ["PCE", "DXY", "RSI"],
+              options: ["RSI", "PCE", "DXY"],
               correctAnswer: "PCE",
             },
           ],
@@ -814,8 +814,8 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What does the DXY index measure?",
               options: [
                 "The strength of the US dollar relative to a basket of other currencies",
-                "Bitcoin's volatility",
                 "The total market cap of the crypto market",
+                "Bitcoin's volatility",
               ],
               correctAnswer: "The strength of the US dollar relative to a basket of other currencies",
             },
@@ -823,16 +823,16 @@ export const COURSE_EN: CourseSeed = {
               prompt: "How are DXY and bitcoin movements usually related?",
               options: [
                 "They more often move in opposite directions",
-                "They always move in perfect sync",
                 "They're not related at all",
+                "They always move in perfect sync",
               ],
               correctAnswer: "They more often move in opposite directions",
             },
             {
               prompt: "What might a sharp rise in the DXY index warn of?",
               options: [
-                "A likely correction in the crypto market",
                 "Guaranteed bitcoin growth",
+                "A likely correction in the crypto market",
                 "A technical glitch at the exchange",
               ],
               correctAnswer: "A likely correction in the crypto market",
@@ -858,8 +858,8 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "Which asset class has bitcoin most often correlated with in recent years?",
               options: [
-                "High-tech stocks (Nasdaq)",
                 "Government bonds",
+                "High-tech stocks (Nasdaq)",
                 "It doesn't correlate with anything",
               ],
               correctAnswer: "High-tech stocks (Nasdaq)",
@@ -867,18 +867,18 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What does a high correlation between BTC and Nasdaq mean?",
               options: [
-                "They more often move in the same direction",
-                "They must move in opposite directions",
                 "BTC completely replaces the Nasdaq index",
+                "They must move in opposite directions",
+                "They more often move in the same direction",
               ],
               correctAnswer: "They more often move in the same direction",
             },
             {
               prompt: "What can temporarily weaken BTC's correlation with the stock market?",
               options: [
+                "A time zone change",
                 "Crypto-specific events (an exchange hack, regulatory news)",
                 "A day off at the exchange",
-                "A time zone change",
               ],
               correctAnswer: "Crypto-specific events (an exchange hack, regulatory news)",
             },
@@ -903,8 +903,8 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "Why does a trader need an economic calendar?",
               options: [
-                "To track the dates of important news that affects the market",
                 "To plan personal vacations",
+                "To track the dates of important news that affects the market",
                 "To completely replace technical analysis",
               ],
               correctAnswer: "To track the dates of important news that affects the market",
@@ -912,20 +912,73 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What is NFP?",
               options: [
-                "The US non-farm payrolls employment report",
-                "A new cryptographic protocol",
                 "The fear and greed index",
+                "A new cryptographic protocol",
+                "The US non-farm payrolls employment report",
               ],
               correctAnswer: "The US non-farm payrolls employment report",
             },
             {
               prompt: "What's sensible to do before a high-impact news release?",
               options: [
-                "Reduce risk or avoid new trades",
                 "Maximize position size",
+                "Reduce risk or avoid new trades",
                 "Turn off stop-losses",
               ],
               correctAnswer: "Reduce risk or avoid new trades",
+            },
+          ],
+        },
+        {
+          slug: "etf",
+          title: "ETF",
+          summary: "What an exchange-traded fund is and why crypto ETF approvals move the market.",
+          xpReward: 20,
+          content: [
+            {
+              type: "paragraph",
+              text: "An ETF (Exchange-Traded Fund) is a financial instrument that trades on an exchange like an ordinary stock but tracks the price of an underlying asset or basket of assets. A spot crypto ETF lets investors gain price exposure to an asset, such as Bitcoin, without buying or storing it directly — the fund's manager holds the underlying asset itself.",
+            },
+            {
+              type: "paragraph",
+              text: "Regulatory approval (for example, by the SEC in the US) of spot Bitcoin or Ethereum ETFs is considered a major market event: it opens access to the asset for institutional and retail investors who find it inconvenient or are prohibited from holding cryptocurrency directly. Traders use daily inflows and outflows into such ETFs as an indicator of institutional demand.",
+            },
+            {
+              type: "list",
+              items: [
+                "An ETF tracks the price of an underlying asset but trades like an ordinary stock on a traditional exchange",
+                "A spot ETF means the fund manager actually holds the underlying asset",
+                "Daily inflows and outflows in crypto ETFs are used as an indicator of institutional demand",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "What is an ETF?",
+              options: [
+                "A type of cryptocurrency wallet",
+                "A blockchain consensus protocol",
+                "A financial instrument that trades like a stock and tracks the price of an underlying asset",
+              ],
+              correctAnswer: "A financial instrument that trades like a stock and tracks the price of an underlying asset",
+            },
+            {
+              prompt: "What does a spot crypto ETF give an investor?",
+              options: [
+                "Price exposure to an asset without having to buy and store it themselves",
+                "A guaranteed fixed return",
+                "Voting rights in blockchain governance",
+              ],
+              correctAnswer: "Price exposure to an asset without having to buy and store it themselves",
+            },
+            {
+              prompt: "How do traders use crypto ETF inflow/outflow data?",
+              options: [
+                "As an indicator of institutional demand for the asset",
+                "As a replacement for volume and volatility analysis",
+                "As an exact price forecast for the next day",
+              ],
+              correctAnswer: "As an indicator of institutional demand for the asset",
             },
           ],
         },
@@ -956,8 +1009,8 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What is a Fair Value Gap (FVG)?",
               options: [
                 "A gap between the wicks of the 1st and 3rd candles caused by a sharp impulse",
-                "A stop-loss level",
                 "A volume indicator",
+                "A stop-loss level",
               ],
               correctAnswer: "A gap between the wicks of the 1st and 3rd candles caused by a sharp impulse",
             },
@@ -965,14 +1018,14 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What does the market most often do with an imbalance zone later on?",
               options: [
                 "It returns and partially or fully \"fills\" it",
-                "It never touches it again",
                 "It automatically removes it from the chart",
+                "It never touches it again",
               ],
               correctAnswer: "It returns and partially or fully \"fills\" it",
             },
             {
               prompt: "How many candles make up the classic FVG pattern?",
-              options: ["Three", "One", "Seven"],
+              options: ["One", "Seven", "Three"],
               correctAnswer: "Three",
             },
           ],
@@ -1000,18 +1053,18 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "Where does liquidity most often pool on a chart?",
               options: [
+                "Only on news candles",
                 "Around equal highs/lows and obvious support/resistance levels",
                 "Strictly in the middle of the range for no reason",
-                "Only on news candles",
               ],
               correctAnswer: "Around equal highs/lows and obvious support/resistance levels",
             },
             {
               prompt: "What is buy-side liquidity?",
               options: [
-                "Short sellers' stops positioned above local highs",
-                "Long holders' stops below local lows",
                 "The exchange's fee for buying",
+                "Long holders' stops below local lows",
+                "Short sellers' stops positioned above local highs",
               ],
               correctAnswer: "Short sellers' stops positioned above local highs",
             },
@@ -1019,8 +1072,8 @@ export const COURSE_EN: CourseSeed = {
               prompt: "Why do large players need liquidity in the market?",
               options: [
                 "To build or close a large position without significant slippage",
-                "To completely halt trading",
                 "It has nothing to do with large players",
+                "To completely halt trading",
               ],
               correctAnswer: "To build or close a large position without significant slippage",
             },
@@ -1047,26 +1100,26 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What usually happens to the price immediately after a liquidity sweep?",
               options: [
                 "A sharp reversal in the direction opposite the piercing",
-                "The price always continues in the direction of the piercing",
                 "Nothing, volume falls to zero",
+                "The price always continues in the direction of the piercing",
               ],
               correctAnswer: "A sharp reversal in the direction opposite the piercing",
             },
             {
               prompt: "Which zone most often becomes the target of a liquidity sweep?",
               options: [
-                "A zone with pending orders — for example, equal highs/lows",
-                "The middle of a random range with no levels",
                 "A zone with zero liquidity",
+                "The middle of a random range with no levels",
+                "A zone with pending orders — for example, equal highs/lows",
               ],
               correctAnswer: "A zone with pending orders — for example, equal highs/lows",
             },
             {
               prompt: "What mistake is typical for beginners when they see a sweep?",
               options: [
+                "Setting a stop-loss before entering a trade",
                 "Entering in the direction of the breakout without considering a possible reversal",
                 "Closing a profitable position too early",
-                "Setting a stop-loss before entering a trade",
               ],
               correctAnswer: "Entering in the direction of the breakout without considering a possible reversal",
             },
@@ -1092,27 +1145,27 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What does a Change of Character (CHoCH) signal?",
               options: [
-                "A possible reversal of the current trend",
                 "Continuation of the trend with acceleration",
                 "An absence of liquidity in the market",
+                "A possible reversal of the current trend",
               ],
               correctAnswer: "A possible reversal of the current trend",
             },
             {
               prompt: "What does a Break of Structure (BOS) confirm?",
               options: [
-                "Continuation of the current trend",
                 "An automatic halt in trading",
                 "Cancellation of all previous levels",
+                "Continuation of the current trend",
               ],
               correctAnswer: "Continuation of the current trend",
             },
             {
               prompt: "What does the structure of an uptrend consist of?",
               options: [
-                "Higher Highs and Higher Lows",
-                "Lower Highs and Lower Lows",
                 "Candles of equal height",
+                "Lower Highs and Lower Lows",
+                "Higher Highs and Higher Lows",
               ],
               correctAnswer: "Higher Highs and Higher Lows",
             },
@@ -1137,27 +1190,27 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What is an order block?",
               options: [
-                "The last opposite-direction candle before a strong impulsive move",
                 "A trading volume indicator",
                 "A type of exchange order with delayed execution",
+                "The last opposite-direction candle before a strong impulsive move",
               ],
               correctAnswer: "The last opposite-direction candle before a strong impulsive move",
             },
             {
               prompt: "How do traders usually use order blocks?",
               options: [
+                "To calculate the exchange fee",
                 "As potential entry zones when price returns",
                 "As an inflation indicator",
-                "To calculate the exchange fee",
               ],
               correctAnswer: "As potential entry zones when price returns",
             },
             {
               prompt: "How does a bullish order block differ from a bearish one?",
               options: [
+                "It only appears on the daily timeframe",
                 "It forms before an upward impulse, not a downward one",
                 "It's always larger in size",
-                "It only appears on the daily timeframe",
               ],
               correctAnswer: "It forms before an upward impulse, not a downward one",
             },
@@ -1195,9 +1248,9 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What does a Risk/Reward ratio of 1:3 mean?",
               options: [
+                "You need to open 3 trades in a row",
                 "Potential profit is 3 times greater than the potential risk",
                 "The trade closes after 3 hours",
-                "You need to open 3 trades in a row",
               ],
               correctAnswer: "Potential profit is 3 times greater than the potential risk",
             },
@@ -1205,8 +1258,8 @@ export const COURSE_EN: CourseSeed = {
               prompt: "Why can a system with an R/R of 1:3 be profitable even with a 40% win rate?",
               options: [
                 "The profit from winning trades outweighs the losses from losing trades",
-                "Because 40% is always higher than 33%",
                 "Because exchange fees decrease",
+                "Because 40% is always higher than 33%",
               ],
               correctAnswer: "The profit from winning trades outweighs the losses from losing trades",
             },
@@ -1214,8 +1267,8 @@ export const COURSE_EN: CourseSeed = {
               prompt: "When should a trader calculate a trade's Risk/Reward?",
               options: [
                 "Before entering the trade",
-                "Only after the trade closes",
                 "Calculating R/R isn't necessary",
+                "Only after the trade closes",
               ],
               correctAnswer: "Before entering the trade",
             },
@@ -1248,9 +1301,9 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What should position size primarily depend on?",
               options: [
-                "Acceptable risk as a percentage of the deposit",
                 "How much money is on the card",
                 "The trader's mood",
+                "Acceptable risk as a percentage of the deposit",
               ],
               correctAnswer: "Acceptable risk as a percentage of the deposit",
             },
@@ -1258,17 +1311,17 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What happens to position size if the stop-loss is placed farther from the entry price?",
               options: [
                 "Position size should decrease for the same dollar risk",
-                "Position size should increase",
                 "Position size isn't related to stop distance",
+                "Position size should increase",
               ],
               correctAnswer: "Position size should decrease for the same dollar risk",
             },
             {
               prompt: "What percentage of the deposit is usually recommended to risk on a single trade?",
               options: [
-                "1-2%",
-                "25-30%",
                 "50%",
+                "25-30%",
+                "1-2%",
               ],
               correctAnswer: "1-2%",
             },
@@ -1301,18 +1354,18 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What is the main function of a stop-loss?",
               options: [
-                "Limit the loss to a pre-known amount",
-                "Increase the trade's profit",
                 "Automatically double the position",
+                "Increase the trade's profit",
+                "Limit the loss to a pre-known amount",
               ],
               correctAnswer: "Limit the loss to a pre-known amount",
             },
             {
               prompt: "What is the best basis for determining a stop-loss level?",
               options: [
-                "Market structure (support/resistance levels)",
-                "The desired profit amount",
                 "A random number",
+                "The desired profit amount",
+                "Market structure (support/resistance levels)",
               ],
               correctAnswer: "Market structure (support/resistance levels)",
             },
@@ -1320,8 +1373,8 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What mistake is typical for beginners during a trade's drawdown?",
               options: [
                 "Moving the stop-loss farther from price to 'give the trade more of a chance'",
-                "Closing the trade strictly at the stop",
                 "Calculating risk before entry",
+                "Closing the trade strictly at the stop",
               ],
               correctAnswer: "Moving the stop-loss farther from price to 'give the trade more of a chance'",
             },
@@ -1354,27 +1407,27 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What should the Take Profit level be based on?",
               options: [
+                "The number of hours spent in the trade",
                 "Chart structure: resistance, support, or liquidity levels",
                 "A random number the trader likes",
-                "The number of hours spent in the trade",
               ],
               correctAnswer: "Chart structure: resistance, support, or liquidity levels",
             },
             {
               prompt: "Why do traders use partial position closing?",
               options: [
-                "To lock in part of the profit and let the rest run further",
-                "To increase the exchange fee",
                 "To guarantee the trade closes at a loss",
+                "To increase the exchange fee",
+                "To lock in part of the profit and let the rest run further",
               ],
               correctAnswer: "To lock in part of the profit and let the rest run further",
             },
             {
               prompt: "What do traders usually do with their stop-loss after reaching the first profit target?",
               options: [
-                "Move it to breakeven to protect the profit gained",
                 "Remove the stop-loss entirely",
                 "Move it farther from price",
+                "Move it to breakeven to protect the profit gained",
               ],
               correctAnswer: "Move it to breakeven to protect the profit gained",
             },
@@ -1407,27 +1460,27 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What's the best way to view an individual loss in trading?",
               options: [
+                "As a reason to stop keeping a trading journal",
                 "As an expected statistical cost of the trading system",
                 "As a sign to immediately double the size of the next trade",
-                "As a reason to stop keeping a trading journal",
               ],
               correctAnswer: "As an expected statistical cost of the trading system",
             },
             {
               prompt: "What does trying to 'win back' losses immediately after a loss usually lead to?",
               options: [
+                "Automatic cancellation of the previous trade",
                 "Increased risk and new losses",
                 "Guaranteed profit",
-                "Automatic cancellation of the previous trade",
               ],
               correctAnswer: "Increased risk and new losses",
             },
             {
               prompt: "What helps a trader separate emotions from trading decisions?",
               options: [
-                "A predefined risk per trade and keeping a journal",
-                "Completely abandoning trade analysis",
                 "Increasing leverage after every loss",
+                "Completely abandoning trade analysis",
+                "A predefined risk per trade and keeping a journal",
               ],
               correctAnswer: "A predefined risk per trade and keeping a journal",
             },
@@ -1465,8 +1518,8 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What is FOMO in trading?",
               options: [
-                "The fear of missing a profitable price move",
                 "A technical volume indicator",
+                "The fear of missing a profitable price move",
                 "A type of exchange order",
               ],
               correctAnswer: "The fear of missing a profitable price move",
@@ -1474,8 +1527,8 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "At what stage of a price move does a trader most often enter a trade under the influence of FOMO?",
               options: [
-                "Closer to the end of the move, when reversal risk is already high",
                 "At the very start of the move",
+                "Closer to the end of the move, when reversal risk is already high",
                 "Before the move has even begun",
               ],
               correctAnswer: "Closer to the end of the move, when reversal risk is already high",
@@ -1483,9 +1536,9 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What helps reduce the influence of FOMO on a trader's decisions?",
               options: [
-                "A predefined plan and entry conditions",
                 "Constantly watching other people's profitable trades",
                 "Increasing leverage during a sharp rally",
+                "A predefined plan and entry conditions",
               ],
               correctAnswer: "A predefined plan and entry conditions",
             },
@@ -1518,27 +1571,27 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "How does greed most often show up in managing an open trade?",
               options: [
-                "The trader cancels a previously set Take Profit, hoping for more profit",
                 "The trader closes the trade strictly according to plan",
                 "The trader reduces position size",
+                "The trader cancels a previously set Take Profit, hoping for more profit",
               ],
               correctAnswer: "The trader cancels a previously set Take Profit, hoping for more profit",
             },
             {
               prompt: "What outcome does greed most often lead to in a profitable trade?",
               options: [
-                "The trade reverses and closes at the stop or at breakeven",
-                "Profit is guaranteed to increase",
                 "The exchange fee decreases",
+                "Profit is guaranteed to increase",
+                "The trade reverses and closes at the stop or at breakeven",
               ],
               correctAnswer: "The trade reverses and closes at the stop or at breakeven",
             },
             {
               prompt: "What's the main tool against greed in trading?",
               options: [
-                "Sticking to a predefined trade plan",
-                "Never setting a Take Profit at all",
                 "Increasing leverage after every profitable trade",
+                "Never setting a Take Profit at all",
+                "Sticking to a predefined trade plan",
               ],
               correctAnswer: "Sticking to a predefined trade plan",
             },
@@ -1572,26 +1625,26 @@ export const COURSE_EN: CourseSeed = {
               prompt: "How does fear most often affect the management of a profitable trade?",
               options: [
                 "The trader closes it too early over the slightest drawdown",
-                "The trader holds the trade well beyond the plan",
                 "The trader increases position size",
+                "The trader holds the trade well beyond the plan",
               ],
               correctAnswer: "The trader closes it too early over the slightest drawdown",
             },
             {
               prompt: "What amplifies fear in managing an open position?",
               options: [
+                "Keeping a trading journal",
                 "A position size that's too large relative to the deposit",
                 "A predefined risk of 1-2% of the deposit",
-                "Keeping a trading journal",
               ],
               correctAnswer: "A position size that's too large relative to the deposit",
             },
             {
               prompt: "How does fear in trading fundamentally differ from greed?",
               options: [
-                "Fear makes a trader act too cautiously and miss trades that fit their strategy",
-                "Fear and greed lead to exactly the same decisions",
                 "Fear increases position size more than greed does",
+                "Fear and greed lead to exactly the same decisions",
+                "Fear makes a trader act too cautiously and miss trades that fit their strategy",
               ],
               correctAnswer: "Fear makes a trader act too cautiously and miss trades that fit their strategy",
             },
@@ -1624,26 +1677,26 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What is discipline in the context of trading?",
               options: [
+                "Using maximum leverage",
                 "Consistently following predefined rules",
                 "The ability to predict price direction",
-                "Using maximum leverage",
               ],
               correctAnswer: "Consistently following predefined rules",
             },
             {
               prompt: "Why doesn't even a good strategy work without discipline?",
               options: [
-                "Because the rules get broken the moment a trade doesn't go according to plan",
-                "Because strategies always work equally well",
                 "Because discipline has no effect on results",
+                "Because strategies always work equally well",
+                "Because the rules get broken the moment a trade doesn't go according to plan",
               ],
               correctAnswer: "Because the rules get broken the moment a trade doesn't go according to plan",
             },
             {
               prompt: "What helps strengthen discipline over time?",
               options: [
-                "Regularly reviewing whether your own rules were followed",
                 "Completely abandoning trade analysis",
+                "Regularly reviewing whether your own rules were followed",
                 "Constantly changing the rules after every trade",
               ],
               correctAnswer: "Regularly reviewing whether your own rules were followed",
@@ -1677,27 +1730,27 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What does emotional control mean in trading?",
               options: [
-                "The ability to act according to plan despite emotions, not their complete absence",
                 "The complete absence of any emotions while trading",
                 "The ability to predict other traders' emotions",
+                "The ability to act according to plan despite emotions, not their complete absence",
               ],
               correctAnswer: "The ability to act according to plan despite emotions, not their complete absence",
             },
             {
               prompt: "How does a daily limit on the number of trades help a trader?",
               options: [
-                "It reduces the risk of a series of emotional decisions in a row (tilt)",
-                "It guarantees a profit by the end of the day",
                 "It completely eliminates the need for a stop-loss",
+                "It guarantees a profit by the end of the day",
+                "It reduces the risk of a series of emotional decisions in a row (tilt)",
               ],
               correctAnswer: "It reduces the risk of a series of emotional decisions in a row (tilt)",
             },
             {
               prompt: "Why record emotional state in a trading journal during a trade?",
               options: [
-                "To identify recurring emotional mistakes in the future",
                 "It's an exchange requirement for opening a trade",
                 "It doesn't help with trading analysis in any way",
+                "To identify recurring emotional mistakes in the future",
               ],
               correctAnswer: "To identify recurring emotional mistakes in the future",
             },
@@ -1735,9 +1788,9 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What range of values does RSI measure?",
               options: [
-                "0 to 100",
                 "-1 to 1",
                 "0 to 10,000",
+                "0 to 100",
               ],
               correctAnswer: "0 to 100",
             },
@@ -1745,17 +1798,17 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What does an RSI value above 70 traditionally mean?",
               options: [
                 "A potential overbought zone",
-                "A guaranteed price reversal downward",
                 "An absence of trading volume",
+                "A guaranteed price reversal downward",
               ],
               correctAnswer: "A potential overbought zone",
             },
             {
               prompt: "What can a divergence between price and RSI signal?",
               options: [
-                "Weakening of the current price momentum",
                 "A technical error in the indicator",
                 "A change in the asset's listing exchange",
+                "Weakening of the current price momentum",
               ],
               correctAnswer: "Weakening of the current price momentum",
             },
@@ -1788,8 +1841,8 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What is the MACD indicator based on?",
               options: [
-                "The difference between two exponential moving averages",
                 "Open interest volume",
+                "The difference between two exponential moving averages",
                 "The number of active wallets on the network",
               ],
               correctAnswer: "The difference between two exponential moving averages",
@@ -1798,8 +1851,8 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What does the MACD histogram show?",
               options: [
                 "The difference between the MACD line and the signal line",
-                "The total trading volume for the day",
                 "The number of open positions on the exchange",
+                "The total trading volume for the day",
               ],
               correctAnswer: "The difference between the MACD line and the signal line",
             },
@@ -1807,8 +1860,8 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What is the MACD line's crossing of the zero level often associated with?",
               options: [
                 "A change in trend direction",
-                "The listing of a new token",
                 "A change in the exchange's fees",
+                "The listing of a new token",
               ],
               correctAnswer: "A change in trend direction",
             },
@@ -1841,8 +1894,8 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "How does EMA differ from a simple moving average (SMA)?",
               options: [
-                "EMA gives more weight to recent prices and reacts to changes faster",
                 "EMA doesn't account for price at all",
+                "EMA gives more weight to recent prices and reacts to changes faster",
                 "EMA is always calculated only from volume",
               ],
               correctAnswer: "EMA gives more weight to recent prices and reacts to changes faster",
@@ -1850,18 +1903,18 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "Why do traders use several EMAs of different periods at once?",
               options: [
+                "It provides no useful information",
                 "To assess trend direction and dynamic support/resistance zones",
                 "To reduce the exchange fee",
-                "It provides no useful information",
               ],
               correctAnswer: "To assess trend direction and dynamic support/resistance zones",
             },
             {
               prompt: "What downside does the crossover of a fast and slow EMA have as a signal?",
               options: [
-                "The signal lags behind the current price move",
-                "The signal appears before the move begins",
                 "The signal can't be seen on the chart",
+                "The signal appears before the move begins",
+                "The signal lags behind the current price move",
               ],
               correctAnswer: "The signal lags behind the current price move",
             },
@@ -1895,26 +1948,26 @@ export const COURSE_EN: CourseSeed = {
               prompt: "How is SMA calculated?",
               options: [
                 "As the arithmetic mean of the closing price over a given number of periods",
-                "As the sum of all trading volumes for a month",
                 "As the difference between the day's high and low",
+                "As the sum of all trading volumes for a month",
               ],
               correctAnswer: "As the arithmetic mean of the closing price over a given number of periods",
             },
             {
               prompt: "How does SMA differ from EMA in terms of reaction speed to price?",
               options: [
-                "SMA reacts more slowly because every period carries equal weight",
-                "SMA always reacts faster than EMA",
                 "There is no difference in reaction speed",
+                "SMA always reacts faster than EMA",
+                "SMA reacts more slowly because every period carries equal weight",
               ],
               correctAnswer: "SMA reacts more slowly because every period carries equal weight",
             },
             {
               prompt: "What is the 200-day SMA often used for?",
               options: [
-                "As a reference point for the overall bull or bear market",
                 "For calculating the exchange fee",
                 "For determining the exact time of a token's listing",
+                "As a reference point for the overall bull or bear market",
               ],
               correctAnswer: "As a reference point for the overall bull or bear market",
             },
@@ -1947,27 +2000,27 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What does VWAP account for that a simple moving average does not?",
               options: [
-                "Trading volume at each price level",
                 "Only the day's highest price",
                 "Only the previous day's closing price",
+                "Trading volume at each price level",
               ],
               correctAnswer: "Trading volume at each price level",
             },
             {
               prompt: "How is a price above VWAP interpreted?",
               options: [
-                "As relatively expensive compared to the average volume-weighted level",
                 "As a guaranteed buy signal",
                 "As a sign trading has stopped",
+                "As relatively expensive compared to the average volume-weighted level",
               ],
               correctAnswer: "As relatively expensive compared to the average volume-weighted level",
             },
             {
               prompt: "Who most often relies on VWAP when executing large orders?",
               options: [
-                "Institutional traders",
                 "Only beginner traders",
                 "Only project marketers",
+                "Institutional traders",
               ],
               correctAnswer: "Institutional traders",
             },
@@ -2000,27 +2053,27 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What does the ATR indicator measure?",
               options: [
-                "An asset's average volatility (movement amplitude)",
-                "Trend direction",
                 "The number of active addresses on the network",
+                "Trend direction",
+                "An asset's average volatility (movement amplitude)",
               ],
               correctAnswer: "An asset's average volatility (movement amplitude)",
             },
             {
               prompt: "What does a high ATR value indicate?",
               options: [
-                "Increased volatility and large price swings",
-                "Low exchange liquidity",
                 "An upcoming delisting of the asset",
+                "Low exchange liquidity",
+                "Increased volatility and large price swings",
               ],
               correctAnswer: "Increased volatility and large price swings",
             },
             {
               prompt: "What do traders often use ATR for in practice?",
               options: [
-                "To calculate stop-loss size accounting for current volatility",
                 "To determine the exact listing price of a token",
                 "To calculate network fees",
+                "To calculate stop-loss size accounting for current volatility",
               ],
               correctAnswer: "To calculate stop-loss size accounting for current volatility",
             },
@@ -2053,8 +2106,8 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What do Bollinger Bands consist of?",
               options: [
-                "A moving average and two bands based on standard deviation",
                 "Three independent volume lines",
+                "A moving average and two bands based on standard deviation",
                 "A single closing price line",
               ],
               correctAnswer: "A moving average and two bands based on standard deviation",
@@ -2063,17 +2116,17 @@ export const COURSE_EN: CourseSeed = {
               prompt: "According to Bollinger Bands, what often precedes a strong price move?",
               options: [
                 "A narrowing (squeeze) of the bands",
-                "The bands widening to their maximum",
                 "The bands disappearing from the chart entirely",
+                "The bands widening to their maximum",
               ],
               correctAnswer: "A narrowing (squeeze) of the bands",
             },
             {
               prompt: "Does price touching the upper Bollinger Band guarantee a reversal downward?",
               options: [
+                "Yes, but only on the weekly timeframe",
                 "No, in a strong trend price can move along the band for a long time",
                 "Yes, it's always a 100% reversal signal",
-                "Yes, but only on the weekly timeframe",
               ],
               correctAnswer: "No, in a strong trend price can move along the band for a long time",
             },
@@ -2111,8 +2164,8 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "Why is volume considered independent confirmation of a price move?",
               options: [
-                "It reflects the actual activity of participants rather than being derived from price itself",
                 "Because volume always rises together with price",
+                "It reflects the actual activity of participants rather than being derived from price itself",
                 "Because volume is measured as a percentage of market cap",
               ],
               correctAnswer: "It reflects the actual activity of participants rather than being derived from price itself",
@@ -2120,18 +2173,18 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "Which level breakout is considered less reliable?",
               options: [
+                "Reliability doesn't depend on volume",
                 "A breakout on low volume",
                 "A breakout on high volume",
-                "Reliability doesn't depend on volume",
               ],
               correctAnswer: "A breakout on low volume",
             },
             {
               prompt: "What do sharp spikes in volume often coincide with?",
               options: [
+                "A token's name change",
                 "Key market turning points",
                 "Only exchange technical outages",
-                "A token's name change",
               ],
               correctAnswer: "Key market turning points",
             },
@@ -2164,27 +2217,27 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What does positive delta show?",
               options: [
-                "Aggressive buying outweighing selling",
                 "A guaranteed future price increase",
                 "An absence of trading activity",
+                "Aggressive buying outweighing selling",
               ],
               correctAnswer: "Aggressive buying outweighing selling",
             },
             {
               prompt: "What can a price rise combined with negative delta indicate?",
               options: [
-                "The rise may be driven by short covering rather than new buying",
-                "A technical error on the exchange",
                 "That delta is being calculated incorrectly",
+                "A technical error on the exchange",
+                "The rise may be driven by short covering rather than new buying",
               ],
               correctAnswer: "The rise may be driven by short covering rather than new buying",
             },
             {
               prompt: "What exactly does volume delta measure?",
               options: [
-                "Buyer and seller pressure through aggressive orders",
-                "The asset's total market cap",
                 "The number of token holders",
+                "The asset's total market cap",
+                "Buyer and seller pressure through aggressive orders",
               ],
               correctAnswer: "Buyer and seller pressure through aggressive orders",
             },
@@ -2218,8 +2271,8 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What does Open Interest show?",
               options: [
                 "The total number of open, not-yet-closed contracts",
-                "The total volume of all trades in the exchange's history",
                 "The number of registered exchange users",
+                "The total volume of all trades in the exchange's history",
               ],
               correctAnswer: "The total number of open, not-yet-closed contracts",
             },
@@ -2227,16 +2280,16 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What does simultaneously rising price and Open Interest usually indicate?",
               options: [
                 "An inflow of new capital and a strengthening trend",
-                "A technical outage at the exchange",
                 "Volatility dropping to zero",
+                "A technical outage at the exchange",
               ],
               correctAnswer: "An inflow of new capital and a strengthening trend",
             },
             {
               prompt: "What is a sharp drop in Open Interest often linked to?",
               options: [
-                "Mass liquidations of open positions",
                 "A new token being added to a listing",
+                "Mass liquidations of open positions",
                 "A scheduled exchange upgrade",
               ],
               correctAnswer: "Mass liquidations of open positions",
@@ -2270,9 +2323,9 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What function does the Funding Rate serve on perpetual futures?",
               options: [
-                "It keeps the contract price close to the spot price",
                 "It sets the exchange's withdrawal fee",
                 "It sets the maximum leverage",
+                "It keeps the contract price close to the spot price",
               ],
               correctAnswer: "It keeps the contract price close to the spot price",
             },
@@ -2280,17 +2333,17 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What does persistently high positive funding mean?",
               options: [
                 "The market is overheated with an excess of long positions",
-                "There are no traders in the market at all",
                 "The asset's price is guaranteed to keep rising",
+                "There are no traders in the market at all",
               ],
               correctAnswer: "The market is overheated with an excess of long positions",
             },
             {
               prompt: "Who pays whom when the Funding Rate is positive?",
               options: [
-                "Holders of long positions pay holders of short positions",
                 "The exchange pays all traders equally",
                 "Holders of short positions pay holders of long positions",
+                "Holders of long positions pay holders of short positions",
               ],
               correctAnswer: "Holders of long positions pay holders of short positions",
             },
@@ -2323,8 +2376,8 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What happens when a position is liquidated?",
               options: [
-                "The exchange forcibly closes the position due to insufficient margin",
                 "The trader voluntarily closes the position at a profit",
+                "The exchange forcibly closes the position due to insufficient margin",
                 "The exchange automatically doubles the position size",
               ],
               correctAnswer: "The exchange forcibly closes the position due to insufficient margin",
@@ -2332,18 +2385,18 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "Why do cascading liquidations amplify price movement?",
               options: [
+                "Liquidations always stop price movement completely",
                 "Closing positions creates additional pressure in the direction of the move",
                 "Liquidations have no effect on price at all",
-                "Liquidations always stop price movement completely",
               ],
               correctAnswer: "Closing positions creates additional pressure in the direction of the move",
             },
             {
               prompt: "What do traders use liquidation heatmaps for?",
               options: [
+                "To calculate taxes on profit",
                 "To assess zones of elevated risk of a sharp price move",
                 "To find out the exact date of the next halving",
-                "To calculate taxes on profit",
               ],
               correctAnswer: "To assess zones of elevated risk of a sharp price move",
             },
@@ -2381,27 +2434,27 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "Why is it possible to track the movements of whale wallets?",
               options: [
+                "This is only possible for regulators",
                 "All blockchain transactions are publicly available",
                 "Exchanges publish their clients' personal data daily",
-                "This is only possible for regulators",
               ],
               correctAnswer: "All blockchain transactions are publicly available",
             },
             {
               prompt: "How is a large transfer of tokens to an exchange often interpreted?",
               options: [
-                "As potential preparation to sell",
                 "As a guaranteed signal of long-term holding",
                 "As a technical network error",
+                "As potential preparation to sell",
               ],
               correctAnswer: "As potential preparation to sell",
             },
             {
               prompt: "What's the best way to use whale movement data?",
               options: [
-                "As a supplementary signal alongside other types of analysis",
                 "As the sole, sufficient signal for entering a trade",
                 "Such data is useless and shouldn't be considered",
+                "As a supplementary signal alongside other types of analysis",
               ],
               correctAnswer: "As a supplementary signal alongside other types of analysis",
             },
@@ -2435,25 +2488,25 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What is called exchange inflow?",
               options: [
                 "The volume of coins transferred to exchange wallets",
-                "The volume of coins mined per day",
                 "The number of new exchange users",
+                "The volume of coins mined per day",
               ],
               correctAnswer: "The volume of coins transferred to exchange wallets",
             },
             {
               prompt: "What market phase is a sustained outflow of coins from exchanges usually associated with?",
               options: [
+                "A new token listing",
                 "The accumulation phase",
                 "A panic sell-off phase",
-                "A new token listing",
               ],
               correctAnswer: "The accumulation phase",
             },
             {
               prompt: "What often precedes a sharp one-time inflow of a large amount to an exchange?",
               options: [
-                "Local price volatility",
                 "A complete halt in trading",
+                "Local price volatility",
                 "An automatic reduction in exchange fees",
               ],
               correctAnswer: "Local price volatility",
@@ -2487,27 +2540,27 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What does the TVL metric measure?",
               options: [
-                "The total value of assets locked in a protocol's smart contracts",
-                "The total number of network transactions of all time",
                 "The number of developers working on a project",
+                "The total number of network transactions of all time",
+                "The total value of assets locked in a protocol's smart contracts",
               ],
               correctAnswer: "The total value of assets locked in a protocol's smart contracts",
             },
             {
               prompt: "Why can TVL rise even if no new capital is coming in?",
               options: [
+                "TVL cannot rise without an inflow of new capital",
                 "Because the price of already-locked assets is rising",
                 "Because overall market capitalization is falling",
-                "TVL cannot rise without an inflow of new capital",
               ],
               correctAnswer: "Because the price of already-locked assets is rising",
             },
             {
               prompt: "How do traders usually interpret a sharp drop in a protocol's TVL?",
               options: [
+                "TVL has no connection to a protocol's condition",
                 "As a potentially worrying signal (capital outflow or falling asset prices)",
                 "As an unambiguously positive buy signal",
-                "TVL has no connection to a protocol's condition",
               ],
               correctAnswer: "As a potentially worrying signal (capital outflow or falling asset prices)",
             },
@@ -2540,9 +2593,9 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What distinguishes stablecoins from most other cryptocurrencies?",
               options: [
-                "Their value is pegged to a stable asset, usually the US dollar",
                 "They cannot be transferred between wallets",
                 "They exist only outside the blockchain",
+                "Their value is pegged to a stable asset, usually the US dollar",
               ],
               correctAnswer: "Their value is pegged to a stable asset, usually the US dollar",
             },
@@ -2550,8 +2603,8 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What function do stablecoins serve in the crypto market?",
               options: [
                 "A unit of account and a store of value within the market",
-                "The sole means of mining",
                 "A replacement for a blockchain's consensus mechanism",
+                "The sole means of mining",
               ],
               correctAnswer: "A unit of account and a store of value within the market",
             },
@@ -2559,8 +2612,8 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What can rising stablecoin reserves on exchanges indicate?",
               options: [
                 "A potential rise in the market's buying power",
-                "A technical failure of the stablecoin",
                 "A complete halt in trading on the exchange",
+                "A technical failure of the stablecoin",
               ],
               correctAnswer: "A potential rise in the market's buying power",
             },
@@ -2594,17 +2647,17 @@ export const COURSE_EN: CourseSeed = {
               prompt: "How do on-chain metrics differ from purely market data like price and exchange volume?",
               options: [
                 "They come directly from the blockchain and reflect actual network activity",
-                "They completely match market data",
                 "They're only available to exchange owners",
+                "They completely match market data",
               ],
               correctAnswer: "They come directly from the blockchain and reflect actual network activity",
             },
             {
               prompt: "What can rising network active addresses alongside a relatively calm price indicate?",
               options: [
-                "Growing fundamental use of the network",
                 "A technical breakdown of the blockchain",
                 "A complete halt in transactions",
+                "Growing fundamental use of the network",
               ],
               correctAnswer: "Growing fundamental use of the network",
             },
@@ -2612,8 +2665,8 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What analysis horizon are on-chain metrics usually best suited for?",
               options: [
                 "Medium- and long-term analysis",
-                "Exclusively minute-precision entry timing",
                 "On-chain metrics have no practical application",
+                "Exclusively minute-precision entry timing",
               ],
               correctAnswer: "Medium- and long-term analysis",
             },
@@ -2651,27 +2704,27 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "Why should a trader keep a trading journal?",
               options: [
-                "To objectively record trades instead of relying on selective memory",
-                "It's an exchange requirement for opening trades",
                 "The journal is only needed for tax reporting",
+                "It's an exchange requirement for opening trades",
+                "To objectively record trades instead of relying on selective memory",
               ],
               correctAnswer: "To objectively record trades instead of relying on selective memory",
             },
             {
               prompt: "What must be recorded in a journal entry besides the trade's result?",
               options: [
+                "The name of the device used",
                 "The reason for entering the trade",
                 "Only the final profit in dollars",
-                "The name of the device used",
               ],
               correctAnswer: "The reason for entering the trade",
             },
             {
               prompt: "What does regularly reviewing a trading journal provide?",
               options: [
-                "It helps identify recurring patterns and mistakes",
                 "It automatically increases the deposit size",
                 "It guarantees no losing trades in the future",
+                "It helps identify recurring patterns and mistakes",
               ],
               correctAnswer: "It helps identify recurring patterns and mistakes",
             },
@@ -2704,27 +2757,27 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What must be included in a description of a trading strategy?",
               options: [
+                "A list of the trader's favorite cryptocurrencies",
                 "Entry conditions, exit conditions, and risk management rules",
                 "Only the desired monthly profit amount",
-                "A list of the trader's favorite cryptocurrencies",
               ],
               correctAnswer: "Entry conditions, exit conditions, and risk management rules",
             },
             {
               prompt: "Why should a strategy be specific rather than vague?",
               options: [
+                "To hide it from other traders",
                 "So it can be explained and tested on historical data",
                 "Vagueness in the rules doesn't matter",
-                "To hide it from other traders",
               ],
               correctAnswer: "So it can be explained and tested on historical data",
             },
             {
               prompt: "Does a good strategy need to be profitable on 100% of trades?",
               options: [
-                "No, what matters is a positive expected value overall",
-                "Yes, otherwise the strategy is considered non-functional",
                 "Yes, but only on the daily timeframe",
+                "Yes, otherwise the strategy is considered non-functional",
+                "No, what matters is a positive expected value overall",
               ],
               correctAnswer: "No, what matters is a positive expected value overall",
             },
@@ -2757,9 +2810,9 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What does backtesting a trading strategy involve?",
               options: [
-                "Testing the strategy's rules on historical price data",
-                "Real trading with a minimal deposit",
                 "Surveying other traders about the strategy",
+                "Real trading with a minimal deposit",
+                "Testing the strategy's rules on historical price data",
               ],
               correctAnswer: "Testing the strategy's rules on historical price data",
             },
@@ -2767,17 +2820,17 @@ export const COURSE_EN: CourseSeed = {
               prompt: "Does a successful backtest guarantee the same result in the future?",
               options: [
                 "No, past results don't guarantee future ones",
-                "Yes, backtest results always repeat in real trading",
                 "Yes, but only for stocks",
+                "Yes, backtest results always repeat in real trading",
               ],
               correctAnswer: "No, past results don't guarantee future ones",
             },
             {
               prompt: "What is overfitting in the context of backtesting?",
               options: [
+                "Trading without a stop-loss",
                 "Excessively tailoring the rules to a specific historical period",
                 "Using too few indicators",
-                "Trading without a stop-loss",
               ],
               correctAnswer: "Excessively tailoring the rules to a specific historical period",
             },
@@ -2810,26 +2863,26 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What's the key difference between forward testing and backtesting?",
               options: [
+                "There is no difference between them",
                 "Forward testing is done on new data not used when developing the strategy",
                 "Forward testing is always done only on a large real deposit",
-                "There is no difference between them",
               ],
               correctAnswer: "Forward testing is done on new data not used when developing the strategy",
             },
             {
               prompt: "What does forward testing help reveal that backtesting doesn't?",
               options: [
+                "The exchange's withdrawal fee",
                 "Overfitting of the strategy to past data",
                 "The exact date of the next halving",
-                "The exchange's withdrawal fee",
               ],
               correctAnswer: "Overfitting of the strategy to past data",
             },
             {
               prompt: "What does a large divergence between backtest and forward-test results indicate?",
               options: [
-                "The strategy was likely tailored too precisely to past data",
                 "That the strategy is absolutely reliable",
+                "The strategy was likely tailored too precisely to past data",
                 "It has no bearing on evaluating the strategy",
               ],
               correctAnswer: "The strategy was likely tailored too precisely to past data",
@@ -2863,9 +2916,9 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What does a trading strategy's win rate show?",
               options: [
-                "The share of profitable trades out of the total number",
-                "The total profit in dollars over all time",
                 "The number of currently open trades",
+                "The total profit in dollars over all time",
+                "The share of profitable trades out of the total number",
               ],
               correctAnswer: "The share of profitable trades out of the total number",
             },
@@ -2873,17 +2926,17 @@ export const COURSE_EN: CourseSeed = {
               prompt: "Why can't win rate be evaluated separately from average R/R?",
               options: [
                 "A high win rate with low R/R can produce the same outcome as a low win rate with high R/R",
-                "Win rate and R/R are always exactly identical",
                 "R/R has no effect on the final result at all",
+                "Win rate and R/R are always exactly identical",
               ],
               correctAnswer: "A high win rate with low R/R can produce the same outcome as a low win rate with high R/R",
             },
             {
               prompt: "What does the maximum drawdown metric show?",
               options: [
-                "How much the deposit fell during the worst trading period",
-                "The strategy's total annual return",
                 "The number of assets in the portfolio",
+                "The strategy's total annual return",
+                "How much the deposit fell during the worst trading period",
               ],
               correctAnswer: "How much the deposit fell during the worst trading period",
             },
@@ -2921,17 +2974,17 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What does a project's tokenomics describe?",
               options: [
+                "The list of exchanges where the token trades",
                 "The token's economic model: supply, distribution, and holder incentives",
                 "Only the blockchain's technical stack",
-                "The list of exchanges where the token trades",
               ],
               correctAnswer: "The token's economic model: supply, distribution, and holder incentives",
             },
             {
               prompt: "Which tokenomics factor creates the risk of constant selling pressure?",
               options: [
-                "A large team allocation with a short lock-up period",
                 "The team holding no tokens at all",
+                "A large team allocation with a short lock-up period",
                 "A maximum token supply of zero",
               ],
               correctAnswer: "A large team allocation with a short lock-up period",
@@ -2939,9 +2992,9 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "How important is analyzing tokenomics compared to analyzing a project's technology?",
               options: [
-                "It's no less important and should be weighed equally with the technology",
                 "Tokenomics doesn't matter for evaluating a project",
                 "It only matters for projects without a blockchain",
+                "It's no less important and should be weighed equally with the technology",
               ],
               correctAnswer: "It's no less important and should be weighed equally with the technology",
             },
@@ -2974,9 +3027,9 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "How is FDV calculated?",
               options: [
-                "Based on the maximum token supply at the current price",
                 "Based only on tokens traded on one specific exchange",
                 "Based on trading volume over the last 24 hours",
+                "Based on the maximum token supply at the current price",
               ],
               correctAnswer: "Based on the maximum token supply at the current price",
             },
@@ -2984,8 +3037,8 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What does a large gap between market capitalization and FDV indicate?",
               options: [
                 "A significant share of supply that hasn't yet entered circulation",
-                "That the token is already fully unlocked",
                 "A technical error in the price calculation",
+                "That the token is already fully unlocked",
               ],
               correctAnswer: "A significant share of supply that hasn't yet entered circulation",
             },
@@ -2993,8 +3046,8 @@ export const COURSE_EN: CourseSeed = {
               prompt: "For which tokens is it especially important to watch the relationship between market cap and FDV?",
               options: [
                 "New tokens with a low percentage of supply in circulation",
-                "Only stablecoins",
                 "The relationship between market cap and FDV has no practical significance",
+                "Only stablecoins",
               ],
               correctAnswer: "New tokens with a low percentage of supply in circulation",
             },
@@ -3027,9 +3080,9 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What is token vesting?",
               options: [
+                "A method for mining new tokens",
                 "A mechanism for gradually unlocking tokens according to a set schedule",
                 "A one-time sale of all of a project's tokens",
-                "A method for mining new tokens",
               ],
               correctAnswer: "A mechanism for gradually unlocking tokens according to a set schedule",
             },
@@ -3037,17 +3090,17 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What is a cliff in a vesting schedule?",
               options: [
                 "A period of full token lock-up at the start of the schedule",
-                "The final unlock of all remaining tokens",
                 "A fee for early token withdrawal",
+                "The final unlock of all remaining tokens",
               ],
               correctAnswer: "A period of full token lock-up at the start of the schedule",
             },
             {
               prompt: "Why do projects use vesting for their team and investors?",
               options: [
+                "It's a technical requirement of every blockchain",
                 "To reduce the incentive to immediately sell tokens after listing",
                 "To completely exclude the team from participating in the project",
-                "It's a technical requirement of every blockchain",
               ],
               correctAnswer: "To reduce the incentive to immediately sell tokens after listing",
             },
@@ -3080,9 +3133,9 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What happens at the moment of a token unlock?",
               options: [
+                "The exchange temporarily halts trading of the asset",
                 "The next batch of previously locked tokens becomes available for transfer",
                 "All of a project's tokens are destroyed",
-                "The exchange temporarily halts trading of the asset",
               ],
               correctAnswer: "The next batch of previously locked tokens becomes available for transfer",
             },
@@ -3090,16 +3143,16 @@ export const COURSE_EN: CourseSeed = {
               prompt: "When can a token unlock create noticeable pressure on price?",
               options: [
                 "When its size is large relative to current trading volume",
-                "Unlocks never affect price",
                 "Only if the unlock happens at night",
+                "Unlocks never affect price",
               ],
               correctAnswer: "When its size is large relative to current trading volume",
             },
             {
               prompt: "Why do traders track a token's unlock calendar?",
               options: [
-                "It's a risk management element when holding an altcoin position",
                 "The unlock calendar has no practical use",
+                "It's a risk management element when holding an altcoin position",
                 "To precisely calculate profit taxes",
               ],
               correctAnswer: "It's a risk management element when holding an altcoin position",
@@ -3133,26 +3186,26 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What is token emission?",
               options: [
+                "The process of verifying a wallet's authenticity",
                 "The process of issuing new tokens into circulation",
                 "The process of completely delisting a token from an exchange",
-                "The process of verifying a wallet's authenticity",
               ],
               correctAnswer: "The process of issuing new tokens into circulation",
             },
             {
               prompt: "What happens with high emission and no corresponding rise in demand?",
               options: [
+                "The token's total supply shrinks",
                 "Sustained long-term pressure on price emerges",
                 "The token's price is guaranteed to rise",
-                "The token's total supply shrinks",
               ],
               correctAnswer: "Sustained long-term pressure on price emerges",
             },
             {
               prompt: "Why do some projects introduce a token burn mechanism?",
               options: [
-                "To partially offset the effect of emission on supply",
                 "To completely halt the network's operation",
+                "To partially offset the effect of emission on supply",
                 "It's a requirement from exchanges for listing a token",
               ],
               correctAnswer: "To partially offset the effect of emission on supply",
@@ -3192,8 +3245,8 @@ export const COURSE_EN: CourseSeed = {
               prompt: "How does a DEX fundamentally differ from a centralized exchange?",
               options: [
                 "A DEX operates through smart contracts without a central custodian of users' funds",
-                "It's impossible to make trades on a DEX",
                 "DEXs are only accessible to institutional investors",
+                "It's impossible to make trades on a DEX",
               ],
               correctAnswer: "A DEX operates through smart contracts without a central custodian of users' funds",
             },
@@ -3201,17 +3254,17 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What's the main advantage of trading through a DEX in terms of control over assets?",
               options: [
                 "The user retains control of funds until the moment of the trade",
-                "A DEX is guaranteed to charge no fees",
                 "A DEX automatically protects against all forms of fraud",
+                "A DEX is guaranteed to charge no fees",
               ],
               correctAnswer: "The user retains control of funds until the moment of the trade",
             },
             {
               prompt: "Who bears responsibility for wallet security when using a DEX?",
               options: [
-                "Entirely the user themselves",
                 "Entirely the protocol's developers",
                 "Responsibility is automatically insured by the exchange",
+                "Entirely the user themselves",
               ],
               correctAnswer: "Entirely the user themselves",
             },
@@ -3244,27 +3297,27 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "How does an AMM determine an asset's price?",
               options: [
-                "Through a mathematical formula based on the ratio of tokens in the pool",
                 "Through an order book, as on a centralized exchange",
                 "Through a vote of token holders",
+                "Through a mathematical formula based on the ratio of tokens in the pool",
               ],
               correctAnswer: "Through a mathematical formula based on the ratio of tokens in the pool",
             },
             {
               prompt: "What do liquidity providers receive in an AMM pool?",
               options: [
-                "A share of the pool's trading fees",
                 "A guaranteed fixed annual percentage with no risk",
                 "The sole right to manage the protocol",
+                "A share of the pool's trading fees",
               ],
               correctAnswer: "A share of the pool's trading fees",
             },
             {
               prompt: "What is slippage in the context of an AMM?",
               options: [
-                "The deviation of the execution price from the market price on a large trade relative to pool size",
-                "The network fee for confirming a transaction",
                 "The delay in a network node processing a transaction",
+                "The network fee for confirming a transaction",
+                "The deviation of the execution price from the market price on a large trade relative to pool size",
               ],
               correctAnswer: "The deviation of the execution price from the market price on a large trade relative to pool size",
             },
@@ -3297,9 +3350,9 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What role does staking play in Proof-of-Stake networks?",
               options: [
+                "It's used exclusively for project marketing",
                 "It helps validate transactions and secure the network",
                 "It completely replaces the need for a blockchain",
-                "It's used exclusively for project marketing",
               ],
               correctAnswer: "It helps validate transactions and secure the network",
             },
@@ -3307,8 +3360,8 @@ export const COURSE_EN: CourseSeed = {
               prompt: "How is staking yield usually expressed?",
               options: [
                 "As an annual percentage (APR/APY)",
-                "Only as a fixed dollar amount once a year",
                 "Staking yield is never expressed numerically",
+                "Only as a fixed dollar amount once a year",
               ],
               correctAnswer: "As an annual percentage (APR/APY)",
             },
@@ -3316,8 +3369,8 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What is staking yield often partly generated from?",
               options: [
                 "The emission of new tokens",
-                "Exclusively centralized exchange fees",
                 "Government tax breaks",
+                "Exclusively centralized exchange fees",
               ],
               correctAnswer: "The emission of new tokens",
             },
@@ -3351,26 +3404,26 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What is usually required from a borrower in DeFi lending?",
               options: [
                 "Over-collateralization exceeding the loan amount",
-                "Identity verification through a bank",
                 "A guarantee from a centralized exchange",
+                "Identity verification through a bank",
               ],
               correctAnswer: "Over-collateralization exceeding the loan amount",
             },
             {
               prompt: "What happens if the collateral's value falls below a certain threshold?",
               options: [
-                "The protocol automatically liquidates the collateral to cover the debt",
                 "The loan is automatically canceled with no consequences",
                 "The protocol automatically increases the loan amount",
+                "The protocol automatically liquidates the collateral to cover the debt",
               ],
               correctAnswer: "The protocol automatically liquidates the collateral to cover the debt",
             },
             {
               prompt: "Who earns interest in a DeFi lending system?",
               options: [
+                "No one is paid interest in DeFi lending",
                 "Users who supplied assets as a loan through the protocol",
                 "Only the protocol's developers",
-                "No one is paid interest in DeFi lending",
               ],
               correctAnswer: "Users who supplied assets as a loan through the protocol",
             },
@@ -3403,17 +3456,17 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What is yield farming?",
               options: [
-                "A strategy of seeking maximum returns by placing assets across different DeFi protocols",
-                "A method of mining bitcoin using specialized hardware",
                 "A government program subsidizing crypto projects",
+                "A method of mining bitcoin using specialized hardware",
+                "A strategy of seeking maximum returns by placing assets across different DeFi protocols",
               ],
               correctAnswer: "A strategy of seeking maximum returns by placing assets across different DeFi protocols",
             },
             {
               prompt: "What is a very high advertised farming yield usually tied to?",
               options: [
-                "Elevated risk (token volatility, contract risk, impermanent loss)",
                 "A complete absence of risk",
+                "Elevated risk (token volatility, contract risk, impermanent loss)",
                 "A government-guaranteed return",
               ],
               correctAnswer: "Elevated risk (token volatility, contract risk, impermanent loss)",
@@ -3421,9 +3474,9 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What is impermanent loss?",
               options: [
-                "A risk specific to liquidity pools tied to changes in the relative prices of the assets",
                 "A network fee for transferring tokens",
                 "A guaranteed loss on any staking",
+                "A risk specific to liquidity pools tied to changes in the relative prices of the assets",
               ],
               correctAnswer: "A risk specific to liquidity pools tied to changes in the relative prices of the assets",
             },
@@ -3461,17 +3514,17 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What do projects use launchpad platforms for?",
               options: [
-                "For the initial distribution of tokens and raising liquidity",
-                "Exclusively for blockchain technical support",
                 "To completely avoid raising investment",
+                "Exclusively for blockchain technical support",
+                "For the initial distribution of tokens and raising liquidity",
               ],
               correctAnswer: "For the initial distribution of tokens and raising liquidity",
             },
             {
               prompt: "What's often required from participants to access a launch on a launchpad?",
               options: [
-                "Meeting platform conditions, such as staking the native token",
                 "Holding a financial analyst diploma",
+                "Meeting platform conditions, such as staking the native token",
                 "Registering a legal entity",
               ],
               correctAnswer: "Meeting platform conditions, such as staking the native token",
@@ -3479,9 +3532,9 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "Does a launchpad's good reputation guarantee the success of a token launched through it?",
               options: [
-                "No, the project still needs to be evaluated separately",
                 "Yes, it's a 100% guarantee of success",
                 "Yes, but only for Bitcoin-based projects",
+                "No, the project still needs to be evaluated separately",
               ],
               correctAnswer: "No, the project still needs to be evaluated separately",
             },
@@ -3514,9 +3567,9 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What does the ICO model involve?",
               options: [
+                "The process of mining bitcoin",
                 "Selling a new token directly to investors at an early project stage",
                 "Government regulation of cryptocurrencies",
-                "The process of mining bitcoin",
               ],
               correctAnswer: "Selling a new token directly to investors at an early project stage",
             },
@@ -3524,17 +3577,17 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What historical role did ICOs play in the crypto industry?",
               options: [
                 "They became one of the first forms of crowdfunding in cryptocurrencies",
-                "They completely replaced exchange trading",
                 "They led to the abolition of blockchain technology",
+                "They completely replaced exchange trading",
               ],
               correctAnswer: "They became one of the first forms of crowdfunding in cryptocurrencies",
             },
             {
               prompt: "What did the weak regulation of the 2017 ICO wave lead to?",
               options: [
-                "A high percentage of projects with no real product",
-                "The complete disappearance of risk for investors",
                 "An immediate ban on all cryptocurrencies in every country",
+                "The complete disappearance of risk for investors",
+                "A high percentage of projects with no real product",
               ],
               correctAnswer: "A high percentage of projects with no real product",
             },
@@ -3567,27 +3620,27 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What is an IDO usually conducted through?",
               options: [
+                "A central market regulator",
                 "A decentralized exchange or launchpad platform",
                 "Only a traditional bank",
-                "A central market regulator",
               ],
               correctAnswer: "A decentralized exchange or launchpad platform",
             },
             {
               prompt: "How does an IDO differ from a classic ICO in terms of listing?",
               options: [
-                "Listing happens faster and more transparently thanks to immediate added liquidity",
-                "An IDO never involves listing a token",
                 "There's no difference between an ICO and an IDO",
+                "An IDO never involves listing a token",
+                "Listing happens faster and more transparently thanks to immediate added liquidity",
               ],
               correctAnswer: "Listing happens faster and more transparently thanks to immediate added liquidity",
             },
             {
               prompt: "What often happens to a token's price right after trading opens on an IDO?",
               options: [
-                "Sharp volatility due to high demand",
-                "The price always remains perfectly stable",
                 "Trading automatically halts for 24 hours",
+                "The price always remains perfectly stable",
+                "Sharp volatility due to high demand",
               ],
               correctAnswer: "Sharp volatility due to high demand",
             },
@@ -3620,26 +3673,26 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What is a token airdrop?",
               options: [
-                "The free distribution of tokens to a specific group of users",
-                "A paid subscription to project news",
                 "A mandatory tax on cryptocurrency transactions",
+                "A paid subscription to project news",
+                "The free distribution of tokens to a specific group of users",
               ],
               correctAnswer: "The free distribution of tokens to a specific group of users",
             },
             {
               prompt: "What do projects often reward users for through an airdrop?",
               options: [
+                "Removing a wallet from the network",
                 "Early use of the protocol or participation in a testnet",
                 "Negative reviews of the project",
-                "Removing a wallet from the network",
               ],
               correctAnswer: "Early use of the protocol or participation in a testnet",
             },
             {
               prompt: "What warning sign should alert a user to a potential airdrop scam?",
               options: [
-                "A request to send funds or private keys to receive tokens",
                 "The absence of any requirements from the user",
+                "A request to send funds or private keys to receive tokens",
                 "A simple check of the wallet address on a public list",
               ],
               correctAnswer: "A request to send funds or private keys to receive tokens",
@@ -3673,27 +3726,27 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What does a basic check of a new crypto project usually start with?",
               options: [
+                "Looking only at the project's logo",
                 "Analyzing the team, product, and early investors",
                 "Immediately buying the maximum amount of the token",
-                "Looking only at the project's logo",
               ],
               correctAnswer: "Analyzing the team, product, and early investors",
             },
             {
               prompt: "Which signal is usually considered a more reliable indicator of a project's real progress?",
               options: [
+                "The number of social media followers with no other verification",
                 "Development activity in open code repositories",
                 "The number of bold promises in marketing posts",
-                "The number of social media followers with no other verification",
               ],
               correctAnswer: "Development activity in open code repositories",
             },
             {
               prompt: "Why is it worth paying attention to tokenomics during an initial project evaluation?",
               options: [
+                "Tokenomics only matters for projects without a blockchain",
                 "Balanced tokenomics reduces the risk of future selling pressure",
                 "Tokenomics has no connection to a project's risks",
-                "Tokenomics only matters for projects without a blockchain",
               ],
               correctAnswer: "Balanced tokenomics reduces the risk of future selling pressure",
             },
@@ -3731,17 +3784,17 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What is the key characteristic of scalping as a strategy?",
               options: [
-                "A large number of short trades with a small profit on each",
                 "Holding a position for several months",
                 "Completely abandoning chart analysis",
+                "A large number of short trades with a small profit on each",
               ],
               correctAnswer: "A large number of short trades with a small profit on each",
             },
             {
               prompt: "Why are exchange fees especially important for a scalper?",
               options: [
-                "Due to high trade frequency, they significantly affect overall returns",
                 "Scalping is completely exempt from fees on every exchange",
+                "Due to high trade frequency, they significantly affect overall returns",
                 "Fees only matter when holding a position for over a month",
               ],
               correctAnswer: "Due to high trade frequency, they significantly affect overall returns",
@@ -3749,9 +3802,9 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What is especially important for an instrument used in scalping?",
               options: [
-                "High liquidity and fast order execution",
-                "The lowest possible liquidity",
                 "The absence of a real-time price chart",
+                "The lowest possible liquidity",
+                "High liquidity and fast order execution",
               ],
               correctAnswer: "High liquidity and fast order execution",
             },
@@ -3784,27 +3837,27 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What is the key rule of day trading?",
               options: [
-                "All positions are closed within the same trading day",
                 "Positions are necessarily held for several weeks",
                 "Trades are opened only once a month",
+                "All positions are closed within the same trading day",
               ],
               correctAnswer: "All positions are closed within the same trading day",
             },
             {
               prompt: "What risk does not carrying positions over to the next day eliminate?",
               options: [
-                "The risk of overnight price gaps",
                 "The risk of exchange fees",
                 "The risk of a token's name changing",
+                "The risk of overnight price gaps",
               ],
               correctAnswer: "The risk of overnight price gaps",
             },
             {
               prompt: "How does day trading differ from scalping in terms of profit targets?",
               options: [
-                "Day trading usually has wider profit targets per trade",
-                "Both strategies have absolutely identical profit targets",
                 "Day trading doesn't involve profit targets at all",
+                "Both strategies have absolutely identical profit targets",
+                "Day trading usually has wider profit targets per trade",
               ],
               correctAnswer: "Day trading usually has wider profit targets per trade",
             },
@@ -3837,8 +3890,8 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What is the typical holding horizon for a position in swing trading?",
               options: [
-                "From several days to several weeks",
                 "From a few seconds to a few minutes",
+                "From several days to several weeks",
                 "Several years without exception",
               ],
               correctAnswer: "From several days to several weeks",
@@ -3846,8 +3899,8 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "Which timeframes do swing traders most often use for analysis?",
               options: [
-                "Higher timeframes, such as H4 and D1",
                 "Exclusively the tick chart",
+                "Higher timeframes, such as H4 and D1",
                 "Only the one-minute timeframe",
               ],
               correctAnswer: "Higher timeframes, such as H4 and D1",
@@ -3855,9 +3908,9 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What specific risk are swing trading positions exposed to because of their holding duration?",
               options: [
-                "The risk of overnight and weekend price gaps",
                 "The risk of instantaneous order execution",
                 "The risk of a complete absence of volatility",
+                "The risk of overnight and weekend price gaps",
               ],
               correctAnswer: "The risk of overnight and weekend price gaps",
             },
@@ -3890,17 +3943,17 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What is position trading primarily focused on?",
               options: [
-                "Capturing major, long-term trends",
                 "Minute-by-minute price fluctuations",
                 "Real-time arbitrage between exchanges",
+                "Capturing major, long-term trends",
               ],
               correctAnswer: "Capturing major, long-term trends",
             },
             {
               prompt: "What must a position trader be prepared for because of the long holding horizon?",
               options: [
-                "Interim drawdowns within the overall trend",
                 "A complete absence of any price fluctuations",
+                "Interim drawdowns within the overall trend",
                 "Being required to close the trade at the end of every day",
               ],
               correctAnswer: "Interim drawdowns within the overall trend",
@@ -3908,8 +3961,8 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What kind of analysis plays an especially important role in position trading?",
               options: [
-                "Macroeconomic and fundamental analysis",
                 "Exclusively order book analysis over the last minute",
+                "Macroeconomic and fundamental analysis",
                 "No analysis is required at all",
               ],
               correctAnswer: "Macroeconomic and fundamental analysis",
@@ -3944,25 +3997,25 @@ export const COURSE_EN: CourseSeed = {
               prompt: "What idea is the Liquidity Sweep strategy built on?",
               options: [
                 "A false break of a level that collects liquidity, followed by a price reversal",
-                "Constantly holding a position without any level analysis",
                 "Ignoring all support and resistance levels",
+                "Constantly holding a position without any level analysis",
               ],
               correctAnswer: "A false break of a level that collects liquidity, followed by a price reversal",
             },
             {
               prompt: "What confirms that a level break was a sweep rather than a real breakout?",
               options: [
-                "Price quickly returning back inside the range after the break",
-                "Price continuing well beyond the level",
                 "A complete absence of volume on the break",
+                "Price continuing well beyond the level",
+                "Price quickly returning back inside the range after the break",
               ],
               correctAnswer: "Price quickly returning back inside the range after the break",
             },
             {
               prompt: "When does a trader using this strategy usually open a trade?",
               options: [
-                "After confirmation that price has returned inside the range",
                 "The moment price touches the level, without waiting for confirmation",
+                "After confirmation that price has returned inside the range",
                 "Only after the trading week closes",
               ],
               correctAnswer: "After confirmation that price has returned inside the range",
@@ -3996,27 +4049,27 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What is the breakout strategy built on?",
               options: [
-                "Entering in the direction of a confirmed break of a significant level",
                 "Entering exclusively against the direction of the break",
                 "Completely ignoring support and resistance levels",
+                "Entering in the direction of a confirmed break of a significant level",
               ],
               correctAnswer: "Entering in the direction of a confirmed break of a significant level",
             },
             {
               prompt: "What usually confirms a real breakout rather than a false one?",
               options: [
-                "Increased volume and a candle close beyond the level",
-                "A simple touch of the level by price without a candle close",
                 "Volume dropping to zero",
+                "A simple touch of the level by price without a candle close",
+                "Increased volume and a candle close beyond the level",
               ],
               correctAnswer: "Increased volume and a candle close beyond the level",
             },
             {
               prompt: "Why do traders sometimes wait for a retest of the broken level before entering?",
               options: [
-                "To reduce the risk of entering on a false breakout",
-                "A retest has no significance for entry at all",
                 "To guarantee an increase in the trade's fee",
+                "A retest has no significance for entry at all",
+                "To reduce the risk of entering on a false breakout",
               ],
               correctAnswer: "To reduce the risk of entering on a false breakout",
             },
@@ -4049,8 +4102,8 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What idea is the Mean Reversion strategy built on?",
               options: [
-                "Price that has deviated significantly from its average tends to return to it",
                 "Price never returns to its average value",
+                "Price that has deviated significantly from its average tends to return to it",
                 "Price always continues in the same direction indefinitely",
               ],
               correctAnswer: "Price that has deviated significantly from its average tends to return to it",
@@ -4058,18 +4111,18 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What type of market does mean reversion usually work better in?",
               options: [
+                "A market with no participants other than the trader",
                 "A sideways market",
                 "Exclusively during periods of hyperinflation",
-                "A market with no participants other than the trader",
               ],
               correctAnswer: "A sideways market",
             },
             {
               prompt: "What tools do traders often combine to find entry points in mean reversion?",
               options: [
+                "Only social media news",
                 "Oscillators like RSI and deviation bands",
                 "Exclusively exchange fee data",
-                "Only social media news",
               ],
               correctAnswer: "Oscillators like RSI and deviation bands",
             },
@@ -4107,8 +4160,8 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What is the main goal of the final practice on a virtual account?",
               options: [
-                "Demonstrating a consistent and disciplined approach to trading",
                 "Getting the maximum possible profit at any cost",
+                "Demonstrating a consistent and disciplined approach to trading",
                 "Making as many trades as possible without analysis",
               ],
               correctAnswer: "Demonstrating a consistent and disciplined approach to trading",
@@ -4116,18 +4169,18 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What should precede the opening of every trade at this stage?",
               options: [
+                "Maximizing leverage",
                 "A predefined entry and exit plan",
                 "A random choice of asset without analysis",
-                "Maximizing leverage",
               ],
               correctAnswer: "A predefined entry and exit plan",
             },
             {
               prompt: "What determines position size according to the course material?",
               options: [
-                "Acceptable risk per trade, not desired profit",
                 "The trader's intuition alone",
                 "The dollar exchange rate at the time of the trade",
+                "Acceptable risk per trade, not desired profit",
               ],
               correctAnswer: "Acceptable risk per trade, not desired profit",
             },
@@ -4160,27 +4213,27 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "Why is it recommended to complete the course modules in sequence?",
               options: [
-                "Each subsequent module relies on knowledge from the previous ones",
-                "The order in which modules are completed doesn't matter at all",
                 "It's required solely to earn XP",
+                "The order in which modules are completed doesn't matter at all",
+                "Each subsequent module relies on knowledge from the previous ones",
               ],
               correctAnswer: "Each subsequent module relies on knowledge from the previous ones",
             },
             {
               prompt: "What can skipping individual course modules lead to?",
               options: [
-                "Gaps in knowledge that show up at later stages",
-                "It has no effect on further learning at all",
                 "Automatically receiving a certificate without studying",
+                "It has no effect on further learning at all",
+                "Gaps in knowledge that show up at later stages",
               ],
               correctAnswer: "Gaps in knowledge that show up at later stages",
             },
             {
               prompt: "What is required to fully complete the course?",
               options: [
+                "Simply opening the course's first lesson is enough",
                 "Completing all assignments, not just select modules",
                 "Completing any single module of your choice",
-                "Simply opening the course's first lesson is enough",
               ],
               correctAnswer: "Completing all assignments, not just select modules",
             },
@@ -4213,17 +4266,17 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What does fully completing 'The Trader's Path' course cover?",
               options: [
-                "The journey from basic market concepts to advanced topics in analysis and strategy",
                 "Only the basics of using a wallet",
                 "Exclusively the legal aspects of cryptocurrencies",
+                "The journey from basic market concepts to advanced topics in analysis and strategy",
               ],
               correctAnswer: "The journey from basic market concepts to advanced topics in analysis and strategy",
             },
             {
               prompt: "Does completing the course replace real trading experience?",
               options: [
-                "No, the course is a foundation, and real experience requires further practice",
                 "Yes, the course fully replaces any practice",
+                "No, the course is a foundation, and real experience requires further practice",
                 "Yes, but only for trades with leverage above 10x",
               ],
               correctAnswer: "No, the course is a foundation, and real experience requires further practice",
@@ -4231,9 +4284,9 @@ export const COURSE_EN: CourseSeed = {
             {
               prompt: "What is recommended to keep doing after finishing the course?",
               options: [
+                "Immediately abandon risk management",
                 "Keep a trading journal and continuously review your own decisions",
                 "Completely stop analyzing your trading",
-                "Immediately abandon risk management",
               ],
               correctAnswer: "Keep a trading journal and continuously review your own decisions",
             },

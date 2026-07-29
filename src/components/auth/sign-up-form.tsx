@@ -20,16 +20,25 @@ export function SignUpForm({ dict }: { dict: Dictionary }) {
   const [code, setCode] = useState("");
   const [resendStatus, setResendStatus] = useState<"idle" | "resending" | "resent">("idle");
   const [emailFailed, setEmailFailed] = useState(false);
+  const [consent, setConsent] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
+
+    if (!consent) {
+      setError(
+        "You must agree to the Privacy Policy and Terms of Service before creating an account."
+      );
+      return;
+    }
+
     setLoading(true);
 
     const res = await fetch("/api/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ name, email, password, consent }),
     });
 
     setLoading(false);
@@ -188,9 +197,39 @@ export function SignUpForm({ dict }: { dict: Dictionary }) {
           />
         </div>
 
+        <label className="flex items-start gap-2.5 text-xs text-neutral-500 dark:text-white/45">
+          <input
+            type="checkbox"
+            checked={consent}
+            onChange={(e) => setConsent(e.target.checked)}
+            className="mt-0.5 h-4 w-4 shrink-0 rounded border-black/20 bg-transparent accent-neutral-900 dark:border-white/20 dark:accent-white"
+          />
+          <span>
+            I have read the{" "}
+            <Link
+              href="/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-900 underline underline-offset-2 hover:no-underline dark:text-white"
+            >
+              Privacy Policy
+            </Link>{" "}
+            and{" "}
+            <Link
+              href="/terms"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-900 underline underline-offset-2 hover:no-underline dark:text-white"
+            >
+              Terms of Service
+            </Link>{" "}
+            and I consent to the processing of my personal data in accordance with the GDPR.
+          </span>
+        </label>
+
         {error && <p className="text-sm text-[var(--color-down)]">{error}</p>}
 
-        <Button type="submit" className="w-full" disabled={loading}>
+        <Button type="submit" className="w-full" disabled={loading || !consent}>
           {loading ? dict.auth.signUp.submitting : dict.auth.signUp.submit}
         </Button>
       </form>

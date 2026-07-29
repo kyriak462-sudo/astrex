@@ -10,6 +10,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { MarketingNavbar } from "@/components/marketing/navbar";
+import { CookieSettingsLink } from "@/components/legal/cookie-settings-link";
 import { HeroChart } from "@/components/marketing/hero-chart";
 import { Button } from "@/components/ui/button";
 import { DEFAULT_LOCALE, isLocale, LOCALE_COOKIE } from "@/i18n/locales";
@@ -187,6 +188,15 @@ export default async function Home() {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 text-sm text-neutral-400 dark:text-white/35 md:flex-row">
           <span>© {new Date().getFullYear()} Astrex</span>
           <span>{dict.footer.disclaimer}</span>
+        </div>
+        <div className="mx-auto mt-4 flex max-w-6xl flex-wrap items-center justify-center gap-x-5 gap-y-2 px-6 text-xs text-neutral-400 dark:text-white/35 md:justify-start">
+          <a href="/privacy" className="underline underline-offset-2 hover:text-neutral-900 dark:hover:text-white">
+            Privacy Policy
+          </a>
+          <a href="/terms" className="underline underline-offset-2 hover:text-neutral-900 dark:hover:text-white">
+            Terms of Service
+          </a>
+          <CookieSettingsLink label="Cookie Settings" />
         </div>
       </footer>
     </>
