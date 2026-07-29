@@ -430,6 +430,7 @@ export const COURSE_EN: CourseSeed = {
               type: "paragraph",
               text: "Divergence occurs when price and RSI move in different directions: for example, price makes a new high, but RSI doesn't. This is often seen as an early warning that the trend is weakening and a reversal may be coming.",
             },
+            { type: "diagram", diagram: "rsi", caption: "Price makes a new high while RSI doesn't — a classic bearish divergence" },
           ],
           questions: [
             {
@@ -1185,6 +1186,7 @@ export const COURSE_EN: CourseSeed = {
               type: "paragraph",
               text: "Traders use order blocks as potential entry zones: if the price returns to this zone in the future, a reaction is expected — a continuation of the move in the original direction.",
             },
+            { type: "diagram", diagram: "order-block", caption: "A bullish order block and the price reaction when it returns to the zone" },
           ],
           questions: [
             {
@@ -1783,6 +1785,7 @@ export const COURSE_EN: CourseSeed = {
                 "Divergence between price and RSI can indicate a weakening trend",
               ],
             },
+            { type: "diagram", diagram: "rsi", caption: "Price makes a new high while RSI doesn't — a classic bearish divergence" },
           ],
           questions: [
             {

@@ -430,6 +430,7 @@ export const COURSE_IT: CourseSeed = {
               type: "paragraph",
               text: "La divergenza si verifica quando il prezzo e l'RSI si muovono in direzioni opposte: per esempio, il prezzo forma un nuovo massimo, ma l'RSI no. Questo viene spesso interpretato come un segnale precoce di indebolimento del trend e di una possibile inversione.",
             },
+            { type: "diagram", diagram: "rsi", caption: "Il prezzo forma un nuovo massimo, ma l'RSI no — una classica divergenza ribassista" },
           ],
           questions: [
             {
@@ -1185,6 +1186,7 @@ export const COURSE_IT: CourseSeed = {
               type: "paragraph",
               text: "I trader utilizzano gli order block come potenziali zone di ingresso: se in futuro il prezzo torna in quella zona, ci si aspetta una reazione — la continuazione del movimento nella direzione originaria.",
             },
+            { type: "diagram", diagram: "order-block", caption: "Un order block rialzista e la reazione del prezzo al ritorno nella zona" },
           ],
           questions: [
             {
@@ -1783,6 +1785,7 @@ export const COURSE_IT: CourseSeed = {
                 "La divergenza tra prezzo e RSI può indicare un indebolimento del trend",
               ],
             },
+            { type: "diagram", diagram: "rsi", caption: "Il prezzo forma un nuovo massimo, ma l'RSI no — una classica divergenza ribassista" },
           ],
           questions: [
             {

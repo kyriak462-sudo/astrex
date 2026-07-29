@@ -1,4 +1,10 @@
-export type DiagramKey = "fvg" | "imbalance" | "liquidity-sweep" | "trend-structure";
+export type DiagramKey =
+  | "fvg"
+  | "imbalance"
+  | "liquidity-sweep"
+  | "trend-structure"
+  | "order-block"
+  | "rsi";
 
 export type ContentBlock =
   | { type: "paragraph"; text: string }

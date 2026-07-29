@@ -430,6 +430,7 @@ export const COURSE_FR: CourseSeed = {
               type: "paragraph",
               text: "Une divergence apparaît lorsque le prix et le RSI évoluent dans des directions opposées : par exemple, le prix inscrit un nouveau plus haut, mais pas le RSI. Cela est souvent considéré comme un signal d'alerte précoce d'affaiblissement de la tendance et d'un possible retournement.",
             },
+            { type: "diagram", diagram: "rsi", caption: "Le prix inscrit un nouveau plus haut, mais pas le RSI — une divergence baissière classique" },
           ],
           questions: [
             {
@@ -1185,6 +1186,7 @@ export const COURSE_FR: CourseSeed = {
               type: "paragraph",
               text: "Les traders utilisent les order blocks comme zones d'entrée potentielles : si le prix revient à l'avenir dans cette zone, on s'attend à une réaction — la poursuite du mouvement dans la direction initiale.",
             },
+            { type: "diagram", diagram: "order-block", caption: "Un order block haussier et la réaction du prix lors du retour dans la zone" },
           ],
           questions: [
             {
@@ -1780,6 +1782,7 @@ export const COURSE_FR: CourseSeed = {
                 "Une divergence entre le prix et le RSI peut indiquer un affaiblissement de la tendance",
               ],
             },
+            { type: "diagram", diagram: "rsi", caption: "Le prix inscrit un nouveau plus haut, mais pas le RSI — une divergence baissière classique" },
           ],
           questions: [
             {

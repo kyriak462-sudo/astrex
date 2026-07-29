@@ -430,6 +430,7 @@ export const COURSE_TR: CourseSeed = {
               type: "paragraph",
               text: "Uyumsuzluk (divergence), fiyat ile RSI farklı yönlerde hareket ettiğinde ortaya çıkar: örneğin fiyat yeni bir zirve yaparken RSI yapmaz. Bu genellikle trendin zayıfladığına ve olası bir dönüşe dair erken bir uyarı olarak değerlendirilir.",
             },
+            { type: "diagram", diagram: "rsi", caption: "Fiyat yeni bir zirve yaparken RSI yapmıyor — klasik bir düşüş diverjansı" },
           ],
           questions: [
             {
@@ -1185,6 +1186,7 @@ export const COURSE_TR: CourseSeed = {
               type: "paragraph",
               text: "Traderlar order block'ları potansiyel giriş bölgeleri olarak kullanır: fiyat gelecekte bu bölgeye geri dönerse, bir tepki — yani ilk yönde hareketin devamı — beklenir.",
             },
+            { type: "diagram", diagram: "order-block", caption: "Boğa order block'u ve fiyatın bölgeye dönüşteki tepkisi" },
           ],
           questions: [
             {
@@ -1783,6 +1785,7 @@ export const COURSE_TR: CourseSeed = {
                 "Fiyat ile RSI arasındaki diverjans trendin zayıfladığına işaret edebilir",
               ],
             },
+            { type: "diagram", diagram: "rsi", caption: "Fiyat yeni bir zirve yaparken RSI yapmıyor — klasik bir düşüş diverjansı" },
           ],
           questions: [
             {

@@ -157,11 +157,121 @@ export function TrendStructureDiagram() {
   );
 }
 
+export function OrderBlockDiagram() {
+  return (
+    <DiagramFrame label="Бычий ордер-блок: последняя медвежья свеча перед импульсом, и реакция цены при возврате">
+      <Candlestick x={40} open={95} close={118} high={92} low={121} width={16} />
+      <rect x={60} y={118} width={280} height={30} fill={UP} opacity={0.14} />
+      <line x1={60} y1={118} x2={340} y2={118} stroke={UP} strokeWidth={1} strokeDasharray="3 3" />
+      <line x1={60} y1={148} x2={340} y2={148} stroke={UP} strokeWidth={1} strokeDasharray="3 3" />
+      <text x={200} y={112} textAnchor="middle" fontSize={11} fill={LABEL}>
+        Order Block
+      </text>
+      <Candlestick x={80} open={118} close={148} high={115} low={151} width={18} />
+      <Candlestick x={120} open={150} close={70} high={153} low={65} width={18} />
+      <Candlestick x={160} open={68} close={42} high={72} low={38} width={16} />
+      <Candlestick x={230} open={58} close={95} high={55} low={98} width={16} />
+      <Candlestick x={270} open={97} close={135} high={94} low={145} width={16} />
+      <path
+        d="M 310 140 L 310 92"
+        stroke={UP}
+        strokeWidth={1.5}
+        fill="none"
+        markerEnd="url(#arrow-up-ob)"
+      />
+      <defs>
+        <marker id="arrow-up-ob" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+          <path d="M0,8 L4,0 L8,8 Z" fill={UP} />
+        </marker>
+      </defs>
+      <text x={340} y={90} fontSize={11} fill={UP}>
+        реакция
+      </text>
+      <Candlestick x={310} open={138} close={85} high={142} low={80} width={16} />
+    </DiagramFrame>
+  );
+}
+
+export function RsiDiagram() {
+  const overboughtY = 183; // RSI=70
+  const oversoldY = 227; // RSI=30
+  return (
+    <div className="overflow-hidden rounded-xl border border-black/10 bg-black/[0.02] dark:border-white/10 dark:bg-white/[0.02]">
+      <svg viewBox="0 0 400 280" className="w-full">
+        <text x={10} y={20} fontSize={10} fill={LABEL}>
+          Цена
+        </text>
+        <polyline
+          points="30,110 90,70 150,40 190,90 250,55 280,20 330,80"
+          fill="none"
+          stroke={UP}
+          strokeWidth={1.75}
+        />
+        <circle cx={150} cy={40} r={3} fill={DOT} />
+        <circle cx={280} cy={20} r={3} fill={DOT} />
+        <line x1={150} y1={34} x2={280} y2={14} stroke={UP} strokeWidth={1} strokeDasharray="3 3" />
+        <text x={280} y={12} textAnchor="middle" fontSize={10} fill={UP}>
+          новый максимум цены
+        </text>
+
+        <line x1={0} y1={140} x2={400} y2={140} stroke={GRID} strokeWidth={1} />
+
+        <text x={10} y={158} fontSize={10} fill={LABEL}>
+          RSI
+        </text>
+        <rect x={0} y={150} width={400} height={overboughtY - 150} fill={DOWN} opacity={0.06} />
+        <rect x={0} y={oversoldY} width={400} height={260 - oversoldY} fill={UP} opacity={0.06} />
+        <line
+          x1={0}
+          y1={overboughtY}
+          x2={400}
+          y2={overboughtY}
+          stroke={LINE}
+          strokeWidth={1}
+          strokeDasharray="4 4"
+        />
+        <text x={385} y={overboughtY - 4} fontSize={9} fill={LABEL}>
+          70
+        </text>
+        <line
+          x1={0}
+          y1={oversoldY}
+          x2={400}
+          y2={oversoldY}
+          stroke={LINE}
+          strokeWidth={1}
+          strokeDasharray="4 4"
+        />
+        <text x={385} y={oversoldY - 4} fontSize={9} fill={LABEL}>
+          30
+        </text>
+        <polyline
+          points="30,240 90,210 150,160 190,220 250,205 280,195 330,230"
+          fill="none"
+          stroke={DOWN}
+          strokeWidth={1.75}
+        />
+        <circle cx={150} cy={160} r={3} fill={DOT} />
+        <circle cx={280} cy={195} r={3} fill={DOT} />
+        <line x1={150} y1={165} x2={280} y2={200} stroke={DOWN} strokeWidth={1} strokeDasharray="3 3" />
+        <text x={280} y={215} textAnchor="middle" fontSize={10} fill={DOWN}>
+          RSI ниже — дивергенция
+        </text>
+      </svg>
+      <div className="border-t border-black/[0.06] px-4 py-2 text-center text-xs text-neutral-500 dark:border-white/[0.06] dark:text-white/40">
+        Медвежья дивергенция: цена обновляет максимум, а RSI — нет
+      </div>
+    </div>
+  );
+}
+
 export const DIAGRAMS = {
   fvg: FvgDiagram,
   imbalance: ImbalanceDiagram,
   "liquidity-sweep": LiquiditySweepDiagram,
   "trend-structure": TrendStructureDiagram,
+  "order-block": OrderBlockDiagram,
+  rsi: RsiDiagram,
 } as const;
 
 export type DiagramKey = keyof typeof DIAGRAMS;

@@ -430,6 +430,7 @@ export const COURSE_EL: CourseSeed = {
               type: "paragraph",
               text: "Η απόκλιση (divergence) εμφανίζεται όταν η τιμή και ο RSI κινούνται προς διαφορετικές κατευθύνσεις: για παράδειγμα, η τιμή κάνει νέο υψηλό, αλλά ο RSI όχι. Αυτό συχνά θεωρείται πρώιμη προειδοποίηση για εξασθένηση της τάσης και πιθανή αναστροφή.",
             },
+            { type: "diagram", diagram: "rsi", caption: "Η τιμή κάνει νέο υψηλό, αλλά ο RSI όχι — κλασική πτωτική απόκλιση" },
           ],
           questions: [
             {
@@ -1185,6 +1186,7 @@ export const COURSE_EL: CourseSeed = {
               type: "paragraph",
               text: "Οι traders χρησιμοποιούν τα order blocks ως πιθανές ζώνες εισόδου: αν η τιμή επιστρέψει στο μέλλον σε αυτή τη ζώνη, αναμένεται μια αντίδραση — συνέχιση της κίνησης προς την αρχική κατεύθυνση.",
             },
+            { type: "diagram", diagram: "order-block", caption: "Ανοδικό order block και η αντίδραση της τιμής όταν επιστρέφει στη ζώνη" },
           ],
           questions: [
             {
@@ -1779,6 +1781,7 @@ export const COURSE_EL: CourseSeed = {
                 "Η απόκλιση μεταξύ τιμής και RSI μπορεί να υποδεικνύει εξασθένηση του trend",
               ],
             },
+            { type: "diagram", diagram: "rsi", caption: "Η τιμή κάνει νέο υψηλό, αλλά ο RSI όχι — κλασική πτωτική απόκλιση" },
           ],
           questions: [
             {

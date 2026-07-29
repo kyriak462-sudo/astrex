@@ -430,6 +430,7 @@ export const COURSE_DE: CourseSeed = {
               type: "paragraph",
               text: "Eine Divergenz entsteht, wenn sich Preis und RSI in unterschiedliche Richtungen bewegen: Der Preis erreicht zum Beispiel ein neues Hoch, der RSI jedoch nicht. Das wird oft als frühe Warnung vor einer Trendabschwächung und einer möglichen Umkehr betrachtet.",
             },
+            { type: "diagram", diagram: "rsi", caption: "Der Preis erreicht ein neues Hoch, der RSI nicht — eine klassische bärische Divergenz" },
           ],
           questions: [
             {
@@ -1185,6 +1186,7 @@ export const COURSE_DE: CourseSeed = {
               type: "paragraph",
               text: "Trader nutzen Order Blocks als potenzielle Einstiegszonen: Kehrt der Preis in Zukunft zu dieser Zone zurück, wird eine Reaktion erwartet — eine Fortsetzung der Bewegung in der ursprünglichen Richtung.",
             },
+            { type: "diagram", diagram: "order-block", caption: "Ein bullischer Order Block und die Preisreaktion bei Rückkehr in die Zone" },
           ],
           questions: [
             {
@@ -1780,6 +1782,7 @@ export const COURSE_DE: CourseSeed = {
                 "Eine Divergenz zwischen Preis und RSI kann auf eine Trendabschwächung hindeuten",
               ],
             },
+            { type: "diagram", diagram: "rsi", caption: "Der Preis erreicht ein neues Hoch, der RSI nicht — eine klassische bärische Divergenz" },
           ],
           questions: [
             {
