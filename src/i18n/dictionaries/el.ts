@@ -99,7 +99,6 @@ const el: Dictionary = {
     nav: {
       learn: "Μάθηση",
       market: "Αγορά",
-      charts: "Γραφήματα",
       profile: "Προφίλ",
       settings: "Ρυθμίσεις",
       leaderboard: "Κατάταξη",
@@ -131,21 +130,6 @@ const el: Dictionary = {
     noPositions: "Δεν υπάρχουν ανοιχτές θέσεις ακόμα.",
     entryPrice: "Είσοδος",
     closePosition: "Κλείσιμο θέσης",
-  },
-  charts: {
-    title: "Ανάλυση Γραφημάτων",
-    subtitle: "Εξασκηθείτε στη σχεδίαση γραμμών τάσης και επιπέδων απευθείας στο γράφημα.",
-    tools: {
-      cursor: "Δρομέας",
-      trendline: "Γραμμή τάσης",
-      level: "Επίπεδο",
-      clear: "Καθαρισμός σχεδίων",
-    },
-    hints: {
-      firstPoint: "Κάντε κλικ στο πρώτο σημείο",
-      secondPoint: "Κάντε κλικ στο δεύτερο σημείο",
-      clickLevel: "Κάντε κλικ σε ένα επίπεδο τιμής",
-    },
   },
   profile: {
     title: "Προφίλ",

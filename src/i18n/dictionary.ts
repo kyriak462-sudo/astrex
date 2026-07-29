@@ -82,7 +82,6 @@ export type Dictionary = {
     nav: {
       learn: string;
       market: string;
-      charts: string;
       leaderboard: string;
       profile: string;
       settings: string;
@@ -114,21 +113,6 @@ export type Dictionary = {
     noPositions: string;
     entryPrice: string;
     closePosition: string;
-  };
-  charts: {
-    title: string;
-    subtitle: string;
-    tools: {
-      cursor: string;
-      trendline: string;
-      level: string;
-      clear: string;
-    };
-    hints: {
-      firstPoint: string;
-      secondPoint: string;
-      clickLevel: string;
-    };
   };
   profile: {
     title: string;

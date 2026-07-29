@@ -99,7 +99,6 @@ const es: Dictionary = {
     nav: {
       learn: "Aprender",
       market: "Mercado",
-      charts: "Gráficos",
       profile: "Perfil",
       settings: "Ajustes",
       leaderboard: "Clasificación",
@@ -131,21 +130,6 @@ const es: Dictionary = {
     noPositions: "Aún no hay posiciones abiertas.",
     entryPrice: "Entrada",
     closePosition: "Cerrar posición",
-  },
-  charts: {
-    title: "Análisis de Gráficos",
-    subtitle: "Practica trazando líneas de tendencia y niveles directamente en el gráfico.",
-    tools: {
-      cursor: "Cursor",
-      trendline: "Línea de tendencia",
-      level: "Nivel",
-      clear: "Borrar dibujos",
-    },
-    hints: {
-      firstPoint: "Haz clic en el primer punto",
-      secondPoint: "Haz clic en el segundo punto",
-      clickLevel: "Haz clic en un nivel de precio",
-    },
   },
   profile: {
     title: "Perfil",

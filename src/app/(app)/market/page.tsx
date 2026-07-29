@@ -1,17 +1,8 @@
 import Link from "next/link";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import {
-  SYMBOLS,
-  getCurrentPrice,
-  getKlines,
-  getTicker24h,
-  formatPrice,
-  getMaxLeverage,
-  isTimeframe,
-  TIMEFRAMES,
-} from "@/lib/market-data";
-import { TradeChart } from "@/components/market/trade-chart";
+import { SYMBOLS, getCurrentPrice, getTicker24h, formatPrice, getMaxLeverage } from "@/lib/market-data";
+import { TradingViewWidget } from "@/components/market/tradingview-widget";
 import { TradeForm } from "@/components/market/trade-form";
 import {
   openTrade,
@@ -35,11 +26,10 @@ function isTab(value: string | undefined): value is Tab {
 export default async function MarketPage({
   searchParams,
 }: {
-  searchParams: Promise<{ symbol?: string; interval?: string; tab?: string }>;
+  searchParams: Promise<{ symbol?: string; tab?: string }>;
 }) {
-  const { symbol: symbolParam, interval: intervalParam, tab: tabParam } = await searchParams;
+  const { symbol: symbolParam, tab: tabParam } = await searchParams;
   const symbol = SYMBOLS.find((s) => s.ticker === symbolParam) ?? SYMBOLS[0];
-  const interval = isTimeframe(intervalParam) ? intervalParam : "1h";
   const tab = isTab(tabParam) ? tabParam : "positions";
 
   const session = await auth();
@@ -73,11 +63,9 @@ export default async function MarketPage({
     }
   }
 
-  const candles = await getKlines(symbol.ticker, interval);
-  const activeTradeForSymbol = openTrades.find((t) => t.symbol === symbol.ticker);
   const maxLeverage = getMaxLeverage(symbol.ticker);
 
-  const tabLink = (t: Tab) => `/market?symbol=${symbol.ticker}&interval=${interval}&tab=${t}`;
+  const tabLink = (t: Tab) => `/market?symbol=${symbol.ticker}&tab=${t}`;
   const tabClass = (active: boolean) =>
     `pb-2 text-xs font-medium transition-colors ${
       active
@@ -100,7 +88,7 @@ export default async function MarketPage({
         {SYMBOLS.map((s) => (
           <Link
             key={s.ticker}
-            href={`/market?symbol=${s.ticker}&interval=${interval}&tab=${tab}`}
+            href={`/market?symbol=${s.ticker}&tab=${tab}`}
             className={`rounded-full border px-3.5 py-1.5 text-sm transition-colors ${
               s.ticker === symbol.ticker
                 ? "border-black/25 bg-neutral-900 text-white dark:border-white/25 dark:bg-white dark:text-black"
@@ -149,34 +137,11 @@ export default async function MarketPage({
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_320px]">
         <div>
-          <div className="mb-3 flex gap-1.5">
-            {TIMEFRAMES.map((tf) => (
-              <Link
-                key={tf}
-                href={`/market?symbol=${symbol.ticker}&interval=${tf}&tab=${tab}`}
-                className={`rounded-md border px-2.5 py-1 text-xs transition-colors ${
-                  tf === interval
-                    ? "border-black/25 bg-neutral-900 text-white dark:border-white/25 dark:bg-white dark:text-black"
-                    : "border-black/10 text-neutral-500 hover:border-black/25 hover:text-neutral-900 dark:border-white/10 dark:text-white/55 dark:hover:border-white/25 dark:hover:text-white"
-                }`}
-              >
-                {tf}
-              </Link>
-            ))}
-          </div>
-
-          <TradeChart
-            candles={candles}
-            entryPrice={activeTradeForSymbol?.entryPrice}
-            stopLoss={activeTradeForSymbol?.stopLoss}
-            takeProfit={activeTradeForSymbol?.takeProfit}
-            tradeId={activeTradeForSymbol?.id ?? null}
-          />
-          {activeTradeForSymbol && (
-            <p className="mt-2 text-xs text-neutral-400 dark:text-white/35">
-              Перетащите линии Stop-Loss / Take-Profit на графике, чтобы изменить уровень.
-            </p>
-          )}
+          <TradingViewWidget symbol={symbol.tvSymbol} height={560} />
+          <p className="mt-2 text-xs text-neutral-400 dark:text-white/35">
+            Переключайте таймфрейм и рисуйте на графике инструментами слева — данные и разметка от
+            TradingView.
+          </p>
         </div>
 
         <div className="space-y-6">

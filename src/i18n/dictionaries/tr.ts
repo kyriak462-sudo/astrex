@@ -99,7 +99,6 @@ const tr: Dictionary = {
     nav: {
       learn: "Öğren",
       market: "Piyasa",
-      charts: "Grafikler",
       profile: "Profil",
       settings: "Ayarlar",
       leaderboard: "Liderlik Tablosu",
@@ -131,21 +130,6 @@ const tr: Dictionary = {
     noPositions: "Henüz açık pozisyon yok.",
     entryPrice: "Giriş",
     closePosition: "Pozisyonu kapat",
-  },
-  charts: {
-    title: "Grafik Analizi",
-    subtitle: "Trend çizgileri ve seviyeleri doğrudan grafik üzerinde çizmeyi pratik yapın.",
-    tools: {
-      cursor: "İmleç",
-      trendline: "Trend çizgisi",
-      level: "Seviye",
-      clear: "Çizimleri temizle",
-    },
-    hints: {
-      firstPoint: "İlk noktaya tıklayın",
-      secondPoint: "İkinci noktaya tıklayın",
-      clickLevel: "Bir fiyat seviyesine tıklayın",
-    },
   },
   profile: {
     title: "Profil",

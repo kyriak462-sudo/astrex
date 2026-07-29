@@ -99,7 +99,6 @@ const uk: Dictionary = {
     nav: {
       learn: "Навчання",
       market: "Ринок",
-      charts: "Графіки",
       profile: "Профіль",
       settings: "Налаштування",
       leaderboard: "Лідери",
@@ -131,21 +130,6 @@ const uk: Dictionary = {
     noPositions: "Поки що немає відкритих позицій.",
     entryPrice: "Вхід",
     closePosition: "Закрити позицію",
-  },
-  charts: {
-    title: "Аналіз графіків",
-    subtitle: "Практикуйте побудову трендових ліній і рівнів прямо на графіку.",
-    tools: {
-      cursor: "Курсор",
-      trendline: "Трендова лінія",
-      level: "Рівень",
-      clear: "Очистити малюнки",
-    },
-    hints: {
-      firstPoint: "Клацніть першу точку",
-      secondPoint: "Клацніть другу точку",
-      clickLevel: "Клацніть на рівень ціни",
-    },
   },
   profile: {
     title: "Профіль",

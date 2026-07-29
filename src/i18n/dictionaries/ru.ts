@@ -99,7 +99,6 @@ const ru: Dictionary = {
     nav: {
       learn: "Обучение",
       market: "Рынок",
-      charts: "Графики",
       profile: "Профиль",
       settings: "Настройки",
       leaderboard: "Лидеры",
@@ -131,21 +130,6 @@ const ru: Dictionary = {
     noPositions: "Пока нет открытых позиций.",
     entryPrice: "Вход",
     closePosition: "Закрыть позицию",
-  },
-  charts: {
-    title: "Анализ графиков",
-    subtitle: "Практикуйте построение трендовых линий и уровней прямо на графике.",
-    tools: {
-      cursor: "Курсор",
-      trendline: "Линия тренда",
-      level: "Уровень",
-      clear: "Очистить рисунки",
-    },
-    hints: {
-      firstPoint: "Кликните первую точку",
-      secondPoint: "Кликните вторую точку",
-      clickLevel: "Кликните на уровень цены",
-    },
   },
   profile: {
     title: "Профиль",

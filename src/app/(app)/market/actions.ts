@@ -256,27 +256,6 @@ export async function setBreakEven(formData: FormData) {
   revalidatePath("/market");
 }
 
-/** Direct (non-form) SL/TP setter used by the draggable chart price lines. */
-export async function setTradeLevel(
-  tradeId: string,
-  field: "stopLoss" | "takeProfit",
-  value: number | null
-) {
-  const session = await auth();
-  if (!session?.user?.id) return;
-
-  const trade = await getOwnedOpenTrade(session.user.id, tradeId);
-  if (!trade) return;
-  if (value !== null && !Number.isFinite(value)) return;
-
-  await db.virtualTrade.update({
-    where: { id: tradeId },
-    data: { [field]: value },
-  });
-
-  revalidatePath("/market");
-}
-
 /** Cancels the caller's own pending (LIMIT/STOP_LIMIT) order and refunds its reserved margin. */
 export async function cancelOrder(formData: FormData) {
   const session = await auth();
