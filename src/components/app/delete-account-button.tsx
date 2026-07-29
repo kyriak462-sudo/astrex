@@ -3,7 +3,30 @@
 import { useState, useTransition } from "react";
 import { AlertTriangle } from "lucide-react";
 
-export function DeleteAccountButton({ action }: { action: () => void | Promise<void> }) {
+type Labels = {
+  button: string;
+  confirmText: string;
+  confirmButton: string;
+  confirming: string;
+  cancel: string;
+};
+
+const DEFAULT_LABELS: Labels = {
+  button: "Delete Account",
+  confirmText:
+    "This permanently deletes your account, learning progress, virtual portfolio, and all personal data. This cannot be undone. Type DELETE to confirm.",
+  confirmButton: "Permanently delete my account",
+  confirming: "Deleting...",
+  cancel: "Cancel",
+};
+
+export function DeleteAccountButton({
+  action,
+  labels = DEFAULT_LABELS,
+}: {
+  action: () => void | Promise<void>;
+  labels?: Labels;
+}) {
   const [confirming, setConfirming] = useState(false);
   const [confirmText, setConfirmText] = useState("");
   const [pending, startTransition] = useTransition();
@@ -15,7 +38,7 @@ export function DeleteAccountButton({ action }: { action: () => void | Promise<v
         onClick={() => setConfirming(true)}
         className="h-10 rounded-lg border border-[var(--color-down)]/30 px-4 text-sm text-[var(--color-down)] transition-colors hover:border-[var(--color-down)]/60 hover:bg-[var(--color-down)]/5"
       >
-        Delete Account
+        {labels.button}
       </button>
     );
   }
@@ -25,8 +48,7 @@ export function DeleteAccountButton({ action }: { action: () => void | Promise<v
       <div className="flex items-start gap-2.5">
         <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-down)]" />
         <p className="text-xs leading-relaxed text-neutral-700 dark:text-white/70">
-          This permanently deletes your account, learning progress, virtual portfolio, and all
-          personal data. This cannot be undone. Type <strong>DELETE</strong> to confirm.
+          {labels.confirmText}
         </p>
       </div>
       <input
@@ -43,7 +65,7 @@ export function DeleteAccountButton({ action }: { action: () => void | Promise<v
           onClick={() => startTransition(() => action())}
           className="h-9 rounded-lg bg-[var(--color-down)] px-4 text-xs font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-40"
         >
-          {pending ? "Deleting..." : "Permanently delete my account"}
+          {pending ? labels.confirming : labels.confirmButton}
         </button>
         <button
           type="button"
@@ -53,7 +75,7 @@ export function DeleteAccountButton({ action }: { action: () => void | Promise<v
           }}
           className="h-9 rounded-lg border border-black/10 px-4 text-xs text-neutral-600 transition-colors hover:border-black/25 dark:border-white/10 dark:text-white/60 dark:hover:border-white/25"
         >
-          Cancel
+          {labels.cancel}
         </button>
       </div>
     </div>

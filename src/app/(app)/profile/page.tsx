@@ -1,5 +1,8 @@
+import { cookies } from "next/headers";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { DEFAULT_LOCALE, isLocale, LOCALE_COOKIE } from "@/i18n/locales";
+import { getDictionary } from "@/i18n/get-dictionary";
 import { SignOutButton } from "@/components/app/sign-out-button";
 import { PnlChart } from "@/components/app/pnl-chart";
 import { Avatar } from "@/components/app/avatar";
@@ -8,6 +11,11 @@ const CALENDAR_DAYS = 14 * 7;
 
 export default async function ProfilePage() {
   const session = await auth();
+  const store = await cookies();
+  const localeCookie = store.get(LOCALE_COOKIE)?.value ?? "";
+  const locale = isLocale(localeCookie) ? localeCookie : DEFAULT_LOCALE;
+  const dict = await getDictionary(locale);
+  const d = dict.profile;
   const user = session?.user?.id
     ? await db.user.findUnique({
         where: { id: session.user.id },
@@ -68,7 +76,7 @@ export default async function ProfilePage() {
 
   return (
     <div className="mx-auto max-w-2xl">
-      <h1 className="text-2xl font-semibold text-neutral-900 dark:text-white">Профиль</h1>
+      <h1 className="text-2xl font-semibold text-neutral-900 dark:text-white">{d.title}</h1>
 
       <div className="mt-6 rounded-2xl border border-black/10 bg-black/[0.02] p-6 dark:border-white/10 dark:bg-white/[0.02]">
         <div className="flex items-center gap-4">
@@ -93,34 +101,32 @@ export default async function ProfilePage() {
             <p className="text-xl font-semibold text-neutral-900 dark:text-white">
               {user?.level ?? 1}
             </p>
-            <p className="mt-1 text-xs text-neutral-500 dark:text-white/40">Уровень</p>
+            <p className="mt-1 text-xs text-neutral-500 dark:text-white/40">{d.level}</p>
           </div>
           <div>
             <p className="text-xl font-semibold text-neutral-900 dark:text-white">
               {user?.xp ?? 0}
             </p>
-            <p className="mt-1 text-xs text-neutral-500 dark:text-white/40">XP</p>
+            <p className="mt-1 text-xs text-neutral-500 dark:text-white/40">{d.xp}</p>
           </div>
           <div>
             <p className="text-xl font-semibold text-[var(--color-up)]">
               {user?.streakCount ?? 0}
             </p>
-            <p className="mt-1 text-xs text-neutral-500 dark:text-white/40">Дней подряд</p>
+            <p className="mt-1 text-xs text-neutral-500 dark:text-white/40">{d.streakDays}</p>
           </div>
         </div>
       </div>
 
       <div className="mt-6 rounded-2xl border border-black/10 bg-black/[0.02] p-6 dark:border-white/10 dark:bg-white/[0.02]">
-        <p className="text-sm font-medium text-neutral-900 dark:text-white">
-          P&amp;L по дням
-        </p>
+        <p className="text-sm font-medium text-neutral-900 dark:text-white">{d.pnlTitle}</p>
         <p className="mt-1 text-xs text-neutral-400 dark:text-white/40">
-          Результат закрытых сделок за последние {Math.round(CALENDAR_DAYS / 7)} недель.
+          {d.pnlSubtitle.replace("{weeks}", String(Math.round(CALENDAR_DAYS / 7)))}
         </p>
 
         <div className="mt-4 grid grid-cols-2 gap-3">
           <div className="rounded-xl border border-black/[0.06] p-3 dark:border-white/[0.06]">
-            <p className="text-xs text-neutral-400 dark:text-white/35">За всё время</p>
+            <p className="text-xs text-neutral-400 dark:text-white/35">{d.allTime}</p>
             <p
               className={`mt-1 font-mono text-lg ${
                 allTimePnl >= 0 ? "text-[var(--color-up)]" : "text-[var(--color-down)]"
@@ -131,7 +137,7 @@ export default async function ProfilePage() {
             </p>
           </div>
           <div className="rounded-xl border border-black/[0.06] p-3 dark:border-white/[0.06]">
-            <p className="text-xs text-neutral-400 dark:text-white/35">Сегодня</p>
+            <p className="text-xs text-neutral-400 dark:text-white/35">{d.today}</p>
             <p
               className={`mt-1 font-mono text-lg ${
                 todayPnl >= 0 ? "text-[var(--color-up)]" : "text-[var(--color-down)]"
@@ -149,7 +155,7 @@ export default async function ProfilePage() {
       </div>
 
       <div className="mt-6">
-        <SignOutButton />
+        <SignOutButton label={dict.dashboard.signOut} />
       </div>
     </div>
   );

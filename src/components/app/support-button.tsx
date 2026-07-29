@@ -9,10 +9,12 @@ export function SupportButton({
   title,
   description,
   sendLabel,
+  copiedLabel,
 }: {
   title: string;
   description: string;
   sendLabel: string;
+  copiedLabel: string;
 }) {
   const [copied, setCopied] = useState(false);
 
@@ -43,7 +45,7 @@ export function SupportButton({
           className="inline-flex h-10 items-center justify-center gap-1.5 rounded-lg border border-black/10 px-4 text-sm text-neutral-500 transition-colors hover:border-black/25 hover:text-neutral-900 dark:border-white/10 dark:text-white/50 dark:hover:border-white/25 dark:hover:text-white"
         >
           {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
-          {copied ? "Скопировано" : SUPPORT_EMAIL}
+          {copied ? copiedLabel : SUPPORT_EMAIL}
         </button>
       </div>
     </div>

@@ -6,18 +6,45 @@ import { formatPrice } from "@/lib/market-data";
 const LEVERAGE_PRESETS = [1, 2, 5, 10, 20, 50, 100];
 type OrderType = "MARKET" | "LIMIT" | "STOP_LIMIT";
 
+export type TradeFormLabels = {
+  tabMarket: string;
+  tabLimit: string;
+  tabStopLimit: string;
+  marginLabel: string;
+  marginValue: string;
+  long: string;
+  short: string;
+  triggerPriceLabel: string;
+  limitPriceLabel: string;
+  amountLabel: string;
+  available: string;
+  leverageLabel: string;
+  stopLoss: string;
+  takeProfit: string;
+  optional: string;
+  lossLabel: string;
+  profitLabel: string;
+  qty: string;
+  cost: string;
+  liqPrice: string;
+  submitOpen: string;
+  submitPlace: string;
+};
+
 export function TradeForm({
   symbol,
   price,
   availableBalance,
   action,
   maxLeverage = 20,
+  labels,
 }: {
   symbol: string;
   price: number;
   availableBalance: number;
   action: (formData: FormData) => void;
   maxLeverage?: number;
+  labels: TradeFormLabels;
 }) {
   const LEVERAGES = LEVERAGE_PRESETS.filter((l) => l <= maxLeverage);
   const [orderType, setOrderType] = useState<OrderType>("MARKET");
@@ -77,23 +104,23 @@ export function TradeForm({
 
       <div className="flex gap-1 rounded-lg bg-black/[0.03] p-1 dark:bg-white/[0.04]">
         <button type="button" onClick={() => setOrderType("MARKET")} className={tabClass(orderType === "MARKET")}>
-          Market
+          {labels.tabMarket}
         </button>
         <button type="button" onClick={() => setOrderType("LIMIT")} className={tabClass(orderType === "LIMIT")}>
-          Limit
+          {labels.tabLimit}
         </button>
         <button
           type="button"
           onClick={() => setOrderType("STOP_LIMIT")}
           className={tabClass(orderType === "STOP_LIMIT")}
         >
-          Stop-limit
+          {labels.tabStopLimit}
         </button>
       </div>
 
       <div className="flex items-center justify-between rounded-lg border border-black/10 px-3 py-2 text-xs text-neutral-500 dark:border-white/10 dark:text-white/50">
-        <span>Маржа</span>
-        <span className="font-medium text-neutral-900 dark:text-white">Cross</span>
+        <span>{labels.marginLabel}</span>
+        <span className="font-medium text-neutral-900 dark:text-white">{labels.marginValue}</span>
       </div>
 
       <div className="grid grid-cols-2 gap-2">
@@ -106,7 +133,7 @@ export function TradeForm({
               : "border border-black/10 text-neutral-500 dark:border-white/10 dark:text-white/50"
           }`}
         >
-          Long
+          {labels.long}
         </button>
         <button
           type="button"
@@ -117,14 +144,14 @@ export function TradeForm({
               : "border border-black/10 text-neutral-500 dark:border-white/10 dark:text-white/50"
           }`}
         >
-          Short
+          {labels.short}
         </button>
       </div>
 
       {orderType === "STOP_LIMIT" && (
         <div>
           <label className="mb-1.5 block text-xs font-medium text-neutral-500 dark:text-white/50">
-            Триггер-цена
+            {labels.triggerPriceLabel}
           </label>
           <input
             type="number"
@@ -141,7 +168,7 @@ export function TradeForm({
       {orderType !== "MARKET" && (
         <div>
           <label className="mb-1.5 block text-xs font-medium text-neutral-500 dark:text-white/50">
-            Лимитная цена
+            {labels.limitPriceLabel}
           </label>
           <input
             type="number"
@@ -158,10 +185,10 @@ export function TradeForm({
       <div>
         <div className="mb-1.5 flex items-center justify-between">
           <label className="text-xs font-medium text-neutral-500 dark:text-white/50">
-            Сумма (маржа), $
+            {labels.amountLabel}
           </label>
           <span className="text-xs text-neutral-400 dark:text-white/35">
-            Доступно: ${availableBalance.toLocaleString("ru-RU", { maximumFractionDigits: 2 })}
+            {labels.available} ${availableBalance.toLocaleString("ru-RU", { maximumFractionDigits: 2 })}
           </span>
         </div>
         <input
@@ -193,7 +220,7 @@ export function TradeForm({
 
       <div>
         <label className="mb-1.5 block text-xs font-medium text-neutral-500 dark:text-white/50">
-          Плечо
+          {labels.leverageLabel}
         </label>
         <select
           name="leverage"
@@ -212,39 +239,43 @@ export function TradeForm({
       <div className="grid grid-cols-2 gap-2">
         <div>
           <label className="mb-1.5 block text-xs font-medium text-neutral-500 dark:text-white/50">
-            Stop-Loss
+            {labels.stopLoss}
           </label>
           <input
             type="number"
             name="stopLoss"
             step="any"
-            placeholder="необязательно"
+            placeholder={labels.optional}
             value={stopLoss}
             onChange={(e) => setStopLoss(e.target.value)}
             className={fieldClass}
           />
           {slPnl != null && (
             <p className="mt-1 text-xs text-[var(--color-down)]">
-              Убыток: {slPnl.toFixed(2)}$ ({slPct!.toFixed(1)}%)
+              {labels.lossLabel
+                .replace("{amount}", slPnl.toFixed(2))
+                .replace("{pct}", slPct!.toFixed(1))}
             </p>
           )}
         </div>
         <div>
           <label className="mb-1.5 block text-xs font-medium text-neutral-500 dark:text-white/50">
-            Take-Profit
+            {labels.takeProfit}
           </label>
           <input
             type="number"
             name="takeProfit"
             step="any"
-            placeholder="необязательно"
+            placeholder={labels.optional}
             value={takeProfit}
             onChange={(e) => setTakeProfit(e.target.value)}
             className={fieldClass}
           />
           {tpPnl != null && (
             <p className="mt-1 text-xs text-[var(--color-up)]">
-              Прибыль: +{tpPnl.toFixed(2)}$ (+{tpPct!.toFixed(1)}%)
+              {labels.profitLabel
+                .replace("{amount}", tpPnl.toFixed(2))
+                .replace("{pct}", tpPct!.toFixed(1))}
             </p>
           )}
         </div>
@@ -252,19 +283,19 @@ export function TradeForm({
 
       <div className="space-y-1 rounded-lg border border-black/[0.06] p-3 text-xs dark:border-white/[0.06]">
         <div className="flex justify-between text-neutral-500 dark:text-white/50">
-          <span>Объём</span>
+          <span>{labels.qty}</span>
           <span className="font-mono text-neutral-900 dark:text-white">
             {quantity > 0 ? quantity.toFixed(6) : "--"} {symbol}
           </span>
         </div>
         <div className="flex justify-between text-neutral-500 dark:text-white/50">
-          <span>Стоимость</span>
+          <span>{labels.cost}</span>
           <span className="font-mono text-neutral-900 dark:text-white">
             {cost > 0 ? `$${cost.toFixed(2)}` : "--"}
           </span>
         </div>
         <div className="flex justify-between text-neutral-500 dark:text-white/50">
-          <span>Цена ликвидации</span>
+          <span>{labels.liqPrice}</span>
           <span className="font-mono text-[var(--color-down)]">
             {liqPrice != null && Number.isFinite(liqPrice) ? `$${formatPrice(liqPrice)}` : "--"}
           </span>
@@ -277,7 +308,8 @@ export function TradeForm({
           side === "LONG" ? "bg-[var(--color-up)] text-black" : "bg-[var(--color-down)] text-white"
         }`}
       >
-        {orderType === "MARKET" ? "Открыть" : "Выставить"} {side === "LONG" ? "Long" : "Short"}
+        {orderType === "MARKET" ? labels.submitOpen : labels.submitPlace}{" "}
+        {side === "LONG" ? labels.long : labels.short}
       </button>
     </form>
   );

@@ -5,9 +5,11 @@ import { useEffect, useRef } from "react";
 export function TradingViewWidget({
   symbol,
   height = 500,
+  locale = "en",
 }: {
   symbol: string;
   height?: number;
+  locale?: string;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -35,7 +37,7 @@ export function TradingViewWidget({
       timezone: "Etc/UTC",
       theme: isDark ? "dark" : "light",
       style: "1",
-      locale: "ru",
+      locale,
       backgroundColor: isDark ? "rgba(5, 5, 5, 1)" : "rgba(251, 251, 251, 1)",
       gridColor: isDark ? "rgba(255, 255, 255, 0.06)" : "rgba(0, 0, 0, 0.06)",
       toolbar_bg: isDark ? "#050505" : "#fbfbfb",
@@ -50,7 +52,7 @@ export function TradingViewWidget({
       support_host: "https://www.tradingview.com",
     });
     containerRef.current.appendChild(script);
-  }, [symbol]);
+  }, [symbol, locale, height]);
 
   return (
     <div

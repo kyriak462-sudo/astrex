@@ -1,6 +1,9 @@
 import Link from "next/link";
+import { cookies } from "next/headers";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { DEFAULT_LOCALE, isLocale, LOCALE_COOKIE } from "@/i18n/locales";
+import { getDictionary } from "@/i18n/get-dictionary";
 import { SYMBOLS, getCurrentPrice, getTicker24h, formatPrice, getMaxLeverage } from "@/lib/market-data";
 import { TradingViewWidget } from "@/components/market/tradingview-widget";
 import { TradeForm } from "@/components/market/trade-form";
@@ -31,6 +34,12 @@ export default async function MarketPage({
   const { symbol: symbolParam, tab: tabParam } = await searchParams;
   const symbol = SYMBOLS.find((s) => s.ticker === symbolParam) ?? SYMBOLS[0];
   const tab = isTab(tabParam) ? tabParam : "positions";
+
+  const store = await cookies();
+  const localeCookie = store.get(LOCALE_COOKIE)?.value ?? "";
+  const locale = isLocale(localeCookie) ? localeCookie : DEFAULT_LOCALE;
+  const dict = await getDictionary(locale);
+  const d = dict.market;
 
   const session = await auth();
   if (session?.user?.id) {
@@ -75,14 +84,18 @@ export default async function MarketPage({
   const ghostBtn =
     "rounded-md border border-black/10 px-2.5 py-1.5 text-xs text-neutral-500 transition-colors hover:border-black/25 hover:text-neutral-900 dark:border-white/10 dark:text-white/50 dark:hover:border-white/25 dark:hover:text-white";
 
+  const sideLabel = (side: "LONG" | "SHORT") => (side === "LONG" ? d.long : d.short);
+  const orderTypeLabel = (order: { orderType: string; triggered: boolean }) =>
+    order.orderType === "STOP_LIMIT"
+      ? order.triggered
+        ? d.typeStopLimitTriggered
+        : d.typeStopLimit
+      : d.typeLimit;
+
   return (
     <div className="mx-auto max-w-5xl">
-      <h1 className="text-2xl font-semibold text-neutral-900 dark:text-white">
-        Виртуальный рынок
-      </h1>
-      <p className="mt-2 text-sm text-neutral-500 dark:text-white/45">
-        Торгуйте по реальным ценам на симулированном балансе без риска для реальных денег.
-      </p>
+      <h1 className="text-2xl font-semibold text-neutral-900 dark:text-white">{d.title}</h1>
+      <p className="mt-2 text-sm text-neutral-500 dark:text-white/45">{d.subtitle}</p>
 
       <div className="mt-6 flex flex-wrap gap-2">
         {SYMBOLS.map((s) => (
@@ -107,7 +120,7 @@ export default async function MarketPage({
               {symbol.ticker}/USDT
             </span>
             <span className="rounded border border-black/10 px-1.5 py-0.5 text-[10px] text-neutral-500 dark:border-white/10 dark:text-white/50">
-              До {maxLeverage}x
+              {d.upTo} {maxLeverage}x
             </span>
           </div>
           <span className="text-xs text-neutral-400 dark:text-white/40">{symbol.name}</span>
@@ -118,37 +131,36 @@ export default async function MarketPage({
           </p>
           <p className={`text-xs ${up ? "text-[var(--color-up)]" : "text-[var(--color-down)]"}`}>
             {up ? "+" : ""}
-            {changePct.toFixed(2)}% (24ч)
+            {changePct.toFixed(2)}% {d.change24hSuffix}
           </p>
         </div>
         <div className="text-xs text-neutral-500 dark:text-white/50">
-          <p className="text-neutral-400 dark:text-white/35">Макс. 24ч</p>
+          <p className="text-neutral-400 dark:text-white/35">{d.high24h}</p>
           <p className="font-mono">${formatPrice(ticker24h.highPrice)}</p>
         </div>
         <div className="text-xs text-neutral-500 dark:text-white/50">
-          <p className="text-neutral-400 dark:text-white/35">Мин. 24ч</p>
+          <p className="text-neutral-400 dark:text-white/35">{d.low24h}</p>
           <p className="font-mono">${formatPrice(ticker24h.lowPrice)}</p>
         </div>
         <div className="text-xs text-neutral-500 dark:text-white/50">
-          <p className="text-neutral-400 dark:text-white/35">Объём 24ч ({symbol.ticker})</p>
+          <p className="text-neutral-400 dark:text-white/35">
+            {d.volume24h} ({symbol.ticker})
+          </p>
           <p className="font-mono">{ticker24h.volume.toLocaleString("ru-RU", { maximumFractionDigits: 0 })}</p>
         </div>
       </div>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_320px]">
         <div>
-          <TradingViewWidget symbol={symbol.tvSymbol} height={560} />
-          <p className="mt-2 text-xs text-neutral-400 dark:text-white/35">
-            Переключайте таймфрейм и рисуйте на графике инструментами слева — данные и разметка от
-            TradingView.
-          </p>
+          <TradingViewWidget symbol={symbol.tvSymbol} height={560} locale={locale} />
+          <p className="mt-2 text-xs text-neutral-400 dark:text-white/35">{d.chartHint}</p>
         </div>
 
         <div className="space-y-6">
           <div className="rounded-2xl border border-black/10 bg-black/[0.02] p-5 dark:border-white/10 dark:bg-white/[0.02]">
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-xs text-neutral-400 dark:text-white/40">Баланс портфеля</p>
+                <p className="text-xs text-neutral-400 dark:text-white/40">{d.balance}</p>
                 <p className="mt-1 text-2xl font-semibold text-neutral-900 dark:text-white">
                   {Number.isFinite(balance)
                     ? `$${balance.toLocaleString("ru-RU", { maximumFractionDigits: 2 })}`
@@ -156,12 +168,8 @@ export default async function MarketPage({
                 </p>
               </div>
               <form action={resetBalance}>
-                <button
-                  type="submit"
-                  className={ghostBtn}
-                  title="Сбросить баланс до $10 000 и закрыть открытые позиции"
-                >
-                  Сбросить до $10 000
+                <button type="submit" className={ghostBtn} title={d.resetTitle}>
+                  {d.resetButton}
                 </button>
               </form>
             </div>
@@ -172,6 +180,30 @@ export default async function MarketPage({
               availableBalance={Number.isFinite(balance) ? balance : 0}
               action={openTrade}
               maxLeverage={maxLeverage}
+              labels={{
+                tabMarket: d.tabMarket,
+                tabLimit: d.tabLimit,
+                tabStopLimit: d.tabStopLimit,
+                marginLabel: d.marginLabel,
+                marginValue: d.marginValue,
+                long: d.long,
+                short: d.short,
+                triggerPriceLabel: d.triggerPriceLabel,
+                limitPriceLabel: d.limitPriceLabel,
+                amountLabel: d.amountLabel,
+                available: d.available,
+                leverageLabel: d.leverageLabel,
+                stopLoss: d.stopLoss,
+                takeProfit: d.takeProfit,
+                optional: d.optional,
+                lossLabel: d.lossLabel,
+                profitLabel: d.profitLabel,
+                qty: d.qty,
+                cost: d.cost,
+                liqPrice: d.liqPrice,
+                submitOpen: d.submitOpen,
+                submitPlace: d.submitPlace,
+              }}
             />
           </div>
         </div>
@@ -181,22 +213,22 @@ export default async function MarketPage({
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
           <div className="flex gap-4 border-b border-black/[0.06] dark:border-white/[0.06]">
             <Link href={tabLink("positions")} className={tabClass(tab === "positions")}>
-              Позиции · {openTrades.length}
+              {d.positionsTab} · {openTrades.length}
             </Link>
             <Link href={tabLink("orders")} className={tabClass(tab === "orders")}>
-              Ордера · {pendingOrders.length}
+              {d.ordersTab} · {pendingOrders.length}
             </Link>
             <Link href={tabLink("orderHistory")} className={tabClass(tab === "orderHistory")}>
-              История ордеров
+              {d.orderHistoryTab}
             </Link>
             <Link href={tabLink("tradeHistory")} className={tabClass(tab === "tradeHistory")}>
-              История сделок
+              {d.tradeHistoryTab}
             </Link>
           </div>
           {tab === "positions" && openTrades.length > 0 && (
             <form action={closeAllTrades}>
               <button type="submit" className={ghostBtn}>
-                Закрыть всё
+                {d.closeAll}
               </button>
             </form>
           )}
@@ -204,7 +236,7 @@ export default async function MarketPage({
 
         {tab === "positions" &&
           (openTrades.length === 0 ? (
-            <p className="text-sm text-neutral-400 dark:text-white/35">Пока нет открытых позиций.</p>
+            <p className="text-sm text-neutral-400 dark:text-white/35">{d.noPositions}</p>
           ) : (
             <div className="flex gap-3 overflow-x-auto pb-1">
               {openTrades.map((trade) => {
@@ -227,7 +259,7 @@ export default async function MarketPage({
                             trade.side === "LONG" ? "text-[var(--color-up)]" : "text-[var(--color-down)]"
                           }
                         >
-                          {trade.side === "LONG" ? "Long" : "Short"}
+                          {sideLabel(trade.side)}
                         </span>{" "}
                         <span className="text-neutral-400 dark:text-white/35">{trade.leverage}x</span>
                       </span>
@@ -237,7 +269,7 @@ export default async function MarketPage({
                       </span>
                     </div>
                     <p className="mt-1 text-xs text-neutral-400 dark:text-white/35">
-                      Вход: ${formatPrice(trade.entryPrice)}
+                      {d.entryPrice}: ${formatPrice(trade.entryPrice)}
                     </p>
                     {(trade.stopLoss || trade.takeProfit) && (
                       <div className="mt-1 flex gap-3 text-xs">
@@ -256,7 +288,7 @@ export default async function MarketPage({
 
                     <details className="mt-2 group">
                       <summary className="cursor-pointer list-none text-xs text-neutral-500 underline underline-offset-2 hover:text-neutral-900 dark:text-white/50 dark:hover:text-white">
-                        Изменить SL/TP
+                        {d.editSlTp}
                       </summary>
                       <form action={updateTradeLevels} className="mt-2 space-y-2">
                         <input type="hidden" name="tradeId" value={trade.id} />
@@ -282,7 +314,7 @@ export default async function MarketPage({
                           type="submit"
                           className="w-full rounded-md border border-black/10 py-1 text-xs text-neutral-500 transition-colors hover:border-black/25 hover:text-neutral-900 dark:border-white/10 dark:text-white/60 dark:hover:border-white/25 dark:hover:text-white"
                         >
-                          Сохранить
+                          {d.save}
                         </button>
                       </form>
                     </details>
@@ -293,9 +325,8 @@ export default async function MarketPage({
                         <button
                           type="submit"
                           className="w-full rounded-md border border-black/10 py-1.5 text-xs text-neutral-500 transition-colors hover:border-black/25 hover:text-neutral-900 dark:border-white/10 dark:text-white/60 dark:hover:border-white/25 dark:hover:text-white"
-                          title="Перенести Stop-Loss в цену входа"
                         >
-                          В безубыток
+                          {d.breakEven}
                         </button>
                       </form>
                       <form action={reverseTrade} className="flex-1">
@@ -303,9 +334,8 @@ export default async function MarketPage({
                         <button
                           type="submit"
                           className="w-full rounded-md border border-black/10 py-1.5 text-xs text-neutral-500 transition-colors hover:border-black/25 hover:text-neutral-900 dark:border-white/10 dark:text-white/60 dark:hover:border-white/25 dark:hover:text-white"
-                          title="Закрыть и открыть в обратную сторону"
                         >
-                          Развернуть
+                          {d.reverse}
                         </button>
                       </form>
                       <form action={closeTrade} className="flex-1">
@@ -314,7 +344,7 @@ export default async function MarketPage({
                           type="submit"
                           className="w-full rounded-md border border-black/10 py-1.5 text-xs text-neutral-500 transition-colors hover:border-black/25 hover:text-neutral-900 dark:border-white/10 dark:text-white/60 dark:hover:border-white/25 dark:hover:text-white"
                         >
-                          Закрыть
+                          {d.close}
                         </button>
                       </form>
                     </div>
@@ -326,17 +356,17 @@ export default async function MarketPage({
 
         {tab === "orders" &&
           (pendingOrders.length === 0 ? (
-            <p className="text-sm text-neutral-400 dark:text-white/35">Нет активных ордеров.</p>
+            <p className="text-sm text-neutral-400 dark:text-white/35">{d.noOrders}</p>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full min-w-[560px] text-left text-sm">
                 <thead>
                   <tr className="text-xs uppercase tracking-wide text-neutral-400 dark:text-white/35">
-                    <th className="pb-2 pr-4 font-medium">Монета</th>
-                    <th className="pb-2 pr-4 font-medium">Тип</th>
-                    <th className="pb-2 pr-4 font-medium">Сторона</th>
-                    <th className="pb-2 pr-4 font-medium">Триггер</th>
-                    <th className="pb-2 pr-4 font-medium">Лимит</th>
+                    <th className="pb-2 pr-4 font-medium">{d.colCoin}</th>
+                    <th className="pb-2 pr-4 font-medium">{d.colType}</th>
+                    <th className="pb-2 pr-4 font-medium">{d.colSide}</th>
+                    <th className="pb-2 pr-4 font-medium">{d.colTrigger}</th>
+                    <th className="pb-2 pr-4 font-medium">{d.colLimit}</th>
                     <th className="pb-2 font-medium"></th>
                   </tr>
                 </thead>
@@ -348,11 +378,7 @@ export default async function MarketPage({
                     >
                       <td className="py-2 pr-4 text-neutral-900 dark:text-white">{order.symbol}</td>
                       <td className="py-2 pr-4 text-xs text-neutral-400 dark:text-white/35">
-                        {order.orderType === "STOP_LIMIT"
-                          ? order.triggered
-                            ? "Stop-limit (сработал)"
-                            : "Stop-limit"
-                          : "Limit"}
+                        {orderTypeLabel(order)}
                       </td>
                       <td className="py-2 pr-4">
                         <span
@@ -360,7 +386,7 @@ export default async function MarketPage({
                             order.side === "LONG" ? "text-[var(--color-up)]" : "text-[var(--color-down)]"
                           }
                         >
-                          {order.side === "LONG" ? "Long" : "Short"}
+                          {sideLabel(order.side)}
                         </span>{" "}
                         <span className="text-neutral-400 dark:text-white/35">{order.leverage}x</span>
                       </td>
@@ -375,7 +401,7 @@ export default async function MarketPage({
                             type="submit"
                             className="rounded-md border border-black/10 px-2.5 py-1 text-xs text-neutral-500 transition-colors hover:border-black/25 hover:text-neutral-900 dark:border-white/10 dark:text-white/60 dark:hover:border-white/25 dark:hover:text-white"
                           >
-                            Отменить
+                            {d.cancel}
                           </button>
                         </form>
                       </td>
@@ -388,17 +414,17 @@ export default async function MarketPage({
 
         {tab === "orderHistory" &&
           (orderHistory.length === 0 ? (
-            <p className="text-sm text-neutral-400 dark:text-white/35">Пока нет лимитных ордеров.</p>
+            <p className="text-sm text-neutral-400 dark:text-white/35">{d.noOrderHistory}</p>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full min-w-[560px] text-left text-sm">
                 <thead>
                   <tr className="text-xs uppercase tracking-wide text-neutral-400 dark:text-white/35">
-                    <th className="pb-2 pr-4 font-medium">Монета</th>
-                    <th className="pb-2 pr-4 font-medium">Тип</th>
-                    <th className="pb-2 pr-4 font-medium">Сторона</th>
-                    <th className="pb-2 pr-4 font-medium">Цена</th>
-                    <th className="pb-2 font-medium">Статус</th>
+                    <th className="pb-2 pr-4 font-medium">{d.colCoin}</th>
+                    <th className="pb-2 pr-4 font-medium">{d.colType}</th>
+                    <th className="pb-2 pr-4 font-medium">{d.colSide}</th>
+                    <th className="pb-2 pr-4 font-medium">{d.colPrice}</th>
+                    <th className="pb-2 font-medium">{d.colStatus}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -409,7 +435,7 @@ export default async function MarketPage({
                     >
                       <td className="py-2 pr-4 text-neutral-900 dark:text-white">{order.symbol}</td>
                       <td className="py-2 pr-4 text-xs text-neutral-400 dark:text-white/35">
-                        {order.orderType === "STOP_LIMIT" ? "Stop-limit" : "Limit"}
+                        {order.orderType === "STOP_LIMIT" ? d.typeStopLimit : d.typeLimit}
                       </td>
                       <td className="py-2 pr-4">
                         <span
@@ -417,16 +443,16 @@ export default async function MarketPage({
                             order.side === "LONG" ? "text-[var(--color-up)]" : "text-[var(--color-down)]"
                           }
                         >
-                          {order.side === "LONG" ? "Long" : "Short"}
+                          {sideLabel(order.side)}
                         </span>
                       </td>
                       <td className="py-2 pr-4 font-mono">${formatPrice(order.entryPrice)}</td>
                       <td className="py-2 text-xs text-neutral-400 dark:text-white/35">
                         {order.status === "CANCELLED"
-                          ? "Отменён"
+                          ? d.statusCancelled
                           : order.status === "OPEN"
-                            ? "Исполнен"
-                            : "Закрыт"}
+                            ? d.statusFilled
+                            : d.statusClosed}
                       </td>
                     </tr>
                   ))}
@@ -437,18 +463,18 @@ export default async function MarketPage({
 
         {tab === "tradeHistory" &&
           (closedTrades.length === 0 ? (
-            <p className="text-sm text-neutral-400 dark:text-white/35">Пока нет ни одной сделки.</p>
+            <p className="text-sm text-neutral-400 dark:text-white/35">{d.noTrades}</p>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full min-w-[560px] text-left text-sm">
                 <thead>
                   <tr className="text-xs uppercase tracking-wide text-neutral-400 dark:text-white/35">
-                    <th className="pb-2 pr-4 font-medium">Монета</th>
-                    <th className="pb-2 pr-4 font-medium">Сторона</th>
-                    <th className="pb-2 pr-4 font-medium">Цена входа</th>
-                    <th className="pb-2 pr-4 font-medium">Сумма</th>
-                    <th className="pb-2 pr-4 font-medium">PnL</th>
-                    <th className="pb-2 font-medium">Дата</th>
+                    <th className="pb-2 pr-4 font-medium">{d.colCoin}</th>
+                    <th className="pb-2 pr-4 font-medium">{d.colSide}</th>
+                    <th className="pb-2 pr-4 font-medium">{d.colEntry}</th>
+                    <th className="pb-2 pr-4 font-medium">{d.colAmount}</th>
+                    <th className="pb-2 pr-4 font-medium">{d.colPnl}</th>
+                    <th className="pb-2 font-medium">{d.colDate}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -470,7 +496,7 @@ export default async function MarketPage({
                                 : "text-[var(--color-down)]"
                             }
                           >
-                            {trade.side === "LONG" ? "Long" : "Short"}
+                            {sideLabel(trade.side)}
                           </span>{" "}
                           <span className="text-neutral-400 dark:text-white/35">{trade.leverage}x</span>
                         </td>
