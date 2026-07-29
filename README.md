@@ -19,9 +19,11 @@ npm run dev
 
 | Переменная | Назначение |
 | --- | --- |
-| `DATABASE_URL` | Строка подключения PostgreSQL (Vercel Postgres / Neon / Supabase) |
+| `DATABASE_URL` | Строка подключения PostgreSQL (Neon / Vercel Postgres / Supabase) |
 | `AUTH_SECRET` | Секрет для Auth.js, сгенерировать: `npx auth secret` |
 | `AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` | OAuth-креды Google (не обязательны для входа по email/паролю) |
+| `ANTHROPIC_API_KEY` | Ключ Anthropic API (для AI-функций, если включены) |
+| `RESEND_API_KEY` / `RESEND_FROM` | Resend — отправка писем с кодом подтверждения email |
 
 ## База данных
 
@@ -34,9 +36,13 @@ npx prisma migrate dev --name init
 Prisma 7 использует driver adapters вместо встроенного query-движка —
 подключение к Postgres идёт через `@prisma/adapter-pg` (см. `src/lib/db.ts`).
 
-## Деплой на Vercel
+## Деплой на Netlify
 
-1. Создать Postgres-базу (Vercel Postgres, Neon или Supabase) и указать
-   `DATABASE_URL` в переменных окружения проекта на Vercel.
-2. Указать `AUTH_SECRET` (и опционально Google OAuth креды).
-3. Запустить `npx prisma migrate deploy` при первом деплое.
+1. Создать Postgres-базу (Neon, Vercel Postgres или Supabase) и указать
+   `DATABASE_URL` в переменных окружения проекта на Netlify.
+2. Указать `AUTH_SECRET` (и опционально Google OAuth креды, Resend, Anthropic).
+3. Netlify автоматически определяет Next.js и использует Next.js Runtime.
+   `postinstall` в `package.json` запускает `prisma generate` после установки
+   зависимостей.
+4. Запустить `npx prisma migrate deploy` при первом деплое (или из локальной
+   машины, подключившись к той же `DATABASE_URL`).
