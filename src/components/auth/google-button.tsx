@@ -26,7 +26,13 @@ function GoogleIcon() {
   );
 }
 
-export function GoogleButton({ callbackUrl = "/learn" }: { callbackUrl?: string }) {
+export function GoogleButton({
+  callbackUrl = "/learn",
+  label = "Continue with Google",
+}: {
+  callbackUrl?: string;
+  label?: string;
+}) {
   return (
     <Button
       type="button"
@@ -35,7 +41,7 @@ export function GoogleButton({ callbackUrl = "/learn" }: { callbackUrl?: string 
       onClick={() => signIn("google", { callbackUrl })}
     >
       <GoogleIcon />
-      Продолжить с Google
+      {label}
     </Button>
   );
 }

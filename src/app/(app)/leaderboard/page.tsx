@@ -1,7 +1,9 @@
+import { cookies } from "next/headers";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
-
-const STARTING_BALANCE = 10000;
+import { DEFAULT_LOCALE, isLocale, LOCALE_COOKIE } from "@/i18n/locales";
+import { getDictionary } from "@/i18n/get-dictionary";
+import { Avatar } from "@/components/app/avatar";
 
 function displayName(name: string | null, email: string) {
   if (name && name.trim()) return name;
@@ -11,33 +13,57 @@ function displayName(name: string | null, email: string) {
 export default async function LeaderboardPage() {
   const session = await auth();
 
-  const portfolios = await db.virtualPortfolio.findMany({
-    orderBy: { balance: "desc" },
-    take: 50,
-    include: { user: { select: { id: true, name: true, email: true } } },
-  });
+  const store = await cookies();
+  const localeCookie = store.get(LOCALE_COOKIE)?.value ?? "";
+  const locale = isLocale(localeCookie) ? localeCookie : DEFAULT_LOCALE;
+  const dict = await getDictionary(locale);
+
+  const now = new Date();
+  const monthStart = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1));
+
+  const [portfolios, monthlyPnlByPortfolio] = await Promise.all([
+    db.virtualPortfolio.findMany({
+      include: {
+        user: { select: { id: true, name: true, email: true, avatarId: true, image: true } },
+      },
+    }),
+    db.virtualTrade.groupBy({
+      by: ["portfolioId"],
+      where: { status: "CLOSED", closedAt: { gte: monthStart } },
+      _sum: { pnl: true },
+    }),
+  ]);
+
+  const monthlyPnlMap = new Map(
+    monthlyPnlByPortfolio.map((g) => [g.portfolioId, g._sum.pnl ?? 0])
+  );
 
   const ranked = portfolios
-    .filter((p) => Number.isFinite(p.balance))
     .map((p) => ({
       userId: p.user.id,
       name: displayName(p.user.name, p.user.email),
-      balance: p.balance,
-      pnl: p.balance - STARTING_BALANCE,
-    }));
+      avatarId: p.user.avatarId,
+      image: p.user.image,
+      pnl: monthlyPnlMap.get(p.id) ?? 0,
+    }))
+    .filter((row) => Number.isFinite(row.pnl))
+    .sort((a, b) => b.pnl - a.pnl)
+    .slice(0, 50);
 
   return (
     <div className="mx-auto max-w-2xl">
       <h1 className="text-2xl font-semibold text-neutral-900 dark:text-white">
-        Доска лидеров
+        {dict.leaderboard.title}
       </h1>
       <p className="mt-2 text-sm text-neutral-500 dark:text-white/45">
-        Лучшие трейдеры платформы по итоговому P&amp;L на виртуальном балансе.
+        {dict.leaderboard.subtitle}
       </p>
 
       <div className="mt-8 overflow-hidden rounded-2xl border border-black/10 dark:border-white/10">
         {ranked.length === 0 ? (
-          <p className="p-5 text-sm text-neutral-400 dark:text-white/35">Пока нет данных.</p>
+          <p className="p-5 text-sm text-neutral-400 dark:text-white/35">
+            {dict.leaderboard.noData}
+          </p>
         ) : (
           <div className="divide-y divide-black/[0.06] dark:divide-white/[0.06]">
             {ranked.map((row, i) => {
@@ -60,28 +86,24 @@ export default async function LeaderboardPage() {
                     >
                       {i + 1}
                     </span>
+                    <Avatar avatarId={row.avatarId} image={row.image} name={row.name} size={32} />
                     <span className="text-sm text-neutral-900 dark:text-white">
                       {row.name}
                       {isMe && (
                         <span className="ml-1.5 text-xs text-neutral-400 dark:text-white/35">
-                          (вы)
+                          ({dict.leaderboard.you})
                         </span>
                       )}
                     </span>
                   </div>
-                  <div className="text-right">
-                    <p
-                      className={`text-sm font-mono ${
-                        pnlUp ? "text-[var(--color-up)]" : "text-[var(--color-down)]"
-                      }`}
-                    >
-                      {pnlUp ? "+" : ""}
-                      {row.pnl.toLocaleString("ru-RU", { maximumFractionDigits: 2 })}$
-                    </p>
-                    <p className="text-xs text-neutral-400 dark:text-white/35">
-                      баланс ${row.balance.toLocaleString("ru-RU", { maximumFractionDigits: 0 })}
-                    </p>
-                  </div>
+                  <p
+                    className={`font-mono text-sm ${
+                      pnlUp ? "text-[var(--color-up)]" : "text-[var(--color-down)]"
+                    }`}
+                  >
+                    {pnlUp ? "+" : ""}
+                    {row.pnl.toLocaleString("ru-RU", { maximumFractionDigits: 2 })}$
+                  </p>
                 </div>
               );
             })}

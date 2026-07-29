@@ -15,7 +15,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
 
   const user = await db.user.findUnique({
     where: { id: session.user.id },
-    select: { xp: true, level: true, streakCount: true },
+    select: { xp: true, level: true, streakCount: true, avatarId: true, image: true, name: true },
   });
 
   const xp = user?.xp ?? 0;
@@ -40,6 +40,9 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           locale={locale}
           levelLabel={dict.dashboard.level}
           streakDaysLabel={dict.dashboard.streakDays}
+          avatarId={user?.avatarId}
+          image={user?.image}
+          name={user?.name}
         />
         <main className="relative flex-1 px-4 py-6 pb-24 sm:px-6 sm:py-8 md:pb-8">
           {children}

@@ -34,7 +34,7 @@ const en: Dictionary = {
       { title: "Structured lessons", description: "A path from the basics to advanced strategies — step by step, no chaos or noise." },
       { title: "Exercises and quizzes", description: "Reinforce every topic with practice: quizzes, case studies, and understanding checks before moving on." },
       { title: "Virtual market", description: "Open trades on a simulated market with zero risk to real money and learn from your mistakes." },
-      { title: "AI assistant", description: "Ask questions, review your trades, and get terms explained at any point in your learning." },
+      { title: "Real market charts", description: "Professional TradingView charts with live data and technical analysis tools." },
       { title: "Streaks and motivation", description: "Daily goals and streaks keep you in rhythm — like a language app, but for trading." },
       { title: "XP and achievements", description: "Earn XP for every lesson you complete and unlock achievements on your way to mastery." },
     ],
@@ -82,6 +82,18 @@ const en: Dictionary = {
     },
     orEmail: "or with email",
     google: "Continue with Google",
+    verify: {
+      title: "Verify your email",
+      subtitle: "We sent a 6-digit code to your email. Enter it below.",
+      codePlaceholder: "Code from the email",
+      submit: "Verify",
+      submitting: "Verifying...",
+      resend: "Resend code",
+      resending: "Sending...",
+      resent: "Code sent again",
+      invalidCode: "The code is invalid or expired.",
+      genericError: "Couldn't verify your email. Please try again.",
+    },
   },
   dashboard: {
     nav: {
@@ -90,6 +102,7 @@ const en: Dictionary = {
       charts: "Charts",
       profile: "Profile",
       settings: "Settings",
+      leaderboard: "Leaderboard",
     },
     level: "Level",
     xp: "XP",
@@ -136,6 +149,21 @@ const en: Dictionary = {
   },
   profile: {
     title: "Profile",
+  },
+  leaderboard: {
+    title: "Leaderboard",
+    subtitle: "The platform's top traders by P&L this month. Resets on the 1st.",
+    noData: "No data yet.",
+    you: "you",
+    balance: "balance",
+  },
+  support: {
+    title: "Support",
+    description: "Describe your issue — our AI assistant will try to resolve it right away.",
+    placeholder: "Describe your issue...",
+    send: "Send",
+    greeting: "Hi! I'm the ASTREX support assistant. Describe your issue and I'll try to help.",
+    error: "Couldn't send your message. Please try again.",
   },
 };
 

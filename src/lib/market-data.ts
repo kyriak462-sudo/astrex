@@ -76,6 +76,17 @@ export async function getAllPrices(): Promise<Record<string, PriceInfo>> {
   return fetchAllPrices();
 }
 
+export function getMaxLeverage(ticker: string): number {
+  return ticker === "BTC" || ticker === "ETH" ? 100 : 20;
+}
+
+export const TIMEFRAMES = ["5m", "15m", "1h", "4h", "1d"] as const;
+export type Timeframe = (typeof TIMEFRAMES)[number];
+
+export function isTimeframe(value: string | undefined): value is Timeframe {
+  return !!value && (TIMEFRAMES as readonly string[]).includes(value);
+}
+
 export type Candle = {
   time: number; // unix seconds
   open: number;

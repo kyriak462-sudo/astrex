@@ -34,7 +34,7 @@ const de: Dictionary = {
       { title: "Strukturierte Lektionen", description: "Ein Weg von den Grundlagen bis zu fortgeschrittenen Strategien — Schritt für Schritt, ohne Chaos." },
       { title: "Übungen und Quizfragen", description: "Vertiefe jedes Thema mit Praxis: Quiz, Fallstudien und Verständnischecks." },
       { title: "Virtueller Markt", description: "Eröffne Trades in einem simulierten Markt ohne Risiko für echtes Geld und lerne aus Fehlern." },
-      { title: "KI-Assistent", description: "Stelle Fragen, analysiere deine Trades und lass dir Begriffe jederzeit erklären." },
+      { title: "Echte Marktcharts", description: "Professionelle TradingView-Charts mit Live-Daten und Werkzeugen zur technischen Analyse." },
       { title: "Streaks und Motivation", description: "Tägliche Ziele und Streaks halten dich im Rhythmus — wie eine Sprachlern-App, nur fürs Trading." },
       { title: "XP und Erfolge", description: "Sammle XP für jede abgeschlossene Lektion und schalte Erfolge frei." },
     ],
@@ -82,6 +82,18 @@ const de: Dictionary = {
     },
     orEmail: "oder per E-Mail",
     google: "Weiter mit Google",
+    verify: {
+      title: "E-Mail bestätigen",
+      subtitle: "Wir haben einen 6-stelligen Code an deine E-Mail gesendet. Gib ihn unten ein.",
+      codePlaceholder: "Code aus der E-Mail",
+      submit: "Bestätigen",
+      submitting: "Wird geprüft...",
+      resend: "Code erneut senden",
+      resending: "Wird gesendet...",
+      resent: "Code erneut gesendet",
+      invalidCode: "Der Code ist ungültig oder abgelaufen.",
+      genericError: "E-Mail konnte nicht bestätigt werden. Bitte versuche es erneut.",
+    },
   },
   dashboard: {
     nav: {
@@ -90,6 +102,7 @@ const de: Dictionary = {
       charts: "Charts",
       profile: "Profil",
       settings: "Einstellungen",
+      leaderboard: "Bestenliste",
     },
     level: "Level",
     xp: "XP",
@@ -136,6 +149,21 @@ const de: Dictionary = {
   },
   profile: {
     title: "Profil",
+  },
+  leaderboard: {
+    title: "Bestenliste",
+    subtitle: "Die besten Trader der Plattform nach P&L in diesem Monat. Setzt sich am 1. zurück.",
+    noData: "Noch keine Daten.",
+    you: "Sie",
+    balance: "Guthaben",
+  },
+  support: {
+    title: "Support",
+    description: "Beschreibe dein Problem – der KI-Assistent versucht, es sofort zu lösen.",
+    placeholder: "Beschreibe dein Problem...",
+    send: "Senden",
+    greeting: "Hallo! Ich bin der ASTREX-Support-Assistent. Beschreibe dein Problem, und ich versuche zu helfen.",
+    error: "Nachricht konnte nicht gesendet werden. Bitte versuche es erneut.",
   },
 };
 

@@ -32,26 +32,40 @@ export function LessonPath({ lessons }: { lessons: PathLesson[] }) {
           >
             {points.slice(0, -1).map((p, i) => {
               const next = points[i + 1];
-              const edgeGap = NODE_SIZE / 2 + 8;
+              const edgeGap = NODE_SIZE / 2 + 10;
               const startY = p.y + edgeGap;
               const endY = next.y - edgeGap;
               if (endY <= startY) return null;
               const midY = (startY + endY) / 2;
               const traveled = lessons[i].status !== "locked" && lessons[i + 1].status !== "locked";
+              const pathD = `M ${p.x} ${startY} C ${p.x} ${midY}, ${next.x} ${midY}, ${next.x} ${endY}`;
               return (
-                <path
-                  key={i}
-                  d={`M ${p.x} ${startY} C ${p.x} ${midY}, ${next.x} ${midY}, ${next.x} ${endY}`}
-                  fill="none"
-                  strokeWidth={5}
-                  strokeLinecap="round"
-                  strokeDasharray="2 8"
-                  className={
-                    traveled
-                      ? "stroke-[var(--color-up)]"
-                      : "stroke-black/25 dark:stroke-white/20"
-                  }
-                />
+                <g key={i}>
+                  <path
+                    d={pathD}
+                    fill="none"
+                    strokeWidth={3}
+                    strokeLinecap="round"
+                    className="stroke-black/[0.05] dark:stroke-white/[0.06]"
+                  />
+                  <path
+                    d={pathD}
+                    fill="none"
+                    strokeWidth={traveled ? 6.5 : 5.5}
+                    strokeLinecap="round"
+                    strokeDasharray="0.1 12"
+                    className={
+                      traveled
+                        ? "stroke-[var(--color-up)]"
+                        : "stroke-black/30 dark:stroke-white/30"
+                    }
+                    style={
+                      traveled
+                        ? { filter: "drop-shadow(0 0 4px var(--color-up))" }
+                        : undefined
+                    }
+                  />
+                </g>
               );
             })}
           </svg>
@@ -62,22 +76,27 @@ export function LessonPath({ lessons }: { lessons: PathLesson[] }) {
           const locked = lesson.status === "locked";
 
           const node = (
-            <button
-              disabled={locked}
-              className={cn(
-                "flex h-16 w-16 items-center justify-center rounded-full border transition-colors",
-                lesson.status === "completed" &&
-                  "border-[var(--color-up)] bg-[var(--color-up-dim)] text-[var(--color-up)]",
-                lesson.status === "available" &&
-                  "border-black/25 bg-neutral-900 text-white hover:bg-neutral-800 dark:border-white/25 dark:bg-white dark:text-black dark:hover:bg-white/90",
-                locked &&
-                  "border-black/[0.08] bg-black/[0.02] text-black/20 dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-white/20"
+            <span className="relative inline-flex">
+              {lesson.status === "available" && (
+                <span className="absolute inset-0 -m-1.5 animate-pulse rounded-full bg-[var(--color-up)]/20 blur-md" />
               )}
-            >
-              {lesson.status === "completed" && <Check className="h-6 w-6" />}
-              {lesson.status === "available" && <Play className="h-5 w-5 fill-current" />}
-              {locked && <Lock className="h-5 w-5" />}
-            </button>
+              <button
+                disabled={locked}
+                className={cn(
+                  "relative flex h-16 w-16 items-center justify-center rounded-full border transition-colors",
+                  lesson.status === "completed" &&
+                    "border-[var(--color-up)] bg-[var(--color-up-dim)] text-[var(--color-up)]",
+                  lesson.status === "available" &&
+                    "border-black/25 bg-neutral-900 text-white hover:bg-neutral-800 dark:border-white/25 dark:bg-white dark:text-black dark:hover:bg-white/90",
+                  locked &&
+                    "border-black/[0.08] bg-black/[0.02] text-black/20 dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-white/20"
+                )}
+              >
+                {lesson.status === "completed" && <Check className="h-6 w-6" />}
+                {lesson.status === "available" && <Play className="h-5 w-5 fill-current" />}
+                {locked && <Lock className="h-5 w-5" />}
+              </button>
+            </span>
           );
 
           return (

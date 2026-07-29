@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { SYMBOLS, getCurrentPrice, formatPrice, type Symbol } from "@/lib/market-data";
 import { TradingViewWidget } from "@/components/market/tradingview-widget";
-import { AiChat } from "@/components/market/ai-chat";
 
 function SymbolTabs({
   active,
@@ -73,7 +72,6 @@ export default async function ChartsPage({
           <ChartPanel symbol={symbol1} />
         </div>
         <TradingViewWidget symbol={symbol1.tvSymbol} height={520} />
-        <AiChat symbol={symbol1.ticker} symbolName={symbol1.name} />
       </div>
 
       <div className="mt-10 space-y-3">

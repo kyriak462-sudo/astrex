@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { z } from "zod";
 import { db } from "@/lib/db";
+import { issueVerificationCode } from "@/lib/verification-code";
 
 const registerSchema = z.object({
   name: z.string().min(2).max(60),
@@ -41,6 +42,16 @@ export async function POST(request: Request) {
     },
     select: { id: true, email: true },
   });
+
+  try {
+    await issueVerificationCode(email);
+  } catch (err) {
+    console.error("Failed to send verification email:", err);
+    return NextResponse.json(
+      { user, emailError: true },
+      { status: 201 }
+    );
+  }
 
   return NextResponse.json({ user }, { status: 201 });
 }

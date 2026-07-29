@@ -3,17 +3,20 @@
 import { useState } from "react";
 import { formatPrice } from "@/lib/market-data";
 
-const LEVERAGES = [1, 2, 5, 10, 20];
+const LEVERAGE_PRESETS = [1, 2, 5, 10, 20, 50, 100];
 
 export function TradeForm({
   symbol,
   price,
   action,
+  maxLeverage = 20,
 }: {
   symbol: string;
   price: number;
   action: (formData: FormData) => void;
+  maxLeverage?: number;
 }) {
+  const LEVERAGES = LEVERAGE_PRESETS.filter((l) => l <= maxLeverage);
   const [amount, setAmount] = useState(100);
   const [leverage, setLeverage] = useState(1);
   const [stopLoss, setStopLoss] = useState("");

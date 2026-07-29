@@ -1,7 +1,8 @@
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { SignOutButton } from "@/components/app/sign-out-button";
-import { PnlCalendar } from "@/components/app/pnl-calendar";
+import { PnlChart } from "@/components/app/pnl-chart";
+import { Avatar } from "@/components/app/avatar";
 
 const CALENDAR_DAYS = 14 * 7;
 
@@ -10,7 +11,15 @@ export default async function ProfilePage() {
   const user = session?.user?.id
     ? await db.user.findUnique({
         where: { id: session.user.id },
-        select: { name: true, email: true, xp: true, level: true, streakCount: true },
+        select: {
+          name: true,
+          email: true,
+          xp: true,
+          level: true,
+          streakCount: true,
+          avatarId: true,
+          image: true,
+        },
       })
     : null;
 
@@ -19,12 +28,32 @@ export default async function ProfilePage() {
     : null;
 
   const since = new Date(Date.now() - CALENDAR_DAYS * 86_400_000);
-  const closedTrades = portfolio
-    ? await db.virtualTrade.findMany({
-        where: { portfolioId: portfolio.id, status: "CLOSED", closedAt: { gte: since } },
-        select: { pnl: true, closedAt: true },
-      })
-    : [];
+  const todayStart = new Date();
+  todayStart.setHours(0, 0, 0, 0);
+
+  const [closedTrades, allTimeAgg, todayAgg] = await Promise.all([
+    portfolio
+      ? db.virtualTrade.findMany({
+          where: { portfolioId: portfolio.id, status: "CLOSED", closedAt: { gte: since } },
+          select: { pnl: true, closedAt: true },
+        })
+      : Promise.resolve([]),
+    portfolio
+      ? db.virtualTrade.aggregate({
+          where: { portfolioId: portfolio.id, status: "CLOSED" },
+          _sum: { pnl: true },
+        })
+      : Promise.resolve(null),
+    portfolio
+      ? db.virtualTrade.aggregate({
+          where: { portfolioId: portfolio.id, status: "CLOSED", closedAt: { gte: todayStart } },
+          _sum: { pnl: true },
+        })
+      : Promise.resolve(null),
+  ]);
+
+  const allTimePnl = allTimeAgg?._sum.pnl ?? 0;
+  const todayPnl = todayAgg?._sum.pnl ?? 0;
 
   const dailyMap = new Map<string, { pnl: number; count: number }>();
   for (const t of closedTrades) {
@@ -42,12 +71,22 @@ export default async function ProfilePage() {
       <h1 className="text-2xl font-semibold text-neutral-900 dark:text-white">Профиль</h1>
 
       <div className="mt-6 rounded-2xl border border-black/10 bg-black/[0.02] p-6 dark:border-white/10 dark:bg-white/[0.02]">
-        <p className="text-lg font-medium text-neutral-900 dark:text-white">
-          {user?.name ?? session?.user?.name}
-        </p>
-        <p className="mt-1 text-sm text-neutral-500 dark:text-white/40">
-          {user?.email ?? session?.user?.email}
-        </p>
+        <div className="flex items-center gap-4">
+          <Avatar
+            avatarId={user?.avatarId}
+            image={user?.image}
+            name={user?.name ?? session?.user?.name}
+            size={56}
+          />
+          <div>
+            <p className="text-lg font-medium text-neutral-900 dark:text-white">
+              {user?.name ?? session?.user?.name}
+            </p>
+            <p className="mt-1 text-sm text-neutral-500 dark:text-white/40">
+              {user?.email ?? session?.user?.email}
+            </p>
+          </div>
+        </div>
 
         <div className="mt-6 grid grid-cols-3 gap-4 border-t border-black/[0.06] pt-6 dark:border-white/[0.06]">
           <div>
@@ -76,11 +115,36 @@ export default async function ProfilePage() {
           P&amp;L по дням
         </p>
         <p className="mt-1 text-xs text-neutral-400 dark:text-white/40">
-          Результат закрытых сделок за последние {Math.round(CALENDAR_DAYS / 7)} недель. Нажмите
-          на день, чтобы увидеть детали.
+          Результат закрытых сделок за последние {Math.round(CALENDAR_DAYS / 7)} недель.
         </p>
+
+        <div className="mt-4 grid grid-cols-2 gap-3">
+          <div className="rounded-xl border border-black/[0.06] p-3 dark:border-white/[0.06]">
+            <p className="text-xs text-neutral-400 dark:text-white/35">За всё время</p>
+            <p
+              className={`mt-1 font-mono text-lg ${
+                allTimePnl >= 0 ? "text-[var(--color-up)]" : "text-[var(--color-down)]"
+              }`}
+            >
+              {allTimePnl >= 0 ? "+" : ""}
+              {allTimePnl.toFixed(2)}$
+            </p>
+          </div>
+          <div className="rounded-xl border border-black/[0.06] p-3 dark:border-white/[0.06]">
+            <p className="text-xs text-neutral-400 dark:text-white/35">Сегодня</p>
+            <p
+              className={`mt-1 font-mono text-lg ${
+                todayPnl >= 0 ? "text-[var(--color-up)]" : "text-[var(--color-down)]"
+              }`}
+            >
+              {todayPnl >= 0 ? "+" : ""}
+              {todayPnl.toFixed(2)}$
+            </p>
+          </div>
+        </div>
+
         <div className="mt-4">
-          <PnlCalendar days={days} />
+          <PnlChart days={days} rangeDays={CALENDAR_DAYS} />
         </div>
       </div>
 

@@ -34,7 +34,7 @@ const tr: Dictionary = {
       { title: "Yapılandırılmış dersler", description: "Temellerden ileri stratejilere kadar adım adım, kaosa yer yok." },
       { title: "Alıştırmalar ve testler", description: "Her konuyu testler, örnek olaylar ve anlama kontrolleriyle pekiştirin." },
       { title: "Sanal piyasa", description: "Gerçek para riski olmadan simüle edilmiş piyasada işlem açın ve hatalarınızdan öğrenin." },
-      { title: "Yapay zeka asistanı", description: "Sorular sorun, işlemlerinizi inceleyin ve terimlerin açıklamasını her an alın." },
+      { title: "Gerçek piyasa grafikleri", description: "Canlı verilerle ve teknik analiz araçlarıyla profesyonel TradingView grafikleri." },
       { title: "Seriler ve motivasyon", description: "Günlük hedefler ve seriler sizi ritimde tutar — bir dil uygulaması gibi, ama trading için." },
       { title: "XP ve başarılar", description: "Tamamladığınız her ders için XP kazanın ve başarıların kilidini açın." },
     ],
@@ -82,6 +82,18 @@ const tr: Dictionary = {
     },
     orEmail: "veya e-posta ile",
     google: "Google ile devam et",
+    verify: {
+      title: "E-postanızı doğrulayın",
+      subtitle: "E-postanıza 6 haneli bir kod gönderdik. Aşağıya girin.",
+      codePlaceholder: "E-postadaki kod",
+      submit: "Doğrula",
+      submitting: "Doğrulanıyor...",
+      resend: "Kodu tekrar gönder",
+      resending: "Gönderiliyor...",
+      resent: "Kod tekrar gönderildi",
+      invalidCode: "Kod hatalı veya süresi dolmuş.",
+      genericError: "E-posta doğrulanamadı. Lütfen tekrar deneyin.",
+    },
   },
   dashboard: {
     nav: {
@@ -90,6 +102,7 @@ const tr: Dictionary = {
       charts: "Grafikler",
       profile: "Profil",
       settings: "Ayarlar",
+      leaderboard: "Liderlik Tablosu",
     },
     level: "Seviye",
     xp: "XP",
@@ -136,6 +149,21 @@ const tr: Dictionary = {
   },
   profile: {
     title: "Profil",
+  },
+  leaderboard: {
+    title: "Liderlik Tablosu",
+    subtitle: "Bu ayki kâr/zarara göre platformun en iyi trader'ları. Her ayın 1'inde sıfırlanır.",
+    noData: "Henüz veri yok.",
+    you: "siz",
+    balance: "bakiye",
+  },
+  support: {
+    title: "Destek",
+    description: "Sorununuzu açıklayın — yapay zeka asistanı hemen çözmeye çalışacak.",
+    placeholder: "Sorununuzu açıklayın...",
+    send: "Gönder",
+    greeting: "Merhaba! Ben ASTREX destek asistanıyım. Sorununuzu açıklayın, yardımcı olmaya çalışayım.",
+    error: "Mesaj gönderilemedi. Lütfen tekrar deneyin.",
   },
 };
 

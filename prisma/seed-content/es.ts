@@ -1165,5 +1165,3082 @@ export const COURSE_ES: CourseSeed = {
         },
       ],
     },
+
+    {
+      title: "Gestión de riesgo",
+      lessons: [
+        {
+          slug: "risk-reward",
+          title: "Risk/Reward",
+          summary: "La relación entre el riesgo y la ganancia, y por qué es más importante que el porcentaje de operaciones ganadoras.",
+          xpReward: 25,
+          content: [
+            {
+              type: "paragraph",
+              text: "Risk/Reward (R/R) es la relación entre la pérdida potencial y la ganancia potencial en una operación. Si arriesgas 100$ para ganar 300$, tu R/R es 1:3. Es una de las métricas clave que determina si un sistema de trading será rentable a largo plazo.",
+            },
+            {
+              type: "paragraph",
+              text: "Incluso un sistema con un bajo porcentaje de operaciones ganadoras puede ser rentable si el R/R medio es suficientemente alto. Por ejemplo, con un R/R de 1:3 basta con acertar solo el 30% de las veces para salir en positivo. Por eso los traders experimentados no se centran en el porcentaje de aciertos, sino en la esperanza matemática de la operación.",
+            },
+            {
+              type: "list",
+              items: [
+                "El R/R se calcula antes de entrar en la operación, no después",
+                "Cuanto más alto es el R/R, menor puede ser el winrate necesario",
+                "Un buen R/R no garantiza ganancias sin disciplina en la ejecución",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Qué significa una relación Risk/Reward de 1:3?",
+              options: [
+                "La ganancia potencial es 3 veces mayor que el riesgo potencial",
+                "La operación se cierra a las 3 horas",
+                "Hay que abrir 3 operaciones seguidas",
+              ],
+              correctAnswer: "La ganancia potencial es 3 veces mayor que el riesgo potencial",
+            },
+            {
+              prompt: "¿Por qué un sistema con R/R 1:3 puede ser rentable incluso con un winrate del 40%?",
+              options: [
+                "La ganancia de las operaciones ganadoras compensa las pérdidas de las perdedoras",
+                "Porque el 40% siempre es mayor que el 33%",
+                "Porque las comisiones del exchange se reducen",
+              ],
+              correctAnswer: "La ganancia de las operaciones ganadoras compensa las pérdidas de las perdedoras",
+            },
+            {
+              prompt: "¿Cuándo debe calcular el trader el Risk/Reward de una operación?",
+              options: [
+                "Antes de entrar en la operación",
+                "Solo después de cerrar la operación",
+                "No es obligatorio calcular el R/R",
+              ],
+              correctAnswer: "Antes de entrar en la operación",
+            },
+          ],
+        },
+        {
+          slug: "razmer-pozitsii",
+          title: "Tamaño de la posición",
+          summary: "Cómo calcular el volumen de la operación en función del riesgo sobre el depósito, y no de la ganancia deseada.",
+          xpReward: 25,
+          content: [
+            {
+              type: "paragraph",
+              text: "El tamaño de la posición (position sizing) es el volumen de capital que inviertes en una operación concreta. No debe determinarse por la ganancia deseada, sino por el riesgo admisible: normalmente los traders arriesgan no más del 1-2% del depósito por operación, independientemente de lo seguro que parezca el setup.",
+            },
+            {
+              type: "paragraph",
+              text: "La fórmula es simple: tamaño de la posición = (depósito × porcentaje de riesgo) / distancia al stop-loss en porcentaje. Este enfoque tiene en cuenta automáticamente la volatilidad del activo y la distancia del stop: cuanto más amplio es el stop, menor es el volumen de la posición para el mismo riesgo en dólares.",
+            },
+            {
+              type: "list",
+              items: [
+                "Un porcentaje de riesgo fijo protege el depósito de una serie de operaciones perdedoras",
+                "El volumen de la posición debe reducirse si el stop-loss está colocado lejos",
+                "El uso de apalancamiento aumenta el volumen, pero no elimina el cálculo del riesgo",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿De qué debe depender principalmente el tamaño de la posición?",
+              options: [
+                "Del riesgo admisible en porcentaje del depósito",
+                "De cuánto dinero hay en la tarjeta",
+                "Del estado de ánimo del trader",
+              ],
+              correctAnswer: "Del riesgo admisible en porcentaje del depósito",
+            },
+            {
+              prompt: "¿Qué ocurre con el tamaño de la posición si el stop-loss se coloca más lejos del precio de entrada?",
+              options: [
+                "El volumen de la posición debe reducirse para mantener el mismo riesgo en dólares",
+                "El volumen de la posición debe aumentar",
+                "El volumen de la posición no está relacionado con la distancia al stop",
+              ],
+              correctAnswer: "El volumen de la posición debe reducirse para mantener el mismo riesgo en dólares",
+            },
+            {
+              prompt: "¿Qué porcentaje del depósito se suele recomendar arriesgar en una sola operación?",
+              options: [
+                "1-2%",
+                "25-30%",
+                "50%",
+              ],
+              correctAnswer: "1-2%",
+            },
+          ],
+        },
+        {
+          slug: "stop-loss",
+          title: "Stop-loss",
+          summary: "Para qué sirve el stop-loss, dónde colocarlo correctamente y qué errores se cometen con más frecuencia.",
+          xpReward: 25,
+          content: [
+            {
+              type: "paragraph",
+              text: "El stop-loss es un nivel de precio predefinido al alcanzar el cual la operación se cierra automáticamente con pérdida. Es la principal herramienta de protección del capital: limita las pérdidas a una cantidad conocida de antemano, en lugar de permitir que la pérdida crezca sin control.",
+            },
+            {
+              type: "paragraph",
+              text: "El stop-loss debe colocarse en función de la estructura del mercado —detrás del nivel de soporte o resistencia más cercano, o del extremo de una vela—, y no en función de la cantidad que el trader está dispuesto a perder. Un stop demasiado ajustado saca al trader de la operación por el ruido normal del mercado, mientras que uno demasiado amplio aumenta el riesgo de la posición.",
+            },
+            {
+              type: "list",
+              items: [
+                "El stop-loss protege frente a decisiones emocionales en momentos de drawdown",
+                "El nivel del stop debe basarse en la estructura del gráfico, no en la cantidad de pérdida deseada",
+                "Mover el stop más lejos del precio durante una caída es uno de los errores más comunes de los principiantes",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Cuál es la función principal del stop-loss?",
+              options: [
+                "Limitar la pérdida a una cantidad conocida de antemano",
+                "Aumentar la ganancia de la operación",
+                "Duplicar automáticamente la posición",
+              ],
+              correctAnswer: "Limitar la pérdida a una cantidad conocida de antemano",
+            },
+            {
+              prompt: "¿En qué es más correcto basarse para determinar el nivel del stop-loss?",
+              options: [
+                "En la estructura del mercado (niveles de soporte/resistencia)",
+                "En la cantidad de ganancia deseada",
+                "En un número aleatorio",
+              ],
+              correctAnswer: "En la estructura del mercado (niveles de soporte/resistencia)",
+            },
+            {
+              prompt: "¿Qué error es típico de los principiantes durante una caída en una operación?",
+              options: [
+                "Mover el stop-loss más lejos del precio para «dar más oportunidades a la operación»",
+                "Cerrar la operación estrictamente en el stop",
+                "Calcular el riesgo antes de entrar",
+              ],
+              correctAnswer: "Mover el stop-loss más lejos del precio para «dar más oportunidades a la operación»",
+            },
+          ],
+        },
+        {
+          slug: "take-profit",
+          title: "Take Profit",
+          summary: "Cómo establecer objetivos de ganancia y cuándo conviene usar el cierre parcial de la posición.",
+          xpReward: 25,
+          content: [
+            {
+              type: "paragraph",
+              text: "Take Profit (TP) es un nivel predefinido en el que la operación se cierra automáticamente con ganancia. Al igual que el stop-loss, debe determinarse por la lógica del mercado: el nivel de resistencia, soporte o zona de liquidez más cercano, y no por el deseo arbitrario de ganar una cantidad concreta.",
+            },
+            {
+              type: "paragraph",
+              text: "Muchos traders usan el cierre parcial: fijan parte de la posición en el primer objetivo y dejan que el resto siga moviéndose con el stop trasladado a punto de equilibrio (breakeven). Esto permite fijar ganancias y, al mismo tiempo, no salir de la operación demasiado pronto si el movimiento continúa.",
+            },
+            {
+              type: "list",
+              items: [
+                "El TP, al igual que el stop, debe colocarse en función de la estructura del gráfico",
+                "El cierre parcial reduce la presión psicológica durante la operación",
+                "Trasladar el stop a punto de equilibrio tras el primer objetivo protege la ganancia ya obtenida",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿En qué debe basarse el nivel de Take Profit?",
+              options: [
+                "En la estructura del gráfico: niveles de resistencia, soporte o liquidez",
+                "En un número aleatorio que le guste al trader",
+                "En la cantidad de horas que lleva abierta la operación",
+              ],
+              correctAnswer: "En la estructura del gráfico: niveles de resistencia, soporte o liquidez",
+            },
+            {
+              prompt: "¿Para qué usan los traders el cierre parcial de la posición?",
+              options: [
+                "Para fijar parte de la ganancia y dejar que el resto siga moviéndose",
+                "Para aumentar la comisión del exchange",
+                "Para cerrar la operación en pérdida obligatoriamente",
+              ],
+              correctAnswer: "Para fijar parte de la ganancia y dejar que el resto siga moviéndose",
+            },
+            {
+              prompt: "¿Qué se suele hacer con el stop-loss al alcanzar el primer objetivo de ganancia?",
+              options: [
+                "Se traslada a punto de equilibrio para proteger la ganancia obtenida",
+                "Se elimina el stop-loss por completo",
+                "Se traslada más lejos del precio",
+              ],
+              correctAnswer: "Se traslada a punto de equilibrio para proteger la ganancia obtenida",
+            },
+          ],
+        },
+        {
+          slug: "psihologiya-ubytkov",
+          title: "La psicología de las pérdidas",
+          summary: "Cómo afectan las operaciones perdedoras a las decisiones del trader y por qué es importante aceptar las pérdidas con calma.",
+          xpReward: 25,
+          content: [
+            {
+              type: "paragraph",
+              text: "Las pérdidas son una parte inevitable del trading: incluso un sistema rentable pierde dinero regularmente en operaciones individuales. El problema no está en la pérdida en sí, sino en la reacción ante ella: el intento de «recuperarse» de inmediato con un volumen mayor o la negativa a cerrar la operación en el stop con la esperanza de un giro.",
+            },
+            {
+              type: "paragraph",
+              text: "El trader que percibe cada pérdida como un coste estadístico esperado del sistema, y no como un fracaso personal, toma decisiones más racionales. Llevar un diario de trading y definir el riesgo por operación de antemano ayuda a separar las emociones del proceso.",
+            },
+            {
+              type: "list",
+              items: [
+                "Una serie de pérdidas es una parte normal incluso de un sistema de trading rentable",
+                "Intentar «recuperarse» después de una pérdida suele aumentar el riesgo, no la ganancia",
+                "Definir el riesgo de la operación de antemano reduce la presión emocional en el momento de la pérdida",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Cuál es la forma más correcta de percibir una pérdida individual en el trading?",
+              options: [
+                "Como un coste estadístico esperado del sistema de trading",
+                "Como una señal de que hay que duplicar de inmediato el volumen de la siguiente operación",
+                "Como un motivo para dejar de llevar el diario de trading",
+              ],
+              correctAnswer: "Como un coste estadístico esperado del sistema de trading",
+            },
+            {
+              prompt: "¿A qué suele llevar el intento de «recuperarse» inmediatamente después de una pérdida?",
+              options: [
+                "A un mayor riesgo y a nuevas pérdidas",
+                "A una ganancia garantizada",
+                "A la cancelación automática de la operación anterior",
+              ],
+              correctAnswer: "A un mayor riesgo y a nuevas pérdidas",
+            },
+            {
+              prompt: "¿Qué ayuda al trader a separar las emociones de las decisiones de trading?",
+              options: [
+                "Definir el riesgo de la operación de antemano y llevar un diario",
+                "Renunciar por completo al análisis de las operaciones",
+                "Aumentar el apalancamiento después de cada pérdida",
+              ],
+              correctAnswer: "Definir el riesgo de la operación de antemano y llevar un diario",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Psicología del trader",
+      lessons: [
+        {
+          slug: "fomo",
+          title: "FOMO",
+          summary: "El miedo a perderse un movimiento y por qué lleva a entrar en operaciones en el peor momento.",
+          xpReward: 25,
+          content: [
+            {
+              type: "paragraph",
+              text: "FOMO (Fear Of Missing Out) es el miedo a perderse un movimiento de precio rentable. Surge cuando un activo sube bruscamente y el trader ve que otros están «ganando» mientras él no. Bajo la influencia del FOMO, las operaciones suelen abrirse sin plan, en el pico del movimiento, sin tener en cuenta el riesgo.",
+            },
+            {
+              type: "paragraph",
+              text: "El problema del FOMO es que la entrada se produce justo cuando el movimiento ya se ha realizado en gran parte y el riesgo de giro es máximo. Un trader disciplinado se ciñe a condiciones de entrada definidas de antemano y deja pasar el movimiento si no se ajusta a su estrategia.",
+            },
+            {
+              type: "list",
+              items: [
+                "El FOMO suele empujar a entrar después de que el precio ya se haya movido con fuerza",
+                "Las decisiones basadas en el FOMO suelen tomarse sin stop-loss ni cálculo del riesgo",
+                "Tener un plan de operación definido de antemano reduce la influencia del FOMO",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Qué es el FOMO en el trading?",
+              options: [
+                "El miedo a perderse un movimiento de precio rentable",
+                "Un indicador técnico de volumen",
+                "Un tipo de orden en el exchange",
+              ],
+              correctAnswer: "El miedo a perderse un movimiento de precio rentable",
+            },
+            {
+              prompt: "¿En qué etapa del movimiento del precio suele entrar el trader en una operación bajo la influencia del FOMO?",
+              options: [
+                "Cerca del final del movimiento, cuando el riesgo de giro ya es alto",
+                "Justo al comienzo del movimiento",
+                "Antes de que el movimiento siquiera haya comenzado",
+              ],
+              correctAnswer: "Cerca del final del movimiento, cuando el riesgo de giro ya es alto",
+            },
+            {
+              prompt: "¿Qué ayuda a reducir la influencia del FOMO en las decisiones del trader?",
+              options: [
+                "Un plan y unas condiciones de entrada definidos de antemano",
+                "El seguimiento constante de las operaciones ganadoras de otros",
+                "Aumentar el apalancamiento en el momento de una subida brusca",
+              ],
+              correctAnswer: "Un plan y unas condiciones de entrada definidos de antemano",
+            },
+          ],
+        },
+        {
+          slug: "zhadnost",
+          title: "La codicia",
+          summary: "Cómo la codicia lleva a mantener una operación ganadora más tiempo del previsto y a convertir la ganancia en pérdida.",
+          xpReward: 25,
+          content: [
+            {
+              type: "paragraph",
+              text: "La codicia en el trading se manifiesta como el deseo de exprimir más ganancia de una operación de la prevista en el plan inicial: no cerrar la posición en el objetivo establecido, aumentar el volumen tras una serie de operaciones exitosas o cancelar un Take Profit ya definido.",
+            },
+            {
+              type: "paragraph",
+              text: "Con mayor frecuencia, la codicia hace que una operación ganadora se revierta y se cierre en el stop o en cero, aunque podría haberse asegurado con un buen resultado. La disciplina para respetar el plan definido de antemano es la principal herramienta contra la codicia.",
+            },
+            {
+              type: "list",
+              items: [
+                "La codicia suele manifestarse como la cancelación de un Take Profit ya definido",
+                "Aumentar el volumen tras una serie de operaciones ganadoras sin cambiar la gestión de riesgo también es una manifestación de codicia",
+                "Seguir el plan de la operación elaborado de antemano reduce la influencia de la codicia",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Cómo se manifiesta con más frecuencia la codicia en la gestión de una operación abierta?",
+              options: [
+                "El trader cancela el Take Profit ya definido, esperando una ganancia mayor",
+                "El trader cierra la operación estrictamente según el plan",
+                "El trader reduce el volumen de la posición",
+              ],
+              correctAnswer: "El trader cancela el Take Profit ya definido, esperando una ganancia mayor",
+            },
+            {
+              prompt: "¿A qué resultado suele llevar la codicia en una operación ganadora?",
+              options: [
+                "La operación se revierte y se cierra en el stop o en cero",
+                "La ganancia aumenta de forma garantizada",
+                "La comisión del exchange se reduce",
+              ],
+              correctAnswer: "La operación se revierte y se cierra en el stop o en cero",
+            },
+            {
+              prompt: "¿Cuál es la principal herramienta contra la codicia en el trading?",
+              options: [
+                "Respetar el plan de la operación elaborado de antemano",
+                "Renunciar por completo a establecer un Take Profit",
+                "Aumentar el apalancamiento después de cada operación ganadora",
+              ],
+              correctAnswer: "Respetar el plan de la operación elaborado de antemano",
+            },
+          ],
+        },
+        {
+          slug: "strah",
+          title: "El miedo",
+          summary: "Cómo el miedo a la pérdida impide seguir la estrategia y lleva al cierre prematuro de las operaciones.",
+          xpReward: 25,
+          content: [
+            {
+              type: "paragraph",
+              text: "El miedo en el trading se manifiesta con más frecuencia como el temor a perder dinero: el trader cierra una operación ganadora demasiado pronto ante la más mínima caída, teme entrar en una operación con una señal confirmada o evita por completo operar después de una serie de pérdidas.",
+            },
+            {
+              type: "paragraph",
+              text: "A diferencia de la codicia, el miedo lleva a actuar con demasiada cautela y a perder oportunidades que se ajustan por completo a la estrategia. Operar con un volumen en el que el riesgo por operación resulte psicológicamente cómodo ayuda a reducir la influencia del miedo.",
+            },
+            {
+              type: "list",
+              items: [
+                "El miedo suele manifestarse como el cierre prematuro de una operación ganadora",
+                "Un volumen de posición demasiado grande intensifica el miedo y dificulta seguir el plan",
+                "Un tamaño de riesgo por operación cómodo reduce la presión emocional del miedo",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Cómo suele afectar el miedo a la gestión de una operación ganadora?",
+              options: [
+                "El trader la cierra demasiado pronto ante la más mínima caída",
+                "El trader mantiene la operación mucho más tiempo del previsto",
+                "El trader aumenta el volumen de la posición",
+              ],
+              correctAnswer: "El trader la cierra demasiado pronto ante la más mínima caída",
+            },
+            {
+              prompt: "¿Qué intensifica el miedo en la gestión de una posición abierta?",
+              options: [
+                "Un volumen de posición demasiado grande en relación con el depósito",
+                "Un riesgo definido de antemano del 1-2% del depósito",
+                "Llevar un diario de trading",
+              ],
+              correctAnswer: "Un volumen de posición demasiado grande en relación con el depósito",
+            },
+            {
+              prompt: "¿En qué se diferencia fundamentalmente el miedo de la codicia en el trading?",
+              options: [
+                "El miedo lleva a actuar con demasiada cautela y a perder operaciones que se ajustan a la estrategia",
+                "El miedo y la codicia llevan exactamente a las mismas decisiones",
+                "El miedo aumenta el volumen de la posición más que la codicia",
+              ],
+              correctAnswer: "El miedo lleva a actuar con demasiada cautela y a perder operaciones que se ajustan a la estrategia",
+            },
+          ],
+        },
+        {
+          slug: "distsiplina",
+          title: "La disciplina",
+          summary: "Por qué seguir las propias reglas es más importante que cualquier operación individual.",
+          xpReward: 25,
+          content: [
+            {
+              type: "paragraph",
+              text: "La disciplina en el trading es la capacidad de seguir de forma constante las reglas de entrada, salida y gestión de riesgo definidas de antemano, incluso cuando en el momento se quiere actuar de otra manera. Es precisamente la disciplina lo que distingue a un trader con sistema de una persona que opera guiada por las emociones.",
+            },
+            {
+              type: "paragraph",
+              text: "Incluso una estrategia de trading perfecta no dará resultados si las reglas se incumplen cada vez que la operación no sigue el plan. La disciplina se construye sobre reglas simples y claramente formuladas, y sobre el análisis regular de si se han respetado.",
+            },
+            {
+              type: "list",
+              items: [
+                "La disciplina es más importante que el resultado de una operación individual",
+                "Incumplir las propias reglas devalúa incluso una buena estrategia",
+                "El análisis regular del cumplimiento de las reglas ayuda a fortalecer la disciplina",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Qué es la disciplina en el contexto del trading?",
+              options: [
+                "El seguimiento constante de reglas definidas de antemano",
+                "La capacidad de adivinar la dirección del precio",
+                "El uso del apalancamiento máximo",
+              ],
+              correctAnswer: "El seguimiento constante de reglas definidas de antemano",
+            },
+            {
+              prompt: "¿Por qué incluso una buena estrategia no funciona sin disciplina?",
+              options: [
+                "Porque las reglas se incumplen justo cuando la operación no sigue el plan",
+                "Porque las estrategias siempre funcionan igual de bien",
+                "Porque la disciplina no influye en el resultado",
+              ],
+              correctAnswer: "Porque las reglas se incumplen justo cuando la operación no sigue el plan",
+            },
+            {
+              prompt: "¿Qué ayuda a fortalecer la disciplina con el tiempo?",
+              options: [
+                "El análisis regular de si se han respetado las propias reglas",
+                "Renunciar por completo al análisis de las operaciones",
+                "Cambiar constantemente las reglas después de cada operación",
+              ],
+              correctAnswer: "El análisis regular de si se han respetado las propias reglas",
+            },
+          ],
+        },
+        {
+          slug: "emotsionalny-kontrol",
+          title: "Control emocional",
+          summary: "Técnicas prácticas que ayudan a tomar decisiones basadas en el plan y no en las emociones.",
+          xpReward: 25,
+          content: [
+            {
+              type: "paragraph",
+              text: "El control emocional es la capacidad de reconocer el estado emocional (euforia, miedo, irritación tras una pérdida) y no permitir que influya directamente en las decisiones de trading. No se trata de la ausencia de emociones, sino de la capacidad de actuar según el plan a pesar de ellas.",
+            },
+            {
+              type: "paragraph",
+              text: "Las herramientas prácticas de control emocional incluyen una pausa antes de entrar en una operación, un límite en el número de operaciones o pérdidas por día, y llevar un diario donde se registre no solo el resultado, sino también el estado emocional del trader en el momento de la operación.",
+            },
+            {
+              type: "list",
+              items: [
+                "El control emocional consiste en gestionar la reacción ante las emociones, no en su ausencia",
+                "Un límite diario en el número de operaciones o pérdidas reduce la influencia del tilt",
+                "Registrar el estado emocional en el diario ayuda a identificar errores recurrentes",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Qué se entiende por control emocional en el trading?",
+              options: [
+                "La capacidad de actuar según el plan a pesar de las emociones, no su ausencia total",
+                "La ausencia total de cualquier emoción durante la operativa",
+                "La capacidad de predecir las emociones de otros traders",
+              ],
+              correctAnswer: "La capacidad de actuar según el plan a pesar de las emociones, no su ausencia total",
+            },
+            {
+              prompt: "¿Cómo ayuda al trader un límite diario en el número de operaciones?",
+              options: [
+                "Reduce el riesgo de una serie de decisiones emocionales seguidas (tilt)",
+                "Garantiza ganancias al final del día",
+                "Elimina por completo la necesidad del stop-loss",
+              ],
+              correctAnswer: "Reduce el riesgo de una serie de decisiones emocionales seguidas (tilt)",
+            },
+            {
+              prompt: "¿Para qué registrar el estado emocional durante la operación en el diario de trading?",
+              options: [
+                "Para identificar errores emocionales recurrentes en el futuro",
+                "Es un requisito del exchange para abrir la operación",
+                "No ayuda en absoluto al análisis de la operativa",
+              ],
+              correctAnswer: "Para identificar errores emocionales recurrentes en el futuro",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Indicadores",
+      lessons: [
+        {
+          slug: "rsi",
+          title: "RSI",
+          summary: "Índice de fuerza relativa: cómo medir la sobrecompra y la sobreventa de un activo.",
+          xpReward: 25,
+          content: [
+            {
+              type: "paragraph",
+              text: "El RSI (Relative Strength Index) es un oscilador que mide la velocidad y la magnitud de los cambios recientes de precio en una escala de 0 a 100. Los valores por encima de 70 se consideran tradicionalmente zona de sobrecompra, y por debajo de 30, zona de sobreventa, aunque en una tendencia fuerte el RSI puede permanecer mucho tiempo en esas zonas.",
+            },
+            {
+              type: "paragraph",
+              text: "Además de las zonas de sobrecompra/sobreventa, los traders utilizan las divergencias del RSI: si el precio marca un nuevo máximo pero el RSI no, esto puede indicar un debilitamiento del impulso. El RSI rara vez se usa de forma aislada y normalmente se combina con el análisis de la estructura del mercado.",
+            },
+            {
+              type: "list",
+              items: [
+                "RSI por encima de 70: potencial sobrecompra; por debajo de 30: sobreventa",
+                "En una tendencia fuerte, el RSI puede permanecer mucho tiempo en una zona extrema sin revertir",
+                "La divergencia entre el precio y el RSI puede indicar un debilitamiento de la tendencia",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿En qué rango de valores se mide el RSI?",
+              options: [
+                "De 0 a 100",
+                "De -1 a 1",
+                "De 0 a 10.000",
+              ],
+              correctAnswer: "De 0 a 100",
+            },
+            {
+              prompt: "¿Qué significa tradicionalmente un valor de RSI por encima de 70?",
+              options: [
+                "Una posible zona de sobrecompra",
+                "Un giro garantizado del precio a la baja",
+                "La ausencia de volumen de negociación",
+              ],
+              correctAnswer: "Una posible zona de sobrecompra",
+            },
+            {
+              prompt: "¿Qué puede indicar la divergencia entre el precio y el RSI?",
+              options: [
+                "Un debilitamiento del impulso actual del movimiento",
+                "Un error técnico del indicador",
+                "Un cambio del exchange donde cotiza el activo",
+              ],
+              correctAnswer: "Un debilitamiento del impulso actual del movimiento",
+            },
+          ],
+        },
+        {
+          slug: "macd",
+          title: "MACD",
+          summary: "El indicador de convergencia-divergencia de medias móviles y sus señales de cruce y divergencia.",
+          xpReward: 25,
+          content: [
+            {
+              type: "paragraph",
+              text: "El MACD (Moving Average Convergence Divergence) se construye a partir de la diferencia entre dos medias móviles exponenciales (normalmente de 12 y 26 periodos) y una línea de señal (una EMA de 9 periodos del propio MACD). El histograma muestra la diferencia entre el MACD y la línea de señal.",
+            },
+            {
+              type: "paragraph",
+              text: "Las principales señales del MACD son el cruce de la línea MACD y la línea de señal (posible cambio de impulso) y el cruce de la línea cero (cambio de dirección de la tendencia). Al igual que el RSI, el MACD puede mostrar divergencias con el precio, lo que a menudo se usa como confirmación adicional.",
+            },
+            {
+              type: "list",
+              items: [
+                "El MACD se construye a partir de la diferencia entre dos EMA y una línea de señal",
+                "El cruce del MACD y la línea de señal es una de las principales señales de trading",
+                "El cruce de la línea cero suele asociarse con un cambio de dirección de la tendencia",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿En qué se basa el indicador MACD?",
+              options: [
+                "En la diferencia entre dos medias móviles exponenciales",
+                "En el volumen de interés abierto",
+                "En el número de wallets activas en la red",
+              ],
+              correctAnswer: "En la diferencia entre dos medias móviles exponenciales",
+            },
+            {
+              prompt: "¿Qué muestra el histograma del MACD?",
+              options: [
+                "La diferencia entre la línea MACD y la línea de señal",
+                "El volumen total de negociación del día",
+                "El número de posiciones abiertas en el exchange",
+              ],
+              correctAnswer: "La diferencia entre la línea MACD y la línea de señal",
+            },
+            {
+              prompt: "¿Con qué suele asociarse el cruce de la línea MACD del nivel cero?",
+              options: [
+                "Con un cambio de dirección de la tendencia",
+                "Con el listado de un nuevo token",
+                "Con un cambio en la comisión del exchange",
+              ],
+              correctAnswer: "Con un cambio de dirección de la tendencia",
+            },
+          ],
+        },
+        {
+          slug: "ema",
+          title: "EMA",
+          summary: "La media móvil exponencial y por qué reacciona más rápido al precio que la simple.",
+          xpReward: 25,
+          content: [
+            {
+              type: "paragraph",
+              text: "La EMA (Exponential Moving Average) es una media móvil que otorga un mayor peso a los precios más recientes, por lo que reacciona más rápido a los cambios de precio en comparación con la media móvil simple (SMA). Esto hace que la EMA sea más sensible, pero también más propensa a señales falsas en un mercado lateral.",
+            },
+            {
+              type: "paragraph",
+              text: "Los traders suelen usar varias EMA de diferentes periodos al mismo tiempo (por ejemplo, 20 y 50) para determinar la dirección de la tendencia y las zonas de soporte/resistencia dinámicas. El cruce de la EMA rápida y la lenta es una señal popular, aunque rezagada.",
+            },
+            {
+              type: "list",
+              items: [
+                "La EMA otorga más peso a los precios recientes en comparación con la SMA",
+                "Varias EMA de diferentes periodos ayudan a evaluar la dirección de la tendencia",
+                "El cruce de la EMA rápida y la lenta es una señal rezagada, pero popular",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿En qué se diferencia la EMA de la media móvil simple (SMA)?",
+              options: [
+                "La EMA otorga más peso a los precios recientes y reacciona más rápido a los cambios",
+                "La EMA no tiene en cuenta el precio en absoluto",
+                "La EMA siempre se calcula solo a partir del volumen",
+              ],
+              correctAnswer: "La EMA otorga más peso a los precios recientes y reacciona más rápido a los cambios",
+            },
+            {
+              prompt: "¿Para qué usan los traders varias EMA de diferentes periodos al mismo tiempo?",
+              options: [
+                "Para evaluar la dirección de la tendencia y las zonas de soporte/resistencia dinámicas",
+                "Para reducir la comisión del exchange",
+                "Esto no aporta ninguna información útil",
+              ],
+              correctAnswer: "Para evaluar la dirección de la tendencia y las zonas de soporte/resistencia dinámicas",
+            },
+            {
+              prompt: "¿Qué desventaja tiene el cruce de la EMA rápida y la lenta como señal?",
+              options: [
+                "La señal se retrasa respecto al movimiento actual del precio",
+                "La señal aparece antes de que comience el movimiento",
+                "La señal no se puede ver en el gráfico",
+              ],
+              correctAnswer: "La señal se retrasa respecto al movimiento actual del precio",
+            },
+          ],
+        },
+        {
+          slug: "sma",
+          title: "SMA",
+          summary: "La media móvil simple como base para determinar la dirección general de la tendencia.",
+          xpReward: 25,
+          content: [
+            {
+              type: "paragraph",
+              text: "La SMA (Simple Moving Average) es una media móvil simple, calculada como el promedio aritmético del precio de cierre a lo largo de N periodos. A diferencia de la EMA, en la SMA todos los periodos tienen el mismo peso, por lo que reacciona más lentamente a los cambios de precio y suaviza el ruido con mayor intensidad.",
+            },
+            {
+              type: "paragraph",
+              text: "La SMA se usa a menudo para determinar la dirección general y de más largo plazo de la tendencia; por ejemplo, la posición del precio respecto a la SMA 200 en el timeframe diario se utiliza ampliamente como referencia de un mercado alcista o bajista en general.",
+            },
+            {
+              type: "list",
+              items: [
+                "La SMA es el promedio aritmético del precio durante un número determinado de periodos",
+                "La SMA suaviza el ruido con más intensidad que la EMA, pero reacciona más lento",
+                "La SMA 200 en el gráfico diario suele usarse como referencia de la tendencia global",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Cómo se calcula la SMA?",
+              options: [
+                "Como el promedio aritmético del precio de cierre durante un número determinado de periodos",
+                "Como la suma de todos los volúmenes de negociación del mes",
+                "Como la diferencia entre el máximo y el mínimo del día",
+              ],
+              correctAnswer: "Como el promedio aritmético del precio de cierre durante un número determinado de periodos",
+            },
+            {
+              prompt: "¿En qué se diferencia la SMA de la EMA en cuanto a la velocidad de reacción al precio?",
+              options: [
+                "La SMA reacciona más lento porque todos los periodos tienen el mismo peso",
+                "La SMA siempre reacciona más rápido que la EMA",
+                "No hay diferencia en la velocidad de reacción",
+              ],
+              correctAnswer: "La SMA reacciona más lento porque todos los periodos tienen el mismo peso",
+            },
+            {
+              prompt: "¿Para qué se suele usar la SMA 200 en el timeframe diario?",
+              options: [
+                "Como referencia de un mercado alcista o bajista general",
+                "Para calcular la comisión del exchange",
+                "Para determinar el momento exacto del listado de un token",
+              ],
+              correctAnswer: "Como referencia de un mercado alcista o bajista general",
+            },
+          ],
+        },
+        {
+          slug: "vwap",
+          title: "VWAP",
+          summary: "El precio medio ponderado por volumen y su papel como referencia del precio «justo» del día.",
+          xpReward: 25,
+          content: [
+            {
+              type: "paragraph",
+              text: "El VWAP (Volume Weighted Average Price) es el precio medio de un activo durante un periodo, ponderado por el volumen de negociación en cada nivel de precio. A diferencia de la media móvil simple, el VWAP muestra a qué precio se ejecutó realmente el grueso del volumen de operaciones.",
+            },
+            {
+              type: "paragraph",
+              text: "Los traders institucionales suelen usar el VWAP como referencia del precio «justo» del día: un precio por encima del VWAP se considera relativamente caro, y uno por debajo, relativamente barato. El VWAP también se utiliza como nivel dinámico de soporte/resistencia dentro de la sesión de negociación.",
+            },
+            {
+              type: "list",
+              items: [
+                "El VWAP tiene en cuenta no solo el precio, sino también el volumen en cada nivel",
+                "Un precio por encima del VWAP se interpreta como relativamente caro, y uno por debajo, como relativamente barato",
+                "El VWAP suele recalcularse desde cero al comienzo de cada sesión de negociación",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Qué tiene en cuenta el VWAP a diferencia de la media móvil simple?",
+              options: [
+                "El volumen de negociación en cada nivel de precio",
+                "Solo el precio máximo del día",
+                "Solo el precio de cierre del día anterior",
+              ],
+              correctAnswer: "El volumen de negociación en cada nivel de precio",
+            },
+            {
+              prompt: "¿Cómo se interpreta un precio que está por encima del VWAP?",
+              options: [
+                "Como relativamente caro en comparación con el nivel medio ponderado por volumen",
+                "Como una señal de compra garantizada",
+                "Como una señal de que la negociación se ha detenido",
+              ],
+              correctAnswer: "Como relativamente caro en comparación con el nivel medio ponderado por volumen",
+            },
+            {
+              prompt: "¿Quién suele guiarse por el VWAP al ejecutar órdenes grandes?",
+              options: [
+                "Los traders institucionales",
+                "Solo los traders principiantes",
+                "Solo los responsables de marketing de los proyectos",
+              ],
+              correctAnswer: "Los traders institucionales",
+            },
+          ],
+        },
+        {
+          slug: "atr",
+          title: "ATR",
+          summary: "El rango verdadero medio como herramienta para medir la volatilidad al colocar stops.",
+          xpReward: 25,
+          content: [
+            {
+              type: "paragraph",
+              text: "El ATR (Average True Range) mide la volatilidad media de un activo durante un periodo determinado, teniendo en cuenta los gaps entre velas. No es un indicador de dirección, sino de amplitud del movimiento: un ATR alto significa que el precio realiza oscilaciones grandes, y uno bajo, que el mercado está relativamente tranquilo.",
+            },
+            {
+              type: "paragraph",
+              text: "El ATR se usa a menudo para calcular el tamaño del stop-loss adaptado a la volatilidad actual: en lugar de un porcentaje fijo, el trader coloca el stop a una distancia múltiplo del ATR, lo que reduce la probabilidad de ser expulsado prematuramente por el ruido normal del mercado.",
+            },
+            {
+              type: "list",
+              items: [
+                "El ATR mide la amplitud del movimiento del precio, no su dirección",
+                "Un ATR alto indica una mayor volatilidad del activo",
+                "Un stop-loss calculado a partir del ATR se adapta a la volatilidad actual del mercado",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Qué mide el indicador ATR?",
+              options: [
+                "La volatilidad media (amplitud del movimiento) del activo",
+                "La dirección de la tendencia",
+                "El número de direcciones activas en la red",
+              ],
+              correctAnswer: "La volatilidad media (amplitud del movimiento) del activo",
+            },
+            {
+              prompt: "¿Qué indica un valor alto de ATR?",
+              options: [
+                "Una mayor volatilidad y grandes oscilaciones del precio",
+                "Una baja liquidez del exchange",
+                "Un próximo deslistado del activo",
+              ],
+              correctAnswer: "Una mayor volatilidad y grandes oscilaciones del precio",
+            },
+            {
+              prompt: "¿Para qué usan los traders el ATR en la práctica con frecuencia?",
+              options: [
+                "Para calcular el tamaño del stop-loss teniendo en cuenta la volatilidad actual",
+                "Para determinar el precio exacto de listado de un token",
+                "Para calcular la comisión de la red",
+              ],
+              correctAnswer: "Para calcular el tamaño del stop-loss teniendo en cuenta la volatilidad actual",
+            },
+          ],
+        },
+        {
+          slug: "bollinger-bands",
+          title: "Bollinger Bands",
+          summary: "Las Bandas de Bollinger como indicador de volatilidad y de la carestía relativa del precio.",
+          xpReward: 25,
+          content: [
+            {
+              type: "paragraph",
+              text: "Las Bollinger Bands están formadas por una media móvil (normalmente la SMA 20) y dos bandas separadas de ella a una distancia igual a un número determinado de desviaciones estándar del precio. El ancho de las bandas cambia dinámicamente junto con la volatilidad: se expanden en periodos de movimientos fuertes y se contraen en periodos de calma.",
+            },
+            {
+              type: "paragraph",
+              text: "El estrechamiento de las bandas («squeeze») suele preceder a un movimiento fuerte del precio en cualquier dirección, y que el precio toque la banda superior o inferior no es en sí mismo una señal de giro: en una tendencia fuerte, el precio puede moverse a lo largo de la banda durante mucho tiempo.",
+            },
+            {
+              type: "list",
+              items: [
+                "Las bandas se construyen alrededor de una media móvil según la desviación estándar",
+                "El estrechamiento de las bandas suele preceder a un movimiento fuerte del precio",
+                "Tocar una banda no garantiza un giro, especialmente en una tendencia fuerte",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿De qué están formadas las Bollinger Bands?",
+              options: [
+                "De una media móvil y dos bandas basadas en la desviación estándar",
+                "De tres líneas de volumen independientes",
+                "De una sola línea de precio de cierre",
+              ],
+              correctAnswer: "De una media móvil y dos bandas basadas en la desviación estándar",
+            },
+            {
+              prompt: "¿Qué suele preceder a un movimiento fuerte del precio según las Bollinger Bands?",
+              options: [
+                "El estrechamiento (squeeze) de las bandas",
+                "La expansión máxima de las bandas",
+                "La desaparición total de las bandas del gráfico",
+              ],
+              correctAnswer: "El estrechamiento (squeeze) de las bandas",
+            },
+            {
+              prompt: "¿Significa que el precio toque la banda superior de Bollinger un giro garantizado a la baja?",
+              options: [
+                "No, en una tendencia fuerte el precio puede moverse a lo largo de la banda durante mucho tiempo",
+                "Sí, siempre es una señal de giro cien por cien segura",
+                "Sí, pero solo en el timeframe semanal",
+              ],
+              correctAnswer: "No, en una tendencia fuerte el precio puede moverse a lo largo de la banda durante mucho tiempo",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Análisis de volumen",
+      lessons: [
+        {
+          slug: "volume",
+          title: "Volume",
+          summary: "El volumen de operaciones como confirmación de la fuerza del movimiento del precio.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "Volume (volumen) muestra la cantidad de un activo negociada durante un período. El volumen es uno de los pocos indicadores que no se deriva del precio, sino que refleja la actividad real de los participantes del mercado, por lo que se usa a menudo como confirmación independiente del movimiento.",
+            },
+            {
+              type: "paragraph",
+              text: "Un movimiento de precio con volumen alto se considera más fiable que el mismo movimiento con volumen bajo: una ruptura de nivel sin aumento de volumen suele resultar falsa. Los picos bruscos de volumen también suelen coincidir con puntos clave de giro del mercado.",
+            },
+            {
+              type: "list",
+              items: [
+                "El volumen refleja la actividad real de los participantes, no una derivada del propio precio",
+                "Una ruptura de nivel con volumen bajo suele resultar falsa con más frecuencia",
+                "Los picos bruscos de volumen suelen coincidir con puntos de giro del mercado",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Por qué se considera el volumen una confirmación independiente del movimiento del precio?",
+              options: [
+                "Refleja la actividad real de los participantes, no se deriva del propio precio",
+                "Porque el volumen siempre crece junto con el precio",
+                "Porque el volumen se mide en porcentaje de la capitalización",
+              ],
+              correctAnswer: "Refleja la actividad real de los participantes, no se deriva del propio precio",
+            },
+            {
+              prompt: "¿Qué ruptura de nivel se considera menos fiable?",
+              options: [
+                "La ruptura con volumen bajo",
+                "La ruptura con volumen alto",
+                "La fiabilidad de la ruptura no depende del volumen",
+              ],
+              correctAnswer: "La ruptura con volumen bajo",
+            },
+            {
+              prompt: "¿Con qué suelen coincidir los picos bruscos de volumen?",
+              options: [
+                "Con puntos clave de giro del mercado",
+                "Solo con fallos técnicos del exchange",
+                "Con el cambio de nombre del token",
+              ],
+              correctAnswer: "Con puntos clave de giro del mercado",
+            },
+          ],
+        },
+        {
+          slug: "delta",
+          title: "Delta",
+          summary: "La diferencia entre el volumen de compras y ventas como indicador de presión sobre el precio.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "Delta es la diferencia entre el volumen de compras agresivas (mediante órdenes de mercado de compra) y ventas agresivas durante un período. Una delta positiva significa predominio de compradores; una negativa, de vendedores, independientemente de hacia dónde se haya movido finalmente el precio.",
+            },
+            {
+              type: "paragraph",
+              text: "Una divergencia entre la delta y el movimiento del precio —por ejemplo, el precio sube pero la delta es negativa— puede indicar que la subida no se debe a compras de mercado, sino al cierre de posiciones cortas, y que dicha subida es menos sólida.",
+            },
+            {
+              type: "list",
+              items: [
+                "Una delta positiva significa predominio de compras agresivas sobre ventas",
+                "La delta mide la presión de los participantes, no el cambio final del precio",
+                "La divergencia entre precio y delta puede indicar que el movimiento es poco sólido",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Qué muestra una delta positiva?",
+              options: [
+                "El predominio de compras agresivas sobre las ventas",
+                "Una subida garantizada del precio en el futuro",
+                "La ausencia de actividad de trading",
+              ],
+              correctAnswer: "El predominio de compras agresivas sobre las ventas",
+            },
+            {
+              prompt: "¿Qué puede indicar una subida del precio con delta negativa?",
+              options: [
+                "Que la subida puede deberse al cierre de posiciones cortas, no a nuevas compras",
+                "Un error técnico en el exchange",
+                "Que la delta se está calculando de forma incorrecta",
+              ],
+              correctAnswer: "Que la subida puede deberse al cierre de posiciones cortas, no a nuevas compras",
+            },
+            {
+              prompt: "¿Qué mide exactamente la delta de volumen?",
+              options: [
+                "La presión de compradores y vendedores mediante órdenes agresivas",
+                "La capitalización total del activo",
+                "El número de holders del token",
+              ],
+              correctAnswer: "La presión de compradores y vendedores mediante órdenes agresivas",
+            },
+          ],
+        },
+        {
+          slug: "open-interest",
+          title: "Open Interest",
+          summary: "El interés abierto como indicador de la cantidad de posiciones activas en el mercado de derivados.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "Open Interest (interés abierto, OI) es el número total de contratos abiertos, aún no cerrados, en el mercado de derivados (futuros, perpetuos). A diferencia del volumen, que se reinicia cada período, el OI muestra la cantidad acumulada de posiciones activas.",
+            },
+            {
+              type: "paragraph",
+              text: "Un aumento del OI junto con un aumento del precio suele significar entrada de capital nuevo y fortalecimiento de la tendencia. Una subida del precio con OI decreciente suele indicar cierre de posiciones cortas, no nueva demanda. Una caída brusca del OI suele estar relacionada con liquidaciones masivas.",
+            },
+            {
+              type: "list",
+              items: [
+                "El OI muestra la cantidad de contratos abiertos aún no cerrados",
+                "Un aumento simultáneo de precio y OI suele indicar entrada de capital nuevo",
+                "Una caída brusca del OI suele acompañar a liquidaciones masivas",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Qué muestra el Open Interest?",
+              options: [
+                "El número total de contratos abiertos, aún no cerrados",
+                "El volumen total de todas las operaciones en la historia del exchange",
+                "El número de usuarios registrados en el exchange",
+              ],
+              correctAnswer: "El número total de contratos abiertos, aún no cerrados",
+            },
+            {
+              prompt: "¿Qué suele indicar un aumento simultáneo del precio y del Open Interest?",
+              options: [
+                "Entrada de capital nuevo y fortalecimiento de la tendencia",
+                "Un fallo técnico del exchange",
+                "Una caída de la volatilidad hasta cero",
+              ],
+              correctAnswer: "Entrada de capital nuevo y fortalecimiento de la tendencia",
+            },
+            {
+              prompt: "¿Con qué suele relacionarse una caída brusca del Open Interest?",
+              options: [
+                "Con liquidaciones masivas de posiciones abiertas",
+                "Con la incorporación de un nuevo token al listado",
+                "Con una actualización programada del exchange",
+              ],
+              correctAnswer: "Con liquidaciones masivas de posiciones abiertas",
+            },
+          ],
+        },
+        {
+          slug: "funding-rate",
+          title: "Funding Rate",
+          summary: "La tasa de financiación en los futuros perpetuos y lo que revela sobre el sentimiento del mercado.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "Funding Rate es un pago periódico entre los holders de posiciones largas y cortas en futuros perpetuos, un mecanismo que mantiene el precio del contrato cerca del precio del mercado spot. Un funding positivo significa que los largos pagan a los cortos; uno negativo, lo contrario.",
+            },
+            {
+              type: "paragraph",
+              text: "Un funding positivo persistentemente alto suele indicar un mercado sobrecalentado con exceso de posiciones largas, lo que aumenta el riesgo de liquidaciones en cadena ante un giro bajista. Un funding fuertemente negativo, en cambio, puede señalar un pesimismo excesivo y potencial de rebote.",
+            },
+            {
+              type: "list",
+              items: [
+                "El Funding Rate mantiene el precio del futuro perpetuo cerca del precio spot",
+                "Un funding positivo persistentemente alto indica un mercado sobrecalentado por posiciones largas",
+                "Un funding fuertemente negativo puede indicar un pesimismo excesivo del mercado",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Qué función cumple el Funding Rate en los futuros perpetuos?",
+              options: [
+                "Mantiene el precio del contrato cerca del precio del mercado spot",
+                "Determina la comisión del exchange por retiro de fondos",
+                "Establece el apalancamiento máximo permitido",
+              ],
+              correctAnswer: "Mantiene el precio del contrato cerca del precio del mercado spot",
+            },
+            {
+              prompt: "¿Qué significa un funding positivo persistentemente alto?",
+              options: [
+                "Que el mercado está sobrecalentado por exceso de posiciones largas",
+                "Que no hay ningún trader operando en el mercado",
+                "Que el precio del activo subirá garantizadamente aún más",
+              ],
+              correctAnswer: "Que el mercado está sobrecalentado por exceso de posiciones largas",
+            },
+            {
+              prompt: "¿Quién le paga a quién cuando el Funding Rate es positivo?",
+              options: [
+                "Los holders de posiciones largas pagan a los de posiciones cortas",
+                "El exchange paga por igual a todos los traders",
+                "Los holders de posiciones cortas pagan a los de posiciones largas",
+              ],
+              correctAnswer: "Los holders de posiciones largas pagan a los de posiciones cortas",
+            },
+          ],
+        },
+        {
+          slug: "liquidations",
+          title: "Liquidations",
+          summary: "El cierre forzoso de posiciones apalancadas y por qué las liquidaciones amplifican el movimiento del precio.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "Liquidations (liquidaciones) es el cierre forzoso de una posición por parte del exchange cuando la pérdida alcanza un nivel en el que el margen ya no es suficiente para mantenerla. Las liquidaciones ocurren al precio de mercado y no dependen de la voluntad del trader.",
+            },
+            {
+              type: "paragraph",
+              text: "Las liquidaciones masivas en una misma dirección (liquidaciones en cascada) amplifican por sí mismas el movimiento del precio: cerrar posiciones largas genera presión vendedora adicional, y cerrar cortas, demanda adicional, lo que explica los movimientos bruscos y rápidos del precio durante alta volatilidad.",
+            },
+            {
+              type: "list",
+              items: [
+                "Una liquidación es el cierre forzoso de una posición por el exchange por falta de margen",
+                "Las liquidaciones en cascada amplifican y aceleran el movimiento del precio en una dirección",
+                "Los mapas de liquidaciones se usan para evaluar zonas de mayor riesgo",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Qué ocurre al liquidarse una posición?",
+              options: [
+                "El exchange cierra la posición forzosamente por falta de margen",
+                "El trader cierra la posición voluntariamente con ganancia",
+                "El exchange duplica automáticamente el volumen de la posición",
+              ],
+              correctAnswer: "El exchange cierra la posición forzosamente por falta de margen",
+            },
+            {
+              prompt: "¿Por qué las liquidaciones en cascada amplifican el movimiento del precio?",
+              options: [
+                "El cierre de posiciones genera presión adicional en la dirección del movimiento",
+                "Las liquidaciones no influyen en absoluto en el precio",
+                "Las liquidaciones siempre detienen por completo el movimiento del precio",
+              ],
+              correctAnswer: "El cierre de posiciones genera presión adicional en la dirección del movimiento",
+            },
+            {
+              prompt: "¿Para qué usan los traders los mapas (heatmap) de liquidaciones?",
+              options: [
+                "Para evaluar zonas de mayor riesgo de un movimiento brusco del precio",
+                "Para conocer la fecha exacta del próximo halving",
+                "Para calcular los impuestos sobre las ganancias",
+              ],
+              correctAnswer: "Para evaluar zonas de mayor riesgo de un movimiento brusco del precio",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Análisis on-chain",
+      lessons: [
+        {
+          slug: "koshelki-kitov",
+          title: "Carteras de ballenas",
+          summary: "Cómo el seguimiento de carteras grandes ayuda a evaluar el sentimiento de los grandes holders.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "Las «ballenas» son direcciones que poseen una parte considerable de la oferta total de un activo. Dado que todas las transacciones en la blockchain son públicas, los traders siguen los movimientos de esas carteras: por ejemplo, grandes transferencias a exchanges (posible preparación para vender) o, al contrario, de exchanges hacia almacenamiento frío.",
+            },
+            {
+              type: "paragraph",
+              text: "Es importante tener en cuenta el contexto: una transferencia desde un exchange no siempre significa holding a largo plazo, y una transferencia hacia un exchange no siempre implica venta inmediata; puede ser una redistribución entre carteras del mismo propietario. Los datos sobre ballenas son una señal complementaria, no autónoma.",
+            },
+            {
+              type: "list",
+              items: [
+                "Las carteras de ballenas se pueden seguir gracias a la publicidad de las transacciones en blockchain",
+                "Una gran transferencia hacia un exchange suele interpretarse como posible preparación para vender",
+                "Los datos sobre movimientos de ballenas conviene usarlos junto con otros tipos de análisis, no de forma aislada",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Por qué es posible seguir los movimientos de las carteras de ballenas?",
+              options: [
+                "Todas las transacciones en la blockchain son públicamente accesibles",
+                "Los exchanges publican a diario los datos personales de sus clientes",
+                "Esto solo es posible para los reguladores",
+              ],
+              correctAnswer: "Todas las transacciones en la blockchain son públicamente accesibles",
+            },
+            {
+              prompt: "¿Cómo suele interpretarse una gran transferencia de tokens hacia un exchange?",
+              options: [
+                "Como una posible preparación para vender",
+                "Como una señal garantizada de holding a largo plazo",
+                "Como un error técnico de la red",
+              ],
+              correctAnswer: "Como una posible preparación para vender",
+            },
+            {
+              prompt: "¿Cuál es la mejor manera de usar los datos sobre movimientos de ballenas?",
+              options: [
+                "Como señal complementaria junto con otros tipos de análisis",
+                "Como única señal suficiente para entrar en una operación",
+                "Estos datos son inútiles y no conviene tenerlos en cuenta",
+              ],
+              correctAnswer: "Como señal complementaria junto con otros tipos de análisis",
+            },
+          ],
+        },
+        {
+          slug: "birzhevye-pritoki-i-ottoki",
+          title: "Entradas y salidas de exchanges",
+          summary: "Qué significa el movimiento de monedas hacia y desde los exchanges para la posible presión sobre el precio.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "Las entradas a exchanges (exchange inflow) son el volumen de monedas transferidas a carteras de exchanges; las salidas (exchange outflow), el volumen de monedas retiradas de exchanges. Un aumento de las entradas suele interpretarse como un aumento de la potencial presión vendedora; un aumento de las salidas, como acumulación y reducción de la oferta disponible.",
+            },
+            {
+              type: "paragraph",
+              text: "Una salida neta sostenida de los exchanges durante un período prolongado suele asociarse con una fase de acumulación y una reducción de la oferta líquida disponible para la venta. Una entrada brusca de una gran cantidad, en cambio, suele preceder a volatilidad local.",
+            },
+            {
+              type: "list",
+              items: [
+                "Las entradas a exchanges suelen asociarse con un aumento de la potencial oferta de venta",
+                "Una salida sostenida de exchanges suele asociarse con una fase de acumulación",
+                "Una entrada brusca de una gran cantidad suele preceder a volatilidad local",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Qué se denomina entrada a exchange (exchange inflow)?",
+              options: [
+                "El volumen de monedas transferidas a carteras de exchanges",
+                "El volumen de monedas minadas en un día",
+                "El número de nuevos usuarios del exchange",
+              ],
+              correctAnswer: "El volumen de monedas transferidas a carteras de exchanges",
+            },
+            {
+              prompt: "¿Con qué fase del mercado suele asociarse una salida sostenida de monedas de los exchanges?",
+              options: [
+                "Con una fase de acumulación",
+                "Con una fase de venta masiva por pánico",
+                "Con el listado de un nuevo token",
+              ],
+              correctAnswer: "Con una fase de acumulación",
+            },
+            {
+              prompt: "¿Qué suele preceder a una entrada brusca de una gran cantidad hacia un exchange?",
+              options: [
+                "Volatilidad local del precio",
+                "Una parada total de las operaciones",
+                "Una reducción automática de las comisiones del exchange",
+              ],
+              correctAnswer: "Volatilidad local del precio",
+            },
+          ],
+        },
+        {
+          slug: "tvl",
+          title: "TVL",
+          summary: "El valor total bloqueado como indicador de la confianza en un protocolo DeFi.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "TVL (Total Value Locked) es el valor total de los activos bloqueados en los contratos inteligentes de un protocolo: en pools de liquidez, staking, plataformas de préstamo. El TVL se usa a menudo como indicador del tamaño y la confianza de los usuarios en un protocolo o en toda una red blockchain.",
+            },
+            {
+              type: "paragraph",
+              text: "Es importante tener en cuenta que el aumento del TVL puede deberse no solo a la entrada de capital nuevo, sino también al aumento del precio de los activos ya bloqueados. Una caída brusca del TVL, en cambio, puede indicar tanto salida de capital como caída del precio de los tokens bloqueados.",
+            },
+            {
+              type: "list",
+              items: [
+                "El TVL mide el valor de los activos bloqueados en los contratos inteligentes de un protocolo",
+                "El aumento del TVL puede reflejar tanto entrada de capital nuevo como subida del precio de los activos",
+                "Una caída brusca del TVL suele considerarse una señal de alerta para el protocolo",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Qué mide el indicador TVL?",
+              options: [
+                "El valor total de los activos bloqueados en los contratos inteligentes de un protocolo",
+                "El número total de transacciones de la red en toda su historia",
+                "El número de desarrolladores que trabajan en el proyecto",
+              ],
+              correctAnswer: "El valor total de los activos bloqueados en los contratos inteligentes de un protocolo",
+            },
+            {
+              prompt: "¿Por qué puede subir el TVL aunque no entre capital nuevo?",
+              options: [
+                "Por la subida del precio de los activos ya bloqueados",
+                "Por la caída de la capitalización general del mercado",
+                "El TVL no puede subir sin entrada de capital nuevo",
+              ],
+              correctAnswer: "Por la subida del precio de los activos ya bloqueados",
+            },
+            {
+              prompt: "¿Cómo suelen interpretar los traders una caída brusca del TVL de un protocolo?",
+              options: [
+                "Como una posible señal de alerta (salida de capital o caída del precio de los activos)",
+                "Como una señal inequívocamente positiva para comprar",
+                "El TVL no tiene ninguna relación con el estado del protocolo",
+              ],
+              correctAnswer: "Como una posible señal de alerta (salida de capital o caída del precio de los activos)",
+            },
+          ],
+        },
+        {
+          slug: "stablecoins",
+          title: "Stablecoins",
+          summary: "El papel de las stablecoins en el mercado cripto y sus reservas en exchanges como indicador de demanda potencial.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "Las stablecoins son criptomonedas cuyo valor está vinculado a un activo estable, casi siempre al dólar estadounidense (USDT, USDC). Sirven como principal «unidad de cuenta» del mercado cripto, permitiendo pasar entre activos y fijar el valor sin salir hacia el sistema bancario tradicional.",
+            },
+            {
+              type: "paragraph",
+              text: "El volumen total de stablecoins en carteras de exchanges suele considerarse un indicador de «pólvora seca»: la capacidad de compra potencial del mercado. Un aumento de las reservas de stablecoins en los exchanges puede preceder a una entrada de demanda hacia activos de riesgo.",
+            },
+            {
+              type: "list",
+              items: [
+                "Las stablecoins están vinculadas a un activo estable, generalmente el dólar estadounidense",
+                "Cumplen la función de unidad de cuenta y reserva de valor dentro del mercado cripto",
+                "Un aumento de las reservas de stablecoins en exchanges suele asociarse con un potencial aumento de la capacidad de compra",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Qué distingue a las stablecoins de la mayoría de las demás criptomonedas?",
+              options: [
+                "Su valor está vinculado a un activo estable, generalmente el dólar estadounidense",
+                "No pueden transferirse entre carteras",
+                "Solo existen fuera de la blockchain",
+              ],
+              correctAnswer: "Su valor está vinculado a un activo estable, generalmente el dólar estadounidense",
+            },
+            {
+              prompt: "¿Qué función cumplen las stablecoins en el mercado cripto?",
+              options: [
+                "De unidad de cuenta y reserva de valor dentro del mercado",
+                "De único medio de minería",
+                "De sustituto del mecanismo de consenso de la blockchain",
+              ],
+              correctAnswer: "De unidad de cuenta y reserva de valor dentro del mercado",
+            },
+            {
+              prompt: "¿Qué puede indicar un aumento de las reservas de stablecoins en los exchanges?",
+              options: [
+                "Un potencial aumento de la capacidad de compra del mercado",
+                "Un fallo técnico de la stablecoin",
+                "Una parada total de las operaciones en el exchange",
+              ],
+              correctAnswer: "Un potencial aumento de la capacidad de compra del mercado",
+            },
+          ],
+        },
+        {
+          slug: "onchain-metriki",
+          title: "Métricas on-chain",
+          summary: "Repaso de las métricas de red clave: direcciones activas, comisiones de red y su aplicación en el análisis.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "Las métricas on-chain son datos que se pueden obtener directamente de la blockchain: número de direcciones activas, volumen de transferencias, comisiones de red, número de carteras nuevas. A diferencia de los datos de mercado (precio, volumen del exchange), reflejan la actividad real de la red.",
+            },
+            {
+              type: "paragraph",
+              text: "Un aumento del número de direcciones activas y del volumen de transferencias con un precio relativamente estable puede indicar un uso fundamental creciente de la red. Estas métricas resultan especialmente útiles para el análisis de medio y largo plazo, más que para determinar el momento exacto de entrada.",
+            },
+            {
+              type: "list",
+              items: [
+                "Las métricas on-chain reflejan la actividad real de la red, no solo el precio en el exchange",
+                "Un aumento de direcciones activas con precio estable puede indicar un uso fundamental creciente",
+                "El análisis on-chain se adapta mejor a conclusiones de medio y largo plazo que a un timing preciso",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿En qué se diferencian las métricas on-chain de los datos puramente de mercado como el precio y el volumen del exchange?",
+              options: [
+                "Se obtienen directamente de la blockchain y reflejan la actividad real de la red",
+                "Coinciden por completo con los datos de mercado",
+                "Solo están disponibles para los propietarios del exchange",
+              ],
+              correctAnswer: "Se obtienen directamente de la blockchain y reflejan la actividad real de la red",
+            },
+            {
+              prompt: "¿Qué puede indicar un aumento de direcciones activas de la red con un precio relativamente estable?",
+              options: [
+                "Un uso fundamental creciente de la red",
+                "Una avería técnica de la blockchain",
+                "Una parada total de las transacciones",
+              ],
+              correctAnswer: "Un uso fundamental creciente de la red",
+            },
+            {
+              prompt: "¿Para qué horizonte de análisis suelen ser más adecuadas las métricas on-chain?",
+              options: [
+                "Para el análisis de medio y largo plazo",
+                "Exclusivamente para el timing de entrada con precisión de minutos",
+                "Las métricas on-chain no tienen ninguna aplicación práctica",
+              ],
+              correctAnswer: "Para el análisis de medio y largo plazo",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Trading profesional",
+      lessons: [
+        {
+          slug: "torgovy-zhurnal",
+          title: "Diario de trading",
+          summary: "Por qué registrar cada operación y qué debe incluir cada entrada del diario.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "El diario de trading es un registro sistemático de cada operación: motivo de entrada, tamaño de la posición, stop-loss y take-profit, resultado final y estado emocional del trader. Sin un diario, el trader depende de la memoria, que recuerda selectivamente las operaciones exitosas y borra las fallidas.",
+            },
+            {
+              type: "paragraph",
+              text: "El análisis regular del diario permite encontrar patrones: por ejemplo, que la mayoría de las pérdidas se concentran en operaciones abiertas sin una señal clara, o que cierta franja horaria es sistemáticamente menos rentable. Esto convierte las sensaciones intuitivas en datos concretos y verificables.",
+            },
+            {
+              type: "list",
+              items: [
+                "El diario debe registrar el motivo de entrada, no solo el resultado de la operación",
+                "El análisis regular del diario ayuda a detectar errores recurrentes",
+                "Los datos del diario son más objetivos que la memoria subjetiva del trader",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Por qué debe un trader llevar un diario de trading?",
+              options: [
+                "Para registrar las operaciones de forma objetiva en lugar de depender de una memoria selectiva",
+                "Es un requisito del exchange para poder abrir operaciones",
+                "El diario solo sirve para la declaración de impuestos",
+              ],
+              correctAnswer: "Para registrar las operaciones de forma objetiva en lugar de depender de una memoria selectiva",
+            },
+            {
+              prompt: "¿Qué debe registrarse obligatoriamente en una entrada del diario, además del resultado de la operación?",
+              options: [
+                "El motivo de la entrada en la operación",
+                "Solo la ganancia final en dólares",
+                "El nombre del dispositivo utilizado",
+              ],
+              correctAnswer: "El motivo de la entrada en la operación",
+            },
+            {
+              prompt: "¿Qué aporta el análisis regular del diario de trading?",
+              options: [
+                "Permite encontrar patrones y errores recurrentes",
+                "Aumenta automáticamente el volumen del depósito",
+                "Garantiza la ausencia de operaciones perdedoras en el futuro",
+              ],
+              correctAnswer: "Permite encontrar patrones y errores recurrentes",
+            },
+          ],
+        },
+        {
+          slug: "sozdanie-strategii",
+          title: "Creación de una estrategia",
+          summary: "Qué elementos obligatorios componen una estrategia de trading completa.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "Una estrategia de trading es un conjunto de reglas claramente descritas: en qué mercado operar, en qué condiciones entrar en una operación, dónde colocar el stop-loss y el take-profit, qué porcentaje del depósito arriesgar. Sin estas reglas definidas de antemano, el trading se convierte en una serie de decisiones aleatorias.",
+            },
+            {
+              type: "paragraph",
+              text: "Una buena estrategia debe ser lo bastante concreta como para poder explicarla a otra persona y comprobarla con datos históricos. No tiene que funcionar en el 100% de los casos; lo importante es que las reglas sean reproducibles y que la esperanza matemática sea positiva.",
+            },
+            {
+              type: "list",
+              items: [
+                "Una estrategia incluye obligatoriamente condiciones de entrada, salida y reglas de gestión de riesgo",
+                "Las reglas deben ser lo bastante concretas como para poder comprobarse con datos históricos",
+                "El objetivo de la estrategia es una esperanza matemática positiva, no una precisión del 100%",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Qué debe incluir obligatoriamente la descripción de una estrategia de trading?",
+              options: [
+                "Condiciones de entrada, salida y reglas de gestión de riesgo",
+                "Solo la suma de ganancia deseada al mes",
+                "Una lista de las criptomonedas favoritas del trader",
+              ],
+              correctAnswer: "Condiciones de entrada, salida y reglas de gestión de riesgo",
+            },
+            {
+              prompt: "¿Por qué debe ser concreta una estrategia, en lugar de ambigua?",
+              options: [
+                "Para poder explicarla y comprobarla con datos históricos",
+                "La ambigüedad de las reglas no tiene ninguna importancia",
+                "Para ocultarla de otros traders",
+              ],
+              correctAnswer: "Para poder explicarla y comprobarla con datos históricos",
+            },
+            {
+              prompt: "¿Debe una buena estrategia ser rentable en el 100% de las operaciones?",
+              options: [
+                "No, lo importante es una esperanza matemática positiva en conjunto",
+                "Sí, de lo contrario la estrategia se considera inservible",
+                "Sí, pero solo en el timeframe diario",
+              ],
+              correctAnswer: "No, lo importante es una esperanza matemática positiva en conjunto",
+            },
+          ],
+        },
+        {
+          slug: "backtest",
+          title: "Backtest",
+          summary: "Comprobación de una estrategia de trading con datos históricos antes de aplicarla en real.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "El backtest es la comprobación de una estrategia de trading con datos históricos: las reglas se aplican a datos de precio pasados para evaluar si la estrategia habría sido rentable. Es una forma de obtener estadísticas de una estrategia sin arriesgar capital real.",
+            },
+            {
+              type: "paragraph",
+              text: "El backtest tiene limitaciones: los resultados pasados no garantizan los futuros, y una comprobación descuidada puede llevar a un sobreajuste de las reglas a un período histórico concreto. Aun así, el backtest es un primer paso necesario antes de confiar dinero real a una estrategia.",
+            },
+            {
+              type: "list",
+              items: [
+                "El backtest permite evaluar una estrategia con datos históricos sin riesgo real",
+                "Los resultados pasados de un backtest no garantizan un resultado similar en el futuro",
+                "El sobreajuste de las reglas a un período histórico concreto es un error típico del backtesting",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿En qué consiste el backtest de una estrategia de trading?",
+              options: [
+                "En comprobar las reglas de la estrategia con datos históricos de precio",
+                "En operar en real con un depósito mínimo",
+                "En una encuesta a otros traders sobre la estrategia",
+              ],
+              correctAnswer: "En comprobar las reglas de la estrategia con datos históricos de precio",
+            },
+            {
+              prompt: "¿Garantiza un backtest exitoso el mismo resultado en el futuro?",
+              options: [
+                "No, los resultados pasados no garantizan los futuros",
+                "Sí, el resultado del backtest siempre se repite en el trading real",
+                "Lo garantiza, pero solo para acciones",
+              ],
+              correctAnswer: "No, los resultados pasados no garantizan los futuros",
+            },
+            {
+              prompt: "¿Qué es el sobreajuste (overfitting) en el contexto del backtesting?",
+              options: [
+                "Un ajuste excesivo de las reglas a un período histórico concreto",
+                "El uso de muy pocos indicadores",
+                "Operar sin stop-loss",
+              ],
+              correctAnswer: "Un ajuste excesivo de las reglas a un período histórico concreto",
+            },
+          ],
+        },
+        {
+          slug: "forward-test",
+          title: "Forward-test",
+          summary: "Comprobación de una estrategia con datos nuevos, aún no usados, después del backtest.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "El forward-test es la comprobación de una estrategia en una cuenta real o de demostración hacia adelante en el tiempo, con datos que no se usaron al desarrollar ni comprobar las reglas mediante backtest. Es un paso clave que muestra si la estrategia funciona con datos verdaderamente nuevos.",
+            },
+            {
+              type: "paragraph",
+              text: "El forward-test ayuda a detectar un sobreajuste que podría haber pasado desapercibido en el backtest: si los resultados del forward-test difieren mucho de los del backtest, es probable que la estrategia se ajustara demasiado a los datos pasados.",
+            },
+            {
+              type: "list",
+              items: [
+                "El forward-test se realiza con datos no usados al desarrollar la estrategia",
+                "Permite detectar un sobreajuste que pasa desapercibido en un backtest normal",
+                "Una gran discrepancia entre los resultados del backtest y del forward-test es una señal de alerta",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Cuál es la diferencia clave entre el forward-test y el backtest?",
+              options: [
+                "El forward-test se realiza con datos nuevos, no usados al desarrollar la estrategia",
+                "El forward-test siempre se realiza solo con un depósito real grande",
+                "No hay ninguna diferencia entre ambos",
+              ],
+              correctAnswer: "El forward-test se realiza con datos nuevos, no usados al desarrollar la estrategia",
+            },
+            {
+              prompt: "¿Qué ayuda a detectar el forward-test, a diferencia del backtest?",
+              options: [
+                "El sobreajuste de la estrategia a los datos pasados",
+                "La fecha exacta del próximo halving",
+                "La comisión del exchange por retiro de fondos",
+              ],
+              correctAnswer: "El sobreajuste de la estrategia a los datos pasados",
+            },
+            {
+              prompt: "¿Qué indica una gran discrepancia entre los resultados del backtest y del forward-test?",
+              options: [
+                "Probablemente la estrategia se ajustó demasiado a los datos pasados",
+                "Que la estrategia es absolutamente fiable",
+                "Esto no tiene ninguna importancia para evaluar la estrategia",
+              ],
+              correctAnswer: "Probablemente la estrategia se ajustó demasiado a los datos pasados",
+            },
+          ],
+        },
+        {
+          slug: "statistika-sdelok",
+          title: "Estadística de operaciones",
+          summary: "Las métricas clave que hay que seguir para evaluar objetivamente el propio trading.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "La estadística de operaciones es un conjunto de métricas objetivas calculadas a partir del diario: winrate (proporción de operaciones ganadoras), R/R medio, esperanza matemática de la operación, drawdown máximo, entre otras. Estas cifras muestran el panorama real del trading, no una sensación subjetiva.",
+            },
+            {
+              type: "paragraph",
+              text: "Ninguna métrica debe evaluarse de forma aislada: un winrate alto con un R/R medio bajo puede dar el mismo resultado que un winrate bajo con un R/R alto. Precisamente la esperanza matemática —lo que aporta en promedio una operación— es el indicador final de la calidad de una estrategia.",
+            },
+            {
+              type: "list",
+              items: [
+                "El winrate y el R/R medio deben analizarse juntos, no por separado",
+                "La esperanza matemática de la operación es la métrica final clave de la calidad de la estrategia",
+                "El drawdown máximo muestra cuánto llegó a caer el depósito en el peor período",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Qué muestra el winrate de una estrategia de trading?",
+              options: [
+                "La proporción de operaciones ganadoras sobre el total",
+                "La ganancia total acumulada en dólares",
+                "El número de operaciones abiertas en un momento dado",
+              ],
+              correctAnswer: "La proporción de operaciones ganadoras sobre el total",
+            },
+            {
+              prompt: "¿Por qué no se puede evaluar el winrate de forma aislada del R/R medio?",
+              options: [
+                "Un winrate alto con R/R bajo puede dar el mismo resultado que un winrate bajo con R/R alto",
+                "El winrate y el R/R son siempre exactamente iguales",
+                "El R/R no influye en absoluto en el resultado final",
+              ],
+              correctAnswer: "Un winrate alto con R/R bajo puede dar el mismo resultado que un winrate bajo con R/R alto",
+            },
+            {
+              prompt: "¿Qué muestra la métrica de drawdown máximo?",
+              options: [
+                "Cuánto llegó a caer el depósito en el peor período del trading",
+                "La rentabilidad anual final de la estrategia",
+                "El número de activos en la cartera",
+              ],
+              correctAnswer: "Cuánto llegó a caer el depósito en el peor período del trading",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Altcoins y tokenomics",
+      lessons: [
+        {
+          slug: "tokenomics",
+          title: "Tokenomics",
+          summary: "El modelo económico de un token: la oferta, la distribución y los incentivos de los holders.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "El tokenomics describe el modelo económico de un token: la oferta total y máxima, la distribución entre el equipo, los inversores y la comunidad, los mecanismos de emisión y quema, así como los incentivos que motivan a los holders a usar o mantener el token.",
+            },
+            {
+              type: "paragraph",
+              text: "Un tokenomics débil —por ejemplo, una gran parte de los tokens en manos del equipo con un período de bloqueo corto— genera una presión vendedora constante sobre el mercado, independientemente de la calidad del producto en sí. Analizar el tokenomics es tan importante para evaluar un proyecto como analizar su tecnología.",
+            },
+            {
+              type: "list",
+              items: [
+                "El tokenomics describe la oferta, la distribución y los incentivos de los holders del token",
+                "Una gran parte de tokens en manos del equipo con un vesting corto crea el riesgo de presión vendedora",
+                "Analizar el tokenomics es tan importante como analizar la tecnología del proyecto",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Qué describe el tokenomics de un proyecto?",
+              options: [
+                "El modelo económico del token: la oferta, la distribución y los incentivos de los holders",
+                "Solo el stack tecnológico de la blockchain",
+                "La lista de exchanges donde cotiza el token",
+              ],
+              correctAnswer: "El modelo económico del token: la oferta, la distribución y los incentivos de los holders",
+            },
+            {
+              prompt: "¿Qué factor del tokenomics genera el riesgo de una presión vendedora constante?",
+              options: [
+                "Una gran parte de tokens en manos del equipo con un período de bloqueo corto",
+                "La ausencia total de tokens en manos del equipo",
+                "Una oferta máxima del token igual a cero",
+              ],
+              correctAnswer: "Una gran parte de tokens en manos del equipo con un período de bloqueo corto",
+            },
+            {
+              prompt: "¿Qué tan importante es analizar el tokenomics en comparación con analizar la tecnología del proyecto?",
+              options: [
+                "Es igual de importante y debe considerarse al mismo nivel que la tecnología",
+                "El tokenomics no tiene relevancia para evaluar un proyecto",
+                "Solo es importante para proyectos sin blockchain",
+              ],
+              correctAnswer: "Es igual de importante y debe considerarse al mismo nivel que la tecnología",
+            },
+          ],
+        },
+        {
+          slug: "fdv",
+          title: "FDV",
+          summary: "La valoración totalmente diluida y por qué es más relevante que la capitalización de mercado para los tokens nuevos.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "El FDV (Fully Diluted Valuation) es la valoración de un proyecto calculada como si toda la oferta máxima de tokens ya estuviera en circulación, al precio actual. A diferencia de la capitalización de mercado, que solo considera los tokens actualmente en circulación, el FDV muestra la valoración potencial futura.",
+            },
+            {
+              type: "paragraph",
+              text: "Una gran diferencia entre la capitalización actual y el FDV significa que una parte importante de la oferta aún no se ha emitido y llegará al mercado con el tiempo, generando una posible presión vendedora en cada desbloqueo; esto es especialmente importante para los tokens nuevos con un bajo porcentaje en circulación.",
+            },
+            {
+              type: "list",
+              items: [
+                "El FDV se calcula a partir de la oferta máxima, no de la oferta actual, del token",
+                "Una gran diferencia entre la capitalización y el FDV indica una emisión futura significativa",
+                "Los tokens con bajo porcentaje en circulación y alto FDV requieren especial atención al calendario de desbloqueos",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Cómo se calcula el FDV?",
+              options: [
+                "A partir de la oferta máxima de tokens al precio actual",
+                "A partir solo de los tokens negociados en un exchange concreto",
+                "A partir del volumen de operaciones de las últimas 24 horas",
+              ],
+              correctAnswer: "A partir de la oferta máxima de tokens al precio actual",
+            },
+            {
+              prompt: "¿Qué indica una gran diferencia entre la capitalización de mercado y el FDV?",
+              options: [
+                "Una parte significativa de la oferta que aún no ha entrado en circulación",
+                "Que el token ya está completamente desbloqueado",
+                "Un error técnico en el cálculo del precio",
+              ],
+              correctAnswer: "Una parte significativa de la oferta que aún no ha entrado en circulación",
+            },
+            {
+              prompt: "¿Para qué tokens es especialmente importante analizar de cerca la relación entre la capitalización y el FDV?",
+              options: [
+                "Para los tokens nuevos con un bajo porcentaje de la oferta en circulación",
+                "Solo para las stablecoins",
+                "La relación entre capitalización y FDV no tiene relevancia práctica",
+              ],
+              correctAnswer: "Para los tokens nuevos con un bajo porcentaje de la oferta en circulación",
+            },
+          ],
+        },
+        {
+          slug: "vesting",
+          title: "Vesting",
+          summary: "El desbloqueo gradual de los tokens del equipo y los inversores según un calendario definido.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "El vesting es un mecanismo de desbloqueo gradual de los tokens asignados al equipo, los inversores o los asesores del proyecto, según un calendario predefinido en lugar de una entrega única. Esto debería reducir el incentivo de los primeros participantes para vender los tokens inmediatamente después del listado.",
+            },
+            {
+              type: "paragraph",
+              text: "Una estructura de vesting estándar incluye un «cliff» —un período durante el cual los tokens están completamente bloqueados— seguido de un desbloqueo lineal o escalonado. Un cliff corto y un calendario de vesting agresivo aumentan el riesgo de presión vendedora en las primeras etapas.",
+            },
+            {
+              type: "list",
+              items: [
+                "El vesting desbloquea los tokens del equipo y los inversores de forma gradual, no de inmediato",
+                "El cliff es el período de bloqueo total de los tokens al inicio del calendario de vesting",
+                "Un cliff corto y un calendario de desbloqueo agresivo aumentan el riesgo de presión vendedora",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Qué es el vesting de tokens?",
+              options: [
+                "Un mecanismo de desbloqueo gradual de los tokens según un calendario definido",
+                "La venta única de todos los tokens de un proyecto",
+                "Una forma de minar nuevos tokens",
+              ],
+              correctAnswer: "Un mecanismo de desbloqueo gradual de los tokens según un calendario definido",
+            },
+            {
+              prompt: "¿Qué es el cliff en un calendario de vesting?",
+              options: [
+                "El período de bloqueo total de los tokens al inicio del calendario",
+                "El desbloqueo final de todos los tokens restantes",
+                "Una comisión por el retiro anticipado de tokens",
+              ],
+              correctAnswer: "El período de bloqueo total de los tokens al inicio del calendario",
+            },
+            {
+              prompt: "¿Para qué usan los proyectos el vesting con el equipo y los inversores?",
+              options: [
+                "Para reducir el incentivo de vender los tokens inmediatamente después del listado",
+                "Para excluir por completo al equipo de la participación en el proyecto",
+                "Es un requisito técnico de cualquier blockchain",
+              ],
+              correctAnswer: "Para reducir el incentivo de vender los tokens inmediatamente después del listado",
+            },
+          ],
+        },
+        {
+          slug: "unlocks",
+          title: "Unlocks",
+          summary: "Los desbloqueos de tokens según el calendario y su impacto en el precio del activo.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "Los unlocks (desbloqueos) son los momentos en que una nueva porción de tokens bloqueados (del equipo, los inversores o los fondos del ecosistema) queda disponible para su transferencia y posible venta. Las fechas y los volúmenes de los desbloqueos suelen conocerse de antemano y el proyecto los publica.",
+            },
+            {
+              type: "paragraph",
+              text: "Un desbloqueo grande en relación con el volumen de operaciones actual puede generar una presión vendedora notable sobre el precio, sobre todo si los receptores de los tokens no tienen una motivación de largo plazo para mantenerlos. Los traders suelen hacer seguimiento del calendario de desbloqueos como parte de la gestión de riesgo.",
+            },
+            {
+              type: "list",
+              items: [
+                "Un desbloqueo pone a disposición una nueva porción de tokens para su transferencia y venta",
+                "Un desbloqueo grande en relación con el volumen de operaciones puede generar presión sobre el precio",
+                "El calendario de próximos desbloqueos es un elemento importante de gestión de riesgo para posiciones en altcoins",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Qué ocurre en el momento de un desbloqueo (unlock) de tokens?",
+              options: [
+                "Una nueva porción de tokens previamente bloqueados queda disponible para su transferencia",
+                "Se destruyen todos los tokens del proyecto",
+                "El exchange detiene temporalmente las operaciones con el activo",
+              ],
+              correctAnswer: "Una nueva porción de tokens previamente bloqueados queda disponible para su transferencia",
+            },
+            {
+              prompt: "¿Cuándo puede un desbloqueo de tokens generar una presión notable sobre el precio?",
+              options: [
+                "Cuando su volumen es grande en relación con el volumen de operaciones actual",
+                "Los desbloqueos nunca afectan al precio",
+                "Solo si el desbloqueo ocurre de noche",
+              ],
+              correctAnswer: "Cuando su volumen es grande en relación con el volumen de operaciones actual",
+            },
+            {
+              prompt: "¿Por qué los traders hacen seguimiento del calendario de desbloqueos de un token?",
+              options: [
+                "Es un elemento de gestión de riesgo al mantener una posición en un altcoin",
+                "El calendario de desbloqueos no tiene ninguna aplicación práctica",
+                "Para calcular con exactitud los impuestos sobre las ganancias",
+              ],
+              correctAnswer: "Es un elemento de gestión de riesgo al mantener una posición en un altcoin",
+            },
+          ],
+        },
+        {
+          slug: "emissiya",
+          title: "Emisión",
+          summary: "La velocidad de emisión de nuevos tokens y su impacto en la presión de largo plazo sobre el precio.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "La emisión es el proceso de creación de nuevos tokens en circulación, por ejemplo mediante recompensas de minería, staking o subvenciones del ecosistema. La velocidad de emisión determina qué tan rápido crece la oferta del token con el tiempo, independientemente de la demanda que tenga.",
+            },
+            {
+              type: "paragraph",
+              text: "Una emisión alta y constante sin un crecimiento correspondiente de la demanda genera una presión sostenida sobre el precio a largo plazo; esta es una de las razones por las que algunos proyectos introducen mecanismos de quema de tokens, para compensar parcialmente la emisión.",
+            },
+            {
+              type: "list",
+              items: [
+                "La emisión aumenta la oferta del token independientemente de la demanda actual",
+                "Una emisión alta sin crecimiento de la demanda genera presión sobre el precio a largo plazo",
+                "Los mecanismos de quema de tokens se introducen para compensar parcialmente la emisión",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Qué es la emisión de un token?",
+              options: [
+                "El proceso de creación de nuevos tokens en circulación",
+                "El proceso de eliminar por completo un token de un exchange",
+                "El proceso de verificar la autenticidad de una wallet",
+              ],
+              correctAnswer: "El proceso de creación de nuevos tokens en circulación",
+            },
+            {
+              prompt: "¿Qué ocurre con una emisión alta sin un crecimiento correspondiente de la demanda?",
+              options: [
+                "Se genera una presión sostenida sobre el precio a largo plazo",
+                "El precio del token sube de forma garantizada",
+                "La oferta total del token se reduce",
+              ],
+              correctAnswer: "Se genera una presión sostenida sobre el precio a largo plazo",
+            },
+            {
+              prompt: "¿Para qué introducen algunos proyectos un mecanismo de quema de tokens?",
+              options: [
+                "Para compensar parcialmente el efecto de la emisión sobre la oferta",
+                "Para detener por completo el funcionamiento de la red",
+                "Es un requisito de los exchanges para listar un token",
+              ],
+              correctAnswer: "Para compensar parcialmente el efecto de la emisión sobre la oferta",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "DeFi",
+      lessons: [
+        {
+          slug: "dex",
+          title: "DEX",
+          summary: "Los exchanges descentralizados y su diferencia fundamental respecto a los centralizados.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "El DEX (Decentralized Exchange) es un exchange que funciona mediante contratos inteligentes, sin un operador central que custodie los fondos de los usuarios. Las operaciones se ejecutan directamente entre las wallets de los participantes, y no a través de una base de datos interna del exchange, como en las plataformas centralizadas.",
+            },
+            {
+              type: "paragraph",
+              text: "La principal ventaja de un DEX es que el usuario mantiene el control de sus fondos hasta el momento de la operación (el principio de «no tus claves, no tus monedas»). La otra cara de la moneda es que toda la responsabilidad por la seguridad de la wallet y por interactuar correctamente con el contrato inteligente recae en el propio usuario.",
+            },
+            {
+              type: "list",
+              items: [
+                "Un DEX funciona mediante contratos inteligentes, sin un custodio central de los fondos",
+                "El usuario mantiene el control de sus activos hasta el momento de la operación",
+                "La responsabilidad por la seguridad de la wallet en un DEX recae por completo en el usuario",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿En qué se diferencia fundamentalmente un DEX de un exchange centralizado?",
+              options: [
+                "Un DEX funciona mediante contratos inteligentes, sin un custodio central de los fondos de los usuarios",
+                "En un DEX es imposible realizar operaciones",
+                "Los DEX solo están disponibles para inversores institucionales",
+              ],
+              correctAnswer: "Un DEX funciona mediante contratos inteligentes, sin un custodio central de los fondos de los usuarios",
+            },
+            {
+              prompt: "¿Cuál es la principal ventaja de operar en un DEX en cuanto al control de los activos?",
+              options: [
+                "El usuario mantiene el control de sus fondos hasta el momento de la operación",
+                "Un DEX garantiza no cobrar ninguna comisión",
+                "Un DEX protege automáticamente contra todo tipo de fraude",
+              ],
+              correctAnswer: "El usuario mantiene el control de sus fondos hasta el momento de la operación",
+            },
+            {
+              prompt: "¿En quién recae la responsabilidad por la seguridad de la wallet al usar un DEX?",
+              options: [
+                "Por completo en el propio usuario",
+                "Por completo en los desarrolladores del protocolo",
+                "La responsabilidad está automáticamente asegurada por el exchange",
+              ],
+              correctAnswer: "Por completo en el propio usuario",
+            },
+          ],
+        },
+        {
+          slug: "amm",
+          title: "AMM",
+          summary: "Los creadores de mercado automáticos y el principio de funcionamiento de los pools de liquidez.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "El AMM (Automated Market Maker) es el mecanismo detrás de la mayoría de los DEX, en el que el precio de un activo se determina mediante una fórmula matemática basada en la proporción de tokens en un pool de liquidez, y no mediante un libro de órdenes, como en los exchanges tradicionales.",
+            },
+            {
+              type: "paragraph",
+              text: "El pool de liquidez se nutre de usuarios (proveedores de liquidez) que aportan un par de tokens en igual valor y reciben a cambio una parte de las comisiones de trading. Las operaciones grandes en relación con el tamaño del pool provocan slippage: una desviación notable entre el precio de ejecución y el precio de mercado.",
+            },
+            {
+              type: "list",
+              items: [
+                "El AMM determina el precio mediante una fórmula basada en la proporción de tokens del pool, no en un libro de órdenes",
+                "Los proveedores de liquidez ganan una parte de las comisiones de trading del pool",
+                "Una operación grande en relación con el tamaño del pool provoca un slippage de precio notable",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Cómo determina el AMM el precio de un activo?",
+              options: [
+                "Mediante una fórmula matemática basada en la proporción de tokens del pool",
+                "Mediante un libro de órdenes, como en un exchange centralizado",
+                "Mediante la votación de los holders del token",
+              ],
+              correctAnswer: "Mediante una fórmula matemática basada en la proporción de tokens del pool",
+            },
+            {
+              prompt: "¿Qué reciben los proveedores de liquidez en un pool de AMM?",
+              options: [
+                "Una parte de las comisiones de trading del pool",
+                "Un porcentaje anual fijo garantizado sin ningún riesgo",
+                "El derecho a gestionar el protocolo en solitario",
+              ],
+              correctAnswer: "Una parte de las comisiones de trading del pool",
+            },
+            {
+              prompt: "¿Qué es el slippage en el contexto de un AMM?",
+              options: [
+                "La desviación entre el precio de ejecución y el precio de mercado en una operación grande en relación con el tamaño del pool",
+                "La comisión de la red por confirmar una transacción",
+                "El retraso en el procesamiento de una transacción por parte de un nodo de la red",
+              ],
+              correctAnswer: "La desviación entre el precio de ejecución y el precio de mercado en una operación grande en relación con el tamaño del pool",
+            },
+          ],
+        },
+        {
+          slug: "staking",
+          title: "Staking",
+          summary: "El bloqueo de tokens para participar en el consenso o recibir recompensas.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "El staking es el bloqueo de tokens para respaldar el funcionamiento de una red (en blockchains con mecanismo Proof-of-Stake) o para participar en un protocolo a cambio de una recompensa. En las redes con PoS, quienes hacen staking ayudan a confirmar las transacciones y a garantizar la seguridad de la red.",
+            },
+            {
+              type: "paragraph",
+              text: "El rendimiento del staking suele expresarse en porcentaje anual (APR/APY), pero es importante tener en cuenta que se genera, parcial o totalmente, a partir de la emisión de nuevos tokens, lo que puede neutralizar el rendimiento nominal mediante una dilución real de la oferta.",
+            },
+            {
+              type: "list",
+              items: [
+                "En las redes Proof-of-Stake, el staking ayuda a confirmar transacciones y proteger la red",
+                "El rendimiento del staking suele expresarse en porcentaje anual (APR/APY)",
+                "El rendimiento del staking a menudo se genera en parte por la emisión, no solo por la demanda real",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Qué función cumple el staking en las redes Proof-of-Stake?",
+              options: [
+                "Ayuda a confirmar las transacciones y a garantizar la seguridad de la red",
+                "Sustituye por completo la necesidad de una blockchain",
+                "Se usa exclusivamente con fines de marketing del proyecto",
+              ],
+              correctAnswer: "Ayuda a confirmar las transacciones y a garantizar la seguridad de la red",
+            },
+            {
+              prompt: "¿En qué suele expresarse el rendimiento del staking?",
+              options: [
+                "En porcentaje anual (APR/APY)",
+                "Solo en una suma fija en dólares una vez al año",
+                "El rendimiento del staking nunca se expresa numéricamente",
+              ],
+              correctAnswer: "En porcentaje anual (APR/APY)",
+            },
+            {
+              prompt: "¿A partir de qué se genera a menudo, en parte, el rendimiento del staking?",
+              options: [
+                "A partir de la emisión de nuevos tokens",
+                "Exclusivamente a partir de las comisiones de los exchanges centralizados",
+                "A partir de beneficios fiscales del Estado",
+              ],
+              correctAnswer: "A partir de la emisión de nuevos tokens",
+            },
+          ],
+        },
+        {
+          slug: "lending",
+          title: "Lending",
+          summary: "El préstamo descentralizado con garantía de criptoactivos.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "El lending en DeFi permite que unos usuarios presten activos mediante un contrato inteligente y reciban un interés, mientras que otros piden préstamos con garantía de sus propios criptoactivos, generalmente con sobrecolateralización (la garantía vale más que el monto del préstamo).",
+            },
+            {
+              type: "paragraph",
+              text: "Si el valor de la garantía cae por debajo de un umbral determinado en relación con el monto del préstamo, el protocolo liquida automáticamente la garantía para cubrir la deuda. Esto protege a los prestamistas, pero implica que los prestatarios deben vigilar de cerca el ratio de colateralización de su posición.",
+            },
+            {
+              type: "list",
+              items: [
+                "El lending en DeFi suele requerir una garantía sobrecolateralizada por parte del prestatario",
+                "El interés del préstamo y del depósito se determina algorítmicamente según la oferta y la demanda del protocolo",
+                "Si el valor de la garantía cae por debajo de un umbral, el protocolo liquida la posición automáticamente",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Qué suele exigirse al prestatario en el lending de DeFi?",
+              options: [
+                "Una garantía sobrecolateralizada, superior al monto del préstamo",
+                "La verificación de identidad a través de un banco",
+                "Una garantía de un exchange centralizado",
+              ],
+              correctAnswer: "Una garantía sobrecolateralizada, superior al monto del préstamo",
+            },
+            {
+              prompt: "¿Qué ocurre si el valor de la garantía cae por debajo de un umbral determinado?",
+              options: [
+                "El protocolo liquida automáticamente la garantía para cubrir la deuda",
+                "El préstamo se anula automáticamente sin consecuencias",
+                "El protocolo aumenta el monto del préstamo automáticamente",
+              ],
+              correctAnswer: "El protocolo liquida automáticamente la garantía para cubrir la deuda",
+            },
+            {
+              prompt: "¿Quién recibe el interés en un sistema de lending de DeFi?",
+              options: [
+                "Los usuarios que prestaron activos a través del protocolo",
+                "Solo los desarrolladores del protocolo",
+                "En el lending de DeFi no se paga interés a nadie",
+              ],
+              correctAnswer: "Los usuarios que prestaron activos a través del protocolo",
+            },
+          ],
+        },
+        {
+          slug: "yield-farming",
+          title: "Yield Farming",
+          summary: "La búsqueda del máximo rendimiento combinando distintos protocolos DeFi.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "El yield farming es una estrategia para buscar el máximo rendimiento colocando activos en distintos protocolos DeFi (pools de liquidez, lending, staking), a menudo trasladando el capital entre protocolos a medida que cambia el rendimiento ofrecido.",
+            },
+            {
+              type: "paragraph",
+              text: "Un rendimiento anunciado muy alto en el farming suele estar asociado a un riesgo mayor: la volatilidad de los propios tokens de recompensa, el riesgo del contrato inteligente del protocolo o las pérdidas impermanentes (impermanent loss) en los pools de liquidez. El rendimiento y el riesgo en DeFi suelen estar estrechamente relacionados.",
+            },
+            {
+              type: "list",
+              items: [
+                "El yield farming implica mover el capital activamente entre protocolos en busca de rendimiento",
+                "Un rendimiento anunciado muy alto suele venir acompañado de un riesgo mayor",
+                "Las pérdidas impermanentes (impermanent loss) son un riesgo específico de los pools de liquidez",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Qué es el yield farming?",
+              options: [
+                "Una estrategia para buscar el máximo rendimiento colocando activos en distintos protocolos DeFi",
+                "Una forma de minar bitcoin con hardware especializado",
+                "Un programa estatal de subsidios para proyectos cripto",
+              ],
+              correctAnswer: "Una estrategia para buscar el máximo rendimiento colocando activos en distintos protocolos DeFi",
+            },
+            {
+              prompt: "¿Con qué suele estar relacionado un rendimiento anunciado muy alto en el farming?",
+              options: [
+                "Con un riesgo mayor (volatilidad del token, riesgo del contrato, impermanent loss)",
+                "Con la ausencia total de riesgo",
+                "Con una garantía estatal de rendimiento",
+              ],
+              correctAnswer: "Con un riesgo mayor (volatilidad del token, riesgo del contrato, impermanent loss)",
+            },
+            {
+              prompt: "¿Qué son las pérdidas impermanentes (impermanent loss)?",
+              options: [
+                "Un riesgo específico de los pools de liquidez, relacionado con el cambio en la proporción de precios de los activos",
+                "Una comisión de red por transferir tokens",
+                "Una pérdida garantizada en cualquier staking",
+              ],
+              correctAnswer: "Un riesgo específico de los pools de liquidez, relacionado con el cambio en la proporción de precios de los activos",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Memecoins y proyectos nuevos",
+      lessons: [
+        {
+          slug: "launchpad",
+          title: "Launchpad",
+          summary: "Las plataformas para el lanzamiento temprano y la venta de tokens de proyectos nuevos.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "Un launchpad es una plataforma que ayuda a los proyectos nuevos a realizar la distribución primaria de tokens y a conseguir liquidez inicial, generalmente ofreciendo acceso anticipado a los participantes de la plataforma a cambio de cumplir ciertas condiciones (staking del token nativo, KYC, etc.).",
+            },
+            {
+              type: "paragraph",
+              text: "Participar a través de un launchpad no elimina los riesgos del proyecto: la reputación de la plataforma influye en la selección inicial, pero no garantiza el éxito del token después del listado. Es importante evaluar el proyecto en sí, por separado de la plataforma a través de la cual se lanza.",
+            },
+            {
+              type: "list",
+              items: [
+                "Un launchpad ayuda a los proyectos con la distribución primaria de tokens y la obtención de liquidez",
+                "El acceso al lanzamiento a menudo requiere cumplir condiciones de la plataforma (staking, KYC)",
+                "La reputación de un launchpad no garantiza el éxito del token después del listado",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Para qué usan los proyectos las plataformas launchpad?",
+              options: [
+                "Para la distribución primaria de tokens y la obtención de liquidez",
+                "Exclusivamente para el soporte técnico de la blockchain",
+                "Para renunciar por completo a atraer inversores",
+              ],
+              correctAnswer: "Para la distribución primaria de tokens y la obtención de liquidez",
+            },
+            {
+              prompt: "¿Qué se suele exigir a los participantes para acceder a un lanzamiento en un launchpad?",
+              options: [
+                "Cumplir condiciones de la plataforma, por ejemplo hacer staking del token nativo",
+                "Tener un título de analista financiero",
+                "Registrar una persona jurídica",
+              ],
+              correctAnswer: "Cumplir condiciones de la plataforma, por ejemplo hacer staking del token nativo",
+            },
+            {
+              prompt: "¿Una buena reputación del launchpad garantiza el éxito del token lanzado a través de él?",
+              options: [
+                "No, el proyecto igualmente debe evaluarse por separado",
+                "Sí, es una garantía de éxito del cien por ciento",
+                "Sí, pero solo para proyectos en Bitcoin",
+              ],
+              correctAnswer: "No, el proyecto igualmente debe evaluarse por separado",
+            },
+          ],
+        },
+        {
+          slug: "ico",
+          title: "ICO",
+          summary: "La oferta inicial de monedas como forma temprana de captar capital en proyectos cripto.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "El ICO (Initial Coin Offering) es un modelo de captación de capital en el que un proyecto vende un token nuevo directamente a los inversores, generalmente en una etapa temprana de desarrollo, a cambio de criptomonedas consolidadas o dinero fiduciario. Fue uno de los primeros mecanismos de crowdfunding en la industria cripto.",
+            },
+            {
+              type: "paragraph",
+              text: "La ola de ICO de 2017 mostró tanto el potencial del modelo para captar capital rápidamente como sus riesgos: la falta de regulación dio lugar a una gran cantidad de proyectos sin un producto real. Esto motivó la aparición de formatos de lanzamiento más estructurados, incluidos los launchpad y las IDO.",
+            },
+            {
+              type: "list",
+              items: [
+                "El ICO es un modelo de venta de un token nuevo directamente a los inversores en una etapa temprana del proyecto",
+                "El ICO se convirtió en una de las primeras formas de crowdfunding en la industria cripto",
+                "La escasa regulación de las ICO históricamente dio lugar a un alto porcentaje de proyectos inviables",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿En qué consiste el modelo de ICO?",
+              options: [
+                "En vender un token nuevo directamente a los inversores en una etapa temprana del proyecto",
+                "En la regulación estatal de las criptomonedas",
+                "En el proceso de minería de bitcoin",
+              ],
+              correctAnswer: "En vender un token nuevo directamente a los inversores en una etapa temprana del proyecto",
+            },
+            {
+              prompt: "¿Qué papel histórico desempeñó el ICO en la industria cripto?",
+              options: [
+                "Se convirtió en una de las primeras formas de crowdfunding en criptomonedas",
+                "Sustituyó por completo la negociación en exchanges",
+                "Provocó la abolición total de la tecnología blockchain",
+              ],
+              correctAnswer: "Se convirtió en una de las primeras formas de crowdfunding en criptomonedas",
+            },
+            {
+              prompt: "¿A qué llevó la escasa regulación de la ola de ICO de 2017?",
+              options: [
+                "A un alto porcentaje de proyectos sin un producto real",
+                "A la desaparición total de los riesgos para los inversores",
+                "A la prohibición inmediata de todas las criptomonedas en todos los países",
+              ],
+              correctAnswer: "A un alto porcentaje de proyectos sin un producto real",
+            },
+          ],
+        },
+        {
+          slug: "ido",
+          title: "IDO",
+          summary: "La oferta inicial en un exchange descentralizado como alternativa más transparente al ICO.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "El IDO (Initial DEX Offering) es el lanzamiento de un token directamente a través de un exchange descentralizado o una plataforma launchpad, en el que la liquidez suele añadirse al pool inmediatamente después de la venta, y el listado ocurre más rápido y de forma más transparente que en un ICO tradicional.",
+            },
+            {
+              type: "paragraph",
+              text: "El IDO reduce parte de los riesgos característicos del ICO (por ejemplo, la demora entre la recaudación de fondos y el listado), pero no elimina los riesgos del propio proyecto. La alta demanda de un IDO suele provocar una volatilidad brusca del precio justo después de que comienzan las operaciones.",
+            },
+            {
+              type: "list",
+              items: [
+                "Un IDO se realiza a través de un exchange descentralizado o una plataforma launchpad",
+                "La liquidez del pool suele añadirse inmediatamente después de la venta del token",
+                "La alta demanda de un IDO suele provocar una volatilidad brusca del precio tras el listado",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿A través de qué suele realizarse un IDO?",
+              options: [
+                "A través de un exchange descentralizado o una plataforma launchpad",
+                "Solo a través de un banco tradicional",
+                "A través de un regulador central del mercado",
+              ],
+              correctAnswer: "A través de un exchange descentralizado o una plataforma launchpad",
+            },
+            {
+              prompt: "¿En qué se diferencia el IDO del ICO clásico en cuanto al listado?",
+              options: [
+                "El listado ocurre más rápido y de forma más transparente gracias a la adición inmediata de liquidez",
+                "El IDO nunca implica el listado del token",
+                "No existe ninguna diferencia entre el ICO y el IDO",
+              ],
+              correctAnswer: "El listado ocurre más rápido y de forma más transparente gracias a la adición inmediata de liquidez",
+            },
+            {
+              prompt: "¿Qué suele ocurrir con el precio del token justo después de que comienzan las operaciones en un IDO?",
+              options: [
+                "Una volatilidad brusca debido a la alta demanda",
+                "El precio siempre se mantiene perfectamente estable",
+                "Las operaciones se detienen automáticamente durante un día",
+              ],
+              correctAnswer: "Una volatilidad brusca debido a la alta demanda",
+            },
+          ],
+        },
+        {
+          slug: "airdrop",
+          title: "Airdrop",
+          summary: "La distribución gratuita de tokens entre los usuarios y qué aspectos tener en cuenta.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "Un airdrop es la distribución gratuita de tokens de un proyecto entre un grupo determinado de usuarios, a menudo como recompensa por el uso temprano del protocolo, la participación en una testnet o la realización de determinadas acciones. Es una forma de atraer atención y crear una comunidad inicial de holders.",
+            },
+            {
+              type: "paragraph",
+              text: "La expectativa de un posible airdrop atrae a muchos usuarios, pero también genera riesgos: se usan airdrops falsos para hacer phishing y robar fondos mediante contratos inteligentes maliciosos. Un airdrop legítimo nunca exige enviar fondos ni claves privadas para recibir los tokens.",
+            },
+            {
+              type: "list",
+              items: [
+                "Un airdrop es la distribución gratuita de tokens entre un grupo determinado de usuarios",
+                "Un airdrop a menudo recompensa el uso temprano del protocolo o la participación en una testnet",
+                "Un airdrop legítimo nunca exige enviar fondos ni claves privadas",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Qué es un airdrop de tokens?",
+              options: [
+                "La distribución gratuita de tokens entre un grupo determinado de usuarios",
+                "Una suscripción de pago a las noticias del proyecto",
+                "Un impuesto obligatorio sobre las transacciones cripto",
+              ],
+              correctAnswer: "La distribución gratuita de tokens entre un grupo determinado de usuarios",
+            },
+            {
+              prompt: "¿Por qué suelen recompensar los proyectos a los usuarios mediante un airdrop?",
+              options: [
+                "Por el uso temprano del protocolo o la participación en una testnet",
+                "Por dejar reseñas negativas sobre el proyecto",
+                "Por eliminar la wallet de la red",
+              ],
+              correctAnswer: "Por el uso temprano del protocolo o la participación en una testnet",
+            },
+            {
+              prompt: "¿Qué señal debería poner en alerta a un usuario ante un posible airdrop?",
+              options: [
+                "La exigencia de enviar fondos o claves privadas para recibir los tokens",
+                "La ausencia de cualquier requisito por parte del usuario",
+                "Una simple verificación de la dirección de la wallet en una lista pública",
+              ],
+              correctAnswer: "La exigencia de enviar fondos o claves privadas para recibir los tokens",
+            },
+          ],
+        },
+        {
+          slug: "kak-iskat-proekty",
+          title: "Cómo buscar proyectos",
+          summary: "Una lista de verificación básica para evaluar de forma inicial un proyecto cripto nuevo antes de invertir.",
+          xpReward: 30,
+          content: [
+            {
+              type: "paragraph",
+              text: "La búsqueda de proyectos prometedores comienza con una verificación básica: quién es el equipo y si tiene una reputación pública, si existe un producto funcional o solo una presentación, quiénes son los inversores en las rondas tempranas y qué tan transparente y equilibrado es el tokenomics.",
+            },
+            {
+              type: "paragraph",
+              text: "También es útil estudiar la actividad de la comunidad y el desarrollo en los repositorios públicos, y no solo los anuncios de marketing en las redes sociales. Un proyecto con una audiencia activa y creciente y actualizaciones de código regulares suele merecer más confianza que un proyecto con un solo anuncio llamativo.",
+            },
+            {
+              type: "list",
+              items: [
+                "Verificar el equipo, el producto y los inversores es el primer paso básico para evaluar un proyecto",
+                "La actividad de desarrollo en repositorios abiertos es una señal más confiable que el marketing",
+                "Un tokenomics equilibrado y transparente reduce el riesgo de una futura presión vendedora",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Con qué suele comenzar la verificación básica de un proyecto cripto nuevo?",
+              options: [
+                "Con el análisis del equipo, el producto y los inversores tempranos",
+                "Con la compra inmediata del máximo volumen posible del token",
+                "Con el estudio exclusivo del logotipo del proyecto",
+              ],
+              correctAnswer: "Con el análisis del equipo, el producto y los inversores tempranos",
+            },
+            {
+              prompt: "¿Qué señal suele considerarse un indicador más confiable del progreso real de un proyecto?",
+              options: [
+                "La actividad de desarrollo en los repositorios de código abiertos",
+                "La cantidad de promesas llamativas en publicaciones de marketing",
+                "El número de seguidores en redes sociales sin ninguna otra verificación",
+              ],
+              correctAnswer: "La actividad de desarrollo en los repositorios de código abiertos",
+            },
+            {
+              prompt: "¿Por qué vale la pena prestar atención al tokenomics al evaluar inicialmente un proyecto?",
+              options: [
+                "Un tokenomics equilibrado reduce el riesgo de una futura presión vendedora",
+                "El tokenomics no tiene ninguna relación con los riesgos del proyecto",
+                "El tokenomics solo importa para proyectos sin blockchain",
+              ],
+              correctAnswer: "Un tokenomics equilibrado reduce el riesgo de una futura presión vendedora",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Estrategias de trading",
+      lessons: [
+        {
+          slug: "scalping",
+          title: "Scalping",
+          summary: "Estrategia de múltiples operaciones cortas con ganancias pequeñas en marcos temporales de minutos.",
+          xpReward: 35,
+          content: [
+            {
+              type: "paragraph",
+              text: "Scalping es una estrategia en la que el trader abre una gran cantidad de operaciones en un período corto de tiempo (segundos o minutos), buscando obtener una pequeña ganancia en cada una de ellas. El scalping exige alta concentración, comisiones bajas y buena liquidez del instrumento.",
+            },
+            {
+              type: "paragraph",
+              text: "Debido a la alta frecuencia de operaciones, incluso una comisión pequeña de la bolsa afecta considerablemente la rentabilidad final del scalper, por lo que es importante calcular con precisión los costes. El scalping también exige mayor velocidad de ejecución de las órdenes y estabilidad de la conexión.",
+            },
+            {
+              type: "list",
+              items: [
+                "El scalping implica múltiples operaciones cortas con un objetivo de ganancia pequeño",
+                "Las comisiones de la bolsa influyen significativamente en la rentabilidad final debido a la alta frecuencia de operaciones",
+                "La estrategia requiere alta liquidez del instrumento y una ejecución estable de las órdenes",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Cuál es la característica clave del scalping como estrategia?",
+              options: [
+                "Gran cantidad de operaciones cortas con una pequeña ganancia en cada una",
+                "Mantener la posición durante varios meses",
+                "El rechazo total del análisis del gráfico",
+              ],
+              correctAnswer: "Gran cantidad de operaciones cortas con una pequeña ganancia en cada una",
+            },
+            {
+              prompt: "¿Por qué las comisiones de la bolsa son especialmente importantes para un scalper?",
+              options: [
+                "Debido a la alta frecuencia de operaciones, influyen considerablemente en la rentabilidad final",
+                "El scalping está completamente exento de comisiones en cualquier bolsa",
+                "Las comisiones solo importan si la posición se mantiene más de un mes",
+              ],
+              correctAnswer: "Debido a la alta frecuencia de operaciones, influyen considerablemente en la rentabilidad final",
+            },
+            {
+              prompt: "¿Qué es especialmente importante para el instrumento utilizado en scalping?",
+              options: [
+                "Alta liquidez y ejecución rápida de las órdenes",
+                "Liquidez lo más baja posible",
+                "Ausencia de gráfico de precios en tiempo real",
+              ],
+              correctAnswer: "Alta liquidez y ejecución rápida de las órdenes",
+            },
+          ],
+        },
+        {
+          slug: "day-trading",
+          title: "Day Trading",
+          summary: "Trading intradía con el cierre de todas las posiciones antes del final de la sesión de negociación.",
+          xpReward: 35,
+          content: [
+            {
+              type: "paragraph",
+              text: "Day Trading (trading diario) es una estrategia en la que todas las operaciones se abren y se cierran dentro de un mismo día, sin trasladar posiciones al día siguiente. Esto elimina el riesgo de los gaps nocturnos y permite al trader controlar por completo su exposición al mercado al final de la sesión.",
+            },
+            {
+              type: "paragraph",
+              text: "El day trading exige más tiempo de análisis y monitoreo del mercado durante el día en comparación con los enfoques de más largo plazo, pero ofrece más oportunidades de entrada que el scalping gracias a objetivos de ganancia más amplios.",
+            },
+            {
+              type: "list",
+              items: [
+                "En el day trading, todas las posiciones se cierran antes del final del día de negociación",
+                "La ausencia de traslado de posiciones elimina el riesgo de los gaps nocturnos",
+                "El day trading requiere una cantidad considerable de tiempo para el monitoreo activo del mercado",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Cuál es la regla clave del day trading?",
+              options: [
+                "Todas las posiciones se cierran dentro del mismo día de negociación",
+                "Las posiciones se mantienen obligatoriamente varias semanas",
+                "Las operaciones se abren solo una vez al mes",
+              ],
+              correctAnswer: "Todas las posiciones se cierran dentro del mismo día de negociación",
+            },
+            {
+              prompt: "¿Qué riesgo elimina la ausencia de traslado de posiciones al día siguiente?",
+              options: [
+                "El riesgo de los gaps nocturnos de precio",
+                "El riesgo de la comisión de la bolsa",
+                "El riesgo de cambio de nombre del token",
+              ],
+              correctAnswer: "El riesgo de los gaps nocturnos de precio",
+            },
+            {
+              prompt: "¿En qué se diferencia el day trading del scalping en cuanto a los objetivos de ganancia?",
+              options: [
+                "El day trading suele tener objetivos de ganancia más amplios por operación",
+                "Los objetivos de ganancia de ambas estrategias son absolutamente idénticos",
+                "El day trading no contempla objetivos de ganancia en absoluto",
+              ],
+              correctAnswer: "El day trading suele tener objetivos de ganancia más amplios por operación",
+            },
+          ],
+        },
+        {
+          slug: "swing-trading",
+          title: "Swing Trading",
+          summary: "Mantener una posición desde varios días hasta varias semanas en movimientos de mediano plazo.",
+          xpReward: 35,
+          content: [
+            {
+              type: "paragraph",
+              text: "Swing Trading es una estrategia de mantener posiciones desde varios días hasta varias semanas con el objetivo de capturar un movimiento de precio de mediano plazo (un «swing»). Esto requiere menos tiempo de monitoreo constante en comparación con el day trading y el scalping.",
+            },
+            {
+              type: "paragraph",
+              text: "Los swing traders suelen apoyarse en marcos temporales más altos (H4, D1) para determinar la tendencia y los puntos de entrada, mientras que la operación queda inevitablemente expuesta a los gaps nocturnos y de fin de semana, por lo que el stop-loss y el tamaño de la posición deben tenerlo en cuenta.",
+            },
+            {
+              type: "list",
+              items: [
+                "El swing trading implica mantener una posición desde varios días hasta varias semanas",
+                "La estrategia requiere menos monitoreo constante que el day trading o el scalping",
+                "Las posiciones en swing trading están expuestas al riesgo de gaps nocturnos y de fin de semana",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Cuál es el horizonte típico de mantenimiento de una posición en swing trading?",
+              options: [
+                "Desde varios días hasta varias semanas",
+                "Desde varios segundos hasta varios minutos",
+                "Varios años sin excepción",
+              ],
+              correctAnswer: "Desde varios días hasta varias semanas",
+            },
+            {
+              prompt: "¿Qué marcos temporales utilizan con más frecuencia los swing traders para el análisis?",
+              options: [
+                "Marcos temporales más altos, por ejemplo H4 y D1",
+                "Exclusivamente el gráfico de ticks",
+                "Solo el marco temporal de un minuto",
+              ],
+              correctAnswer: "Marcos temporales más altos, por ejemplo H4 y D1",
+            },
+            {
+              prompt: "¿A qué riesgo específico están expuestas las posiciones en swing trading debido a la duración de su mantenimiento?",
+              options: [
+                "Al riesgo de gaps de precio nocturnos y de fin de semana",
+                "Al riesgo de ejecución instantánea de la orden",
+                "Al riesgo de ausencia total de volatilidad",
+              ],
+              correctAnswer: "Al riesgo de gaps de precio nocturnos y de fin de semana",
+            },
+          ],
+        },
+        {
+          slug: "position-trading",
+          title: "Position Trading",
+          summary: "Mantenimiento de posiciones a largo plazo basado en grandes tendencias y factores fundamentales.",
+          xpReward: 35,
+          content: [
+            {
+              type: "paragraph",
+              text: "Position Trading es una estrategia de mantener posiciones desde varias semanas hasta meses o más, orientada a capturar tendencias grandes y de largo plazo. Los traders de posición prestan menos atención al ruido de precio de corto plazo y más al contexto macroeconómico y fundamental.",
+            },
+            {
+              type: "paragraph",
+              text: "Debido al horizonte prolongado, el position trading exige una mayor tolerancia a las caídas intermedias dentro de la tendencia general y suele usar stops más amplios en relación con el capital por operación, compensando esto con un menor número de posiciones simultáneas.",
+            },
+            {
+              type: "list",
+              items: [
+                "El position trading está orientado a mantener posiciones desde varias semanas hasta meses",
+                "La estrategia se apoya más en el contexto macroeconómico y fundamental que en el ruido de corto plazo",
+                "Los traders de posición suelen usar stops más amplios y un menor número de posiciones simultáneas",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿En qué se orienta principalmente el position trading?",
+              options: [
+                "En capturar tendencias grandes y de largo plazo",
+                "En las fluctuaciones de precio de un minuto",
+                "En el arbitraje entre bolsas en tiempo real",
+              ],
+              correctAnswer: "En capturar tendencias grandes y de largo plazo",
+            },
+            {
+              prompt: "¿Para qué debe estar preparado un trader de posición debido al horizonte prolongado de mantenimiento?",
+              options: [
+                "Para las caídas intermedias dentro de la tendencia general",
+                "Para la ausencia total de cualquier fluctuación de precio",
+                "Para el cierre obligatorio de la operación al final de cada día",
+              ],
+              correctAnswer: "Para las caídas intermedias dentro de la tendencia general",
+            },
+            {
+              prompt: "¿Qué tipo de análisis juega un papel especialmente importante en el position trading?",
+              options: [
+                "El análisis macroeconómico y fundamental",
+                "Exclusivamente el análisis del libro de órdenes del último minuto",
+                "No se requiere ningún análisis",
+              ],
+              correctAnswer: "El análisis macroeconómico y fundamental",
+            },
+          ],
+        },
+        {
+          slug: "liquidity-sweep-strategiya",
+          title: "Liquidity Sweep",
+          summary: "Estrategia de trading de entrada tras la toma de liquidez detrás de un nivel clave.",
+          xpReward: 35,
+          content: [
+            {
+              type: "paragraph",
+              text: "Como estrategia de trading, Liquidity Sweep se basa en la idea de que el precio a menudo rompe de forma falsa un nivel significativo (máximo, mínimo, zona de acumulación de stop-loss), recoge liquidez allí y luego revierte en dirección contraria; precisamente ese punto de giro se usa como señal de entrada.",
+            },
+            {
+              type: "paragraph",
+              text: "La diferencia clave respecto a una simple ruptura de nivel es que el trader no espera la continuación del movimiento más allá del nivel, sino precisamente un rápido regreso del precio dentro del rango, lo que confirma que la ruptura fue causada por una toma de liquidez y no por una fuerza real de tendencia.",
+            },
+            {
+              type: "list",
+              items: [
+                "La estrategia se basa en una ruptura falsa de nivel seguida de una reversión rápida del precio",
+                "La entrada se produce tras confirmar el regreso del precio dentro del rango, no en el momento mismo de la ruptura",
+                "La estrategia requiere paciencia y confirmación para distinguir un sweep de una ruptura real",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿En qué idea se basa la estrategia Liquidity Sweep?",
+              options: [
+                "En una ruptura falsa de nivel con toma de liquidez y posterior reversión del precio",
+                "En mantener la posición constantemente sin analizar niveles",
+                "En ignorar cualquier nivel de soporte y resistencia",
+              ],
+              correctAnswer: "En una ruptura falsa de nivel con toma de liquidez y posterior reversión del precio",
+            },
+            {
+              prompt: "¿Qué confirma que la ruptura de un nivel fue en realidad un sweep y no una ruptura real?",
+              options: [
+                "El rápido regreso del precio dentro del rango tras la ruptura",
+                "La continuación del movimiento del precio mucho más allá del nivel",
+                "La ausencia total de volumen en la ruptura",
+              ],
+              correctAnswer: "El rápido regreso del precio dentro del rango tras la ruptura",
+            },
+            {
+              prompt: "¿Cuándo suele abrir la operación un trader que utiliza esta estrategia?",
+              options: [
+                "Tras confirmar el regreso del precio dentro del rango",
+                "De inmediato al tocar el nivel, sin esperar confirmación",
+                "Solo después del cierre de la semana de negociación",
+              ],
+              correctAnswer: "Tras confirmar el regreso del precio dentro del rango",
+            },
+          ],
+        },
+        {
+          slug: "breakout",
+          title: "Breakout",
+          summary: "Estrategia de entrada en la dirección de una ruptura confirmada de un nivel clave.",
+          xpReward: 35,
+          content: [
+            {
+              type: "paragraph",
+              text: "Breakout (estrategia de ruptura) implica entrar en una operación en la dirección del movimiento cuando el precio supera un nivel significativo de soporte, resistencia o el límite de una consolidación con confirmación, generalmente un volumen mayor y el cierre de la vela más allá del nivel, y no un simple toque.",
+            },
+            {
+              type: "paragraph",
+              text: "El principal riesgo de la estrategia de ruptura son las rupturas falsas, cuando el precio sale brevemente del nivel y regresa de inmediato. Por eso los traders a menudo esperan el retest del nivel roto (cuando pasa de ser resistencia a soporte, o viceversa) para una entrada más confiable.",
+            },
+            {
+              type: "list",
+              items: [
+                "La estrategia de ruptura implica entrar en la dirección de una ruptura confirmada del nivel",
+                "La confirmación de la ruptura suele ser un volumen mayor y el cierre de la vela más allá del nivel",
+                "Esperar el retest del nivel roto reduce el riesgo de entrar en una ruptura falsa",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿En qué se basa la estrategia de ruptura (breakout)?",
+              options: [
+                "En entrar en la dirección de una ruptura confirmada de un nivel significativo",
+                "En entrar exclusivamente en contra de la dirección de la ruptura",
+                "En ignorar por completo los niveles de soporte y resistencia",
+              ],
+              correctAnswer: "En entrar en la dirección de una ruptura confirmada de un nivel significativo",
+            },
+            {
+              prompt: "¿Qué suele confirmar que una ruptura es real y no falsa?",
+              options: [
+                "Un volumen mayor y el cierre de la vela fuera del nivel",
+                "Un simple toque del nivel por el precio sin cierre de vela",
+                "Una caída del volumen a cero",
+              ],
+              correctAnswer: "Un volumen mayor y el cierre de la vela fuera del nivel",
+            },
+            {
+              prompt: "¿Por qué a veces los traders esperan el retest del nivel roto antes de entrar?",
+              options: [
+                "Para reducir el riesgo de entrar en una ruptura falsa",
+                "El retest no tiene ninguna importancia para la entrada",
+                "Para aumentar garantizadamente la comisión de la operación",
+              ],
+              correctAnswer: "Para reducir el riesgo de entrar en una ruptura falsa",
+            },
+          ],
+        },
+        {
+          slug: "mean-reversion",
+          title: "Mean Reversion",
+          summary: "Estrategia de retorno al valor medio tras una fuerte desviación del precio.",
+          xpReward: 35,
+          content: [
+            {
+              type: "paragraph",
+              text: "Mean Reversion (retorno a la media) se basa en la idea de que el precio, tras desviarse fuertemente de su valor medio (por ejemplo, de una media móvil o del VWAP), tiende a regresar a él con el tiempo. La estrategia suele funcionar mejor en un mercado lateral que en una tendencia fuerte.",
+            },
+            {
+              type: "paragraph",
+              text: "Los traders que utilizan esta estrategia suelen combinar osciladores como el RSI con niveles de desviación respecto a la media (por ejemplo, las Bollinger Bands), abriendo una operación en contra de la dirección de un fuerte movimiento de corto plazo a la espera de una corrección hacia el nivel medio.",
+            },
+            {
+              type: "list",
+              items: [
+                "La estrategia implica el retorno del precio al valor medio tras una fuerte desviación",
+                "Mean reversion suele ser más efectiva en un mercado lateral que en una tendencia direccional fuerte",
+                "Los osciladores y las bandas de desviación suelen usarse juntos para buscar puntos de entrada",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿En qué idea se basa la estrategia Mean Reversion?",
+              options: [
+                "El precio, tras desviarse fuertemente del valor medio, tiende a regresar a él",
+                "El precio nunca regresa a su valor medio",
+                "El precio siempre continúa su movimiento en la misma dirección indefinidamente",
+              ],
+              correctAnswer: "El precio, tras desviarse fuertemente del valor medio, tiende a regresar a él",
+            },
+            {
+              prompt: "¿En qué tipo de mercado suele funcionar mejor la estrategia mean reversion?",
+              options: [
+                "En un mercado lateral",
+                "Exclusivamente en períodos de hiperinflación",
+                "En un mercado sin ningún participante aparte del propio trader",
+              ],
+              correctAnswer: "En un mercado lateral",
+            },
+            {
+              prompt: "¿Qué herramientas combinan a menudo los traders para buscar puntos de entrada en mean reversion?",
+              options: [
+                "Osciladores como el RSI y bandas de desviación respecto a la media",
+                "Exclusivamente datos sobre las comisiones de la bolsa",
+                "Solo noticias de redes sociales",
+              ],
+              correctAnswer: "Osciladores como el RSI y bandas de desviación respecto a la media",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Examen final",
+      lessons: [
+        {
+          slug: "polnaya-torgovlya-na-simulyatore",
+          title: "Trading completo en el simulador",
+          summary: "Práctica final: aplicación de todos los conceptos aprendidos en una cuenta virtual.",
+          xpReward: 40,
+          content: [
+            {
+              type: "paragraph",
+              text: "Esta lección reúne todo el material del curso: desde los conceptos básicos del mercado hasta la gestión de riesgo, la psicología, los indicadores y las estrategias de trading. La tarea consiste en realizar una serie de operaciones en una cuenta virtual, aplicando las reglas de gestión de riesgo y un plan definido de antemano para cada operación.",
+            },
+            {
+              type: "paragraph",
+              text: "El objetivo de esta etapa no es una ganancia grande y puntual, sino demostrar un enfoque coherente y disciplinado: el cálculo correcto del tamaño de la posición, un stop-loss y un take profit fundamentados, además de llevar un registro de cada operación, tal como lo hacen los traders profesionales.",
+            },
+            {
+              type: "list",
+              items: [
+                "Cada operación debe ir acompañada de un plan de entrada y salida definido de antemano",
+                "El tamaño de la posición se calcula en función del riesgo, no de la ganancia deseada",
+                "El resultado de una operación individual es menos importante que la consistencia en el cumplimiento de las reglas",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Cuál es el objetivo principal de la práctica final en la cuenta virtual?",
+              options: [
+                "Demostrar un enfoque coherente y disciplinado hacia el trading",
+                "Obtener la máxima ganancia posible a cualquier precio",
+                "Realizar la mayor cantidad posible de operaciones sin análisis",
+              ],
+              correctAnswer: "Demostrar un enfoque coherente y disciplinado hacia el trading",
+            },
+            {
+              prompt: "¿Qué debe preceder a la apertura de cada operación en esta etapa?",
+              options: [
+                "Un plan de entrada y salida definido de antemano",
+                "La elección aleatoria de un activo sin análisis",
+                "El aumento máximo del apalancamiento",
+              ],
+              correctAnswer: "Un plan de entrada y salida definido de antemano",
+            },
+            {
+              prompt: "¿Qué determina el tamaño de la posición según el material del curso?",
+              options: [
+                "El riesgo admisible por operación, no la ganancia deseada",
+                "Exclusivamente la intuición del trader",
+                "El tipo de cambio del dólar en el momento de la operación",
+              ],
+              correctAnswer: "El riesgo admisible por operación, no la ganancia deseada",
+            },
+          ],
+        },
+        {
+          slug: "proyti-vse-zadaniya",
+          title: "Hay que completar todas las tareas",
+          summary: "Verificación final: por qué es importante cerrar cada módulo para completar el curso.",
+          xpReward: 40,
+          content: [
+            {
+              type: "paragraph",
+              text: "Cada módulo del curso está construido para apoyarse en el anterior: la comprensión de la gestión de riesgo se apoya en la comprensión de la volatilidad y la estructura del mercado, la psicología de las operaciones se apoya en la comprensión de cómo funciona el riesgo, y las estrategias se apoyan en el dominio de los indicadores y el análisis de volumen.",
+            },
+            {
+              type: "paragraph",
+              text: "Saltarse módulos individuales crea lagunas que se manifiestan más adelante, por ejemplo al usar una estrategia sin comprender cómo calcular correctamente el tamaño de la posición para ella. Por eso, para completar el curso es necesario realizar todas las tareas, y no solo módulos sueltos a elección.",
+            },
+            {
+              type: "list",
+              items: [
+                "Los módulos del curso están construidos de forma secuencial y se apoyan unos en otros",
+                "Saltarse un módulo crea lagunas que se manifiestan en etapas posteriores del aprendizaje",
+                "Completar el curso por completo requiere finalizar todas las tareas, no solo algunos módulos seleccionados",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Por qué se recomienda completar los módulos del curso de forma secuencial?",
+              options: [
+                "Cada módulo siguiente se apoya en los conocimientos de los anteriores",
+                "El orden en que se completan los módulos no tiene ninguna importancia",
+                "Esto solo se necesita para obtener XP",
+              ],
+              correctAnswer: "Cada módulo siguiente se apoya en los conocimientos de los anteriores",
+            },
+            {
+              prompt: "¿A qué puede llevar saltarse determinados módulos del curso?",
+              options: [
+                "A lagunas de conocimiento que se manifestarán en etapas posteriores",
+                "Esto no afecta en absoluto al aprendizaje posterior",
+                "A obtener automáticamente el certificado sin haber estudiado",
+              ],
+              correctAnswer: "A lagunas de conocimiento que se manifestarán en etapas posteriores",
+            },
+            {
+              prompt: "¿Qué se requiere para completar el curso por completo?",
+              options: [
+                "Completar todas las tareas, y no solo algunos módulos seleccionados",
+                "Completar cualquier módulo único a elección",
+                "Basta con abrir solamente la primera lección del curso",
+              ],
+              correctAnswer: "Completar todas las tareas, y no solo algunos módulos seleccionados",
+            },
+          ],
+        },
+        {
+          slug: "poluchenie-sertifikata",
+          title: "Obtención del certificado",
+          summary: "Qué significa completar el curso «El camino del trader» y cómo aprovechar los conocimientos adquiridos.",
+          xpReward: 40,
+          content: [
+            {
+              type: "paragraph",
+              text: "Completar todos los módulos del curso «El camino del trader» significa haber recorrido el camino completo desde los conceptos básicos del mercado hasta temas avanzados: indicadores, análisis de volumen, datos on-chain, DeFi, tokenómica y la construcción de una estrategia de trading propia con verificación sobre datos históricos.",
+            },
+            {
+              type: "paragraph",
+              text: "Completar el curso por sí solo no sustituye la experiencia práctica: las condiciones reales del mercado, la psicología en vivo bajo presión y el trabajo con capital real requieren práctica adicional. Los conocimientos del curso son el fundamento sobre el que se construye el desarrollo posterior como trader.",
+            },
+            {
+              type: "list",
+              items: [
+                "El curso abarca el camino desde los conceptos básicos del mercado hasta temas avanzados de análisis y estrategias",
+                "Completar el curso es un fundamento, no un sustituto de la experiencia real de trading",
+                "El desarrollo posterior requiere práctica, llevar un diario de trading y analizar constantemente las propias decisiones",
+              ],
+            },
+          ],
+          questions: [
+            {
+              prompt: "¿Qué abarca la finalización completa del curso «El camino del trader»?",
+              options: [
+                "El camino desde los conceptos básicos del mercado hasta temas avanzados de análisis y estrategias",
+                "Solo los fundamentos del uso de una billetera",
+                "Exclusivamente los aspectos legales de las criptomonedas",
+              ],
+              correctAnswer: "El camino desde los conceptos básicos del mercado hasta temas avanzados de análisis y estrategias",
+            },
+            {
+              prompt: "¿Completar el curso sustituye la experiencia real de trading?",
+              options: [
+                "No, el curso es un fundamento, y la experiencia real requiere práctica adicional",
+                "Sí, el curso sustituye por completo cualquier práctica",
+                "Sí, pero solo para operaciones con apalancamiento superior a 10x",
+              ],
+              correctAnswer: "No, el curso es un fundamento, y la experiencia real requiere práctica adicional",
+            },
+            {
+              prompt: "¿Qué se recomienda seguir haciendo después de completar el curso?",
+              options: [
+                "Llevar un diario de trading y analizar constantemente las propias decisiones",
+                "Dejar por completo de analizar la propia operativa",
+                "Abandonar de inmediato la gestión de riesgo",
+              ],
+              correctAnswer: "Llevar un diario de trading y analizar constantemente las propias decisiones",
+            },
+          ],
+        },
+      ],
+    },
   ],
 };

@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { getCurrentPrice } from "@/lib/market-data";
+import { getCurrentPrice, getMaxLeverage } from "@/lib/market-data";
 
 const STARTING_BALANCE = 10000;
 
@@ -88,7 +88,7 @@ export async function openTrade(formData: FormData) {
   const symbol = String(formData.get("symbol"));
   const side = String(formData.get("side")) === "SHORT" ? "SHORT" : "LONG";
   const amount = Number(formData.get("amount"));
-  const leverage = Math.min(20, Math.max(1, Number(formData.get("leverage")) || 1));
+  const leverage = Math.min(getMaxLeverage(symbol), Math.max(1, Number(formData.get("leverage")) || 1));
   const stopLossInput = formData.get("stopLoss");
   const takeProfitInput = formData.get("takeProfit");
   const stopLoss = stopLossInput ? Number(stopLossInput) : null;
@@ -143,6 +143,79 @@ export async function closeTrade(formData: FormData) {
   if (!price || !Number.isFinite(price) || price <= 0) return;
 
   await settleTrade(trade, price);
+
+  revalidatePath("/market");
+}
+
+async function getOwnedOpenTrade(userId: string, tradeId: string) {
+  const trade = await db.virtualTrade.findUnique({
+    where: { id: tradeId },
+    include: { portfolio: true },
+  });
+  if (!trade || trade.portfolio.userId !== userId || trade.status !== "OPEN") return null;
+  return trade;
+}
+
+/** Form-based SL/TP editor for the open-positions panel. Empty input clears that level. */
+export async function updateTradeLevels(formData: FormData) {
+  const session = await auth();
+  if (!session?.user?.id) return;
+
+  const tradeId = String(formData.get("tradeId"));
+  const trade = await getOwnedOpenTrade(session.user.id, tradeId);
+  if (!trade) return;
+
+  const stopLossInput = String(formData.get("stopLoss") ?? "").trim();
+  const takeProfitInput = String(formData.get("takeProfit") ?? "").trim();
+
+  const stopLoss = stopLossInput === "" ? null : Number(stopLossInput);
+  const takeProfit = takeProfitInput === "" ? null : Number(takeProfitInput);
+
+  if (stopLoss !== null && !Number.isFinite(stopLoss)) return;
+  if (takeProfit !== null && !Number.isFinite(takeProfit)) return;
+
+  await db.virtualTrade.update({
+    where: { id: tradeId },
+    data: { stopLoss, takeProfit },
+  });
+
+  revalidatePath("/market");
+}
+
+/** Moves the stop-loss to the trade's entry price (break-even). */
+export async function setBreakEven(formData: FormData) {
+  const session = await auth();
+  if (!session?.user?.id) return;
+
+  const tradeId = String(formData.get("tradeId"));
+  const trade = await getOwnedOpenTrade(session.user.id, tradeId);
+  if (!trade) return;
+
+  await db.virtualTrade.update({
+    where: { id: tradeId },
+    data: { stopLoss: trade.entryPrice },
+  });
+
+  revalidatePath("/market");
+}
+
+/** Direct (non-form) SL/TP setter used by the draggable chart price lines. */
+export async function setTradeLevel(
+  tradeId: string,
+  field: "stopLoss" | "takeProfit",
+  value: number | null
+) {
+  const session = await auth();
+  if (!session?.user?.id) return;
+
+  const trade = await getOwnedOpenTrade(session.user.id, tradeId);
+  if (!trade) return;
+  if (value !== null && !Number.isFinite(value)) return;
+
+  await db.virtualTrade.update({
+    where: { id: tradeId },
+    data: { [field]: value },
+  });
 
   revalidatePath("/market");
 }

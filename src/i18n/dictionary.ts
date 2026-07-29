@@ -65,12 +65,25 @@ export type Dictionary = {
     };
     orEmail: string;
     google: string;
+    verify: {
+      title: string;
+      subtitle: string;
+      codePlaceholder: string;
+      submit: string;
+      submitting: string;
+      resend: string;
+      resending: string;
+      resent: string;
+      invalidCode: string;
+      genericError: string;
+    };
   };
   dashboard: {
     nav: {
       learn: string;
       market: string;
       charts: string;
+      leaderboard: string;
       profile: string;
       settings: string;
     };
@@ -119,5 +132,20 @@ export type Dictionary = {
   };
   profile: {
     title: string;
+  };
+  leaderboard: {
+    title: string;
+    subtitle: string;
+    noData: string;
+    you: string;
+    balance: string;
+  };
+  support: {
+    title: string;
+    description: string;
+    placeholder: string;
+    send: string;
+    greeting: string;
+    error: string;
   };
 };

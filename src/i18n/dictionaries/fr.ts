@@ -34,7 +34,7 @@ const fr: Dictionary = {
       { title: "Leçons structurées", description: "Un parcours des bases aux stratégies avancées — étape par étape, sans chaos." },
       { title: "Exercices et quiz", description: "Renforcez chaque sujet par la pratique : quiz, études de cas et vérifications de compréhension." },
       { title: "Marché virtuel", description: "Ouvrez des positions sur un marché simulé sans risque d'argent réel et apprenez de vos erreurs." },
-      { title: "Assistant IA", description: "Posez des questions, analysez vos trades et obtenez des explications de termes à tout moment." },
+      { title: "Graphiques de marché réels", description: "Graphiques professionnels TradingView avec données en direct et outils d'analyse technique." },
       { title: "Séries et motivation", description: "Des objectifs quotidiens et une série vous gardent dans le rythme — comme une appli de langues, mais pour le trading." },
       { title: "XP et succès", description: "Gagnez de l'XP pour chaque leçon terminée et débloquez des succès." },
     ],
@@ -82,6 +82,18 @@ const fr: Dictionary = {
     },
     orEmail: "ou par email",
     google: "Continuer avec Google",
+    verify: {
+      title: "Vérifiez votre email",
+      subtitle: "Nous avons envoyé un code à 6 chiffres à votre email. Saisissez-le ci-dessous.",
+      codePlaceholder: "Code reçu par email",
+      submit: "Vérifier",
+      submitting: "Vérification...",
+      resend: "Renvoyer le code",
+      resending: "Envoi...",
+      resent: "Code renvoyé",
+      invalidCode: "Le code est invalide ou a expiré.",
+      genericError: "Impossible de vérifier votre email. Veuillez réessayer.",
+    },
   },
   dashboard: {
     nav: {
@@ -90,6 +102,7 @@ const fr: Dictionary = {
       charts: "Graphiques",
       profile: "Profil",
       settings: "Paramètres",
+      leaderboard: "Classement",
     },
     level: "Niveau",
     xp: "XP",
@@ -136,6 +149,21 @@ const fr: Dictionary = {
   },
   profile: {
     title: "Profil",
+  },
+  leaderboard: {
+    title: "Classement",
+    subtitle: "Les meilleurs traders de la plateforme selon le P&L de ce mois-ci. Réinitialisé le 1er.",
+    noData: "Pas encore de données.",
+    you: "vous",
+    balance: "solde",
+  },
+  support: {
+    title: "Support",
+    description: "Décrivez votre problème — l'assistant IA essaiera de le résoudre immédiatement.",
+    placeholder: "Décrivez votre problème...",
+    send: "Envoyer",
+    greeting: "Bonjour ! Je suis l'assistant support d'ASTREX. Décrivez votre problème et j'essaierai de vous aider.",
+    error: "Impossible d'envoyer le message. Veuillez réessayer.",
   },
 };
 

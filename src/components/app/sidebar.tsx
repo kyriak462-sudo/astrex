@@ -10,7 +10,7 @@ export function Sidebar({
   nav,
   settingsLabel,
 }: {
-  nav?: { learn: string; market: string; charts: string; profile: string };
+  nav?: { learn: string; market: string; charts: string; leaderboard: string; profile: string };
   settingsLabel?: string;
 }) {
   const pathname = usePathname();
@@ -18,6 +18,7 @@ export function Sidebar({
     "/learn": nav?.learn ?? "Обучение",
     "/market": nav?.market ?? "Рынок",
     "/charts": nav?.charts ?? "Графики",
+    "/leaderboard": nav?.leaderboard ?? "Лидеры",
     "/profile": nav?.profile ?? "Профиль",
     "/settings": settingsLabel ?? "Настройки",
   };
