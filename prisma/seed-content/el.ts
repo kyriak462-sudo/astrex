@@ -31,6 +31,7 @@ export const COURSE_EL: CourseSeed = {
                 "Ο trader μπορεί να κερδίζει και από την πτώση της τιμής μέσω short θέσεων",
               ],
             },
+            { type: "diagram", diagram: "intro-chart", caption: "Έτσι φαίνεται η τιμή ενός assets σε ένα γράφημα" },
           ],
           questions: [
             {
@@ -73,6 +74,7 @@ export const COURSE_EL: CourseSeed = {
                 "Εμπορεύματα (commodities): εξαρτώνται από την πραγματική προσφορά/ζήτηση και τη γεωπολιτική",
               ],
             },
+            { type: "diagram", diagram: "market-types", caption: "Ίδια κίνηση τιμής, διαφορετικό αποτέλεσμα ανάλογα με τη μόχλευση" },
           ],
           questions: [
             {
@@ -114,6 +116,7 @@ export const COURSE_EL: CourseSeed = {
                 "Bar chart — μοιάζει με το γράφημα κεριών, αλλά είναι λιγότερο εποπτικό οπτικά",
               ],
             },
+            { type: "diagram", diagram: "chart-anatomy", caption: "Τα βασικά στοιχεία ενός γραφήματος τιμής" },
           ],
           questions: [
             {
@@ -155,6 +158,7 @@ export const COURSE_EL: CourseSeed = {
               type: "paragraph",
               text: "Ένα και μόνο κερί αφηγείται ήδη την ιστορία της πάλης ανάμεσα σε αγοραστές και πωλητές: ένα μακρύ σώμα υποδηλώνει σίγουρη κίνηση, ενώ μακριές σκιές δείχνουν ότι η τιμή \"απωθήθηκε\" έντονα προς την αντίθετη κατεύθυνση.",
             },
+            { type: "diagram", diagram: "candlestick-anatomy", caption: "Ανατομία ενός ιαπωνικού κεριού" },
           ],
           questions: [
             {
@@ -200,6 +204,7 @@ export const COURSE_EL: CourseSeed = {
               type: "paragraph",
               text: "Σημαντική αρχή: μετά τη διάσπαση, ένα επίπεδο συχνά αλλάζει ρόλο — η πρώην αντίσταση γίνεται στήριξη, και αντίστροφα. Τα αξιόπιστα επίπεδα δεν χτίζονται από ένα μόνο σημείο, αλλά από πολλαπλές επαφές της τιμής.",
             },
+            { type: "diagram", diagram: "support-resistance", caption: "Ένα παράδειγμα επιπέδων σε γράφημα" },
           ],
           questions: [
             {
@@ -245,6 +250,7 @@ export const COURSE_EL: CourseSeed = {
               type: "paragraph",
               text: "Το trading προς την κατεύθυνση της τάσης δίνει στατιστικά περισσότερες πιθανότητες επιτυχίας από τις προσπάθειες να «πιάσεις» μια αναστροφή ενάντια σε αυτήν — από εκεί προέρχεται ο γνωστός κανόνας \"η τάση είναι φίλος σου\".",
             },
+            { type: "diagram", diagram: "trend-basic", caption: "Μια ανοδική τάση σε γράφημα" },
           ],
           questions: [
             {
@@ -290,6 +296,7 @@ export const COURSE_EL: CourseSeed = {
               type: "paragraph",
               text: "Η ρευστότητα είναι η ικανότητα να αγοράσεις ή να πουλήσεις ένα asset γρήγορα και χωρίς σημαντική επίδραση στην τιμή του. Σε assets χαμηλής ρευστότητας, ακόμη και μια μικρή συναλλαγή μπορεί να μετακινήσει σοβαρά την τιμή και να οδηγήσει σε slippage — εκτέλεση της εντολής σε χειρότερη τιμή από την αναμενόμενη.",
             },
+            { type: "diagram", diagram: "volume-liquidity", caption: "Όγκος κάτω από το γράφημα τιμής" },
           ],
           questions: [
             {
@@ -343,6 +350,7 @@ export const COURSE_EL: CourseSeed = {
                 "Ακόμη και μια κερδοφόρα στρατηγική μπορεί να καταστρέψει το κεφάλαιο χωρίς έλεγχο κινδύνου",
               ],
             },
+            { type: "diagram", diagram: "risk-basic", caption: "Stop-loss και take-profit σε γράφημα" },
           ],
           questions: [
             {
@@ -389,6 +397,7 @@ export const COURSE_EL: CourseSeed = {
               type: "paragraph",
               text: "Όταν η τιμή βρίσκεται πάνω από τον κινητό μέσο όρο, η τάση συνήθως θεωρείται ανοδική, ενώ όταν βρίσκεται από κάτω — πτωτική. Η τομή ενός βραχυπρόθεσμου με έναν μακροπρόθεσμο κινητό μέσο όρο (για παράδειγμα, ο MA50 τέμνει τον MA200 από κάτω προς τα πάνω) είναι ένα δημοφιλές σήμα, γνωστό ως \"golden cross\".",
             },
+            { type: "diagram", diagram: "moving-averages", caption: "Μια διασταύρωση κινητών μέσων όρων σε γράφημα" },
           ],
           questions: [
             {
@@ -468,6 +477,7 @@ export const COURSE_EL: CourseSeed = {
               type: "paragraph",
               text: "Οι επεκτάσεις Fibonacci, σε αντίθεση με τις διορθώσεις, χρησιμοποιούνται για την πρόβλεψη στόχων κίνησης της τιμής πέρα από την αρχική παρορμητική κίνηση — δηλαδή πού μπορεί να πάει η τιμή στη συνέχεια.",
             },
+            { type: "diagram", diagram: "fibonacci", caption: "Επίπεδα Fibonacci σε γράφημα" },
           ],
           questions: [
             {
@@ -509,6 +519,7 @@ export const COURSE_EL: CourseSeed = {
               type: "paragraph",
               text: "Το μοτίβο θεωρείται επιβεβαιωμένο μόνο μετά τη διάσπαση της \"γραμμής λαιμού\" (neckline) — του επιπέδου που ενώνει τα τοπικά ελάχιστα ανάμεσα στις κορυφές. Η διάσπαση χωρίς όγκο συχνά αποδεικνύεται ψευδής.",
             },
+            { type: "diagram", diagram: "reversal-patterns", caption: "Ένα μοτίβο διπλής κορυφής σε γράφημα" },
           ],
           questions: [
             {
@@ -550,6 +561,7 @@ export const COURSE_EL: CourseSeed = {
               type: "paragraph",
               text: "Η έξοδος της τιμής από μια τέτοια ενοποίηση συνήθως συνοδεύεται από έξαρση του όγκου, κάτι που βοηθά να ξεχωρίσει κανείς την πραγματική διάσπαση από την ψευδή.",
             },
+            { type: "diagram", diagram: "continuation-patterns", caption: "Ένα ανοδικό μοτίβο σημαίας σε γράφημα" },
           ],
           questions: [
             {
@@ -587,6 +599,7 @@ export const COURSE_EL: CourseSeed = {
               type: "paragraph",
               text: "Η αγνόηση του μεγαλύτερου timeframe είναι συχνό λάθος αρχαρίων: μια συναλλαγή μπορεί να φαίνεται εξαιρετική στο 5λεπτο, αλλά να πηγαίνει ενάντια στην κυρίαρχη ημερήσια τάση, κάτι που μειώνει δραστικά τις πιθανότητες επιτυχίας.",
             },
+            { type: "diagram", diagram: "multi-timeframe", caption: "Μεγαλύτερο και μικρότερο timeframe δίπλα-δίπλα" },
           ],
           questions: [
             {
@@ -1049,6 +1062,7 @@ export const COURSE_EL: CourseSeed = {
                 "Οι μεγάλοι παίκτες χρειάζονται ρευστότητα για να χτίσουν ή να κλείσουν μια θέση χωρίς σημαντικό slippage",
               ],
             },
+            { type: "diagram", diagram: "liquidity-types", caption: "Ζώνες ρευστότητας σε γράφημα" },
           ],
           questions: [
             {
@@ -1245,6 +1259,7 @@ export const COURSE_EL: CourseSeed = {
                 "Ένα καλό R/R δεν εγγυάται κέρδος χωρίς πειθαρχία στην εκτέλεση",
               ],
             },
+            { type: "diagram", diagram: "risk-reward", caption: "Αναλογία risk/reward σε γράφημα" },
           ],
           questions: [
             {
@@ -1298,6 +1313,7 @@ export const COURSE_EL: CourseSeed = {
                 "Η χρήση μόχλευσης αυξάνει τον όγκο, αλλά δεν καταργεί τον υπολογισμό του κινδύνου",
               ],
             },
+            { type: "diagram", diagram: "position-size", caption: "Μέγεθος θέσης ανάλογα με την απόσταση του stop" },
           ],
           questions: [
             {
@@ -1347,6 +1363,7 @@ export const COURSE_EL: CourseSeed = {
                 "Η μετακίνηση του stop μακρύτερα από την τιμή κατά τη διάρκεια μιας πτώσης είναι ένα από τα πιο συχνά λάθη των αρχαρίων",
               ],
             },
+            { type: "diagram", diagram: "stop-loss-chart", caption: "Ενεργοποίηση stop-loss σε γράφημα" },
           ],
           questions: [
             {
@@ -1400,6 +1417,7 @@ export const COURSE_EL: CourseSeed = {
                 "Η μετακίνηση του stop στο breakeven μετά τον πρώτο στόχο προστατεύει το κέρδος που έχει ήδη επιτευχθεί",
               ],
             },
+            { type: "diagram", diagram: "take-profit-chart", caption: "Ενεργοποίηση take-profit σε γράφημα" },
           ],
           questions: [
             {
@@ -1835,6 +1853,7 @@ export const COURSE_EL: CourseSeed = {
                 "Η διασταύρωση της μηδενικής γραμμής συχνά συνδέεται με αλλαγή κατεύθυνσης του trend",
               ],
             },
+            { type: "diagram", diagram: "macd", caption: "MACD σε γράφημα" },
           ],
           questions: [
             {
@@ -1888,6 +1907,7 @@ export const COURSE_EL: CourseSeed = {
                 "Η διασταύρωση γρήγορου και αργού EMA είναι καθυστερημένο αλλά δημοφιλές σήμα",
               ],
             },
+            { type: "diagram", diagram: "ema", caption: "EMA σε γράφημα τιμής" },
           ],
           questions: [
             {
@@ -1941,6 +1961,7 @@ export const COURSE_EL: CourseSeed = {
                 "Ο SMA 200 στο ημερήσιο γράφημα χρησιμοποιείται συχνά ως σημείο αναφοράς του γενικού trend",
               ],
             },
+            { type: "diagram", diagram: "sma", caption: "SMA σε γράφημα τιμής" },
           ],
           questions: [
             {
@@ -1994,6 +2015,7 @@ export const COURSE_EL: CourseSeed = {
                 "Ο VWAP συνήθως υπολογίζεται εκ νέου με την έναρξη κάθε συνεδρίασης",
               ],
             },
+            { type: "diagram", diagram: "vwap", caption: "VWAP σε ενδοημερήσιο γράφημα" },
           ],
           questions: [
             {
@@ -2047,6 +2069,7 @@ export const COURSE_EL: CourseSeed = {
                 "Το stop-loss που υπολογίζεται μέσω ATR προσαρμόζεται στην τρέχουσα μεταβλητότητα της αγοράς",
               ],
             },
+            { type: "diagram", diagram: "atr", caption: "ATR κάτω από γράφημα τιμής" },
           ],
           questions: [
             {
@@ -2100,6 +2123,7 @@ export const COURSE_EL: CourseSeed = {
                 "Η επαφή με τη ζώνη δεν εγγυάται αντιστροφή, ειδικά σε ισχυρό trend",
               ],
             },
+            { type: "diagram", diagram: "bollinger", caption: "Bollinger Bands σε γράφημα" },
           ],
           questions: [
             {
@@ -2158,6 +2182,7 @@ export const COURSE_EL: CourseSeed = {
                 "Απότομες αιχμές όγκου συμπίπτουν συχνά με σημεία αντιστροφής",
               ],
             },
+            { type: "diagram", diagram: "volume-bars", caption: "Μια αιχμή όγκου σε γράφημα" },
           ],
           questions: [
             {
@@ -2211,6 +2236,7 @@ export const COURSE_EL: CourseSeed = {
                 "Η απόκλιση τιμής και delta μπορεί να υποδεικνύει αστάθεια της κίνησης",
               ],
             },
+            { type: "diagram", diagram: "delta", caption: "Delta όγκου ανά κερί" },
           ],
           questions: [
             {
@@ -2264,6 +2290,7 @@ export const COURSE_EL: CourseSeed = {
                 "Η απότομη πτώση του OI συνοδεύει συχνά μαζικές ρευστοποιήσεις θέσεων",
               ],
             },
+            { type: "diagram", diagram: "open-interest", caption: "Open interest μαζί με την τιμή" },
           ],
           questions: [
             {
@@ -2317,6 +2344,7 @@ export const COURSE_EL: CourseSeed = {
                 "Ένα έντονα αρνητικό funding μπορεί να υποδεικνύει υπερβολική απαισιοδοξία της αγοράς",
               ],
             },
+            { type: "diagram", diagram: "funding-rate", caption: "Funding rate σε γράφημα" },
           ],
           questions: [
             {
@@ -2370,6 +2398,7 @@ export const COURSE_EL: CourseSeed = {
                 "Οι χάρτες ρευστοποιήσεων χρησιμοποιούνται από τους traders για την εκτίμηση ζωνών αυξημένου κινδύνου",
               ],
             },
+            { type: "diagram", diagram: "liquidations", caption: "Ένας καταρράκτης ρευστοποιήσεων σε γράφημα" },
           ],
           questions: [
             {
@@ -3778,6 +3807,7 @@ export const COURSE_EL: CourseSeed = {
                 "Η στρατηγική απαιτεί υψηλή ρευστότητα του instrument και σταθερή εκτέλεση εντολών",
               ],
             },
+            { type: "diagram", diagram: "scalping", caption: "Scalping σε μικρότερο timeframe" },
           ],
           questions: [
             {
@@ -3831,6 +3861,7 @@ export const COURSE_EL: CourseSeed = {
                 "Το day trading απαιτεί σημαντικό χρόνο ενεργής παρακολούθησης της αγοράς",
               ],
             },
+            { type: "diagram", diagram: "day-trading", caption: "Μια συναλλαγή μέσα σε μία ημέρα" },
           ],
           questions: [
             {
@@ -3884,6 +3915,7 @@ export const COURSE_EL: CourseSeed = {
                 "Οι θέσεις στο swing trading είναι εκτεθειμένες στον κίνδυνο νυχτερινών και σαββατοκυριακών gaps",
               ],
             },
+            { type: "diagram", diagram: "swing-trading", caption: "Μια swing συναλλαγή διάρκειας ημερών" },
           ],
           questions: [
             {
@@ -3937,6 +3969,7 @@ export const COURSE_EL: CourseSeed = {
                 "Οι position traders χρησιμοποιούν συνήθως ευρύτερα stops και μικρότερο αριθμό ταυτόχρονων θέσεων",
               ],
             },
+            { type: "diagram", diagram: "position-trading", caption: "Μια μακροπρόθεσμη θέση κατά μήκος μιας τάσης" },
           ],
           questions: [
             {
@@ -3990,6 +4023,7 @@ export const COURSE_EL: CourseSeed = {
                 "Η στρατηγική απαιτεί υπομονή και επιβεβαίωση για να διακρίνεται το sweep από πραγματικό breakout",
               ],
             },
+            { type: "diagram", diagram: "liquidity-sweep", caption: "Liquidity sweep ως στρατηγική συναλλαγών" },
           ],
           questions: [
             {
@@ -4043,6 +4077,7 @@ export const COURSE_EL: CourseSeed = {
                 "Η αναμονή για retest του διασπασμένου επιπέδου μειώνει τον κίνδυνο εισόδου σε ψευδές breakout",
               ],
             },
+            { type: "diagram", diagram: "breakout", caption: "Ένα breakout σε γράφημα" },
           ],
           questions: [
             {
@@ -4096,6 +4131,7 @@ export const COURSE_EL: CourseSeed = {
                 "Οι ταλαντωτές και οι ζώνες απόκλισης χρησιμοποιούνται συχνά μαζί για την αναζήτηση σημείων εισόδου",
               ],
             },
+            { type: "diagram", diagram: "mean-reversion", caption: "Επιστροφή της τιμής στον μέσο όρο" },
           ],
           questions: [
             {

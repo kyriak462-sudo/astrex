@@ -31,6 +31,7 @@ export const COURSE_RU: CourseSeed = {
                 "Трейдер может зарабатывать и на падении цены через короткие позиции (short)",
               ],
             },
+            { type: "diagram", diagram: "intro-chart", caption: "Так цена актива выглядит на графике" },
           ],
           questions: [
             {
@@ -73,6 +74,7 @@ export const COURSE_RU: CourseSeed = {
                 "Товары (commodities): зависят от реального спроса/предложения и геополитики",
               ],
             },
+            { type: "diagram", diagram: "market-types", caption: "Разница в результате при разном плече" },
           ],
           questions: [
             {
@@ -114,6 +116,7 @@ export const COURSE_RU: CourseSeed = {
                 "Бар-чарт — похож на свечной, но менее нагляден визуально",
               ],
             },
+            { type: "diagram", diagram: "chart-anatomy", caption: "Основные элементы ценового графика" },
           ],
           questions: [
             {
@@ -155,6 +158,7 @@ export const COURSE_RU: CourseSeed = {
               type: "paragraph",
               text: "Одна свеча уже рассказывает историю борьбы покупателей и продавцов: длинное тело говорит об уверенном движении, длинные тени — о том, что цену активно \"отбивали\" в противоположную сторону.",
             },
+            { type: "diagram", diagram: "candlestick-anatomy", caption: "Анатомия японской свечи" },
           ],
           questions: [
             {
@@ -200,6 +204,7 @@ export const COURSE_RU: CourseSeed = {
               type: "paragraph",
               text: "Важный принцип: после пробоя уровень часто меняет роль — бывшее сопротивление становится поддержкой, и наоборот. Надёжные уровни строятся не по одной точке, а по нескольким касаниям цены.",
             },
+            { type: "diagram", diagram: "support-resistance", caption: "Пример уровней на графике" },
           ],
           questions: [
             {
@@ -245,6 +250,7 @@ export const COURSE_RU: CourseSeed = {
               type: "paragraph",
               text: "Торговля по направлению тренда статистически даёт больше шансов на успех, чем попытки поймать разворот против него — отсюда известное правило \"тренд — твой друг\".",
             },
+            { type: "diagram", diagram: "trend-basic", caption: "Восходящий тренд на графике" },
           ],
           questions: [
             {
@@ -290,6 +296,7 @@ export const COURSE_RU: CourseSeed = {
               type: "paragraph",
               text: "Ликвидность — это способность купить или продать актив быстро и без сильного влияния на его цену. На низколиквидных активах даже небольшая сделка может серьёзно сдвинуть цену и привести к проскальзыванию — исполнению ордера по худшей цене, чем ожидалось.",
             },
+            { type: "diagram", diagram: "volume-liquidity", caption: "Объём под ценовым графиком" },
           ],
           questions: [
             {
@@ -343,6 +350,7 @@ export const COURSE_RU: CourseSeed = {
                 "Даже прибыльная стратегия может разорить без контроля риска",
               ],
             },
+            { type: "diagram", diagram: "risk-basic", caption: "Стоп-лосс и тейк-профит на графике" },
           ],
           questions: [
             {
@@ -389,6 +397,7 @@ export const COURSE_RU: CourseSeed = {
               type: "paragraph",
               text: "Когда цена находится выше скользящей средней, тренд чаще считается восходящим, ниже — нисходящим. Пересечение короткой и длинной скользящих средних (например, MA50 пересекает MA200 снизу вверх) — популярный сигнал, известный как \"золотой крест\".",
             },
+            { type: "diagram", diagram: "moving-averages", caption: "Пересечение скользящих средних на графике" },
           ],
           questions: [
             {
@@ -468,6 +477,7 @@ export const COURSE_RU: CourseSeed = {
               type: "paragraph",
               text: "Расширения Фибоначчи, в отличие от коррекций, используются для прогнозирования целей движения цены за пределами первоначального импульса — то есть куда цена может пойти дальше.",
             },
+            { type: "diagram", diagram: "fibonacci", caption: "Уровни Фибоначчи на графике" },
           ],
           questions: [
             {
@@ -509,6 +519,7 @@ export const COURSE_RU: CourseSeed = {
               type: "paragraph",
               text: "Паттерн считается подтверждённым только после пробоя \"линии шеи\" (neckline) — уровня, соединяющего локальные минимумы между пиками. Пробой без объёма часто оказывается ложным.",
             },
+            { type: "diagram", diagram: "reversal-patterns", caption: "Паттерн двойной вершины на графике" },
           ],
           questions: [
             {
@@ -550,6 +561,7 @@ export const COURSE_RU: CourseSeed = {
               type: "paragraph",
               text: "Выход цены из такой консолидации обычно сопровождается всплеском объёма, что помогает отличить настоящий пробой от ложного.",
             },
+            { type: "diagram", diagram: "continuation-patterns", caption: "Паттерн бычьего флага на графике" },
           ],
           questions: [
             {
@@ -587,6 +599,7 @@ export const COURSE_RU: CourseSeed = {
               type: "paragraph",
               text: "Игнорирование старшего таймфрейма — частая ошибка новичков: сделка может выглядеть отлично на 5-минутке, но идти против доминирующего дневного тренда, что резко снижает шансы на успех.",
             },
+            { type: "diagram", diagram: "multi-timeframe", caption: "Старший и младший таймфреймы рядом" },
           ],
           questions: [
             {
@@ -1049,6 +1062,7 @@ export const COURSE_RU: CourseSeed = {
                 "Крупным игрокам нужна ликвидность, чтобы набрать или закрыть позицию без сильного проскальзывания",
               ],
             },
+            { type: "diagram", diagram: "liquidity-types", caption: "Зоны ликвидности на графике" },
           ],
           questions: [
             {
@@ -1246,6 +1260,7 @@ export const COURSE_RU: CourseSeed = {
                 "Хороший R/R не гарантирует прибыль без дисциплины в исполнении",
               ],
             },
+            { type: "diagram", diagram: "risk-reward", caption: "Соотношение риска и прибыли на графике" },
           ],
           questions: [
             {
@@ -1299,6 +1314,7 @@ export const COURSE_RU: CourseSeed = {
                 "Использование кредитного плеча увеличивает объём, но не отменяет расчёт риска",
               ],
             },
+            { type: "diagram", diagram: "position-size", caption: "Размер позиции в зависимости от стопа" },
           ],
           questions: [
             {
@@ -1352,6 +1368,7 @@ export const COURSE_RU: CourseSeed = {
                 "Перенос стопа дальше от цены во время просадки — одна из самых частых ошибок новичков",
               ],
             },
+            { type: "diagram", diagram: "stop-loss-chart", caption: "Срабатывание стоп-лосса на графике" },
           ],
           questions: [
             {
@@ -1405,6 +1422,7 @@ export const COURSE_RU: CourseSeed = {
                 "Перенос стопа в безубыток после первой цели защищает уже полученную прибыль",
               ],
             },
+            { type: "diagram", diagram: "take-profit-chart", caption: "Срабатывание тейк-профита на графике" },
           ],
           questions: [
             {
@@ -1840,6 +1858,7 @@ export const COURSE_RU: CourseSeed = {
                 "Пересечение нулевой линии часто связывают со сменой направления тренда",
               ],
             },
+            { type: "diagram", diagram: "macd", caption: "MACD на графике" },
           ],
           questions: [
             {
@@ -1893,6 +1912,7 @@ export const COURSE_RU: CourseSeed = {
                 "Пересечение быстрой и медленной EMA — запаздывающий, но популярный сигнал",
               ],
             },
+            { type: "diagram", diagram: "ema", caption: "EMA на ценовом графике" },
           ],
           questions: [
             {
@@ -1946,6 +1966,7 @@ export const COURSE_RU: CourseSeed = {
                 "SMA 200 на дневном графике часто используется как ориентир глобального тренда",
               ],
             },
+            { type: "diagram", diagram: "sma", caption: "SMA на ценовом графике" },
           ],
           questions: [
             {
@@ -1999,6 +2020,7 @@ export const COURSE_RU: CourseSeed = {
                 "VWAP обычно рассчитывается заново с началом каждой торговой сессии",
               ],
             },
+            { type: "diagram", diagram: "vwap", caption: "VWAP на внутридневном графике" },
           ],
           questions: [
             {
@@ -2052,6 +2074,7 @@ export const COURSE_RU: CourseSeed = {
                 "Стоп-лосс, рассчитанный через ATR, адаптируется под текущую волатильность рынка",
               ],
             },
+            { type: "diagram", diagram: "atr", caption: "ATR под ценовым графиком" },
           ],
           questions: [
             {
@@ -2105,6 +2128,7 @@ export const COURSE_RU: CourseSeed = {
                 "Касание полосы не гарантирует разворот, особенно в сильном тренде",
               ],
             },
+            { type: "diagram", diagram: "bollinger", caption: "Полосы Боллинджера на графике" },
           ],
           questions: [
             {
@@ -2163,6 +2187,7 @@ export const COURSE_RU: CourseSeed = {
                 "Резкие всплески объёма часто совпадают с разворотными точками",
               ],
             },
+            { type: "diagram", diagram: "volume-bars", caption: "Всплеск объёма на графике" },
           ],
           questions: [
             {
@@ -2216,6 +2241,7 @@ export const COURSE_RU: CourseSeed = {
                 "Расхождение цены и дельты может указывать на неустойчивость движения",
               ],
             },
+            { type: "diagram", diagram: "delta", caption: "Дельта объёма по свечам" },
           ],
           questions: [
             {
@@ -2269,6 +2295,7 @@ export const COURSE_RU: CourseSeed = {
                 "Резкое падение OI часто сопровождает массовые ликвидации позиций",
               ],
             },
+            { type: "diagram", diagram: "open-interest", caption: "Open Interest вместе с ценой" },
           ],
           questions: [
             {
@@ -2322,6 +2349,7 @@ export const COURSE_RU: CourseSeed = {
                 "Резко отрицательный фандинг может указывать на избыточный пессимизм рынка",
               ],
             },
+            { type: "diagram", diagram: "funding-rate", caption: "Funding Rate на графике" },
           ],
           questions: [
             {
@@ -2375,6 +2403,7 @@ export const COURSE_RU: CourseSeed = {
                 "Карты ликвидаций используются трейдерами для оценки зон повышенного риска",
               ],
             },
+            { type: "diagram", diagram: "liquidations", caption: "Каскад ликвидаций на графике" },
           ],
           questions: [
             {
@@ -3783,6 +3812,7 @@ export const COURSE_RU: CourseSeed = {
                 "Стратегия требует высокой ликвидности инструмента и стабильного исполнения ордеров",
               ],
             },
+            { type: "diagram", diagram: "scalping", caption: "Скальпинг на младшем таймфрейме" },
           ],
           questions: [
             {
@@ -3836,6 +3866,7 @@ export const COURSE_RU: CourseSeed = {
                 "Дей-трейдинг требует значительного времени на активный мониторинг рынка",
               ],
             },
+            { type: "diagram", diagram: "day-trading", caption: "Сделка в рамках одного дня" },
           ],
           questions: [
             {
@@ -3889,6 +3920,7 @@ export const COURSE_RU: CourseSeed = {
                 "Позиции в свинг-трейдинге подвержены риску ночных и выходных гэпов",
               ],
             },
+            { type: "diagram", diagram: "swing-trading", caption: "Свинг-сделка на несколько дней" },
           ],
           questions: [
             {
@@ -3942,6 +3974,7 @@ export const COURSE_RU: CourseSeed = {
                 "Позиционные трейдеры обычно используют более широкие стопы и меньшее число одновременных позиций",
               ],
             },
+            { type: "diagram", diagram: "position-trading", caption: "Долгосрочная позиция вдоль тренда" },
           ],
           questions: [
             {
@@ -3995,6 +4028,7 @@ export const COURSE_RU: CourseSeed = {
                 "Стратегия требует терпения и подтверждения, чтобы отличить sweep от реального пробоя",
               ],
             },
+            { type: "diagram", diagram: "liquidity-sweep", caption: "Снятие ликвидности как торговая стратегия" },
           ],
           questions: [
             {
@@ -4048,6 +4082,7 @@ export const COURSE_RU: CourseSeed = {
                 "Ожидание ретеста пробитого уровня снижает риск входа на ложном пробое",
               ],
             },
+            { type: "diagram", diagram: "breakout", caption: "Пробой уровня на графике" },
           ],
           questions: [
             {
@@ -4101,6 +4136,7 @@ export const COURSE_RU: CourseSeed = {
                 "Осцилляторы и полосы отклонения часто используются вместе для поиска точек входа",
               ],
             },
+            { type: "diagram", diagram: "mean-reversion", caption: "Возврат цены к среднему" },
           ],
           questions: [
             {

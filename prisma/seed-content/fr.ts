@@ -31,6 +31,7 @@ export const COURSE_FR: CourseSeed = {
                 "Le trader peut aussi gagner sur la baisse du prix grâce aux positions courtes (short)",
               ],
             },
+            { type: "diagram", diagram: "intro-chart", caption: "Voici à quoi ressemble le prix d'un actif sur un graphique" },
           ],
           questions: [
             {
@@ -73,6 +74,7 @@ export const COURSE_FR: CourseSeed = {
                 "Matières premières (commodities) : dépendent de l'offre/demande réelle et de la géopolitique",
               ],
             },
+            { type: "diagram", diagram: "market-types", caption: "Même mouvement de prix, résultat différent selon l'effet de levier" },
           ],
           questions: [
             {
@@ -114,6 +116,7 @@ export const COURSE_FR: CourseSeed = {
                 "Le bar chart — similaire au graphique en chandeliers, mais visuellement moins lisible",
               ],
             },
+            { type: "diagram", diagram: "chart-anatomy", caption: "Les éléments de base d'un graphique de prix" },
           ],
           questions: [
             {
@@ -155,6 +158,7 @@ export const COURSE_FR: CourseSeed = {
               type: "paragraph",
               text: "Une seule bougie raconte déjà l'histoire de la lutte entre acheteurs et vendeurs : un corps long traduit un mouvement franc, des mèches longues indiquent que le prix a été activement repoussé dans la direction opposée.",
             },
+            { type: "diagram", diagram: "candlestick-anatomy", caption: "Anatomie d'une bougie japonaise" },
           ],
           questions: [
             {
@@ -200,6 +204,7 @@ export const COURSE_FR: CourseSeed = {
               type: "paragraph",
               text: "Principe important : après une cassure, un niveau change souvent de rôle — une ancienne résistance devient un support, et inversement. Les niveaux fiables ne se construisent pas sur un seul point, mais sur plusieurs contacts du prix.",
             },
+            { type: "diagram", diagram: "support-resistance", caption: "Un exemple de niveaux sur un graphique" },
           ],
           questions: [
             {
@@ -245,6 +250,7 @@ export const COURSE_FR: CourseSeed = {
               type: "paragraph",
               text: "Trader dans le sens de la tendance offre statistiquement plus de chances de succès que d'essayer d'en capter le retournement — d'où la fameuse règle « la tendance est ton amie ».",
             },
+            { type: "diagram", diagram: "trend-basic", caption: "Une tendance haussière sur un graphique" },
           ],
           questions: [
             {
@@ -290,6 +296,7 @@ export const COURSE_FR: CourseSeed = {
               type: "paragraph",
               text: "La liquidité est la capacité à acheter ou vendre un actif rapidement, sans influencer fortement son prix. Sur les actifs peu liquides, même une petite transaction peut fortement déplacer le prix et entraîner du slippage — l'exécution d'un ordre à un prix moins favorable que prévu.",
             },
+            { type: "diagram", diagram: "volume-liquidity", caption: "Le volume sous le graphique de prix" },
           ],
           questions: [
             {
@@ -343,6 +350,7 @@ export const COURSE_FR: CourseSeed = {
                 "Même une stratégie rentable peut ruiner un trader sans contrôle du risque",
               ],
             },
+            { type: "diagram", diagram: "risk-basic", caption: "Stop-loss et take-profit sur un graphique" },
           ],
           questions: [
             {
@@ -389,6 +397,7 @@ export const COURSE_FR: CourseSeed = {
               type: "paragraph",
               text: "Lorsque le prix se situe au-dessus de la moyenne mobile, la tendance est généralement considérée comme haussière, en dessous, comme baissière. Le croisement d'une moyenne mobile courte et d'une moyenne mobile longue (par exemple, la MA50 qui croise la MA200 par le bas vers le haut) est un signal populaire connu sous le nom de « golden cross ».",
             },
+            { type: "diagram", diagram: "moving-averages", caption: "Un croisement de moyennes mobiles sur un graphique" },
           ],
           questions: [
             {
@@ -468,6 +477,7 @@ export const COURSE_FR: CourseSeed = {
               type: "paragraph",
               text: "Les extensions de Fibonacci, à la différence des retracements, servent à projeter des objectifs de prix au-delà de l'impulsion initiale — c'est-à-dire jusqu'où le prix pourrait aller ensuite.",
             },
+            { type: "diagram", diagram: "fibonacci", caption: "Les niveaux de Fibonacci sur un graphique" },
           ],
           questions: [
             {
@@ -509,6 +519,7 @@ export const COURSE_FR: CourseSeed = {
               type: "paragraph",
               text: "La figure n'est considérée comme confirmée qu'après la cassure de la « ligne de cou » (neckline) — le niveau reliant les creux locaux entre les sommets. Une cassure sans volume s'avère souvent être un faux signal.",
             },
+            { type: "diagram", diagram: "reversal-patterns", caption: "Un motif de double sommet sur un graphique" },
           ],
           questions: [
             {
@@ -550,6 +561,7 @@ export const COURSE_FR: CourseSeed = {
               type: "paragraph",
               text: "La sortie du prix hors de cette consolidation s'accompagne généralement d'un pic de volume, ce qui aide à distinguer une vraie cassure d'une fausse.",
             },
+            { type: "diagram", diagram: "continuation-patterns", caption: "Un motif de drapeau haussier sur un graphique" },
           ],
           questions: [
             {
@@ -587,6 +599,7 @@ export const COURSE_FR: CourseSeed = {
               type: "paragraph",
               text: "Ignorer le timeframe supérieur est une erreur fréquente chez les débutants : une position peut sembler excellente en 5 minutes, mais aller à l'encontre de la tendance journalière dominante, ce qui réduit fortement les chances de succès.",
             },
+            { type: "diagram", diagram: "multi-timeframe", caption: "Unité de temps supérieure et inférieure côte à côte" },
           ],
           questions: [
             {
@@ -1049,6 +1062,7 @@ export const COURSE_FR: CourseSeed = {
                 "Les gros acteurs ont besoin de liquidité pour constituer ou clôturer une position sans slippage important",
               ],
             },
+            { type: "diagram", diagram: "liquidity-types", caption: "Zones de liquidité sur un graphique" },
           ],
           questions: [
             {
@@ -1246,6 +1260,7 @@ export const COURSE_FR: CourseSeed = {
                 "Un bon R/R ne garantit pas de profit sans discipline dans l'exécution",
               ],
             },
+            { type: "diagram", diagram: "risk-reward", caption: "Ratio risque/rendement sur un graphique" },
           ],
           questions: [
             {
@@ -1299,6 +1314,7 @@ export const COURSE_FR: CourseSeed = {
                 "L'utilisation de l'effet de levier augmente le volume, mais n'annule pas le calcul du risque",
               ],
             },
+            { type: "diagram", diagram: "position-size", caption: "Taille de position selon la distance du stop" },
           ],
           questions: [
             {
@@ -1348,6 +1364,7 @@ export const COURSE_FR: CourseSeed = {
                 "Déplacer le stop plus loin du prix pendant une perte est l'une des erreurs les plus fréquentes des débutants",
               ],
             },
+            { type: "diagram", diagram: "stop-loss-chart", caption: "Déclenchement d'un stop-loss sur un graphique" },
           ],
           questions: [
             {
@@ -1401,6 +1418,7 @@ export const COURSE_FR: CourseSeed = {
                 "Déplacer le stop au point mort après le premier objectif protège le profit déjà obtenu",
               ],
             },
+            { type: "diagram", diagram: "take-profit-chart", caption: "Déclenchement d'un take-profit sur un graphique" },
           ],
           questions: [
             {
@@ -1832,6 +1850,7 @@ export const COURSE_FR: CourseSeed = {
                 "Le croisement de la ligne zéro est souvent associé à un changement de direction de tendance",
               ],
             },
+            { type: "diagram", diagram: "macd", caption: "Le MACD sur un graphique" },
           ],
           questions: [
             {
@@ -1885,6 +1904,7 @@ export const COURSE_FR: CourseSeed = {
                 "Le croisement d'une EMA rapide et d'une EMA lente est un signal en retard, mais populaire",
               ],
             },
+            { type: "diagram", diagram: "ema", caption: "L'EMA sur un graphique de prix" },
           ],
           questions: [
             {
@@ -1938,6 +1958,7 @@ export const COURSE_FR: CourseSeed = {
                 "La SMA 200 sur le graphique journalier est souvent utilisée comme repère de la tendance globale",
               ],
             },
+            { type: "diagram", diagram: "sma", caption: "La SMA sur un graphique de prix" },
           ],
           questions: [
             {
@@ -1991,6 +2012,7 @@ export const COURSE_FR: CourseSeed = {
                 "Le VWAP est généralement recalculé au début de chaque session de trading",
               ],
             },
+            { type: "diagram", diagram: "vwap", caption: "Le VWAP sur un graphique intrajournalier" },
           ],
           questions: [
             {
@@ -2044,6 +2066,7 @@ export const COURSE_FR: CourseSeed = {
                 "Un stop-loss calculé via l'ATR s'adapte à la volatilité actuelle du marché",
               ],
             },
+            { type: "diagram", diagram: "atr", caption: "L'ATR sous un graphique de prix" },
           ],
           questions: [
             {
@@ -2097,6 +2120,7 @@ export const COURSE_FR: CourseSeed = {
                 "Toucher une bande ne garantit pas un retournement, surtout dans une tendance forte",
               ],
             },
+            { type: "diagram", diagram: "bollinger", caption: "Les bandes de Bollinger sur un graphique" },
           ],
           questions: [
             {
@@ -2155,6 +2179,7 @@ export const COURSE_FR: CourseSeed = {
                 "Les pics de volume brutaux coïncident souvent avec des points de retournement",
               ],
             },
+            { type: "diagram", diagram: "volume-bars", caption: "Un pic de volume sur un graphique" },
           ],
           questions: [
             {
@@ -2208,6 +2233,7 @@ export const COURSE_FR: CourseSeed = {
                 "Une divergence entre le prix et le delta peut indiquer l'instabilité d'un mouvement",
               ],
             },
+            { type: "diagram", diagram: "delta", caption: "Le delta de volume par bougie" },
           ],
           questions: [
             {
@@ -2261,6 +2287,7 @@ export const COURSE_FR: CourseSeed = {
                 "Une chute brutale de l'OI accompagne souvent des liquidations massives de positions",
               ],
             },
+            { type: "diagram", diagram: "open-interest", caption: "L'open interest à côté du prix" },
           ],
           questions: [
             {
@@ -2314,6 +2341,7 @@ export const COURSE_FR: CourseSeed = {
                 "Un funding fortement négatif peut indiquer un pessimisme excessif du marché",
               ],
             },
+            { type: "diagram", diagram: "funding-rate", caption: "Le funding rate sur un graphique" },
           ],
           questions: [
             {
@@ -2367,6 +2395,7 @@ export const COURSE_FR: CourseSeed = {
                 "Les cartes de liquidations (heatmaps) sont utilisées par les traders pour évaluer les zones de risque accru",
               ],
             },
+            { type: "diagram", diagram: "liquidations", caption: "Une cascade de liquidations sur un graphique" },
           ],
           questions: [
             {
@@ -3776,6 +3805,7 @@ export const COURSE_FR: CourseSeed = {
                 "La stratégie exige une forte liquidité de l'instrument et une exécution stable des ordres",
               ],
             },
+            { type: "diagram", diagram: "scalping", caption: "Le scalping sur une unité de temps courte" },
           ],
           questions: [
             {
@@ -3829,6 +3859,7 @@ export const COURSE_FR: CourseSeed = {
                 "Le day trading demande un temps de suivi actif du marché considérable",
               ],
             },
+            { type: "diagram", diagram: "day-trading", caption: "Une transaction en une seule journée" },
           ],
           questions: [
             {
@@ -3882,6 +3913,7 @@ export const COURSE_FR: CourseSeed = {
                 "Les positions en swing trading sont exposées au risque des gaps nocturnes et de week-end",
               ],
             },
+            { type: "diagram", diagram: "swing-trading", caption: "Une transaction swing sur plusieurs jours" },
           ],
           questions: [
             {
@@ -3935,6 +3967,7 @@ export const COURSE_FR: CourseSeed = {
                 "Les position traders utilisent généralement des stops plus larges et moins de positions simultanées",
               ],
             },
+            { type: "diagram", diagram: "position-trading", caption: "Une position à long terme le long d'une tendance" },
           ],
           questions: [
             {
@@ -3988,6 +4021,7 @@ export const COURSE_FR: CourseSeed = {
                 "La stratégie exige de la patience et une confirmation pour distinguer un sweep d'une réelle cassure",
               ],
             },
+            { type: "diagram", diagram: "liquidity-sweep", caption: "Le liquidity sweep comme stratégie de trading" },
           ],
           questions: [
             {
@@ -4041,6 +4075,7 @@ export const COURSE_FR: CourseSeed = {
                 "Attendre un retest du niveau cassé réduit le risque d'entrer sur une fausse cassure",
               ],
             },
+            { type: "diagram", diagram: "breakout", caption: "Un breakout sur un graphique" },
           ],
           questions: [
             {
@@ -4094,6 +4129,7 @@ export const COURSE_FR: CourseSeed = {
                 "Les oscillateurs et les bandes d'écart sont souvent combinés pour repérer les points d'entrée",
               ],
             },
+            { type: "diagram", diagram: "mean-reversion", caption: "Le retour du prix vers la moyenne" },
           ],
           questions: [
             {

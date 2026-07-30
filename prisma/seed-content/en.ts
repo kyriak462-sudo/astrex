@@ -31,6 +31,7 @@ export const COURSE_EN: CourseSeed = {
                 "A trader can also profit from a falling price by opening short positions",
               ],
             },
+            { type: "diagram", diagram: "intro-chart", caption: "This is what an asset's price looks like on a chart" },
           ],
           questions: [
             {
@@ -73,6 +74,7 @@ export const COURSE_EN: CourseSeed = {
                 "Commodities: depend on real supply/demand and geopolitics",
               ],
             },
+            { type: "diagram", diagram: "market-types", caption: "Same price move, different outcome by leverage" },
           ],
           questions: [
             {
@@ -114,6 +116,7 @@ export const COURSE_EN: CourseSeed = {
                 "Bar chart — similar to a candlestick chart, but visually less clear",
               ],
             },
+            { type: "diagram", diagram: "chart-anatomy", caption: "The basic elements of a price chart" },
           ],
           questions: [
             {
@@ -155,6 +158,7 @@ export const COURSE_EN: CourseSeed = {
               type: "paragraph",
               text: "A single candle already tells the story of the struggle between buyers and sellers: a long body indicates a confident move, while long wicks show that the price was actively \"pushed back\" in the opposite direction.",
             },
+            { type: "diagram", diagram: "candlestick-anatomy", caption: "Anatomy of a Japanese candlestick" },
           ],
           questions: [
             {
@@ -200,6 +204,7 @@ export const COURSE_EN: CourseSeed = {
               type: "paragraph",
               text: "An important principle: after a breakout, a level often switches roles — former resistance becomes support, and vice versa. Reliable levels are built not on a single point, but on multiple price touches.",
             },
+            { type: "diagram", diagram: "support-resistance", caption: "An example of levels on a chart" },
           ],
           questions: [
             {
@@ -245,6 +250,7 @@ export const COURSE_EN: CourseSeed = {
               type: "paragraph",
               text: "Trading in the direction of the trend statistically offers better odds of success than trying to catch a reversal against it — hence the well-known rule \"the trend is your friend.\"",
             },
+            { type: "diagram", diagram: "trend-basic", caption: "An uptrend on a chart" },
           ],
           questions: [
             {
@@ -290,6 +296,7 @@ export const COURSE_EN: CourseSeed = {
               type: "paragraph",
               text: "Liquidity is the ability to buy or sell an asset quickly and without significantly affecting its price. On low-liquidity assets, even a small trade can seriously move the price and lead to slippage — execution of an order at a worse price than expected.",
             },
+            { type: "diagram", diagram: "volume-liquidity", caption: "Volume below the price chart" },
           ],
           questions: [
             {
@@ -343,6 +350,7 @@ export const COURSE_EN: CourseSeed = {
                 "Even a profitable strategy can wipe out an account without risk control",
               ],
             },
+            { type: "diagram", diagram: "risk-basic", caption: "Stop-loss and take-profit on a chart" },
           ],
           questions: [
             {
@@ -389,6 +397,7 @@ export const COURSE_EN: CourseSeed = {
               type: "paragraph",
               text: "When the price is above the moving average, the trend is usually considered upward; below it, downward. A crossover of a short and a long moving average (for example, MA50 crossing above MA200) is a popular signal known as a \"golden cross.\"",
             },
+            { type: "diagram", diagram: "moving-averages", caption: "A moving-average crossover on a chart" },
           ],
           questions: [
             {
@@ -468,6 +477,7 @@ export const COURSE_EN: CourseSeed = {
               type: "paragraph",
               text: "Fibonacci extensions, unlike retracements, are used to forecast price targets beyond the original impulse — in other words, where price might go next.",
             },
+            { type: "diagram", diagram: "fibonacci", caption: "Fibonacci levels on a chart" },
           ],
           questions: [
             {
@@ -509,6 +519,7 @@ export const COURSE_EN: CourseSeed = {
               type: "paragraph",
               text: "A pattern is only considered confirmed after a break of the \"neckline\" — the level connecting the local lows between the peaks. A breakout without volume often turns out to be false.",
             },
+            { type: "diagram", diagram: "reversal-patterns", caption: "A double-top pattern on a chart" },
           ],
           questions: [
             {
@@ -550,6 +561,7 @@ export const COURSE_EN: CourseSeed = {
               type: "paragraph",
               text: "The price breaking out of such a consolidation is usually accompanied by a spike in volume, which helps distinguish a genuine breakout from a false one.",
             },
+            { type: "diagram", diagram: "continuation-patterns", caption: "A bull flag pattern on a chart" },
           ],
           questions: [
             {
@@ -587,6 +599,7 @@ export const COURSE_EN: CourseSeed = {
               type: "paragraph",
               text: "Ignoring the higher timeframe is a common beginner mistake: a trade might look great on the 5-minute chart but go against the dominant daily trend, which sharply reduces the chances of success.",
             },
+            { type: "diagram", diagram: "multi-timeframe", caption: "Higher and lower timeframes side by side" },
           ],
           questions: [
             {
@@ -1049,6 +1062,7 @@ export const COURSE_EN: CourseSeed = {
                 "Large players need liquidity to build or close a position without significant slippage",
               ],
             },
+            { type: "diagram", diagram: "liquidity-types", caption: "Liquidity zones on a chart" },
           ],
           questions: [
             {
@@ -1245,6 +1259,7 @@ export const COURSE_EN: CourseSeed = {
                 "A good R/R doesn't guarantee profit without disciplined execution",
               ],
             },
+            { type: "diagram", diagram: "risk-reward", caption: "Risk/reward ratio on a chart" },
           ],
           questions: [
             {
@@ -1298,6 +1313,7 @@ export const COURSE_EN: CourseSeed = {
                 "Using leverage increases size but doesn't eliminate the need to calculate risk",
               ],
             },
+            { type: "diagram", diagram: "position-size", caption: "Position size based on stop distance" },
           ],
           questions: [
             {
@@ -1351,6 +1367,7 @@ export const COURSE_EN: CourseSeed = {
                 "Moving the stop farther from price during a drawdown is one of the most common beginner mistakes",
               ],
             },
+            { type: "diagram", diagram: "stop-loss-chart", caption: "A stop-loss triggering on a chart" },
           ],
           questions: [
             {
@@ -1404,6 +1421,7 @@ export const COURSE_EN: CourseSeed = {
                 "Moving the stop to breakeven after the first target protects profit already secured",
               ],
             },
+            { type: "diagram", diagram: "take-profit-chart", caption: "A take-profit triggering on a chart" },
           ],
           questions: [
             {
@@ -1839,6 +1857,7 @@ export const COURSE_EN: CourseSeed = {
                 "A zero-line crossover is often associated with a change in trend direction",
               ],
             },
+            { type: "diagram", diagram: "macd", caption: "MACD on a chart" },
           ],
           questions: [
             {
@@ -1892,6 +1911,7 @@ export const COURSE_EN: CourseSeed = {
                 "A fast/slow EMA crossover is a lagging but popular signal",
               ],
             },
+            { type: "diagram", diagram: "ema", caption: "EMA on a price chart" },
           ],
           questions: [
             {
@@ -1945,6 +1965,7 @@ export const COURSE_EN: CourseSeed = {
                 "The 200-day SMA is often used as a reference point for the overall trend",
               ],
             },
+            { type: "diagram", diagram: "sma", caption: "SMA on a price chart" },
           ],
           questions: [
             {
@@ -1998,6 +2019,7 @@ export const COURSE_EN: CourseSeed = {
                 "VWAP is typically recalculated from scratch at the start of each trading session",
               ],
             },
+            { type: "diagram", diagram: "vwap", caption: "VWAP on an intraday chart" },
           ],
           questions: [
             {
@@ -2051,6 +2073,7 @@ export const COURSE_EN: CourseSeed = {
                 "A stop-loss calculated using ATR adapts to current market volatility",
               ],
             },
+            { type: "diagram", diagram: "atr", caption: "ATR below a price chart" },
           ],
           questions: [
             {
@@ -2104,6 +2127,7 @@ export const COURSE_EN: CourseSeed = {
                 "Touching a band doesn't guarantee a reversal, especially in a strong trend",
               ],
             },
+            { type: "diagram", diagram: "bollinger", caption: "Bollinger Bands on a chart" },
           ],
           questions: [
             {
@@ -2162,6 +2186,7 @@ export const COURSE_EN: CourseSeed = {
                 "Sharp volume spikes often coincide with turning points",
               ],
             },
+            { type: "diagram", diagram: "volume-bars", caption: "A volume spike on a chart" },
           ],
           questions: [
             {
@@ -2215,6 +2240,7 @@ export const COURSE_EN: CourseSeed = {
                 "A divergence between price and delta can indicate an unstable move",
               ],
             },
+            { type: "diagram", diagram: "delta", caption: "Volume delta by candle" },
           ],
           questions: [
             {
@@ -2268,6 +2294,7 @@ export const COURSE_EN: CourseSeed = {
                 "A sharp drop in OI often accompanies mass position liquidations",
               ],
             },
+            { type: "diagram", diagram: "open-interest", caption: "Open interest alongside price" },
           ],
           questions: [
             {
@@ -2321,6 +2348,7 @@ export const COURSE_EN: CourseSeed = {
                 "Sharply negative funding can indicate excessive market pessimism",
               ],
             },
+            { type: "diagram", diagram: "funding-rate", caption: "Funding rate on a chart" },
           ],
           questions: [
             {
@@ -2374,6 +2402,7 @@ export const COURSE_EN: CourseSeed = {
                 "Liquidation heatmaps are used by traders to assess zones of elevated risk",
               ],
             },
+            { type: "diagram", diagram: "liquidations", caption: "A liquidation cascade on a chart" },
           ],
           questions: [
             {
@@ -3782,6 +3811,7 @@ export const COURSE_EN: CourseSeed = {
                 "The strategy requires high instrument liquidity and stable order execution",
               ],
             },
+            { type: "diagram", diagram: "scalping", caption: "Scalping on a lower timeframe" },
           ],
           questions: [
             {
@@ -3835,6 +3865,7 @@ export const COURSE_EN: CourseSeed = {
                 "Day trading requires significant time for active market monitoring",
               ],
             },
+            { type: "diagram", diagram: "day-trading", caption: "A trade within a single day" },
           ],
           questions: [
             {
@@ -3888,6 +3919,7 @@ export const COURSE_EN: CourseSeed = {
                 "Swing trading positions are exposed to the risk of overnight and weekend gaps",
               ],
             },
+            { type: "diagram", diagram: "swing-trading", caption: "A swing trade over several days" },
           ],
           questions: [
             {
@@ -3941,6 +3973,7 @@ export const COURSE_EN: CourseSeed = {
                 "Position traders usually use wider stops and hold fewer simultaneous positions",
               ],
             },
+            { type: "diagram", diagram: "position-trading", caption: "A long-term position along a trend" },
           ],
           questions: [
             {
@@ -3994,6 +4027,7 @@ export const COURSE_EN: CourseSeed = {
                 "The strategy requires patience and confirmation to tell a sweep apart from a real breakout",
               ],
             },
+            { type: "diagram", diagram: "liquidity-sweep", caption: "Liquidity sweep as a trading strategy" },
           ],
           questions: [
             {
@@ -4047,6 +4081,7 @@ export const COURSE_EN: CourseSeed = {
                 "Waiting for a retest of the broken level reduces the risk of entering on a false breakout",
               ],
             },
+            { type: "diagram", diagram: "breakout", caption: "A breakout on a chart" },
           ],
           questions: [
             {
@@ -4100,6 +4135,7 @@ export const COURSE_EN: CourseSeed = {
                 "Oscillators and deviation bands are often used together to find entry points",
               ],
             },
+            { type: "diagram", diagram: "mean-reversion", caption: "Price reverting to the mean" },
           ],
           questions: [
             {

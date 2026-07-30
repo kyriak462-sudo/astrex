@@ -31,6 +31,7 @@ export const COURSE_TR: CourseSeed = {
                 "Trader, kısa (short) pozisyonlar aracılığıyla fiyat düşüşünden de kazanç sağlayabilir",
               ],
             },
+            { type: "diagram", diagram: "intro-chart", caption: "Bir varlığın fiyatı grafikte böyle görünür" },
           ],
           questions: [
             {
@@ -73,6 +74,7 @@ export const COURSE_TR: CourseSeed = {
                 "Emtialar (commodities): gerçek arz/talebe ve jeopolitiğe bağlıdır",
               ],
             },
+            { type: "diagram", diagram: "market-types", caption: "Aynı fiyat hareketi, kaldıraca göre farklı sonuç" },
           ],
           questions: [
             {
@@ -114,6 +116,7 @@ export const COURSE_TR: CourseSeed = {
                 "Bar chart — mum grafiğine benzer ama görsel olarak daha az açıktır",
               ],
             },
+            { type: "diagram", diagram: "chart-anatomy", caption: "Bir fiyat grafiğinin temel unsurları" },
           ],
           questions: [
             {
@@ -155,6 +158,7 @@ export const COURSE_TR: CourseSeed = {
               type: "paragraph",
               text: "Tek bir mum bile alıcılarla satıcılar arasındaki mücadelenin hikayesini anlatır: uzun bir gövde kararlı bir hareketi işaret ederken, uzun gölgeler fiyatın karşı yöne doğru aktif biçimde \"geri itildiğini\" gösterir.",
             },
+            { type: "diagram", diagram: "candlestick-anatomy", caption: "Bir Japon mumunun anatomisi" },
           ],
           questions: [
             {
@@ -200,6 +204,7 @@ export const COURSE_TR: CourseSeed = {
               type: "paragraph",
               text: "Önemli bir ilke: bir seviye kırıldıktan sonra genellikle rolünü değiştirir — eski direnç desteğe dönüşür ve tam tersi de geçerlidir. Güvenilir seviyeler tek bir noktaya değil, fiyatın birden çok temasına dayanılarak çizilir.",
             },
+            { type: "diagram", diagram: "support-resistance", caption: "Grafikte seviyelere bir örnek" },
           ],
           questions: [
             {
@@ -245,6 +250,7 @@ export const COURSE_TR: CourseSeed = {
               type: "paragraph",
               text: "Trend yönünde işlem yapmak, ona karşı bir dönüş yakalamaya çalışmaktan istatistiksel olarak daha fazla başarı şansı sunar — bilinen \"trend senin dostundur\" kuralı buradan gelir.",
             },
+            { type: "diagram", diagram: "trend-basic", caption: "Grafikte bir yükseliş trendi" },
           ],
           questions: [
             {
@@ -290,6 +296,7 @@ export const COURSE_TR: CourseSeed = {
               type: "paragraph",
               text: "Likidite, bir varlığı fiyatını fazla etkilemeden hızlıca alıp satabilme yeteneğidir. Düşük likiditeli varlıklarda küçük bir işlem bile fiyatı ciddi şekilde hareket ettirebilir ve slippage'e — bir emrin beklenenden daha kötü bir fiyattan gerçekleşmesine — yol açabilir.",
             },
+            { type: "diagram", diagram: "volume-liquidity", caption: "Fiyat grafiğinin altında hacim" },
           ],
           questions: [
             {
@@ -343,6 +350,7 @@ export const COURSE_TR: CourseSeed = {
                 "Risk kontrolü olmadan kârlı bir strateji bile iflasa yol açabilir",
               ],
             },
+            { type: "diagram", diagram: "risk-basic", caption: "Grafikte stop-loss ve take-profit" },
           ],
           questions: [
             {
@@ -389,6 +397,7 @@ export const COURSE_TR: CourseSeed = {
               type: "paragraph",
               text: "Fiyat hareketli ortalamanın üzerindeyken trend genellikle yükselen, altındayken düşen kabul edilir. Kısa ve uzun hareketli ortalamaların kesişmesi (örneğin MA50'nin MA200'ü aşağıdan yukarıya kesmesi) \"altın kesişim\" (golden cross) olarak bilinen popüler bir sinyaldir.",
             },
+            { type: "diagram", diagram: "moving-averages", caption: "Grafikte hareketli ortalama kesişimi" },
           ],
           questions: [
             {
@@ -468,6 +477,7 @@ export const COURSE_TR: CourseSeed = {
               type: "paragraph",
               text: "Fibonacci uzantıları, düzeltmelerin aksine, fiyatın ilk dürtünün ötesindeki hareket hedeflerini — yani fiyatın daha sonra nereye gidebileceğini — tahmin etmek için kullanılır.",
             },
+            { type: "diagram", diagram: "fibonacci", caption: "Grafikte Fibonacci seviyeleri" },
           ],
           questions: [
             {
@@ -509,6 +519,7 @@ export const COURSE_TR: CourseSeed = {
               type: "paragraph",
               text: "Formasyon yalnızca \"boyun çizgisinin\" (neckline) — zirveler arasındaki yerel dipleri birleştiren seviyenin — kırılmasından sonra doğrulanmış sayılır. Hacimsiz bir kırılma çoğu zaman sahte çıkar.",
             },
+            { type: "diagram", diagram: "reversal-patterns", caption: "Grafikte çift tepe formasyonu" },
           ],
           questions: [
             {
@@ -550,6 +561,7 @@ export const COURSE_TR: CourseSeed = {
               type: "paragraph",
               text: "Fiyatın böyle bir konsolidasyondan çıkışı genellikle hacimde bir artışla birlikte görülür; bu da gerçek kırılımı sahte olandan ayırt etmeye yardımcı olur.",
             },
+            { type: "diagram", diagram: "continuation-patterns", caption: "Grafikte boğa bayrağı formasyonu" },
           ],
           questions: [
             {
@@ -587,6 +599,7 @@ export const COURSE_TR: CourseSeed = {
               type: "paragraph",
               text: "Büyük zaman dilimini görmezden gelmek, yeni başlayanların sık yaptığı bir hatadır: bir işlem 5 dakikalık grafikte mükemmel görünebilir, ama baskın günlük trende karşı gidiyor olabilir, bu da başarı şansını ciddi ölçüde azaltır.",
             },
+            { type: "diagram", diagram: "multi-timeframe", caption: "Üst ve alt zaman dilimi yan yana" },
           ],
           questions: [
             {
@@ -1049,6 +1062,7 @@ export const COURSE_TR: CourseSeed = {
                 "Büyük oyuncuların, güçlü bir slippage olmadan pozisyon açmak veya kapatmak için likiditeye ihtiyacı vardır",
               ],
             },
+            { type: "diagram", diagram: "liquidity-types", caption: "Grafikte likidite bölgeleri" },
           ],
           questions: [
             {
@@ -1245,6 +1259,7 @@ export const COURSE_TR: CourseSeed = {
                 "İyi bir R/R, uygulamada disiplin olmadan kâr garanti etmez",
               ],
             },
+            { type: "diagram", diagram: "risk-reward", caption: "Grafikte risk/getiri oranı" },
           ],
           questions: [
             {
@@ -1298,6 +1313,7 @@ export const COURSE_TR: CourseSeed = {
                 "Kaldıraç kullanımı hacmi artırır ama risk hesaplamasını ortadan kaldırmaz",
               ],
             },
+            { type: "diagram", diagram: "position-size", caption: "Stop mesafesine göre pozisyon büyüklüğü" },
           ],
           questions: [
             {
@@ -1351,6 +1367,7 @@ export const COURSE_TR: CourseSeed = {
                 "Düşüş sırasında stopu fiyattan uzaklaştırmak, yeni başlayanların en sık yaptığı hatalardan biridir",
               ],
             },
+            { type: "diagram", diagram: "stop-loss-chart", caption: "Grafikte tetiklenen bir stop-loss" },
           ],
           questions: [
             {
@@ -1404,6 +1421,7 @@ export const COURSE_TR: CourseSeed = {
                 "İlk hedeften sonra stopu başabaşa taşımak, elde edilen kârı korur",
               ],
             },
+            { type: "diagram", diagram: "take-profit-chart", caption: "Grafikte tetiklenen bir take-profit" },
           ],
           questions: [
             {
@@ -1839,6 +1857,7 @@ export const COURSE_TR: CourseSeed = {
                 "Sıfır çizgisinin kesilmesi genellikle trend yönünün değişimiyle ilişkilendirilir",
               ],
             },
+            { type: "diagram", diagram: "macd", caption: "Grafikte MACD" },
           ],
           questions: [
             {
@@ -1892,6 +1911,7 @@ export const COURSE_TR: CourseSeed = {
                 "Hızlı ve yavaş EMA'nın kesişimi gecikmeli ama popüler bir sinyaldir",
               ],
             },
+            { type: "diagram", diagram: "ema", caption: "Fiyat grafiğinde EMA" },
           ],
           questions: [
             {
@@ -1945,6 +1965,7 @@ export const COURSE_TR: CourseSeed = {
                 "Günlük grafikteki SMA 200, genellikle küresel trendin bir göstergesi olarak kullanılır",
               ],
             },
+            { type: "diagram", diagram: "sma", caption: "Fiyat grafiğinde SMA" },
           ],
           questions: [
             {
@@ -1998,6 +2019,7 @@ export const COURSE_TR: CourseSeed = {
                 "VWAP genellikle her işlem seansının başlangıcında yeniden hesaplanır",
               ],
             },
+            { type: "diagram", diagram: "vwap", caption: "Gün içi grafikte VWAP" },
           ],
           questions: [
             {
@@ -2051,6 +2073,7 @@ export const COURSE_TR: CourseSeed = {
                 "ATR üzerinden hesaplanan bir stop-loss, mevcut piyasa volatilitesine uyarlanır",
               ],
             },
+            { type: "diagram", diagram: "atr", caption: "Fiyat grafiğinin altında ATR" },
           ],
           questions: [
             {
@@ -2104,6 +2127,7 @@ export const COURSE_TR: CourseSeed = {
                 "Banda değmek, özellikle güçlü bir trendde, dönüşü garanti etmez",
               ],
             },
+            { type: "diagram", diagram: "bollinger", caption: "Grafikte Bollinger Bantları" },
           ],
           questions: [
             {
@@ -2162,6 +2186,7 @@ export const COURSE_TR: CourseSeed = {
                 "Ani hacim artışları genellikle dönüş noktalarıyla örtüşür",
               ],
             },
+            { type: "diagram", diagram: "volume-bars", caption: "Grafikte bir hacim artışı" },
           ],
           questions: [
             {
@@ -2215,6 +2240,7 @@ export const COURSE_TR: CourseSeed = {
                 "Fiyat ile delta arasındaki uyumsuzluk hareketin istikrarsızlığına işaret edebilir",
               ],
             },
+            { type: "diagram", diagram: "delta", caption: "Muma göre hacim deltası" },
           ],
           questions: [
             {
@@ -2268,6 +2294,7 @@ export const COURSE_TR: CourseSeed = {
                 "OI'de ani bir düşüş genellikle kitlesel pozisyon likidasyonlarına eşlik eder",
               ],
             },
+            { type: "diagram", diagram: "open-interest", caption: "Fiyatla birlikte open interest" },
           ],
           questions: [
             {
@@ -2321,6 +2348,7 @@ export const COURSE_TR: CourseSeed = {
                 "Keskin negatif fonlama, piyasanın aşırı kötümserliğine işaret edebilir",
               ],
             },
+            { type: "diagram", diagram: "funding-rate", caption: "Grafikte funding rate" },
           ],
           questions: [
             {
@@ -2374,6 +2402,7 @@ export const COURSE_TR: CourseSeed = {
                 "Likidasyon haritaları, traderlar tarafından yüksek riskli bölgeleri değerlendirmek için kullanılır",
               ],
             },
+            { type: "diagram", diagram: "liquidations", caption: "Grafikte bir tasfiye çığı" },
           ],
           questions: [
             {
@@ -3782,6 +3811,7 @@ export const COURSE_TR: CourseSeed = {
                 "Strateji, enstrümanın yüksek likiditesini ve emirlerin istikrarlı bir şekilde yürütülmesini gerektirir",
               ],
             },
+            { type: "diagram", diagram: "scalping", caption: "Küçük bir zaman diliminde scalping" },
           ],
           questions: [
             {
@@ -3835,6 +3865,7 @@ export const COURSE_TR: CourseSeed = {
                 "Day trading, piyasanın aktif olarak takip edilmesi için önemli miktarda zaman gerektirir",
               ],
             },
+            { type: "diagram", diagram: "day-trading", caption: "Tek bir gün içinde bir işlem" },
           ],
           questions: [
             {
@@ -3888,6 +3919,7 @@ export const COURSE_TR: CourseSeed = {
                 "Swing trading'deki pozisyonlar, gece ve hafta sonu gap'i riskine maruz kalır",
               ],
             },
+            { type: "diagram", diagram: "swing-trading", caption: "Birkaç günlük bir swing işlem" },
           ],
           questions: [
             {
@@ -3941,6 +3973,7 @@ export const COURSE_TR: CourseSeed = {
                 "Pozisyon traderları genellikle daha geniş stoplar ve daha az sayıda eşzamanlı pozisyon kullanır",
               ],
             },
+            { type: "diagram", diagram: "position-trading", caption: "Bir trend boyunca uzun vadeli pozisyon" },
           ],
           questions: [
             {
@@ -3994,6 +4027,7 @@ export const COURSE_TR: CourseSeed = {
                 "Strateji, bir sweep'i gerçek bir kırılımdan ayırt etmek için sabır ve doğrulama gerektirir",
               ],
             },
+            { type: "diagram", diagram: "liquidity-sweep", caption: "Bir trading stratejisi olarak liquidity sweep" },
           ],
           questions: [
             {
@@ -4047,6 +4081,7 @@ export const COURSE_TR: CourseSeed = {
                 "Kırılan seviyenin yeniden test edilmesini beklemek, yanlış bir kırılımda giriş yapma riskini azaltır",
               ],
             },
+            { type: "diagram", diagram: "breakout", caption: "Grafikte bir breakout" },
           ],
           questions: [
             {
@@ -4100,6 +4135,7 @@ export const COURSE_TR: CourseSeed = {
                 "Osilatörler ve sapma bantları, giriş noktalarını bulmak için sıklıkla birlikte kullanılır",
               ],
             },
+            { type: "diagram", diagram: "mean-reversion", caption: "Fiyatın ortalamaya dönüşü" },
           ],
           questions: [
             {
