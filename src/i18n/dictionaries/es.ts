@@ -99,6 +99,7 @@ const es: Dictionary = {
     nav: {
       learn: "Aprender",
       market: "Mercado",
+      news: "Noticias",
       profile: "Perfil",
       settings: "Ajustes",
       leaderboard: "Clasificación",
@@ -200,6 +201,7 @@ const es: Dictionary = {
     pnlSubtitle: "Resultado de las operaciones cerradas en las últimas {weeks} semanas.",
     allTime: "Total",
     today: "Hoy",
+    settingsButton: "Ajustes",
   },
   leaderboard: {
     title: "Clasificación",
@@ -225,6 +227,9 @@ const es: Dictionary = {
     languageSubtitle: "Cambia el idioma de la interfaz y de todas las lecciones de la plataforma.",
     avatarTitle: "Avatar",
     avatarSubtitle: "Elige el icono de tu perfil.",
+    avatarUploadLabel: "Subir foto",
+    nameLabel: "Nombre",
+    nameSaveButton: "Guardar nombre",
     accountTitle: "Cuenta",
     dataTitle: "Tus datos",
     dataDescription:
@@ -239,6 +244,12 @@ const es: Dictionary = {
     deleteConfirmButton: "Eliminar mi cuenta permanentemente",
     deleteConfirming: "Eliminando...",
     deleteCancel: "Cancelar",
+  },
+  news: {
+    title: "Noticias",
+    subtitle: "Economía y cripto — se actualiza automáticamente.",
+    readMore: "Leer",
+    noData: "No se pudieron cargar las noticias. Inténtalo más tarde.",
   },
 };
 

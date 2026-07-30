@@ -99,6 +99,7 @@ const uk: Dictionary = {
     nav: {
       learn: "Навчання",
       market: "Ринок",
+      news: "Новини",
       profile: "Профіль",
       settings: "Налаштування",
       leaderboard: "Лідери",
@@ -200,6 +201,7 @@ const uk: Dictionary = {
     pnlSubtitle: "Результат закритих угод за останні {weeks} тижнів.",
     allTime: "За весь час",
     today: "Сьогодні",
+    settingsButton: "Налаштування",
   },
   leaderboard: {
     title: "Дошка лідерів",
@@ -225,6 +227,9 @@ const uk: Dictionary = {
     languageSubtitle: "Змінює мову інтерфейсу і всіх уроків платформи.",
     avatarTitle: "Аватар",
     avatarSubtitle: "Виберіть іконку профілю.",
+    avatarUploadLabel: "Завантажити фото",
+    nameLabel: "Ім'я",
+    nameSaveButton: "Зберегти ім'я",
     accountTitle: "Акаунт",
     dataTitle: "Ваші дані",
     dataDescription:
@@ -239,6 +244,12 @@ const uk: Dictionary = {
     deleteConfirmButton: "Видалити акаунт назавжди",
     deleteConfirming: "Видаляємо...",
     deleteCancel: "Скасувати",
+  },
+  news: {
+    title: "Новини",
+    subtitle: "Економіка та крипто — оновлюється автоматично.",
+    readMore: "Читати",
+    noData: "Не вдалося завантажити новини. Спробуйте пізніше.",
   },
 };
 

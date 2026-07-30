@@ -99,6 +99,7 @@ const ru: Dictionary = {
     nav: {
       learn: "Обучение",
       market: "Рынок",
+      news: "Новости",
       profile: "Профиль",
       settings: "Настройки",
       leaderboard: "Лидеры",
@@ -200,6 +201,7 @@ const ru: Dictionary = {
     pnlSubtitle: "Результат закрытых сделок за последние {weeks} недель.",
     allTime: "За всё время",
     today: "Сегодня",
+    settingsButton: "Настройки",
   },
   leaderboard: {
     title: "Доска лидеров",
@@ -225,6 +227,9 @@ const ru: Dictionary = {
     languageSubtitle: "Меняет язык интерфейса и всех уроков платформы.",
     avatarTitle: "Аватар",
     avatarSubtitle: "Выберите иконку профиля.",
+    avatarUploadLabel: "Загрузить фото",
+    nameLabel: "Имя",
+    nameSaveButton: "Сохранить имя",
     accountTitle: "Аккаунт",
     dataTitle: "Ваши данные",
     dataDescription:
@@ -238,6 +243,12 @@ const ru: Dictionary = {
     deleteConfirmButton: "Удалить аккаунт навсегда",
     deleteConfirming: "Удаляем...",
     deleteCancel: "Отмена",
+  },
+  news: {
+    title: "Новости",
+    subtitle: "Экономика и криптовалюта — обновляется автоматически.",
+    readMore: "Читать",
+    noData: "Не удалось загрузить новости. Попробуйте позже.",
   },
 };
 

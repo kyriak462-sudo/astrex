@@ -7,18 +7,16 @@ import { navItems } from "@/components/app/nav-items";
 
 export function MobileTabBar({
   nav,
-  settingsLabel,
 }: {
-  nav?: { learn: string; market: string; leaderboard: string; profile: string };
-  settingsLabel?: string;
+  nav?: { learn: string; market: string; news: string; leaderboard: string; profile: string };
 }) {
   const pathname = usePathname();
   const labels: Record<string, string> = {
     "/learn": nav?.learn ?? "Обучение",
     "/market": nav?.market ?? "Рынок",
+    "/news": nav?.news ?? "Новости",
     "/leaderboard": nav?.leaderboard ?? "Лидеры",
     "/profile": nav?.profile ?? "Профиль",
-    "/settings": settingsLabel ?? "Настройки",
   };
 
   return (

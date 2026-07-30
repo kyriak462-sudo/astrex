@@ -99,6 +99,7 @@ const el: Dictionary = {
     nav: {
       learn: "Μάθηση",
       market: "Αγορά",
+      news: "Ειδήσεις",
       profile: "Προφίλ",
       settings: "Ρυθμίσεις",
       leaderboard: "Κατάταξη",
@@ -201,6 +202,7 @@ const el: Dictionary = {
     pnlSubtitle: "Αποτέλεσμα κλειστών συναλλαγών τις τελευταίες {weeks} εβδομάδες.",
     allTime: "Συνολικά",
     today: "Σήμερα",
+    settingsButton: "Ρυθμίσεις",
   },
   leaderboard: {
     title: "Κατάταξη",
@@ -226,6 +228,9 @@ const el: Dictionary = {
     languageSubtitle: "Αλλάζει τη γλώσσα της διεπαφής και όλων των μαθημάτων της πλατφόρμας.",
     avatarTitle: "Άβαταρ",
     avatarSubtitle: "Επιλέξτε το εικονίδιο προφίλ σας.",
+    avatarUploadLabel: "Μεταφόρτωση φωτογραφίας",
+    nameLabel: "Όνομα",
+    nameSaveButton: "Αποθήκευση ονόματος",
     accountTitle: "Λογαριασμός",
     dataTitle: "Τα δεδομένα σας",
     dataDescription:
@@ -240,6 +245,12 @@ const el: Dictionary = {
     deleteConfirmButton: "Οριστική διαγραφή του λογαριασμού μου",
     deleteConfirming: "Διαγραφή...",
     deleteCancel: "Ακύρωση",
+  },
+  news: {
+    title: "Ειδήσεις",
+    subtitle: "Οικονομία και κρυπτονομίσματα — ενημερώνεται αυτόματα.",
+    readMore: "Ανάγνωση",
+    noData: "Δεν ήταν δυνατή η φόρτωση ειδήσεων. Δοκιμάστε ξανά αργότερα.",
   },
 };
 

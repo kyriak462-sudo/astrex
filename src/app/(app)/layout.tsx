@@ -30,7 +30,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
 
   return (
     <div className="flex flex-1">
-      <Sidebar nav={dict.dashboard.nav} settingsLabel={dict.dashboard.nav.settings} />
+      <Sidebar nav={dict.dashboard.nav} />
       <div className="flex flex-1 flex-col">
         <Topbar
           xp={xp}
@@ -48,7 +48,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           {children}
         </main>
       </div>
-      <MobileTabBar nav={dict.dashboard.nav} settingsLabel={dict.dashboard.nav.settings} />
+      <MobileTabBar nav={dict.dashboard.nav} />
     </div>
   );
 }

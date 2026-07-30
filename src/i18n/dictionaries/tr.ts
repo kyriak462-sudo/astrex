@@ -99,6 +99,7 @@ const tr: Dictionary = {
     nav: {
       learn: "Öğren",
       market: "Piyasa",
+      news: "Haberler",
       profile: "Profil",
       settings: "Ayarlar",
       leaderboard: "Liderlik Tablosu",
@@ -200,6 +201,7 @@ const tr: Dictionary = {
     pnlSubtitle: "Son {weeks} haftadaki kapalı işlemlerin sonucu.",
     allTime: "Tüm zamanlar",
     today: "Bugün",
+    settingsButton: "Ayarlar",
   },
   leaderboard: {
     title: "Liderlik Tablosu",
@@ -225,6 +227,9 @@ const tr: Dictionary = {
     languageSubtitle: "Platformun arayüz ve tüm ders dilini değiştirir.",
     avatarTitle: "Avatar",
     avatarSubtitle: "Profil simgenizi seçin.",
+    avatarUploadLabel: "Fotoğraf yükle",
+    nameLabel: "Ad",
+    nameSaveButton: "Adı kaydet",
     accountTitle: "Hesap",
     dataTitle: "Verileriniz",
     dataDescription:
@@ -239,6 +244,12 @@ const tr: Dictionary = {
     deleteConfirmButton: "Hesabımı kalıcı olarak sil",
     deleteConfirming: "Siliniyor...",
     deleteCancel: "İptal",
+  },
+  news: {
+    title: "Haberler",
+    subtitle: "Ekonomi ve kripto — otomatik olarak güncellenir.",
+    readMore: "Oku",
+    noData: "Haberler yüklenemedi. Daha sonra tekrar deneyin.",
   },
 };
 

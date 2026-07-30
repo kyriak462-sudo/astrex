@@ -1,4 +1,6 @@
 import { cookies } from "next/headers";
+import Link from "next/link";
+import { Settings } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { DEFAULT_LOCALE, isLocale, LOCALE_COOKIE } from "@/i18n/locales";
@@ -76,7 +78,16 @@ export default async function ProfilePage() {
 
   return (
     <div className="mx-auto max-w-2xl">
-      <h1 className="text-2xl font-semibold text-neutral-900 dark:text-white">{d.title}</h1>
+      <div className="flex items-center justify-between">
+        <h1 className="text-2xl font-semibold text-neutral-900 dark:text-white">{d.title}</h1>
+        <Link
+          href="/settings"
+          className="inline-flex items-center gap-2 rounded-full border border-black/10 px-3.5 py-2 text-sm text-neutral-600 transition-colors hover:border-black/25 hover:text-neutral-900 dark:border-white/10 dark:text-white/60 dark:hover:border-white/25 dark:hover:text-white"
+        >
+          <Settings className="h-4 w-4" strokeWidth={1.75} />
+          {d.settingsButton}
+        </Link>
+      </div>
 
       <div className="mt-6 rounded-2xl border border-black/10 bg-black/[0.02] p-6 dark:border-white/10 dark:bg-white/[0.02]">
         <div className="flex items-center gap-4">

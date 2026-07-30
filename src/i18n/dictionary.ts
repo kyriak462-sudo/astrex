@@ -82,6 +82,7 @@ export type Dictionary = {
     nav: {
       learn: string;
       market: string;
+      news: string;
       leaderboard: string;
       profile: string;
       settings: string;
@@ -182,6 +183,7 @@ export type Dictionary = {
     pnlSubtitle: string;
     allTime: string;
     today: string;
+    settingsButton: string;
   };
   leaderboard: {
     title: string;
@@ -207,6 +209,9 @@ export type Dictionary = {
     languageSubtitle: string;
     avatarTitle: string;
     avatarSubtitle: string;
+    avatarUploadLabel: string;
+    nameLabel: string;
+    nameSaveButton: string;
     accountTitle: string;
     dataTitle: string;
     dataDescription: string;
@@ -218,5 +223,11 @@ export type Dictionary = {
     deleteConfirmButton: string;
     deleteConfirming: string;
     deleteCancel: string;
+  };
+  news: {
+    title: string;
+    subtitle: string;
+    readMore: string;
+    noData: string;
   };
 };

@@ -43,6 +43,44 @@ export async function setAvatar(formData: FormData) {
   revalidatePath("/", "layout");
 }
 
+const MAX_AVATAR_DATA_URL_LENGTH = 400_000;
+
+/** Custom-uploaded avatars clear avatarId so the uploaded photo takes display precedence. */
+export async function setCustomAvatar(dataUrl: string) {
+  const session = await auth();
+  if (!session?.user?.id) return;
+
+  if (
+    typeof dataUrl !== "string" ||
+    !dataUrl.startsWith("data:image/") ||
+    dataUrl.length > MAX_AVATAR_DATA_URL_LENGTH
+  ) {
+    return;
+  }
+
+  await db.user.update({
+    where: { id: session.user.id },
+    data: { image: dataUrl, avatarId: null },
+  });
+  revalidatePath("/", "layout");
+}
+
+export async function setName(formData: FormData) {
+  const session = await auth();
+  if (!session?.user?.id) return;
+
+  const value = formData.get("name");
+  if (typeof value !== "string") return;
+  const name = value.trim().slice(0, 50);
+  if (!name) return;
+
+  await db.user.update({
+    where: { id: session.user.id },
+    data: { name },
+  });
+  revalidatePath("/", "layout");
+}
+
 /** Permanently deletes the caller's account and all associated personal data. */
 export async function deleteAccount() {
   const session = await auth();

@@ -99,6 +99,7 @@ const en: Dictionary = {
     nav: {
       learn: "Learn",
       market: "Market",
+      news: "News",
       profile: "Profile",
       settings: "Settings",
       leaderboard: "Leaderboard",
@@ -200,6 +201,7 @@ const en: Dictionary = {
     pnlSubtitle: "Result of closed trades over the last {weeks} weeks.",
     allTime: "All time",
     today: "Today",
+    settingsButton: "Settings",
   },
   leaderboard: {
     title: "Leaderboard",
@@ -225,6 +227,9 @@ const en: Dictionary = {
     languageSubtitle: "Changes the interface language and all lessons across the platform.",
     avatarTitle: "Avatar",
     avatarSubtitle: "Choose your profile icon.",
+    avatarUploadLabel: "Upload photo",
+    nameLabel: "Name",
+    nameSaveButton: "Save name",
     accountTitle: "Account",
     dataTitle: "Your data",
     dataDescription:
@@ -239,6 +244,12 @@ const en: Dictionary = {
     deleteConfirmButton: "Permanently delete my account",
     deleteConfirming: "Deleting...",
     deleteCancel: "Cancel",
+  },
+  news: {
+    title: "News",
+    subtitle: "Economy and crypto — updates automatically.",
+    readMore: "Read",
+    noData: "Couldn't load news. Try again later.",
   },
 };
 

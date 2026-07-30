@@ -9,7 +9,8 @@ import { Avatar } from "@/components/app/avatar";
 import { AVATARS } from "@/lib/avatars";
 import { SupportButton } from "@/components/app/support-button";
 import { DeleteAccountButton } from "@/components/app/delete-account-button";
-import { setAvatar, setLocale, setTheme, deleteAccount } from "./actions";
+import { AvatarUpload } from "@/components/app/avatar-upload";
+import { setAvatar, setCustomAvatar, setName, setLocale, setTheme, deleteAccount } from "./actions";
 
 const optionClass = (active: boolean) =>
   `rounded-lg border px-4 py-2.5 text-sm transition-colors ${
@@ -75,10 +76,11 @@ export default async function SettingsPage() {
       <div className="mt-6 rounded-2xl border border-black/10 bg-black/[0.02] p-6 dark:border-white/10 dark:bg-white/[0.02]">
         <div className="flex items-center gap-3">
           <Avatar avatarId={user?.avatarId} image={user?.image} name={user?.name} size={44} />
-          <div>
+          <div className="flex-1">
             <p className="text-sm font-medium text-neutral-900 dark:text-white">{d.avatarTitle}</p>
             <p className="text-xs text-neutral-500 dark:text-white/40">{d.avatarSubtitle}</p>
           </div>
+          <AvatarUpload action={setCustomAvatar} label={d.avatarUploadLabel} />
         </div>
         <form action={setAvatar} className="mt-4 grid grid-cols-4 gap-2 sm:grid-cols-8">
           {AVATARS.map((a) => {
@@ -106,6 +108,25 @@ export default async function SettingsPage() {
         <p className="mt-1 text-xs text-neutral-500 dark:text-white/40">
           {session?.user?.email ?? "—"}
         </p>
+        <form action={setName} className="mt-4 flex flex-wrap items-center gap-2">
+          <label className="sr-only" htmlFor="name">
+            {d.nameLabel}
+          </label>
+          <input
+            id="name"
+            name="name"
+            defaultValue={user?.name ?? ""}
+            maxLength={50}
+            placeholder={d.nameLabel}
+            className="h-9 min-w-0 flex-1 rounded-lg border border-black/10 bg-transparent px-3 text-sm text-neutral-900 outline-none focus:border-black/25 dark:border-white/10 dark:text-white dark:focus:border-white/25"
+          />
+          <button
+            type="submit"
+            className="h-9 shrink-0 rounded-lg border border-black/10 px-3.5 text-sm text-neutral-700 transition-colors hover:border-black/25 hover:text-neutral-900 dark:border-white/10 dark:text-white/70 dark:hover:border-white/25 dark:hover:text-white"
+          >
+            {d.nameSaveButton}
+          </button>
+        </form>
         <div className="mt-4">
           <SignOutButton label={dict.dashboard.signOut} />
         </div>
