@@ -1,7 +1,8 @@
 import type { ContentBlock } from "@/lib/lesson-content";
 import { DIAGRAMS } from "@/components/learn/diagrams";
+import type { Locale } from "@/i18n/locales";
 
-export function LessonContentBlocks({ blocks }: { blocks: ContentBlock[] }) {
+export function LessonContentBlocks({ blocks, locale }: { blocks: ContentBlock[]; locale: Locale }) {
   return (
     <div className="space-y-6">
       {blocks.map((block, i) => {
@@ -34,7 +35,7 @@ export function LessonContentBlocks({ blocks }: { blocks: ContentBlock[] }) {
           if (!Diagram) return null;
           return (
             <div key={i}>
-              <Diagram />
+              <Diagram locale={locale} />
               {block.caption && (
                 <p className="mt-2 text-xs text-neutral-400 dark:text-white/35">
                   {block.caption}

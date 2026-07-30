@@ -1,3 +1,6 @@
+import type { Locale } from "@/i18n/locales";
+import { t } from "@/components/learn/diagram-i18n";
+
 const UP = "var(--color-up)";
 const DOWN = "var(--color-down)";
 const GRID = "var(--color-border)";
@@ -13,6 +16,8 @@ type Candle = {
   low: number;
   width?: number;
 };
+
+type DiagramProps = { locale: Locale };
 
 function Candlestick({ x, open, close, high, low, width = 20 }: Candle) {
   const up = close < open;
@@ -35,13 +40,7 @@ function Candlestick({ x, open, close, high, low, width = 20 }: Candle) {
   );
 }
 
-function DiagramFrame({
-  children,
-  label,
-}: {
-  children: React.ReactNode;
-  label: string;
-}) {
+function DiagramFrame({ children }: { children: React.ReactNode }) {
   return (
     <div className="overflow-hidden rounded-xl border border-black/10 bg-black/[0.02] dark:border-white/10 dark:bg-white/[0.02]">
       <svg viewBox="0 0 400 220" className="w-full">
@@ -50,16 +49,13 @@ function DiagramFrame({
         <line x1="0" y1="165" x2="400" y2="165" stroke={GRID} strokeWidth={1} />
         {children}
       </svg>
-      <div className="border-t border-black/[0.06] px-4 py-2 text-center text-xs text-neutral-500 dark:border-white/[0.06] dark:text-white/40">
-        {label}
-      </div>
     </div>
   );
 }
 
-export function FvgDiagram() {
+export function FvgDiagram(_: DiagramProps) {
   return (
-    <DiagramFrame label="Bullish FVG: разрыв между хвостом свечи 1 и хвостом свечи 3">
+    <DiagramFrame>
       <Candlestick x={90} open={150} close={110} high={160} low={105} />
       <Candlestick x={140} open={110} close={60} high={115} low={55} />
       <Candlestick x={190} open={62} close={40} high={80} low={35} />
@@ -75,9 +71,9 @@ export function FvgDiagram() {
   );
 }
 
-export function ImbalanceDiagram() {
+export function ImbalanceDiagram(_: DiagramProps) {
   return (
-    <DiagramFrame label="Имбаланс: зона неэффективного, однонаправленного движения цены">
+    <DiagramFrame>
       <Candlestick x={80} open={150} close={135} high={155} low={130} />
       <Candlestick x={125} open={135} close={70} high={138} low={65} width={16} />
       <rect x={108} y={65} width={34} height={73} fill={DOWN} opacity={0.16} />
@@ -92,12 +88,12 @@ export function ImbalanceDiagram() {
   );
 }
 
-export function LiquiditySweepDiagram() {
+export function LiquiditySweepDiagram({ locale }: DiagramProps) {
   return (
-    <DiagramFrame label="Снятие ликвидности: прокол уровня равных хаёв и разворот вниз">
+    <DiagramFrame>
       <line x1={40} y1={70} x2={330} y2={70} stroke={LINE} strokeWidth={1} strokeDasharray="4 4" />
       <text x={40} y={62} fontSize={10} fill={LABEL}>
-        equal highs (ликвидность)
+        {`equal highs (${t(locale, "liquidityWord")})`}
       </text>
       <Candlestick x={70} open={130} close={72} high={135} low={68} />
       <Candlestick x={120} open={120} close={71} high={125} low={69} />
@@ -124,9 +120,9 @@ export function LiquiditySweepDiagram() {
   );
 }
 
-export function TrendStructureDiagram() {
+export function TrendStructureDiagram(_: DiagramProps) {
   return (
-    <DiagramFrame label="Структура тренда: HH/HL, слом структуры (BOS)">
+    <DiagramFrame>
       <polyline
         points="30,150 80,90 130,110 180,50 230,75 280,30"
         fill="none"
@@ -157,9 +153,9 @@ export function TrendStructureDiagram() {
   );
 }
 
-export function OrderBlockDiagram() {
+export function OrderBlockDiagram({ locale }: DiagramProps) {
   return (
-    <DiagramFrame label="Бычий ордер-блок: последняя медвежья свеча перед импульсом, и реакция цены при возврате">
+    <DiagramFrame>
       <Candlestick x={40} open={95} close={118} high={92} low={121} width={16} />
       <rect x={60} y={118} width={280} height={30} fill={UP} opacity={0.14} />
       <line x1={60} y1={118} x2={340} y2={118} stroke={UP} strokeWidth={1} strokeDasharray="3 3" />
@@ -185,21 +181,21 @@ export function OrderBlockDiagram() {
         </marker>
       </defs>
       <text x={340} y={90} fontSize={11} fill={UP}>
-        реакция
+        {t(locale, "reaction")}
       </text>
       <Candlestick x={310} open={138} close={85} high={142} low={80} width={16} />
     </DiagramFrame>
   );
 }
 
-export function RsiDiagram() {
+export function RsiDiagram({ locale }: DiagramProps) {
   const overboughtY = 183; // RSI=70
   const oversoldY = 227; // RSI=30
   return (
     <div className="overflow-hidden rounded-xl border border-black/10 bg-black/[0.02] dark:border-white/10 dark:bg-white/[0.02]">
       <svg viewBox="0 0 400 280" className="w-full">
         <text x={10} y={20} fontSize={10} fill={LABEL}>
-          Цена
+          {t(locale, "price")}
         </text>
         <polyline
           points="30,110 90,70 150,40 190,90 250,55 280,20 330,80"
@@ -211,7 +207,7 @@ export function RsiDiagram() {
         <circle cx={280} cy={20} r={3} fill={DOT} />
         <line x1={150} y1={34} x2={280} y2={14} stroke={UP} strokeWidth={1} strokeDasharray="3 3" />
         <text x={280} y={12} textAnchor="middle" fontSize={10} fill={UP}>
-          новый максимум цены
+          {t(locale, "newPriceHigh")}
         </text>
 
         <line x1={0} y1={140} x2={400} y2={140} stroke={GRID} strokeWidth={1} />
@@ -255,21 +251,18 @@ export function RsiDiagram() {
         <circle cx={280} cy={195} r={3} fill={DOT} />
         <line x1={150} y1={165} x2={280} y2={200} stroke={DOWN} strokeWidth={1} strokeDasharray="3 3" />
         <text x={280} y={215} textAnchor="middle" fontSize={10} fill={DOWN}>
-          RSI ниже — дивергенция
+          {t(locale, "rsiDivergence")}
         </text>
       </svg>
-      <div className="border-t border-black/[0.06] px-4 py-2 text-center text-xs text-neutral-500 dark:border-white/[0.06] dark:text-white/40">
-        Медвежья дивергенция: цена обновляет максимум, а RSI — нет
-      </div>
     </div>
   );
 }
 
-export function IntroChartDiagram() {
+export function IntroChartDiagram({ locale }: DiagramProps) {
   return (
-    <DiagramFrame label="Цена актива меняется во времени — трейдер зарабатывает на этих колебаниях">
-      <text x={10} y={20} fontSize={10} fill={LABEL}>Цена</text>
-      <text x={355} y={210} fontSize={10} fill={LABEL}>Время</text>
+    <DiagramFrame>
+      <text x={10} y={20} fontSize={10} fill={LABEL}>{t(locale, "price")}</text>
+      <text x={355} y={210} fontSize={10} fill={LABEL}>{t(locale, "time")}</text>
       <Candlestick x={40} open={150} close={130} high={155} low={125} width={14} />
       <Candlestick x={80} open={128} close={100} high={132} low={95} width={14} />
       <Candlestick x={120} open={98} close={110} high={102} low={92} width={14} />
@@ -283,67 +276,67 @@ export function IntroChartDiagram() {
   );
 }
 
-export function MarketTypesDiagram() {
+export function MarketTypesDiagram({ locale }: DiagramProps) {
   return (
-    <DiagramFrame label="Одно и то же движение цены даёт разный результат в зависимости от плеча">
-      <text x={90} y={35} textAnchor="middle" fontSize={11} fill={LABEL}>Спот (1x)</text>
+    <DiagramFrame>
+      <text x={90} y={35} textAnchor="middle" fontSize={11} fill={LABEL}>{`${t(locale, "spot")} (1x)`}</text>
       <rect x={70} y={150} width={40} height={20} fill={UP} opacity={0.85} rx={2} />
       <text x={90} y={185} textAnchor="middle" fontSize={10} fill={UP}>+2%</text>
 
-      <text x={300} y={35} textAnchor="middle" fontSize={11} fill={LABEL}>Фьючерсы (10x)</text>
+      <text x={300} y={35} textAnchor="middle" fontSize={11} fill={LABEL}>{`${t(locale, "futures")} (10x)`}</text>
       <rect x={280} y={60} width={40} height={110} fill={UP} opacity={0.85} rx={2} />
       <text x={300} y={185} textAnchor="middle" fontSize={10} fill={UP}>+20%</text>
 
       <line x1={0} y1={170} x2={400} y2={170} stroke={GRID} strokeWidth={1} />
       <text x={200} y={205} textAnchor="middle" fontSize={9} fill={LABEL}>
-        Такое же +2% движение цены актива
+        {t(locale, "samePctMove")}
       </text>
     </DiagramFrame>
   );
 }
 
-export function ChartAnatomyDiagram() {
+export function ChartAnatomyDiagram({ locale }: DiagramProps) {
   return (
-    <DiagramFrame label="Оси графика: цена по вертикали, время по горизонтали; каждая свеча — один период">
+    <DiagramFrame>
       <line x1={40} y1={20} x2={40} y2={190} stroke={LINE} strokeWidth={1} />
       <line x1={40} y1={190} x2={390} y2={190} stroke={LINE} strokeWidth={1} />
-      <text x={15} y={30} fontSize={9} fill={LABEL}>Цена</text>
-      <text x={370} y={205} fontSize={9} fill={LABEL}>Время</text>
+      <text x={15} y={30} fontSize={9} fill={LABEL}>{t(locale, "price")}</text>
+      <text x={370} y={205} fontSize={9} fill={LABEL}>{t(locale, "time")}</text>
       <Candlestick x={100} open={140} close={90} high={150} low={80} width={20} />
       <line x1={100} y1={80} x2={200} y2={80} stroke={LINE} strokeWidth={1} strokeDasharray="2 2" />
-      <text x={205} y={83} fontSize={9} fill={LABEL}>максимум периода</text>
+      <text x={205} y={83} fontSize={9} fill={LABEL}>{t(locale, "periodHigh")}</text>
       <line x1={100} y1={150} x2={200} y2={150} stroke={LINE} strokeWidth={1} strokeDasharray="2 2" />
-      <text x={205} y={153} fontSize={9} fill={LABEL}>минимум периода</text>
+      <text x={205} y={153} fontSize={9} fill={LABEL}>{t(locale, "periodLow")}</text>
       <Candlestick x={180} open={92} close={130} high={85} low={135} width={20} />
       <Candlestick x={260} open={128} close={100} high={122} low={140} width={20} />
     </DiagramFrame>
   );
 }
 
-export function CandlestickAnatomyDiagram() {
+export function CandlestickAnatomyDiagram({ locale }: DiagramProps) {
   return (
-    <DiagramFrame label="Тело свечи — диапазон открытия/закрытия, тени — экстремумы периода">
+    <DiagramFrame>
       <Candlestick x={100} open={150} close={90} high={165} low={80} width={30} />
       <line x1={135} y1={90} x2={175} y2={90} stroke={LINE} strokeWidth={1} strokeDasharray="2 2" />
-      <text x={180} y={93} fontSize={10} fill={LABEL}>close (закрытие)</text>
+      <text x={180} y={93} fontSize={10} fill={LABEL}>close</text>
       <line x1={135} y1={150} x2={175} y2={150} stroke={LINE} strokeWidth={1} strokeDasharray="2 2" />
-      <text x={180} y={153} fontSize={10} fill={LABEL}>open (открытие)</text>
+      <text x={180} y={153} fontSize={10} fill={LABEL}>open</text>
       <line x1={100} y1={165} x2={60} y2={175} stroke={LINE} strokeWidth={1} />
       <text x={20} y={190} fontSize={10} fill={LABEL}>upper wick</text>
       <Candlestick x={280} open={90} close={150} high={165} low={80} width={30} />
-      <text x={280} y={30} textAnchor="middle" fontSize={10} fill={UP}>бычья</text>
-      <text x={100} y={30} textAnchor="middle" fontSize={10} fill={DOWN}>медвежья</text>
+      <text x={280} y={30} textAnchor="middle" fontSize={10} fill={UP}>{t(locale, "bullish")}</text>
+      <text x={100} y={30} textAnchor="middle" fontSize={10} fill={DOWN}>{t(locale, "bearish")}</text>
     </DiagramFrame>
   );
 }
 
-export function SupportResistanceDiagram() {
+export function SupportResistanceDiagram({ locale }: DiagramProps) {
   return (
-    <DiagramFrame label="Поддержка и сопротивление — уровни, от которых цена многократно отскакивает">
+    <DiagramFrame>
       <line x1={0} y1={50} x2={400} y2={50} stroke={DOWN} strokeWidth={1} strokeDasharray="4 4" />
-      <text x={10} y={44} fontSize={10} fill={DOWN}>сопротивление</text>
+      <text x={10} y={44} fontSize={10} fill={DOWN}>{t(locale, "resistance")}</text>
       <line x1={0} y1={165} x2={400} y2={165} stroke={UP} strokeWidth={1} strokeDasharray="4 4" />
-      <text x={10} y={182} fontSize={10} fill={UP}>поддержка</text>
+      <text x={10} y={182} fontSize={10} fill={UP}>{t(locale, "support")}</text>
       <Candlestick x={40} open={110} close={90} high={115} low={165} width={14} />
       <Candlestick x={90} open={92} close={130} high={165} low={90} width={14} />
       <Candlestick x={140} open={128} close={70} high={130} low={50} width={14} />
@@ -355,9 +348,9 @@ export function SupportResistanceDiagram() {
   );
 }
 
-export function BasicTrendDiagram() {
+export function BasicTrendDiagram(_: DiagramProps) {
   return (
-    <DiagramFrame label="Восходящий тренд — цена формирует последовательно растущие максимумы и минимумы (HH/HL)">
+    <DiagramFrame>
       <polyline points="30,170 90,100 140,130 190,60 240,90 290,40" fill="none" stroke={UP} strokeWidth={1.75} />
       <circle cx={90} cy={100} r={3} fill={DOT} />
       <text x={90} y={92} fontSize={9} fill={LABEL} textAnchor="middle">HH</text>
@@ -373,11 +366,11 @@ export function BasicTrendDiagram() {
   );
 }
 
-export function VolumeLiquidityDiagram() {
+export function VolumeLiquidityDiagram({ locale }: DiagramProps) {
   const vols = [30, 55, 20, 70, 45, 90, 35];
   const ups = [true, true, false, false, true, false, true];
   return (
-    <DiagramFrame label="Всплеск объёма подтверждает силу движения — маленький объём означает слабый интерес">
+    <DiagramFrame>
       {vols.map((v, i) => {
         const x = 50 + i * 50;
         return <Candlestick key={i} x={x} open={140} close={ups[i] ? 100 : 170} high={95} low={175} width={16} />;
@@ -397,20 +390,20 @@ export function VolumeLiquidityDiagram() {
         );
       })}
       <line x1={0} y1={182} x2={400} y2={182} stroke={GRID} strokeWidth={1} />
-      <text x={10} y={198} fontSize={9} fill={LABEL}>Объём</text>
+      <text x={10} y={198} fontSize={9} fill={LABEL}>{t(locale, "volume")}</text>
     </DiagramFrame>
   );
 }
 
-export function RiskBasicDiagram() {
+export function RiskBasicDiagram({ locale }: DiagramProps) {
   return (
-    <DiagramFrame label="Стоп-лосс ограничивает убыток, тейк-профит фиксирует прибыль — заранее, до входа в сделку">
+    <DiagramFrame>
       <rect x={40} y={100} width={320} height={35} fill={UP} opacity={0.12} />
       <rect x={40} y={135} width={320} height={20} fill={DOWN} opacity={0.14} />
       <line x1={40} y1={100} x2={360} y2={100} stroke={UP} strokeWidth={1} strokeDasharray="3 3" />
       <text x={365} y={103} fontSize={9} fill={UP}>Take-Profit</text>
       <line x1={40} y1={135} x2={360} y2={135} stroke={LINE} strokeWidth={1.5} />
-      <text x={365} y={138} fontSize={9} fill={LABEL}>Вход</text>
+      <text x={365} y={138} fontSize={9} fill={LABEL}>{t(locale, "entry")}</text>
       <line x1={40} y1={155} x2={360} y2={155} stroke={DOWN} strokeWidth={1} strokeDasharray="3 3" />
       <text x={365} y={158} fontSize={9} fill={DOWN}>Stop-Loss</text>
       <Candlestick x={200} open={140} close={110} high={150} low={100} width={16} />
@@ -418,9 +411,9 @@ export function RiskBasicDiagram() {
   );
 }
 
-export function MovingAveragesDiagram() {
+export function MovingAveragesDiagram(_: DiagramProps) {
   return (
-    <DiagramFrame label="Пересечение быстрой и медленной скользящих средних — популярный торговый сигнал">
+    <DiagramFrame>
       <Candlestick x={40} open={140} close={125} high={145} low={120} width={12} />
       <Candlestick x={75} open={128} close={110} high={132} low={105} width={12} />
       <Candlestick x={110} open={112} close={95} high={116} low={90} width={12} />
@@ -441,7 +434,7 @@ export function MovingAveragesDiagram() {
   );
 }
 
-export function FibonacciDiagram() {
+export function FibonacciDiagram(_: DiagramProps) {
   const levels = [
     { pct: "0", y: 40 },
     { pct: "0.236", y: 65 },
@@ -451,7 +444,7 @@ export function FibonacciDiagram() {
     { pct: "1", y: 160 },
   ];
   return (
-    <DiagramFrame label="Уровни коррекции Фибоначчи между началом и концом импульсного движения">
+    <DiagramFrame>
       {levels.map((l) => (
         <g key={l.pct}>
           <line x1={0} y1={l.y} x2={400} y2={l.y} stroke={LINE} strokeWidth={1} strokeDasharray="3 3" />
@@ -470,14 +463,14 @@ export function FibonacciDiagram() {
   );
 }
 
-export function ReversalPatternsDiagram() {
+export function ReversalPatternsDiagram({ locale }: DiagramProps) {
   return (
-    <DiagramFrame label="Двойная вершина (Double Top) — разворотный паттерн после восходящего тренда">
+    <DiagramFrame>
       <polyline points="30,170 100,50 160,110 230,50 300,120 360,170" fill="none" stroke={LINE} strokeWidth={1.75} />
       <circle cx={100} cy={50} r={3} fill={DOT} />
       <circle cx={230} cy={50} r={3} fill={DOT} />
       <line x1={70} y1={50} x2={260} y2={50} stroke={LABEL} strokeWidth={1} strokeDasharray="2 2" />
-      <text x={165} y={40} textAnchor="middle" fontSize={10} fill={LABEL}>равные максимумы</text>
+      <text x={165} y={40} textAnchor="middle" fontSize={10} fill={LABEL}>{t(locale, "equalHighs")}</text>
       <line x1={0} y1={110} x2={400} y2={110} stroke={DOWN} strokeWidth={1} strokeDasharray="4 4" />
       <text x={10} y={104} fontSize={10} fill={DOWN}>neckline</text>
       <path d="M 300 130 L 340 165" stroke={DOWN} strokeWidth={1.5} fill="none" markerEnd="url(#arrow-rev)" />
@@ -490,27 +483,27 @@ export function ReversalPatternsDiagram() {
   );
 }
 
-export function ContinuationPatternsDiagram() {
+export function ContinuationPatternsDiagram({ locale }: DiagramProps) {
   return (
-    <DiagramFrame label="Бычий флаг: импульс вверх, узкая коррекция вниз, затем продолжение движения">
+    <DiagramFrame>
       <polyline points="20,180 90,40" fill="none" stroke={UP} strokeWidth={1.75} />
       <line x1={90} y1={40} x2={230} y2={90} stroke={LINE} strokeWidth={1} strokeDasharray="3 3" />
       <line x1={90} y1={65} x2={230} y2={115} stroke={LINE} strokeWidth={1} strokeDasharray="3 3" />
       <polyline points="90,50 120,60 150,75 180,68 210,82 230,100" fill="none" stroke={DOWN} strokeWidth={1.5} />
-      <text x={155} y={35} textAnchor="middle" fontSize={10} fill={LABEL}>флаг (консолидация)</text>
+      <text x={155} y={35} textAnchor="middle" fontSize={10} fill={LABEL}>{t(locale, "flagConsolidation")}</text>
       <polyline points="230,100 300,45 370,15" fill="none" stroke={UP} strokeWidth={1.75} />
-      <text x={330} y={20} fontSize={10} fill={UP}>продолжение</text>
+      <text x={330} y={20} fontSize={10} fill={UP}>{t(locale, "continuation")}</text>
     </DiagramFrame>
   );
 }
 
-export function MultiTimeframeDiagram() {
+export function MultiTimeframeDiagram({ locale }: DiagramProps) {
   return (
-    <DiagramFrame label="Старший таймфрейм показывает контекст тренда, младший — точку входа">
-      <text x={100} y={20} textAnchor="middle" fontSize={11} fill={LABEL}>4H — общий тренд</text>
+    <DiagramFrame>
+      <text x={100} y={20} textAnchor="middle" fontSize={11} fill={LABEL}>{`4H — ${t(locale, "higherTfTrend")}`}</text>
       <polyline points="20,80 80,60 140,65 200,35" fill="none" stroke={UP} strokeWidth={2} />
       <line x1={0} y1={90} x2={200} y2={90} stroke={GRID} strokeWidth={1} />
-      <text x={300} y={20} textAnchor="middle" fontSize={11} fill={LABEL}>15m — точка входа</text>
+      <text x={300} y={20} textAnchor="middle" fontSize={11} fill={LABEL}>{`15m — ${t(locale, "lowerTfEntry")}`}</text>
       <Candlestick x={220} open={130} close={110} high={133} low={106} width={10} />
       <Candlestick x={245} open={112} close={95} high={115} low={90} width={10} />
       <Candlestick x={270} open={97} close={100} high={100} low={85} width={10} />
@@ -523,9 +516,9 @@ export function MultiTimeframeDiagram() {
   );
 }
 
-export function LiquidityTypesDiagram() {
+export function LiquidityTypesDiagram(_: DiagramProps) {
   return (
-    <DiagramFrame label="Buy-side ликвидность выше равных хаёв, sell-side — ниже равных лоёв">
+    <DiagramFrame>
       <line x1={30} y1={45} x2={370} y2={45} stroke={UP} strokeWidth={1} strokeDasharray="4 4" />
       <text x={10} y={38} fontSize={9} fill={UP}>buy-side liquidity</text>
       <Candlestick x={60} open={90} close={50} high={95} low={45} width={14} />
@@ -540,33 +533,33 @@ export function LiquidityTypesDiagram() {
   );
 }
 
-export function RiskRewardDiagram() {
+export function RiskRewardDiagram({ locale }: DiagramProps) {
   return (
-    <DiagramFrame label="Risk/Reward 1:3 — риск в 3 раза меньше потенциальной прибыли">
+    <DiagramFrame>
       <rect x={60} y={110} width={280} height={20} fill={DOWN} opacity={0.16} />
       <rect x={60} y={30} width={280} height={80} fill={UP} opacity={0.12} />
       <line x1={60} y1={110} x2={340} y2={110} stroke={LINE} strokeWidth={1.5} />
-      <text x={345} y={113} fontSize={9} fill={LABEL}>вход</text>
+      <text x={345} y={113} fontSize={9} fill={LABEL}>{t(locale, "entry")}</text>
       <line x1={60} y1={130} x2={340} y2={130} stroke={DOWN} strokeWidth={1} strokeDasharray="3 3" />
       <text x={345} y={133} fontSize={9} fill={DOWN}>-1R</text>
       <line x1={60} y1={30} x2={340} y2={30} stroke={UP} strokeWidth={1} strokeDasharray="3 3" />
       <text x={345} y={33} fontSize={9} fill={UP}>+3R</text>
       <line x1={30} y1={130} x2={30} y2={110} stroke={DOWN} strokeWidth={2} />
       <line x1={30} y1={110} x2={30} y2={30} stroke={UP} strokeWidth={2} />
-      <text x={10} y={125} fontSize={9} fill={DOWN}>риск</text>
-      <text x={10} y={65} fontSize={9} fill={UP}>прибыль</text>
+      <text x={10} y={125} fontSize={9} fill={DOWN}>{t(locale, "risk")}</text>
+      <text x={10} y={65} fontSize={9} fill={UP}>{t(locale, "profit")}</text>
     </DiagramFrame>
   );
 }
 
-export function PositionSizeDiagram() {
+export function PositionSizeDiagram({ locale }: DiagramProps) {
   const bars = [
     { label: "SL 1%", h: 150, x: 70 },
     { label: "SL 3%", h: 90, x: 200 },
     { label: "SL 6%", h: 45, x: 330 },
   ];
   return (
-    <DiagramFrame label="Чем дальше стоп-лосс, тем меньше размер позиции при одинаковом риске в $">
+    <DiagramFrame>
       {bars.map((b) => (
         <g key={b.label}>
           <rect x={b.x - 30} y={190 - b.h} width={60} height={b.h} fill={UP} opacity={0.7} rx={2} />
@@ -575,17 +568,17 @@ export function PositionSizeDiagram() {
       ))}
       <line x1={0} y1={190} x2={400} y2={190} stroke={GRID} strokeWidth={1} />
       <text x={200} y={20} textAnchor="middle" fontSize={10} fill={LABEL}>
-        Размер позиции при риске 1% от депозита
+        {t(locale, "positionSizeAtRisk")}
       </text>
     </DiagramFrame>
   );
 }
 
-export function StopLossDiagram() {
+export function StopLossDiagram({ locale }: DiagramProps) {
   return (
-    <DiagramFrame label="Stop-Loss срабатывает, когда цена доходит до заданного уровня, закрывая сделку с убытком">
+    <DiagramFrame>
       <line x1={40} y1={90} x2={360} y2={90} stroke={LINE} strokeWidth={1.5} />
-      <text x={365} y={93} fontSize={9} fill={LABEL}>вход</text>
+      <text x={365} y={93} fontSize={9} fill={LABEL}>{t(locale, "entry")}</text>
       <line x1={40} y1={155} x2={360} y2={155} stroke={DOWN} strokeWidth={1.5} strokeDasharray="3 3" />
       <text x={365} y={158} fontSize={9} fill={DOWN}>stop-loss</text>
       <Candlestick x={80} open={90} close={100} high={85} low={105} width={14} />
@@ -596,16 +589,16 @@ export function StopLossDiagram() {
       <Candlestick x={280} open={153} close={158} high={150} low={162} width={14} />
       <Candlestick x={320} open={156} close={162} high={153} low={165} width={14} />
       <circle cx={320} cy={155} r={4} fill={DOWN} />
-      <text x={320} y={182} textAnchor="middle" fontSize={9} fill={DOWN}>стоп сработал</text>
+      <text x={320} y={182} textAnchor="middle" fontSize={9} fill={DOWN}>{t(locale, "stopTriggered")}</text>
     </DiagramFrame>
   );
 }
 
-export function TakeProfitDiagram() {
+export function TakeProfitDiagram({ locale }: DiagramProps) {
   return (
-    <DiagramFrame label="Take-Profit фиксирует прибыль автоматически, когда цена достигает цели">
+    <DiagramFrame>
       <line x1={40} y1={155} x2={360} y2={155} stroke={LINE} strokeWidth={1.5} />
-      <text x={365} y={158} fontSize={9} fill={LABEL}>вход</text>
+      <text x={365} y={158} fontSize={9} fill={LABEL}>{t(locale, "entry")}</text>
       <line x1={40} y1={60} x2={360} y2={60} stroke={UP} strokeWidth={1.5} strokeDasharray="3 3" />
       <text x={365} y={63} fontSize={9} fill={UP}>take-profit</text>
       <Candlestick x={80} open={155} close={140} high={158} low={135} width={14} />
@@ -616,12 +609,12 @@ export function TakeProfitDiagram() {
       <Candlestick x={280} open={72} close={65} high={75} low={62} width={14} />
       <Candlestick x={320} open={67} close={58} high={70} low={55} width={14} />
       <circle cx={320} cy={60} r={4} fill={UP} />
-      <text x={320} y={40} textAnchor="middle" fontSize={9} fill={UP}>цель достигнута</text>
+      <text x={320} y={40} textAnchor="middle" fontSize={9} fill={UP}>{t(locale, "targetReached")}</text>
     </DiagramFrame>
   );
 }
 
-export function MacdDiagram() {
+export function MacdDiagram({ locale }: DiagramProps) {
   const hist = [10, 18, 24, 16, 6, -8, -20, -14, -4, 8];
   return (
     <div className="overflow-hidden rounded-xl border border-black/10 bg-black/[0.02] dark:border-white/10 dark:bg-white/[0.02]">
@@ -652,18 +645,15 @@ export function MacdDiagram() {
           strokeWidth={1.5}
         />
         <circle cx={178} cy={98} r={3} fill={DOT} />
-        <text x={178} y={80} textAnchor="middle" fontSize={9} fill={UP}>пересечение вверх</text>
+        <text x={178} y={80} textAnchor="middle" fontSize={9} fill={UP}>{t(locale, "crossoverUp")}</text>
       </svg>
-      <div className="border-t border-black/[0.06] px-4 py-2 text-center text-xs text-neutral-500 dark:border-white/[0.06] dark:text-white/40">
-        Пересечение линии MACD и сигнальной линии — сигнал смены импульса
-      </div>
     </div>
   );
 }
 
-export function EmaDiagram() {
+export function EmaDiagram(_: DiagramProps) {
   return (
-    <DiagramFrame label="EMA сильнее реагирует на последние свечи и быстрее разворачивается вслед за ценой">
+    <DiagramFrame>
       <Candlestick x={40} open={140} close={130} high={144} low={126} width={12} />
       <Candlestick x={75} open={132} close={110} high={135} low={106} width={12} />
       <Candlestick x={110} open={112} close={85} high={115} low={80} width={12} />
@@ -683,9 +673,9 @@ export function EmaDiagram() {
   );
 }
 
-export function SmaDiagram() {
+export function SmaDiagram(_: DiagramProps) {
   return (
-    <DiagramFrame label="SMA сглаживает шум сильнее, чем EMA, но заметно отстаёт от текущей цены">
+    <DiagramFrame>
       <Candlestick x={40} open={140} close={130} high={144} low={126} width={12} />
       <Candlestick x={75} open={132} close={110} high={135} low={106} width={12} />
       <Candlestick x={110} open={112} close={85} high={115} low={80} width={12} />
@@ -705,9 +695,9 @@ export function SmaDiagram() {
   );
 }
 
-export function VwapDiagram() {
+export function VwapDiagram(_: DiagramProps) {
   return (
-    <DiagramFrame label="Внутри дня цена колеблется вокруг VWAP — институциональные трейдеры ориентируются на него">
+    <DiagramFrame>
       <line x1={0} y1={110} x2={400} y2={110} stroke={LABEL} strokeWidth={1.5} strokeDasharray="4 4" />
       <text x={10} y={104} fontSize={10} fill={LABEL}>VWAP</text>
       <Candlestick x={40} open={100} close={90} high={103} low={85} width={12} />
@@ -723,7 +713,7 @@ export function VwapDiagram() {
   );
 }
 
-export function AtrDiagram() {
+export function AtrDiagram(_: DiagramProps) {
   const atrVals = [15, 18, 20, 30, 45, 55, 48, 35];
   return (
     <div className="overflow-hidden rounded-xl border border-black/10 bg-black/[0.02] dark:border-white/10 dark:bg-white/[0.02]">
@@ -742,16 +732,13 @@ export function AtrDiagram() {
           <rect key={i} x={30 + i * 40} y={210 - v} width={20} height={v} fill={LABEL} opacity={0.5} />
         ))}
       </svg>
-      <div className="border-t border-black/[0.06] px-4 py-2 text-center text-xs text-neutral-500 dark:border-white/[0.06] dark:text-white/40">
-        ATR растёт вместе с амплитудой свечей — показывает силу волатильности, а не направление
-      </div>
     </div>
   );
 }
 
-export function BollingerDiagram() {
+export function BollingerDiagram(_: DiagramProps) {
   return (
-    <DiagramFrame label="Сужение полос (squeeze) часто предшествует сильному движению — расширению диапазона">
+    <DiagramFrame>
       <path
         d="M 20 90 C 100 100, 180 108, 220 108 C 280 108, 340 40, 380 20"
         stroke={LINE}
@@ -780,11 +767,11 @@ export function BollingerDiagram() {
   );
 }
 
-export function VolumeBarsDiagram() {
+export function VolumeBarsDiagram(_: DiagramProps) {
   const vols = [25, 30, 20, 35, 90, 40, 25];
   const ups = [true, false, true, false, false, true, true];
   return (
-    <DiagramFrame label="Кульминационный объём на резком движении часто отмечает локальный разворот">
+    <DiagramFrame>
       {vols.map((v, i) => {
         const x = 60 + i * 45;
         return <Candlestick key={i} x={x} open={130} close={ups[i] ? 90 : 170} high={85} low={175} width={16} />;
@@ -799,10 +786,10 @@ export function VolumeBarsDiagram() {
   );
 }
 
-export function DeltaDiagram() {
+export function DeltaDiagram({ locale }: DiagramProps) {
   const deltas = [10, 18, -8, 22, -15, -25, 12, 30];
   return (
-    <DiagramFrame label="Дельта — разница между объёмом покупок и продаж; отрицательная дельта на росте цены — тревожный знак">
+    <DiagramFrame>
       <line x1={0} y1={110} x2={400} y2={110} stroke={GRID} strokeWidth={1} />
       <text x={10} y={105} fontSize={9} fill={LABEL}>0</text>
       {deltas.map((d, i) => (
@@ -816,25 +803,25 @@ export function DeltaDiagram() {
           opacity={0.75}
         />
       ))}
-      <text x={200} y={20} textAnchor="middle" fontSize={10} fill={LABEL}>Delta объёма по свечам</text>
+      <text x={200} y={20} textAnchor="middle" fontSize={10} fill={LABEL}>{`Delta ${t(locale, "volumeDeltaByCandle")}`}</text>
     </DiagramFrame>
   );
 }
 
-export function OpenInterestDiagram() {
+export function OpenInterestDiagram({ locale }: DiagramProps) {
   return (
-    <DiagramFrame label="Рост цены при растущем OI — новые деньги входят в тренд, движение подтверждено">
+    <DiagramFrame>
       <polyline points="30,150 90,120 150,100 210,60 270,45 330,20" fill="none" stroke={UP} strokeWidth={1.75} />
-      <text x={30} y={30} fontSize={10} fill={UP}>Цена</text>
+      <text x={30} y={30} fontSize={10} fill={UP}>{t(locale, "price")}</text>
       <polyline points="30,180 90,170 150,155 210,135 270,115 330,95" fill="none" stroke={LABEL} strokeWidth={1.5} strokeDasharray="4 3" />
       <text x={30} y={200} fontSize={10} fill={LABEL}>Open Interest</text>
     </DiagramFrame>
   );
 }
 
-export function FundingRateDiagram() {
+export function FundingRateDiagram({ locale }: DiagramProps) {
   return (
-    <DiagramFrame label="Устойчиво положительный funding — рынок перегрет лонгами, растёт риск коррекции">
+    <DiagramFrame>
       <line x1={0} y1={110} x2={400} y2={110} stroke={GRID} strokeWidth={1} />
       <text x={370} y={105} fontSize={9} fill={LABEL}>0%</text>
       <rect x={0} y={40} width={400} height={70} fill={UP} opacity={0.05} />
@@ -845,33 +832,33 @@ export function FundingRateDiagram() {
         stroke={LABEL}
         strokeWidth={1.75}
       />
-      <text x={150} y={30} textAnchor="middle" fontSize={9} fill={UP}>лонги платят шортам</text>
-      <text x={310} y={160} textAnchor="middle" fontSize={9} fill={DOWN}>шорты платят лонгам</text>
+      <text x={150} y={30} textAnchor="middle" fontSize={9} fill={UP}>{t(locale, "longsPayShorts")}</text>
+      <text x={310} y={160} textAnchor="middle" fontSize={9} fill={DOWN}>{t(locale, "shortsPayLongs")}</text>
     </DiagramFrame>
   );
 }
 
-export function LiquidationsDiagram() {
+export function LiquidationsDiagram({ locale }: DiagramProps) {
   return (
-    <DiagramFrame label="Каскад ликвидаций: пробой уровня заставляет закрываться лонги с плечом, ускоряя падение">
+    <DiagramFrame>
       <Candlestick x={60} open={130} close={120} high={133} low={116} width={16} />
       <Candlestick x={110} open={122} close={110} high={125} low={106} width={16} />
       <Candlestick x={160} open={112} close={100} high={115} low={96} width={16} />
       <Candlestick x={210} open={102} close={60} high={104} low={40} width={20} />
-      <text x={210} y={30} textAnchor="middle" fontSize={9} fill={DOWN}>каскад ликвидаций лонгов</text>
+      <text x={210} y={30} textAnchor="middle" fontSize={9} fill={DOWN}>{t(locale, "liquidationCascade")}</text>
       {[70, 82, 94].map((y, i) => (
         <text key={i} x={230 + i * 5} y={y} fontSize={11} fill={DOWN}>×</text>
       ))}
       <Candlestick x={260} open={62} close={90} high={58} low={140} width={16} />
       <Candlestick x={310} open={92} close={100} high={88} low={104} width={16} />
-      <text x={310} y={125} textAnchor="middle" fontSize={9} fill={UP}>резкий отскок</text>
+      <text x={310} y={125} textAnchor="middle" fontSize={9} fill={UP}>{t(locale, "sharpBounce")}</text>
     </DiagramFrame>
   );
 }
 
-export function ScalpingDiagram() {
+export function ScalpingDiagram(_: DiagramProps) {
   return (
-    <DiagramFrame label="Скальпинг: много коротких сделок на младших таймфреймах, каждая держится минуты">
+    <DiagramFrame>
       {Array.from({ length: 12 }).map((_, i) => {
         const x = 30 + i * 30;
         const up = i % 2 === 0;
@@ -894,13 +881,13 @@ export function ScalpingDiagram() {
   );
 }
 
-export function DayTradingDiagram() {
+export function DayTradingDiagram({ locale }: DiagramProps) {
   return (
-    <DiagramFrame label="Дей-трейдинг: позиция открывается и закрывается в течение одной торговой сессии">
+    <DiagramFrame>
       <line x1={30} y1={20} x2={30} y2={190} stroke={LINE} strokeWidth={1} strokeDasharray="2 2" />
-      <text x={30} y={12} textAnchor="middle" fontSize={9} fill={LABEL}>открытие сессии</text>
+      <text x={30} y={12} textAnchor="middle" fontSize={9} fill={LABEL}>{t(locale, "sessionOpen")}</text>
       <line x1={370} y1={20} x2={370} y2={190} stroke={LINE} strokeWidth={1} strokeDasharray="2 2" />
-      <text x={370} y={12} textAnchor="middle" fontSize={9} fill={LABEL}>закрытие сессии</text>
+      <text x={370} y={12} textAnchor="middle" fontSize={9} fill={LABEL}>{t(locale, "sessionClose")}</text>
       <Candlestick x={60} open={140} close={125} high={144} low={120} width={14} />
       <Candlestick x={100} open={127} close={100} high={130} low={95} width={14} />
       <Candlestick x={140} open={102} close={115} high={98} low={118} width={14} />
@@ -915,9 +902,9 @@ export function DayTradingDiagram() {
   );
 }
 
-export function SwingTradingDiagram() {
+export function SwingTradingDiagram({ locale }: DiagramProps) {
   return (
-    <DiagramFrame label="Свинг-трейдинг: позиция держится несколько дней, чтобы захватить весь ценовой свинг">
+    <DiagramFrame>
       <polyline
         points="30,160 90,140 150,80 210,60 270,90 330,150 380,100"
         fill="none"
@@ -925,19 +912,19 @@ export function SwingTradingDiagram() {
         strokeWidth={1.75}
       />
       <circle cx={90} cy={140} r={4} fill={UP} />
-      <text x={90} y={158} textAnchor="middle" fontSize={9} fill={UP}>вход</text>
+      <text x={90} y={158} textAnchor="middle" fontSize={9} fill={UP}>{t(locale, "entry")}</text>
       <circle cx={210} cy={60} r={4} fill={DOWN} />
-      <text x={210} y={45} textAnchor="middle" fontSize={9} fill={DOWN}>выход</text>
+      <text x={210} y={45} textAnchor="middle" fontSize={9} fill={DOWN}>{t(locale, "exit")}</text>
       <line x1={90} y1={140} x2={90} y2={20} stroke={LINE} strokeWidth={1} strokeDasharray="2 2" />
       <line x1={210} y1={60} x2={210} y2={20} stroke={LINE} strokeWidth={1} strokeDasharray="2 2" />
-      <text x={150} y={16} textAnchor="middle" fontSize={9} fill={LABEL}>несколько дней</text>
+      <text x={150} y={16} textAnchor="middle" fontSize={9} fill={LABEL}>{t(locale, "severalDays")}</text>
     </DiagramFrame>
   );
 }
 
-export function PositionTradingDiagram() {
+export function PositionTradingDiagram({ locale }: DiagramProps) {
   return (
-    <DiagramFrame label="Позиционная торговля: сделка держится недели или месяцы вдоль всего тренда">
+    <DiagramFrame>
       <polyline
         points="20,180 70,165 120,150 170,120 220,100 270,75 320,55 380,25"
         fill="none"
@@ -945,20 +932,20 @@ export function PositionTradingDiagram() {
         strokeWidth={2}
       />
       <circle cx={30} cy={178} r={4} fill={UP} />
-      <text x={30} y={196} fontSize={9} fill={UP}>вход</text>
+      <text x={30} y={196} fontSize={9} fill={UP}>{t(locale, "entry")}</text>
       <circle cx={370} cy={28} r={4} fill={DOWN} />
-      <text x={340} y={16} fontSize={9} fill={DOWN}>выход спустя месяцы</text>
+      <text x={340} y={16} fontSize={9} fill={DOWN}>{t(locale, "exitAfterMonths")}</text>
       <line x1={30} y1={178} x2={30} y2={20} stroke={LINE} strokeWidth={1} strokeDasharray="2 2" />
       <line x1={370} y1={28} x2={370} y2={20} stroke={LINE} strokeWidth={1} strokeDasharray="2 2" />
     </DiagramFrame>
   );
 }
 
-export function BreakoutDiagram() {
+export function BreakoutDiagram({ locale }: DiagramProps) {
   return (
-    <DiagramFrame label="Пробой уровня сопротивления с ростом объёма подтверждает начало нового движения">
+    <DiagramFrame>
       <line x1={0} y1={90} x2={330} y2={90} stroke={DOWN} strokeWidth={1} strokeDasharray="4 4" />
-      <text x={10} y={84} fontSize={10} fill={DOWN}>сопротивление</text>
+      <text x={10} y={84} fontSize={10} fill={DOWN}>{t(locale, "resistance")}</text>
       <Candlestick x={40} open={120} close={100} high={124} low={95} width={14} />
       <Candlestick x={80} open={102} close={95} high={106} low={90} width={14} />
       <Candlestick x={120} open={97} close={92} high={101} low={88} width={14} />
@@ -967,16 +954,16 @@ export function BreakoutDiagram() {
       <Candlestick x={240} open={93} close={60} high={95} low={55} width={16} />
       <Candlestick x={285} open={58} close={30} high={62} low={25} width={16} />
       <Candlestick x={330} open={32} close={15} high={35} low={10} width={16} />
-      <text x={280} y={20} textAnchor="middle" fontSize={10} fill={UP}>пробой + импульс</text>
+      <text x={280} y={20} textAnchor="middle" fontSize={10} fill={UP}>{t(locale, "breakoutImpulse")}</text>
     </DiagramFrame>
   );
 }
 
-export function MeanReversionDiagram() {
+export function MeanReversionDiagram({ locale }: DiagramProps) {
   return (
-    <DiagramFrame label="Цена возвращается к среднему после сильного отклонения от него">
+    <DiagramFrame>
       <line x1={0} y1={110} x2={400} y2={110} stroke={LABEL} strokeWidth={1.5} strokeDasharray="4 4" />
-      <text x={10} y={104} fontSize={10} fill={LABEL}>среднее (например, MA)</text>
+      <text x={10} y={104} fontSize={10} fill={LABEL}>{t(locale, "meanExample")}</text>
       <line x1={0} y1={60} x2={400} y2={60} stroke={LINE} strokeWidth={1} strokeDasharray="2 2" />
       <line x1={0} y1={160} x2={400} y2={160} stroke={LINE} strokeWidth={1} strokeDasharray="2 2" />
       <polyline
@@ -986,9 +973,9 @@ export function MeanReversionDiagram() {
         strokeWidth={1.75}
       />
       <circle cx={180} cy={45} r={4} fill={DOWN} />
-      <text x={180} y={30} textAnchor="middle" fontSize={9} fill={DOWN}>перекуплено — шорт</text>
+      <text x={180} y={30} textAnchor="middle" fontSize={9} fill={DOWN}>{t(locale, "overboughtShort")}</text>
       <circle cx={330} cy={155} r={4} fill={UP} />
-      <text x={330} y={188} textAnchor="middle" fontSize={9} fill={UP}>перепродано — лонг</text>
+      <text x={330} y={188} textAnchor="middle" fontSize={9} fill={UP}>{t(locale, "oversoldLong")}</text>
     </DiagramFrame>
   );
 }

@@ -74,7 +74,7 @@ export default async function LessonPage({
       )}
 
       <div className="mt-8">
-        <LessonContentBlocks blocks={blocks} />
+        <LessonContentBlocks blocks={blocks} locale={locale} />
       </div>
 
       {lesson.questions.length > 0 ? (
