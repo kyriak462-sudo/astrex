@@ -4,6 +4,7 @@ import Google from "next-auth/providers/google";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import bcrypt from "bcryptjs";
 import { db } from "@/lib/db";
+import { PRIVACY_POLICY_VERSION, TERMS_VERSION } from "@/lib/legal";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(db),
@@ -15,9 +16,23 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   events: {
     async createUser({ user }) {
       if (!user.id) return;
-      await db.virtualPortfolio.create({
-        data: { userId: user.id, balance: 10000 },
-      });
+      await db.$transaction([
+        db.virtualPortfolio.create({
+          data: { userId: user.id, balance: 10000 },
+        }),
+        // OAuth sign-ups (e.g. Google) skip our /api/auth/register route, but the
+        // Google button is disabled client-side until the consent checkbox is
+        // checked, so it's safe to stamp consent here too.
+        db.user.update({
+          where: { id: user.id },
+          data: {
+            consentGiven: true,
+            consentAt: new Date(),
+            privacyPolicyVersion: PRIVACY_POLICY_VERSION,
+            termsVersion: TERMS_VERSION,
+          },
+        }),
+      ]);
     },
   },
   providers: [

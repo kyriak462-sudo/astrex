@@ -4,9 +4,18 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { DEFAULT_LOCALE, isLocale, LOCALE_COOKIE } from "@/i18n/locales";
 import { getDictionary } from "@/i18n/get-dictionary";
-import { SYMBOLS, getCurrentPrice, getTicker24h, formatPrice, getMaxLeverage } from "@/lib/market-data";
+import {
+  SYMBOLS,
+  getCurrentPrice,
+  getTicker24h,
+  getPositionKlines,
+  formatPrice,
+  getMaxLeverage,
+} from "@/lib/market-data";
 import { TradingViewWidget } from "@/components/market/tradingview-widget";
+import { TradeChart } from "@/components/market/trade-chart";
 import { TradeForm } from "@/components/market/trade-form";
+import { AutoRefresh } from "@/components/market/auto-refresh";
 import {
   openTrade,
   closeTrade,
@@ -74,6 +83,11 @@ export default async function MarketPage({
 
   const maxLeverage = getMaxLeverage(symbol.ticker);
 
+  const activeTradeForSymbol = openTrades.find((t) => t.symbol === symbol.ticker);
+  const activeOrderForSymbol = pendingOrders.find((o) => o.symbol === symbol.ticker);
+  const positionCandles =
+    activeTradeForSymbol || activeOrderForSymbol ? await getPositionKlines(symbol.ticker) : [];
+
   const tabLink = (t: Tab) => `/market?symbol=${symbol.ticker}&tab=${t}`;
   const tabClass = (active: boolean) =>
     `pb-2 text-xs font-medium transition-colors ${
@@ -94,6 +108,7 @@ export default async function MarketPage({
 
   return (
     <div className="mx-auto max-w-5xl">
+      <AutoRefresh />
       <h1 className="text-2xl font-semibold text-neutral-900 dark:text-white">{d.title}</h1>
       <p className="mt-2 text-sm text-neutral-500 dark:text-white/45">{d.subtitle}</p>
 
@@ -154,6 +169,27 @@ export default async function MarketPage({
         <div>
           <TradingViewWidget symbol={symbol.tvSymbol} height={560} locale={locale} />
           <p className="mt-2 text-xs text-neutral-400 dark:text-white/35">{d.chartHint}</p>
+
+          {(activeTradeForSymbol || activeOrderForSymbol) && (
+            <div className="mt-4">
+              <p className="mb-2 text-xs uppercase tracking-widest text-neutral-400 dark:text-white/35">
+                {d.positionLevelsTitle}
+              </p>
+              <TradeChart
+                candles={positionCandles}
+                entryPrice={activeTradeForSymbol?.entryPrice}
+                stopLoss={activeTradeForSymbol?.stopLoss}
+                takeProfit={activeTradeForSymbol?.takeProfit}
+                tradeId={activeTradeForSymbol?.id ?? null}
+                pendingOrderId={activeOrderForSymbol?.id ?? null}
+                pendingLimitPrice={activeOrderForSymbol?.entryPrice}
+                pendingTriggerPrice={activeOrderForSymbol?.triggerPrice}
+              />
+              <p className="mt-2 text-xs text-neutral-400 dark:text-white/35">
+                {d.positionLevelsHint}
+              </p>
+            </div>
+          )}
         </div>
 
         <div className="space-y-6">
@@ -466,20 +502,17 @@ export default async function MarketPage({
             <p className="text-sm text-neutral-400 dark:text-white/35">{d.noTrades}</p>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[560px] text-left text-sm">
+              <table className="w-full min-w-[320px] text-left text-sm">
                 <thead>
                   <tr className="text-xs uppercase tracking-wide text-neutral-400 dark:text-white/35">
                     <th className="pb-2 pr-4 font-medium">{d.colCoin}</th>
-                    <th className="pb-2 pr-4 font-medium">{d.colSide}</th>
                     <th className="pb-2 pr-4 font-medium">{d.colEntry}</th>
-                    <th className="pb-2 pr-4 font-medium">{d.colAmount}</th>
-                    <th className="pb-2 pr-4 font-medium">{d.colPnl}</th>
-                    <th className="pb-2 font-medium">{d.colDate}</th>
+                    <th className="pb-2 pr-4 font-medium">{d.colSide}</th>
+                    <th className="pb-2 font-medium">{d.colPnl}</th>
                   </tr>
                 </thead>
                 <tbody>
                   {closedTrades.map((trade) => {
-                    const margin = (trade.entryPrice * trade.quantity) / trade.leverage;
                     const pnl = trade.pnl ?? 0;
                     const pnlUp = pnl >= 0;
                     return (
@@ -488,6 +521,7 @@ export default async function MarketPage({
                         className="border-t border-black/[0.06] text-neutral-700 dark:border-white/[0.06] dark:text-white/70"
                       >
                         <td className="py-2 pr-4 text-neutral-900 dark:text-white">{trade.symbol}</td>
+                        <td className="py-2 pr-4 font-mono">${formatPrice(trade.entryPrice)}</td>
                         <td className="py-2 pr-4">
                           <span
                             className={
@@ -500,17 +534,10 @@ export default async function MarketPage({
                           </span>{" "}
                           <span className="text-neutral-400 dark:text-white/35">{trade.leverage}x</span>
                         </td>
-                        <td className="py-2 pr-4 font-mono">${formatPrice(trade.entryPrice)}</td>
-                        <td className="py-2 pr-4 font-mono">
-                          ${Number.isFinite(margin) ? margin.toFixed(2) : "0.00"}
-                        </td>
                         <td
-                          className={`py-2 pr-4 font-mono ${pnlUp ? "text-[var(--color-up)]" : "text-[var(--color-down)]"}`}
+                          className={`py-2 font-mono ${pnlUp ? "text-[var(--color-up)]" : "text-[var(--color-down)]"}`}
                         >
                           {Number.isFinite(pnl) ? `${pnlUp ? "+" : ""}${pnl.toFixed(2)}$` : "—"}
-                        </td>
-                        <td className="py-2 text-xs text-neutral-400 dark:text-white/35">
-                          {new Date(trade.openedAt).toLocaleDateString("ru-RU")}
                         </td>
                       </tr>
                     );

@@ -118,6 +118,7 @@ const tr: Dictionary = {
     checkYourself: "Kendinizi test edin",
     alreadyCompleted: "Ders zaten tamamlandı",
     completeButton: "Dersi tamamla",
+    retryHint: "Dersi tamamlamak için tüm soruları doğru yanıtlayın.",
   },
   market: {
     title: "Sanal Piyasa",
@@ -187,6 +188,8 @@ const tr: Dictionary = {
     statusFilled: "Gerçekleşti",
     statusCancelled: "İptal edildi",
     statusClosed: "Kapandı",
+    positionLevelsTitle: "İşleminizin seviyeleri",
+    positionLevelsHint: "Seviyeyi değiştirmek için Stop-Loss/Take-Profit veya Limit/Trigger çizgilerini sürükleyin.",
   },
   profile: {
     title: "Profil",

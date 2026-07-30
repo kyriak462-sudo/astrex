@@ -6,7 +6,10 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { levelForXp } from "@/lib/gamification";
 
-export async function completeLesson(lessonId: string) {
+export type QuestionResult = { questionId: string; firstTryCorrect: boolean };
+
+/** Questions missed on the first attempt earn half XP (rounded up, minimum 1) as a soft penalty. */
+export async function completeLesson(lessonId: string, questionResults: QuestionResult[] = []) {
   const session = await auth();
   if (!session?.user?.id) redirect("/sign-in");
 
@@ -23,8 +26,13 @@ export async function completeLesson(lessonId: string) {
   });
 
   if (existing?.status !== "COMPLETED") {
+    const resultByQuestion = new Map(questionResults.map((r) => [r.questionId, r.firstTryCorrect]));
     const xpEarned =
-      lesson.xpReward + lesson.questions.reduce((sum, q) => sum + q.xpReward, 0);
+      lesson.xpReward +
+      lesson.questions.reduce((sum, q) => {
+        const firstTryCorrect = resultByQuestion.get(q.id) ?? true;
+        return sum + (firstTryCorrect ? q.xpReward : Math.max(1, Math.ceil(q.xpReward / 2)));
+      }, 0);
 
     await db.userLessonProgress.upsert({
       where: { userId_lessonId: { userId, lessonId } },

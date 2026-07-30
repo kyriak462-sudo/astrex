@@ -82,6 +82,7 @@ export function LessonPath({ lessons }: { lessons: PathLesson[] }) {
               )}
               <button
                 disabled={locked}
+                data-lesson-status={lesson.status}
                 className={cn(
                   "relative flex h-16 w-16 items-center justify-center rounded-full border transition-colors",
                   lesson.status === "completed" &&

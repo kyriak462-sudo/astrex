@@ -118,6 +118,7 @@ const pt: Dictionary = {
     checkYourself: "Teste-se",
     alreadyCompleted: "Aula já concluída",
     completeButton: "Concluir aula",
+    retryHint: "Responda corretamente a todas as perguntas para concluir a aula.",
   },
   market: {
     title: "Mercado Virtual",
@@ -187,6 +188,8 @@ const pt: Dictionary = {
     statusFilled: "Executada",
     statusCancelled: "Cancelada",
     statusClosed: "Fechada",
+    positionLevelsTitle: "Os níveis da sua operação",
+    positionLevelsHint: "Arraste as linhas de Stop-Loss/Take-Profit ou Limit/Trigger para alterar o nível.",
   },
   profile: {
     title: "Perfil",

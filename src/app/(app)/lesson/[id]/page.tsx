@@ -77,12 +77,21 @@ export default async function LessonPage({
         <LessonContentBlocks blocks={blocks} />
       </div>
 
-      {lesson.questions.length > 0 && (
+      {lesson.questions.length > 0 ? (
         <div className="mt-10">
           <p className="mb-4 text-xs uppercase tracking-widest text-neutral-400 dark:text-white/35">
             {dict.lesson.checkYourself}
           </p>
           <LessonQuiz
+            lessonId={lesson.id}
+            isCompleted={isCompleted}
+            totalXp={totalXp}
+            completeAction={completeLesson}
+            labels={{
+              completeButton: dict.lesson.completeButton,
+              alreadyCompleted: dict.lesson.alreadyCompleted,
+              retryHint: dict.lesson.retryHint,
+            }}
             questions={lesson.questions.map((q) => ({
               id: q.id,
               prompt: pickLocalized(q.prompt as Record<string, string>, locale) ?? "",
@@ -92,19 +101,19 @@ export default async function LessonPage({
             }))}
           />
         </div>
+      ) : (
+        <div className="mt-10 border-t border-black/[0.06] pt-6 dark:border-white/[0.06]">
+          {isCompleted ? (
+            <p className="text-sm text-[var(--color-up)]">{dict.lesson.alreadyCompleted} ✓</p>
+          ) : (
+            <form action={completeLesson.bind(null, lesson.id, [])}>
+              <Button type="submit" size="lg">
+                <Zap className="h-4 w-4" /> {dict.lesson.completeButton} (+{totalXp} XP)
+              </Button>
+            </form>
+          )}
+        </div>
       )}
-
-      <div className="mt-10 border-t border-black/[0.06] pt-6 dark:border-white/[0.06]">
-        {isCompleted ? (
-          <p className="text-sm text-[var(--color-up)]">{dict.lesson.alreadyCompleted} ✓</p>
-        ) : (
-          <form action={completeLesson.bind(null, lesson.id)}>
-            <Button type="submit" size="lg">
-              <Zap className="h-4 w-4" /> {dict.lesson.completeButton} (+{totalXp} XP)
-            </Button>
-          </form>
-        )}
-      </div>
     </div>
   );
 }

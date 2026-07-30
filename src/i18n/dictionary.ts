@@ -101,6 +101,7 @@ export type Dictionary = {
     checkYourself: string;
     alreadyCompleted: string;
     completeButton: string;
+    retryHint: string;
   };
   market: {
     title: string;
@@ -169,6 +170,8 @@ export type Dictionary = {
     statusFilled: string;
     statusCancelled: string;
     statusClosed: string;
+    positionLevelsTitle: string;
+    positionLevelsHint: string;
   };
   profile: {
     title: string;

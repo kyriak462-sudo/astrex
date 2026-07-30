@@ -256,6 +256,67 @@ export async function setBreakEven(formData: FormData) {
   revalidatePath("/market");
 }
 
+/** Direct (non-form) SL/TP setter used by the draggable chart price lines. */
+export async function setTradeLevel(
+  tradeId: string,
+  field: "stopLoss" | "takeProfit",
+  value: number | null
+) {
+  const session = await auth();
+  if (!session?.user?.id) return;
+
+  const trade = await getOwnedOpenTrade(session.user.id, tradeId);
+  if (!trade) return;
+  if (value !== null && !Number.isFinite(value)) return;
+
+  await db.virtualTrade.update({
+    where: { id: tradeId },
+    data: { [field]: value },
+  });
+
+  revalidatePath("/market");
+}
+
+async function getOwnedPendingOrder(userId: string, orderId: string) {
+  const order = await db.virtualTrade.findUnique({
+    where: { id: orderId },
+    include: { portfolio: true },
+  });
+  if (!order || order.portfolio.userId !== userId || order.status !== "PENDING") return null;
+  return order;
+}
+
+/** Direct (non-form) limit/trigger price setter used by the draggable chart price lines. */
+export async function setPendingOrderLevel(
+  orderId: string,
+  field: "limitPrice" | "triggerPrice",
+  value: number
+) {
+  const session = await auth();
+  if (!session?.user?.id) return;
+  if (!Number.isFinite(value) || value <= 0) return;
+
+  const order = await getOwnedPendingOrder(session.user.id, orderId);
+  if (!order) return;
+
+  if (field === "limitPrice") {
+    // entryPrice holds the limit execution price for pending LIMIT/STOP_LIMIT orders;
+    // quantity was sized against it, so keep it consistent when the price moves.
+    const margin = (order.entryPrice * order.quantity) / order.leverage;
+    const quantity = (margin * order.leverage) / value;
+    if (!Number.isFinite(quantity) || quantity <= 0) return;
+    await db.virtualTrade.update({
+      where: { id: orderId },
+      data: { entryPrice: value, quantity },
+    });
+  } else {
+    if (order.orderType !== "STOP_LIMIT") return;
+    await db.virtualTrade.update({ where: { id: orderId }, data: { triggerPrice: value } });
+  }
+
+  revalidatePath("/market");
+}
+
 /** Cancels the caller's own pending (LIMIT/STOP_LIMIT) order and refunds its reserved margin. */
 export async function cancelOrder(formData: FormData) {
   const session = await auth();

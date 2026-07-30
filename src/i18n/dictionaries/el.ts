@@ -118,6 +118,7 @@ const el: Dictionary = {
     checkYourself: "Ελέγξτε τον εαυτό σας",
     alreadyCompleted: "Το μάθημα έχει ήδη ολοκληρωθεί",
     completeButton: "Ολοκλήρωση μαθήματος",
+    retryHint: "Απαντήστε σωστά σε όλες τις ερωτήσεις για να ολοκληρώσετε το μάθημα.",
   },
   market: {
     title: "Εικονική Αγορά",
@@ -188,6 +189,8 @@ const el: Dictionary = {
     statusFilled: "Εκτελέστηκε",
     statusCancelled: "Ακυρώθηκε",
     statusClosed: "Έκλεισε",
+    positionLevelsTitle: "Τα επίπεδα της συναλλαγής σας",
+    positionLevelsHint: "Σύρετε τις γραμμές Stop-Loss/Take-Profit ή Limit/Trigger για να αλλάξετε το επίπεδο.",
   },
   profile: {
     title: "Προφίλ",

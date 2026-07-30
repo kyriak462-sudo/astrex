@@ -35,7 +35,7 @@ const FALLBACK_PRICES: Record<string, number> = {
 type PriceInfo = { price: number; changePct: number };
 
 let cache: { data: Record<string, PriceInfo>; expiresAt: number } | null = null;
-const CACHE_MS = 30_000;
+const CACHE_MS = 8_000;
 
 async function fetchAllPrices(): Promise<Record<string, PriceInfo>> {
   if (cache && cache.expiresAt > Date.now()) return cache.data;
@@ -44,7 +44,7 @@ async function fetchAllPrices(): Promise<Record<string, PriceInfo>> {
   const url = `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_24hr_change=true`;
 
   try {
-    const res = await fetch(url, { next: { revalidate: 30 } });
+    const res = await fetch(url, { next: { revalidate: 8 } });
     if (!res.ok) throw new Error(`CoinGecko responded ${res.status}`);
     const json = (await res.json()) as Record<string, { usd: number; usd_24h_change?: number }>;
 
@@ -87,6 +87,41 @@ export type Candle = {
   low: number;
   close: number;
 };
+
+const klinesCache = new Map<string, { data: Candle[]; expiresAt: number }>();
+const KLINES_CACHE_MS = 60_000;
+
+/**
+ * Candles for the small "your position" overlay chart. Uses CoinGecko's OHLC endpoint
+ * (not Binance) because Binance's REST API is unreachable from Netlify's serverless
+ * functions in production — CoinGecko is the same host already relied on for prices.
+ */
+export async function getPositionKlines(ticker: string, days: 1 | 7 | 14 = 1): Promise<Candle[]> {
+  const symbol = SYMBOLS.find((s) => s.ticker === ticker);
+  if (!symbol) return [];
+
+  const cacheKey = `${ticker}-${days}`;
+  const cached = klinesCache.get(cacheKey);
+  if (cached && cached.expiresAt > Date.now()) return cached.data;
+
+  const url = `https://api.coingecko.com/api/v3/coins/${symbol.coingeckoId}/ohlc?vs_currency=usd&days=${days}`;
+  try {
+    const res = await fetch(url, { next: { revalidate: 60 } });
+    if (!res.ok) throw new Error(`CoinGecko responded ${res.status}`);
+    const rows = (await res.json()) as [number, number, number, number, number][];
+    const candles = rows.map(([t, open, high, low, close]) => ({
+      time: Math.floor(t / 1000),
+      open,
+      high,
+      low,
+      close,
+    }));
+    klinesCache.set(cacheKey, { data: candles, expiresAt: Date.now() + KLINES_CACHE_MS });
+    return candles;
+  } catch {
+    return cached?.data ?? [];
+  }
+}
 
 export type TrendContext = {
   price: number;

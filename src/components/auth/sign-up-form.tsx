@@ -151,8 +151,38 @@ export function SignUpForm({ dict }: { dict: Dictionary }) {
       </h1>
       <p className="mt-1 text-sm text-neutral-500 dark:text-white/50">{dict.auth.signUp.subtitle}</p>
 
-      <div className="mt-6">
-        <GoogleButton label={dict.auth.google} />
+      <label className="mt-6 flex items-start gap-2.5 text-xs text-neutral-500 dark:text-white/45">
+        <input
+          type="checkbox"
+          checked={consent}
+          onChange={(e) => setConsent(e.target.checked)}
+          className="mt-0.5 h-4 w-4 shrink-0 rounded border-black/20 bg-transparent accent-neutral-900 dark:border-white/20 dark:accent-white"
+        />
+        <span>
+          I have read the{" "}
+          <Link
+            href="/privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-neutral-900 underline underline-offset-2 hover:no-underline dark:text-white"
+          >
+            Privacy Policy
+          </Link>{" "}
+          and{" "}
+          <Link
+            href="/terms"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-neutral-900 underline underline-offset-2 hover:no-underline dark:text-white"
+          >
+            Terms of Service
+          </Link>{" "}
+          and I consent to the processing of my personal data in accordance with the GDPR.
+        </span>
+      </label>
+
+      <div className="mt-4">
+        <GoogleButton label={dict.auth.google} disabled={!consent} />
       </div>
 
       <div className="my-6 flex items-center gap-3">
@@ -196,36 +226,6 @@ export function SignUpForm({ dict }: { dict: Dictionary }) {
             placeholder={dict.auth.signUp.passwordPlaceholder}
           />
         </div>
-
-        <label className="flex items-start gap-2.5 text-xs text-neutral-500 dark:text-white/45">
-          <input
-            type="checkbox"
-            checked={consent}
-            onChange={(e) => setConsent(e.target.checked)}
-            className="mt-0.5 h-4 w-4 shrink-0 rounded border-black/20 bg-transparent accent-neutral-900 dark:border-white/20 dark:accent-white"
-          />
-          <span>
-            I have read the{" "}
-            <Link
-              href="/privacy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-neutral-900 underline underline-offset-2 hover:no-underline dark:text-white"
-            >
-              Privacy Policy
-            </Link>{" "}
-            and{" "}
-            <Link
-              href="/terms"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-neutral-900 underline underline-offset-2 hover:no-underline dark:text-white"
-            >
-              Terms of Service
-            </Link>{" "}
-            and I consent to the processing of my personal data in accordance with the GDPR.
-          </span>
-        </label>
 
         {error && <p className="text-sm text-[var(--color-down)]">{error}</p>}
 

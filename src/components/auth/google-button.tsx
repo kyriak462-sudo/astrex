@@ -29,15 +29,18 @@ function GoogleIcon() {
 export function GoogleButton({
   callbackUrl = "/learn",
   label = "Continue with Google",
+  disabled = false,
 }: {
   callbackUrl?: string;
   label?: string;
+  disabled?: boolean;
 }) {
   return (
     <Button
       type="button"
       variant="secondary"
       className="w-full"
+      disabled={disabled}
       onClick={() => signIn("google", { callbackUrl })}
     >
       <GoogleIcon />

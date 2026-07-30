@@ -118,6 +118,7 @@ const uk: Dictionary = {
     checkYourself: "Перевірте себе",
     alreadyCompleted: "Урок вже пройдено",
     completeButton: "Завершити урок",
+    retryHint: "Дайте правильні відповіді на всі питання, щоб завершити урок.",
   },
   market: {
     title: "Віртуальний ринок",
@@ -187,6 +188,8 @@ const uk: Dictionary = {
     statusFilled: "Виконано",
     statusCancelled: "Скасовано",
     statusClosed: "Закрито",
+    positionLevelsTitle: "Рівні вашої угоди",
+    positionLevelsHint: "Перетягніть лінії Stop-Loss/Take-Profit або Limit/Trigger, щоб змінити рівень.",
   },
   profile: {
     title: "Профіль",

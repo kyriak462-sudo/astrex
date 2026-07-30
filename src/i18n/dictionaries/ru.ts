@@ -118,6 +118,7 @@ const ru: Dictionary = {
     checkYourself: "Проверьте себя",
     alreadyCompleted: "Урок уже пройден",
     completeButton: "Завершить урок",
+    retryHint: "Ответьте правильно на все вопросы, чтобы завершить урок.",
   },
   market: {
     title: "Виртуальный рынок",
@@ -187,6 +188,8 @@ const ru: Dictionary = {
     statusFilled: "Исполнен",
     statusCancelled: "Отменён",
     statusClosed: "Закрыт",
+    positionLevelsTitle: "Уровни вашей сделки",
+    positionLevelsHint: "Перетащите линии Stop-Loss/Take-Profit или Limit/Trigger, чтобы изменить уровень.",
   },
   profile: {
     title: "Профиль",

@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { LessonPath, type PathLesson } from "@/components/learn/lesson-path";
+import { ScrollToCurrentLesson } from "@/components/learn/scroll-to-current";
 import { pickLocalized } from "@/lib/lesson-content";
 import { DEFAULT_LOCALE, isLocale, LOCALE_COOKIE } from "@/i18n/locales";
 import { getDictionary } from "@/i18n/get-dictionary";
@@ -53,6 +54,7 @@ export default async function LearnPage() {
 
   return (
     <div className="mx-auto max-w-2xl">
+      <ScrollToCurrentLesson />
       <div className="mb-10">
         <p className="text-xs uppercase tracking-widest text-neutral-400 dark:text-white/35">
           {dict.learn.course}
