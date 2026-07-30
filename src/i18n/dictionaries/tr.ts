@@ -250,6 +250,13 @@ const tr: Dictionary = {
     subtitle: "Ekonomi ve kripto — otomatik olarak güncellenir.",
     readMore: "Oku",
     noData: "Haberler yüklenemedi. Daha sonra tekrar deneyin.",
+    tabNews: "Haberler",
+    tabPosts: "Gönderiler",
+    postPlaceholder: "Piyasada neler oluyor?",
+    postButton: "Gönder",
+    postBlocked: "Bu gönderi içerik kontrolünden geçemedi.",
+    postCooldown: "Tekrar göndermeden önce lütfen biraz bekleyin.",
+    noPosts: "Henüz gönderi yok. İlkini sen yaz!",
   },
 };
 

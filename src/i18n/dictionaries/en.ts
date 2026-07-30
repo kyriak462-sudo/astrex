@@ -250,6 +250,13 @@ const en: Dictionary = {
     subtitle: "Economy and crypto — updates automatically.",
     readMore: "Read",
     noData: "Couldn't load news. Try again later.",
+    tabNews: "News",
+    tabPosts: "Posts",
+    postPlaceholder: "What's happening in the market?",
+    postButton: "Post",
+    postBlocked: "This post didn't pass the content check.",
+    postCooldown: "Please wait a moment before posting again.",
+    noPosts: "No posts yet. Write the first one!",
   },
 };
 

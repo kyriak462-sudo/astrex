@@ -250,6 +250,13 @@ const es: Dictionary = {
     subtitle: "Economía y cripto — se actualiza automáticamente.",
     readMore: "Leer",
     noData: "No se pudieron cargar las noticias. Inténtalo más tarde.",
+    tabNews: "Noticias",
+    tabPosts: "Publicaciones",
+    postPlaceholder: "¿Qué está pasando en el mercado?",
+    postButton: "Publicar",
+    postBlocked: "Esta publicación no superó la revisión de contenido.",
+    postCooldown: "Espera un momento antes de publicar de nuevo.",
+    noPosts: "Aún no hay publicaciones. ¡Escribe la primera!",
   },
 };
 
