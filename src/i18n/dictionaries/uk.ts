@@ -204,7 +204,7 @@ const uk: Dictionary = {
     settingsButton: "Налаштування",
   },
   leaderboard: {
-    title: "Дошка лідерів",
+    title: "Лідери",
     subtitle: "Найкращі трейдери платформи за P&L цього місяця. Оновлюється 1 числа.",
     noData: "Поки що немає даних.",
     you: "ви",

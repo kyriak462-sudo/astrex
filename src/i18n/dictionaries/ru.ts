@@ -204,7 +204,7 @@ const ru: Dictionary = {
     settingsButton: "Настройки",
   },
   leaderboard: {
-    title: "Доска лидеров",
+    title: "Лидеры",
     subtitle: "Лучшие трейдеры платформы по P&L за этот месяц. Обновляется 1-го числа.",
     noData: "Пока нет данных.",
     you: "вы",
