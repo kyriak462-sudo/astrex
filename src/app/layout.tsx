@@ -19,9 +19,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Astrex — Учись трейдингу правильно",
+  title: "Astrex — Learn Trading the Right Way",
   description:
-    "Astrex — интерактивная образовательная платформа по трейдингу и криптовалютам. Уроки, тесты, виртуальный рынок и AI-помощник на пути от новичка до продвинутого трейдера.",
+    "Astrex is an interactive education platform for trading and crypto. Lessons, quizzes, a virtual market, and an AI assistant to guide you from beginner to advanced trader.",
 };
 
 export default async function RootLayout({
@@ -35,7 +35,7 @@ export default async function RootLayout({
 
   return (
     <html
-      lang="ru"
+      lang="en"
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased ${theme === "dark" ? "dark" : ""}`}
     >
