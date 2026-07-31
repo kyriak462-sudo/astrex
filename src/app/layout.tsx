@@ -5,6 +5,7 @@ import { Starfield } from "@/components/brand/starfield";
 import { CryptoDrift } from "@/components/brand/crypto-drift";
 import { Providers } from "@/components/providers";
 import { CookieConsentBanner } from "@/components/legal/cookie-consent";
+import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { isTheme, THEME_COOKIE } from "@/lib/theme";
 import { DEFAULT_LOCALE, isLocale, LOCALE_COOKIE } from "@/i18n/locales";
 import { getDictionary } from "@/i18n/get-dictionary";
@@ -52,6 +53,7 @@ export default async function RootLayout({
           {children}
         </div>
         <CookieConsentBanner labels={dict.cookieConsent} />
+        <GoogleAnalytics />
       </body>
     </html>
   );
