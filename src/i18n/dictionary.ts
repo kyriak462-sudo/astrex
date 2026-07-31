@@ -229,12 +229,8 @@ export type Dictionary = {
     subtitle: string;
     readMore: string;
     noData: string;
-    tabNews: string;
-    tabPosts: string;
-    postPlaceholder: string;
-    postButton: string;
-    postBlocked: string;
-    postCooldown: string;
-    noPosts: string;
+    backToList: string;
+    readOriginal: string;
+    notFound: string;
   };
 };

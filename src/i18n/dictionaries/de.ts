@@ -250,13 +250,9 @@ const de: Dictionary = {
     subtitle: "Wirtschaft und Krypto — aktualisiert sich automatisch.",
     readMore: "Lesen",
     noData: "Nachrichten konnten nicht geladen werden. Versuchen Sie es später erneut.",
-    tabNews: "Nachrichten",
-    tabPosts: "Beiträge",
-    postPlaceholder: "Was passiert gerade am Markt?",
-    postButton: "Posten",
-    postBlocked: "Dieser Beitrag hat die Inhaltsprüfung nicht bestanden.",
-    postCooldown: "Bitte warten Sie kurz, bevor Sie erneut posten.",
-    noPosts: "Noch keine Beiträge. Schreibe den ersten!",
+    backToList: "Zurück zu den Nachrichten",
+    readOriginal: "Original bei {source} lesen",
+    notFound: "Artikel nicht gefunden — der Feed wurde möglicherweise aktualisiert.",
   },
 };
 

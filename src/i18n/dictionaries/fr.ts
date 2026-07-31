@@ -250,13 +250,9 @@ const fr: Dictionary = {
     subtitle: "Économie et crypto — mise à jour automatique.",
     readMore: "Lire",
     noData: "Impossible de charger les actualités. Réessayez plus tard.",
-    tabNews: "Actualités",
-    tabPosts: "Publications",
-    postPlaceholder: "Que se passe-t-il sur le marché ?",
-    postButton: "Publier",
-    postBlocked: "Cette publication n'a pas passé la vérification du contenu.",
-    postCooldown: "Veuillez patienter un instant avant de publier à nouveau.",
-    noPosts: "Pas encore de publications. Écrivez la première !",
+    backToList: "Retour aux actualités",
+    readOriginal: "Lire l'original sur {source}",
+    notFound: "Article introuvable — le flux a peut-être été actualisé.",
   },
 };
 

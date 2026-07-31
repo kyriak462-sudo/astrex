@@ -13,6 +13,10 @@ export type NewsArticle = {
 const FEEDS = [
   { url: "https://www.coindesk.com/arc/outboundfeeds/rss/", source: "CoinDesk" },
   { url: "https://cointelegraph.com/rss", source: "Cointelegraph" },
+  { url: "https://feeds.bbci.co.uk/news/world/rss.xml", source: "BBC World" },
+  { url: "https://feeds.bbci.co.uk/news/business/rss.xml", source: "BBC Business" },
+  { url: "https://feeds.content.dowjones.io/public/rss/mw_topstories", source: "MarketWatch" },
+  { url: "https://www.federalreserve.gov/feeds/press_all.xml", source: "Federal Reserve" },
 ];
 
 const parser = new XMLParser({

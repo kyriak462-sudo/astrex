@@ -250,13 +250,9 @@ const it: Dictionary = {
     subtitle: "Economia e crypto — si aggiorna automaticamente.",
     readMore: "Leggi",
     noData: "Impossibile caricare le notizie. Riprova più tardi.",
-    tabNews: "Notizie",
-    tabPosts: "Post",
-    postPlaceholder: "Cosa sta succedendo sul mercato?",
-    postButton: "Pubblica",
-    postBlocked: "Questo post non ha superato il controllo dei contenuti.",
-    postCooldown: "Attendi un momento prima di pubblicare di nuovo.",
-    noPosts: "Ancora nessun post. Scrivi il primo!",
+    backToList: "Torna alle notizie",
+    readOriginal: "Leggi l'originale su {source}",
+    notFound: "Articolo non trovato — il feed potrebbe essersi aggiornato.",
   },
 };
 
