@@ -57,6 +57,7 @@ async function fetchFeed(feed: {
     const res = await fetch(feed.url, {
       next: { revalidate: 300 },
       headers: { "User-Agent": "Mozilla/5.0 (compatible; AstrexNewsBot/1.0)" },
+      signal: AbortSignal.timeout(8000),
     });
     if (!res.ok) return [];
 
