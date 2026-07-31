@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import { DEFAULT_LOCALE, isLocale, LOCALE_COOKIE } from "@/i18n/locales";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { getNews } from "@/lib/news";
+import { getFullArticle } from "@/lib/article-extract";
 
 export default async function NewsArticlePage({
   params,
@@ -21,6 +22,7 @@ export default async function NewsArticlePage({
 
   const articles = await getNews();
   const article = articles.find((a) => a.id === url);
+  const fullContent = article ? await getFullArticle(article.url) : null;
 
   const dateFormatter = new Intl.DateTimeFormat(locale, { dateStyle: "medium", timeStyle: "short" });
 
@@ -57,9 +59,16 @@ export default async function NewsArticlePage({
           {article.title}
         </h1>
 
-        <p className="mt-4 whitespace-pre-wrap text-sm leading-relaxed text-neutral-700 dark:text-white/70">
-          {article.body}
-        </p>
+        {fullContent ? (
+          <div
+            className="mt-4 text-sm leading-relaxed text-neutral-700 dark:text-white/70 [&_p]:mt-4 [&_p:first-child]:mt-0 [&_h2]:mt-6 [&_h2]:text-base [&_h2]:font-semibold [&_h2]:text-neutral-900 [&_h3]:mt-5 [&_h3]:font-medium [&_h3]:text-neutral-900 dark:[&_h2]:text-white dark:[&_h3]:text-white [&_a]:underline [&_a]:underline-offset-2 [&_ul]:mt-3 [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:mt-3 [&_ol]:list-decimal [&_ol]:pl-5 [&_li]:mt-1 [&_blockquote]:mt-4 [&_blockquote]:border-l-2 [&_blockquote]:border-black/10 [&_blockquote]:pl-4 [&_blockquote]:italic dark:[&_blockquote]:border-white/15 [&_img]:mt-4 [&_img]:w-full [&_img]:rounded-xl [&_figcaption]:mt-1.5 [&_figcaption]:text-xs [&_figcaption]:text-neutral-400 dark:[&_figcaption]:text-white/35"
+            dangerouslySetInnerHTML={{ __html: fullContent }}
+          />
+        ) : (
+          <p className="mt-4 whitespace-pre-wrap text-sm leading-relaxed text-neutral-700 dark:text-white/70">
+            {article.body}
+          </p>
+        )}
 
         <a
           href={article.url}

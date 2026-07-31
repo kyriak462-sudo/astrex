@@ -10,14 +10,30 @@ export type NewsArticle = {
   publishedAt: number;
 };
 
-const FEEDS = [
-  { url: "https://www.coindesk.com/arc/outboundfeeds/rss/", source: "CoinDesk" },
-  { url: "https://cointelegraph.com/rss", source: "Cointelegraph" },
-  { url: "https://feeds.bbci.co.uk/news/world/rss.xml", source: "BBC World" },
-  { url: "https://feeds.bbci.co.uk/news/business/rss.xml", source: "BBC Business" },
-  { url: "https://feeds.content.dowjones.io/public/rss/mw_topstories", source: "MarketWatch" },
-  { url: "https://www.federalreserve.gov/feeds/press_all.xml", source: "Federal Reserve" },
+// "general" feeds mix in unrelated human-interest/crime stories, so they're
+// filtered down to economy/war-relevant items via TOPIC_KEYWORDS below.
+// "crypto"/"business" feeds are inherently on-topic and pass through unfiltered.
+const FEEDS: { url: string; source: string; category: "crypto" | "business" | "general" }[] = [
+  { url: "https://www.coindesk.com/arc/outboundfeeds/rss/", source: "CoinDesk", category: "crypto" },
+  { url: "https://cointelegraph.com/rss", source: "Cointelegraph", category: "crypto" },
+  { url: "https://feeds.bbci.co.uk/news/world/rss.xml", source: "BBC World", category: "general" },
+  { url: "https://feeds.bbci.co.uk/news/business/rss.xml", source: "BBC Business", category: "business" },
+  { url: "https://feeds.content.dowjones.io/public/rss/mw_topstories", source: "MarketWatch", category: "business" },
+  { url: "https://www.federalreserve.gov/feeds/press_all.xml", source: "Federal Reserve", category: "business" },
 ];
+
+const TOPIC_KEYWORDS = [
+  "war", "conflict", "military", "strike", "missile", "troops", "ceasefire", "peace deal",
+  "iran", "israel", "gaza", "hamas", "ukraine", "russia", "hormuz", "sanction",
+  "trump", "tariff", "election", "econom", "inflation", "recession",
+  "fed ", "federal reserve", "interest rate", "trade war", "market", "stock", "dollar",
+  "currency", "crisis", "nuclear", "embargo", "oil price", "opec", "g7", "g20", "nato",
+];
+
+function matchesTopic(title: string, body: string) {
+  const text = `${title} ${body}`.toLowerCase();
+  return TOPIC_KEYWORDS.some((k) => text.includes(k));
+}
 
 const parser = new XMLParser({
   ignoreAttributes: false,
@@ -32,7 +48,11 @@ function stripHtml(html: string) {
     .trim();
 }
 
-async function fetchFeed(feed: { url: string; source: string }): Promise<NewsArticle[]> {
+async function fetchFeed(feed: {
+  url: string;
+  source: string;
+  category: "crypto" | "business" | "general";
+}): Promise<NewsArticle[]> {
   try {
     const res = await fetch(feed.url, {
       next: { revalidate: 300 },
@@ -61,13 +81,17 @@ async function fetchFeed(feed: { url: string; source: string }): Promise<NewsArt
           : mediaContent?.["@_url"] ?? null;
         const pubDate = item.pubDate ? new Date(item.pubDate).getTime() : Date.now();
 
+        const cleanTitle = stripHtml(title);
+        const cleanBody = stripHtml(description);
+        if (feed.category === "general" && !matchesTopic(cleanTitle, cleanBody)) return null;
+
         return {
           id: link,
-          title: stripHtml(title),
+          title: cleanTitle,
           url: link,
           imageUrl,
           source: feed.source,
-          body: stripHtml(description),
+          body: cleanBody,
           publishedAt: Number.isFinite(pubDate) ? pubDate : Date.now(),
         };
       })
