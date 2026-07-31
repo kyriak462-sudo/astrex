@@ -54,6 +54,9 @@ const es: Dictionary = {
   },
   footer: {
     disclaimer: "Plataforma educativa. No constituye asesoramiento de inversión.",
+    privacyPolicy: "Política de Privacidad",
+    termsOfService: "Términos de Servicio",
+    cookieSettings: "Configuración de cookies",
   },
   auth: {
     signIn: {
@@ -79,6 +82,14 @@ const es: Dictionary = {
       haveAccount: "¿Ya tienes una cuenta?",
       signInLink: "Iniciar sesión",
       genericError: "No se pudo crear la cuenta.",
+      consentIntro: "Confirmo que he leído la",
+      privacyPolicyLabel: "Política de Privacidad",
+      consentAnd: "y los",
+      termsOfServiceLabel: "Términos de Servicio",
+      consentOutro: "y doy mi consentimiento para el tratamiento de mis datos personales conforme al RGPD.",
+      consentRequired: "Debes aceptar la Política de Privacidad y los Términos de Servicio antes de crear una cuenta.",
+      invalidData: "Comprueba que tus datos sean correctos.",
+      emailTaken: "Ya existe un usuario con este email.",
     },
     orEmail: "o con email",
     google: "Continuar con Google",
@@ -253,6 +264,20 @@ const es: Dictionary = {
     backToList: "Volver a las noticias",
     readOriginal: "Leer el original en {source}",
     notFound: "Artículo no encontrado — puede que el feed se haya actualizado.",
+  },
+  cookieConsent: {
+    title: "Usamos cookies",
+    descriptionPrefix:
+      "Usamos cookies estrictamente necesarias para el funcionamiento de ASTREX (inicio de sesión, tema, idioma). Con tu permiso, también nos gustaría usar cookies analíticas para mejorar el producto. Consulta nuestra",
+    privacyPolicyLabel: "Política de Privacidad",
+    descriptionSuffix: ".",
+    necessaryLabel: "Estrictamente necesarias (siempre activas)",
+    analyticsLabel: "Analíticas",
+    marketingLabel: "Marketing",
+    savePreferences: "Guardar preferencias",
+    acceptAll: "Aceptar todo",
+    rejectNonEssential: "Rechazar no esenciales",
+    customize: "Personalizar",
   },
 };
 

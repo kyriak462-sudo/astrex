@@ -161,7 +161,7 @@ export default async function MarketPage({
           <p className="text-neutral-400 dark:text-white/35">
             {d.volume24h} ({symbol.ticker})
           </p>
-          <p className="font-mono">{ticker24h.volume.toLocaleString("ru-RU", { maximumFractionDigits: 0 })}</p>
+          <p className="font-mono">{ticker24h.volume.toLocaleString(locale, { maximumFractionDigits: 0 })}</p>
         </div>
       </div>
 
@@ -184,6 +184,8 @@ export default async function MarketPage({
                 pendingOrderId={activeOrderForSymbol?.id ?? null}
                 pendingLimitPrice={activeOrderForSymbol?.entryPrice}
                 pendingTriggerPrice={activeOrderForSymbol?.triggerPrice}
+                entryLabel={d.entryPrice}
+                locale={locale}
               />
               <p className="mt-2 text-xs text-neutral-400 dark:text-white/35">
                 {d.positionLevelsHint}
@@ -199,7 +201,7 @@ export default async function MarketPage({
                 <p className="text-xs text-neutral-400 dark:text-white/40">{d.balance}</p>
                 <p className="mt-1 text-2xl font-semibold text-neutral-900 dark:text-white">
                   {Number.isFinite(balance)
-                    ? `$${balance.toLocaleString("ru-RU", { maximumFractionDigits: 2 })}`
+                    ? `$${balance.toLocaleString(locale, { maximumFractionDigits: 2 })}`
                     : "$0.00"}
                 </p>
               </div>
@@ -216,6 +218,7 @@ export default async function MarketPage({
               availableBalance={Number.isFinite(balance) ? balance : 0}
               action={openTrade}
               maxLeverage={maxLeverage}
+              locale={locale}
               labels={{
                 tabMarket: d.tabMarket,
                 tabLimit: d.tabLimit,

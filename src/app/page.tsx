@@ -191,12 +191,12 @@ export default async function Home() {
         </div>
         <div className="mx-auto mt-4 flex max-w-6xl flex-wrap items-center justify-center gap-x-5 gap-y-2 px-6 text-xs text-neutral-400 dark:text-white/35 md:justify-start">
           <a href="/privacy" className="underline underline-offset-2 hover:text-neutral-900 dark:hover:text-white">
-            Privacy Policy
+            {dict.footer.privacyPolicy}
           </a>
           <a href="/terms" className="underline underline-offset-2 hover:text-neutral-900 dark:hover:text-white">
-            Terms of Service
+            {dict.footer.termsOfService}
           </a>
-          <CookieSettingsLink label="Cookie Settings" />
+          <CookieSettingsLink label={dict.footer.cookieSettings} />
         </div>
       </footer>
     </>

@@ -11,7 +11,15 @@ function toIsoDate(d: Date) {
   return d.toISOString().slice(0, 10);
 }
 
-export function PnlChart({ days, rangeDays }: { days: DayPnl[]; rangeDays: number }) {
+export function PnlChart({
+  days,
+  rangeDays,
+  locale = "en",
+}: {
+  days: DayPnl[];
+  rangeDays: number;
+  locale?: string;
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -47,7 +55,7 @@ export function PnlChart({ days, rangeDays }: { days: DayPnl[]; rangeDays: numbe
       grid: { vertLines: { color: gridColor }, horzLines: { color: gridColor } },
       rightPriceScale: { borderColor },
       timeScale: { borderColor, timeVisible: false },
-      localization: { locale: "en-US" },
+      localization: { locale },
       handleScroll: false,
       handleScale: false,
     });
@@ -74,7 +82,7 @@ export function PnlChart({ days, rangeDays }: { days: DayPnl[]; rangeDays: numbe
       resizeObserver.disconnect();
       chart.remove();
     };
-  }, [days, rangeDays]);
+  }, [days, rangeDays, locale]);
 
   return (
     <div

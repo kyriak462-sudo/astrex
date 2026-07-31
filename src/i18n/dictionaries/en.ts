@@ -54,6 +54,9 @@ const en: Dictionary = {
   },
   footer: {
     disclaimer: "Educational platform. Not investment advice.",
+    privacyPolicy: "Privacy Policy",
+    termsOfService: "Terms of Service",
+    cookieSettings: "Cookie Settings",
   },
   auth: {
     signIn: {
@@ -79,6 +82,14 @@ const en: Dictionary = {
       haveAccount: "Already have an account?",
       signInLink: "Sign in",
       genericError: "Couldn't create an account.",
+      consentIntro: "I confirm I have read the",
+      privacyPolicyLabel: "Privacy Policy",
+      consentAnd: "and",
+      termsOfServiceLabel: "Terms of Service",
+      consentOutro: "and consent to the processing of my personal data under the GDPR.",
+      consentRequired: "You must agree to the Privacy Policy and Terms of Service before creating an account.",
+      invalidData: "Please check that your details are correct.",
+      emailTaken: "A user with this email already exists.",
     },
     orEmail: "or with email",
     google: "Continue with Google",
@@ -253,6 +264,20 @@ const en: Dictionary = {
     backToList: "Back to news",
     readOriginal: "Read the original on {source}",
     notFound: "Article not found — the feed may have refreshed.",
+  },
+  cookieConsent: {
+    title: "We use cookies",
+    descriptionPrefix:
+      "We use strictly necessary cookies to run ASTREX (sign-in, theme, language). With your permission, we'd also like to use analytics cookies to improve the product. See our",
+    privacyPolicyLabel: "Privacy Policy",
+    descriptionSuffix: ".",
+    necessaryLabel: "Strictly necessary (always on)",
+    analyticsLabel: "Analytics",
+    marketingLabel: "Marketing",
+    savePreferences: "Save preferences",
+    acceptAll: "Accept All",
+    rejectNonEssential: "Reject Non-Essential",
+    customize: "Customize",
   },
 };
 

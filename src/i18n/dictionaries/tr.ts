@@ -54,6 +54,9 @@ const tr: Dictionary = {
   },
   footer: {
     disclaimer: "Eğitim platformu. Yatırım tavsiyesi değildir.",
+    privacyPolicy: "Gizlilik Politikası",
+    termsOfService: "Hizmet Şartları",
+    cookieSettings: "Çerez Ayarları",
   },
   auth: {
     signIn: {
@@ -79,6 +82,14 @@ const tr: Dictionary = {
       haveAccount: "Zaten bir hesabınız var mı?",
       signInLink: "Giriş yap",
       genericError: "Hesap oluşturulamadı.",
+      consentIntro: "",
+      privacyPolicyLabel: "Gizlilik Politikası",
+      consentAnd: " ve ",
+      termsOfServiceLabel: "Hizmet Şartları",
+      consentOutro: "'nı okuduğumu onaylıyorum ve kişisel verilerimin GDPR uyarınca işlenmesine izin veriyorum.",
+      consentRequired: "Hesap oluşturmadan önce Gizlilik Politikası'nı ve Hizmet Şartları'nı kabul etmelisiniz.",
+      invalidData: "Lütfen bilgilerinizin doğru olduğundan emin olun.",
+      emailTaken: "Bu e-posta ile bir kullanıcı zaten mevcut.",
     },
     orEmail: "veya e-posta ile",
     google: "Google ile devam et",
@@ -253,6 +264,20 @@ const tr: Dictionary = {
     backToList: "Haberlere dön",
     readOriginal: "{source} üzerinde orijinalini oku",
     notFound: "Makale bulunamadı — akış güncellenmiş olabilir.",
+  },
+  cookieConsent: {
+    title: "Çerezleri kullanıyoruz",
+    descriptionPrefix:
+      "ASTREX'i çalıştırmak için kesinlikle gerekli çerezleri kullanıyoruz (giriş, tema, dil). İzninizle, ürünü geliştirmek için analiz çerezleri de kullanmak istiyoruz. Daha fazla bilgi için",
+    privacyPolicyLabel: "Gizlilik Politikası'na",
+    descriptionSuffix: "bakın.",
+    necessaryLabel: "Kesinlikle gerekli (her zaman açık)",
+    analyticsLabel: "Analiz",
+    marketingLabel: "Pazarlama",
+    savePreferences: "Tercihleri kaydet",
+    acceptAll: "Tümünü kabul et",
+    rejectNonEssential: "Gerekli olmayanları reddet",
+    customize: "Özelleştir",
   },
 };
 

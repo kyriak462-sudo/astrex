@@ -161,7 +161,7 @@ export default async function ProfilePage() {
         </div>
 
         <div className="mt-4">
-          <PnlChart days={days} rangeDays={CALENDAR_DAYS} />
+          <PnlChart days={days} rangeDays={CALENDAR_DAYS} locale={locale} />
         </div>
       </div>
 

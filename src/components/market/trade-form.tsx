@@ -38,6 +38,7 @@ export function TradeForm({
   action,
   maxLeverage = 20,
   labels,
+  locale = "en",
 }: {
   symbol: string;
   price: number;
@@ -45,6 +46,7 @@ export function TradeForm({
   action: (formData: FormData) => void;
   maxLeverage?: number;
   labels: TradeFormLabels;
+  locale?: string;
 }) {
   const LEVERAGES = LEVERAGE_PRESETS.filter((l) => l <= maxLeverage);
   const [orderType, setOrderType] = useState<OrderType>("MARKET");
@@ -188,7 +190,7 @@ export function TradeForm({
             {labels.amountLabel}
           </label>
           <span className="text-xs text-neutral-400 dark:text-white/35">
-            {labels.available} ${availableBalance.toLocaleString("ru-RU", { maximumFractionDigits: 2 })}
+            {labels.available} ${availableBalance.toLocaleString(locale, { maximumFractionDigits: 2 })}
           </span>
         </div>
         <input

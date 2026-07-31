@@ -102,7 +102,7 @@ export default async function LeaderboardPage() {
                     }`}
                   >
                     {pnlUp ? "+" : ""}
-                    {row.pnl.toLocaleString("ru-RU", { maximumFractionDigits: 2 })}$
+                    {row.pnl.toLocaleString(locale, { maximumFractionDigits: 2 })}$
                   </p>
                 </div>
               );

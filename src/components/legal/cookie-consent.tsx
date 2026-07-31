@@ -30,7 +30,21 @@ export function openCookieSettings() {
   window.dispatchEvent(new Event(OPEN_EVENT));
 }
 
-export function CookieConsentBanner() {
+export type CookieConsentLabels = {
+  title: string;
+  descriptionPrefix: string;
+  privacyPolicyLabel: string;
+  descriptionSuffix: string;
+  necessaryLabel: string;
+  analyticsLabel: string;
+  marketingLabel: string;
+  savePreferences: string;
+  acceptAll: string;
+  rejectNonEssential: string;
+  customize: string;
+};
+
+export function CookieConsentBanner({ labels }: { labels: CookieConsentLabels }) {
   const [visible, setVisible] = useState(false);
   const [customizing, setCustomizing] = useState(false);
   const [analytics, setAnalytics] = useState(false);
@@ -79,24 +93,23 @@ export function CookieConsentBanner() {
   return (
     <div className="dark pointer-events-none fixed inset-x-0 bottom-0 z-[100] p-4 sm:p-6">
       <div className="pointer-events-auto mx-auto max-w-3xl rounded-2xl border border-white/10 bg-black/95 p-5 shadow-2xl backdrop-blur-md sm:p-6">
-        <p className="text-sm font-medium text-white">We use cookies</p>
+        <p className="text-sm font-medium text-white">{labels.title}</p>
         <p className="mt-1.5 text-xs leading-relaxed text-white/55">
-          We use strictly necessary cookies to run ASTREX (sign-in, theme, language). With your
-          permission, we'd also like to use analytics cookies to improve the product. See our{" "}
+          {labels.descriptionPrefix}{" "}
           <a href="/privacy#cookies" className="underline underline-offset-2 hover:text-white">
-            Privacy Policy
-          </a>
-          .
+            {labels.privacyPolicyLabel}
+          </a>{" "}
+          {labels.descriptionSuffix}
         </p>
 
         {customizing && (
           <div className="mt-4 space-y-2.5 border-t border-white/10 pt-4">
             <div className="flex items-center justify-between">
-              <span className="text-xs text-white/70">Strictly necessary (always on)</span>
+              <span className="text-xs text-white/70">{labels.necessaryLabel}</span>
               <input type="checkbox" checked disabled className="h-4 w-4 accent-white/40" />
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-xs text-white/70">Analytics</span>
+              <span className="text-xs text-white/70">{labels.analyticsLabel}</span>
               <input
                 type="checkbox"
                 checked={analytics}
@@ -105,7 +118,7 @@ export function CookieConsentBanner() {
               />
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-xs text-white/70">Marketing</span>
+              <span className="text-xs text-white/70">{labels.marketingLabel}</span>
               <input
                 type="checkbox"
                 checked={marketing}
@@ -123,7 +136,7 @@ export function CookieConsentBanner() {
               onClick={saveCustom}
               className="h-9 rounded-lg bg-white px-4 text-xs font-medium text-black transition-opacity hover:opacity-90"
             >
-              Save preferences
+              {labels.savePreferences}
             </button>
           ) : (
             <>
@@ -132,21 +145,21 @@ export function CookieConsentBanner() {
                 onClick={() => accept(true)}
                 className="h-9 rounded-lg bg-white px-4 text-xs font-medium text-black transition-opacity hover:opacity-90"
               >
-                Accept All
+                {labels.acceptAll}
               </button>
               <button
                 type="button"
                 onClick={() => accept(false)}
                 className="h-9 rounded-lg border border-white/15 px-4 text-xs text-white/80 transition-colors hover:border-white/30 hover:text-white"
               >
-                Reject Non-Essential
+                {labels.rejectNonEssential}
               </button>
               <button
                 type="button"
                 onClick={() => setCustomizing(true)}
                 className="h-9 rounded-lg border border-white/15 px-4 text-xs text-white/80 transition-colors hover:border-white/30 hover:text-white"
               >
-                Customize
+                {labels.customize}
               </button>
             </>
           )}

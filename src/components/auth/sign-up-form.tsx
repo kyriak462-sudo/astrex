@@ -27,9 +27,7 @@ export function SignUpForm({ dict }: { dict: Dictionary }) {
     setError(null);
 
     if (!consent) {
-      setError(
-        "You must agree to the Privacy Policy and Terms of Service before creating an account."
-      );
+      setError(dict.auth.signUp.consentRequired);
       return;
     }
 
@@ -159,25 +157,25 @@ export function SignUpForm({ dict }: { dict: Dictionary }) {
           className="mt-0.5 h-4 w-4 shrink-0 rounded border-black/20 bg-transparent accent-neutral-900 dark:border-white/20 dark:accent-white"
         />
         <span>
-          I have read the{" "}
+          {dict.auth.signUp.consentIntro}{" "}
           <Link
             href="/privacy"
             target="_blank"
             rel="noopener noreferrer"
             className="text-neutral-900 underline underline-offset-2 hover:no-underline dark:text-white"
           >
-            Privacy Policy
+            {dict.auth.signUp.privacyPolicyLabel}
           </Link>{" "}
-          and{" "}
+          {dict.auth.signUp.consentAnd}{" "}
           <Link
             href="/terms"
             target="_blank"
             rel="noopener noreferrer"
             className="text-neutral-900 underline underline-offset-2 hover:no-underline dark:text-white"
           >
-            Terms of Service
+            {dict.auth.signUp.termsOfServiceLabel}
           </Link>{" "}
-          and I consent to the processing of my personal data in accordance with the GDPR.
+          {dict.auth.signUp.consentOutro}
         </span>
       </label>
 

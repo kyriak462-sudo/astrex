@@ -57,7 +57,7 @@ export function SignInForm({ dict }: { dict: Dictionary }) {
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <Label htmlFor="email">Email</Label>
+          <Label htmlFor="email">{dict.auth.signUp.emailLabel}</Label>
           <Input
             id="email"
             type="email"

@@ -54,6 +54,9 @@ const ru: Dictionary = {
   },
   footer: {
     disclaimer: "Образовательная платформа. Не является инвестиционной рекомендацией.",
+    privacyPolicy: "Политика конфиденциальности",
+    termsOfService: "Условия использования",
+    cookieSettings: "Настройки cookie",
   },
   auth: {
     signIn: {
@@ -79,6 +82,14 @@ const ru: Dictionary = {
       haveAccount: "Уже есть аккаунт?",
       signInLink: "Войти",
       genericError: "Не удалось создать аккаунт.",
+      consentIntro: "Подтверждаю ознакомление с",
+      privacyPolicyLabel: "Политикой конфиденциальности",
+      consentAnd: "и",
+      termsOfServiceLabel: "Условиями использования",
+      consentOutro: "и даю согласие на обработку персональных данных согласно GDPR.",
+      consentRequired: "Нужно согласиться с Политикой конфиденциальности и Условиями использования, чтобы создать аккаунт.",
+      invalidData: "Проверьте корректность введённых данных.",
+      emailTaken: "Пользователь с таким email уже существует.",
     },
     orEmail: "или по email",
     google: "Продолжить с Google",
@@ -252,6 +263,20 @@ const ru: Dictionary = {
     backToList: "Назад к новостям",
     readOriginal: "Читать первоисточник на {source}",
     notFound: "Новость не найдена — возможно, лента уже обновилась.",
+  },
+  cookieConsent: {
+    title: "Мы используем cookie-файлы",
+    descriptionPrefix:
+      "Мы используем строго необходимые cookie-файлы для работы ASTREX (вход, тема, язык). С вашего разрешения мы также хотели бы использовать аналитические cookie-файлы для улучшения продукта. Подробнее в",
+    privacyPolicyLabel: "Политике конфиденциальности",
+    descriptionSuffix: ".",
+    necessaryLabel: "Строго необходимые (всегда включены)",
+    analyticsLabel: "Аналитика",
+    marketingLabel: "Маркетинг",
+    savePreferences: "Сохранить настройки",
+    acceptAll: "Принять всё",
+    rejectNonEssential: "Отклонить необязательные",
+    customize: "Настроить",
   },
 };
 

@@ -54,6 +54,9 @@ const de: Dictionary = {
   },
   footer: {
     disclaimer: "Bildungsplattform. Keine Anlageberatung.",
+    privacyPolicy: "Datenschutzerklärung",
+    termsOfService: "Nutzungsbedingungen",
+    cookieSettings: "Cookie-Einstellungen",
   },
   auth: {
     signIn: {
@@ -79,6 +82,14 @@ const de: Dictionary = {
       haveAccount: "Schon ein Konto?",
       signInLink: "Anmelden",
       genericError: "Konto konnte nicht erstellt werden.",
+      consentIntro: "Ich bestätige, dass ich die",
+      privacyPolicyLabel: "Datenschutzerklärung",
+      consentAnd: "und die",
+      termsOfServiceLabel: "Nutzungsbedingungen",
+      consentOutro: "gelesen habe und der Verarbeitung meiner personenbezogenen Daten gemäß DSGVO zustimme.",
+      consentRequired: "Sie müssen der Datenschutzerklärung und den Nutzungsbedingungen zustimmen, bevor Sie ein Konto erstellen.",
+      invalidData: "Bitte überprüfen Sie Ihre Angaben.",
+      emailTaken: "Ein Benutzer mit dieser E-Mail existiert bereits.",
     },
     orEmail: "oder per E-Mail",
     google: "Weiter mit Google",
@@ -253,6 +264,20 @@ const de: Dictionary = {
     backToList: "Zurück zu den Nachrichten",
     readOriginal: "Original bei {source} lesen",
     notFound: "Artikel nicht gefunden — der Feed wurde möglicherweise aktualisiert.",
+  },
+  cookieConsent: {
+    title: "Wir verwenden Cookies",
+    descriptionPrefix:
+      "Wir verwenden unbedingt erforderliche Cookies für den Betrieb von ASTREX (Anmeldung, Design, Sprache). Mit Ihrer Erlaubnis möchten wir außerdem Analyse-Cookies verwenden, um das Produkt zu verbessern. Siehe unsere",
+    privacyPolicyLabel: "Datenschutzerklärung",
+    descriptionSuffix: ".",
+    necessaryLabel: "Unbedingt erforderlich (immer aktiv)",
+    analyticsLabel: "Analyse",
+    marketingLabel: "Marketing",
+    savePreferences: "Einstellungen speichern",
+    acceptAll: "Alle akzeptieren",
+    rejectNonEssential: "Nicht notwendige ablehnen",
+    customize: "Anpassen",
   },
 };
 

@@ -25,6 +25,8 @@ export function TradeChart({
   pendingOrderId,
   pendingLimitPrice,
   pendingTriggerPrice,
+  entryLabel = "Entry",
+  locale = "en",
 }: {
   candles: Candle[];
   height?: number;
@@ -35,6 +37,8 @@ export function TradeChart({
   pendingOrderId?: string | null;
   pendingLimitPrice?: number | null;
   pendingTriggerPrice?: number | null;
+  entryLabel?: string;
+  locale?: string;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -64,7 +68,7 @@ export function TradeChart({
       crosshair: { mode: CrosshairMode.Normal },
       rightPriceScale: { borderColor },
       timeScale: { borderColor, timeVisible: true },
-      localization: { locale: "en-US" },
+      localization: { locale },
     });
 
     const levels = [entryPrice, stopLoss, takeProfit, pendingLimitPrice, pendingTriggerPrice].filter(
@@ -103,7 +107,7 @@ export function TradeChart({
         lineWidth: 1,
         lineStyle: 2,
         axisLabelVisible: true,
-        title: "Вход",
+        title: entryLabel,
       });
     }
     if (tradeId && stopLoss) {
@@ -228,7 +232,7 @@ export function TradeChart({
       }
       chart.remove();
     };
-  }, [candles, entryPrice, stopLoss, takeProfit, height, tradeId, pendingOrderId, pendingLimitPrice, pendingTriggerPrice]);
+  }, [candles, entryPrice, stopLoss, takeProfit, height, tradeId, pendingOrderId, pendingLimitPrice, pendingTriggerPrice, entryLabel, locale]);
 
   return (
     <div

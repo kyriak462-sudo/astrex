@@ -6,6 +6,8 @@ import { CryptoDrift } from "@/components/brand/crypto-drift";
 import { Providers } from "@/components/providers";
 import { CookieConsentBanner } from "@/components/legal/cookie-consent";
 import { isTheme, THEME_COOKIE } from "@/lib/theme";
+import { DEFAULT_LOCALE, isLocale, LOCALE_COOKIE } from "@/i18n/locales";
+import { getDictionary } from "@/i18n/get-dictionary";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -33,9 +35,13 @@ export default async function RootLayout({
   const themeCookie = cookieStore.get(THEME_COOKIE)?.value;
   const theme = isTheme(themeCookie) ? themeCookie : "dark";
 
+  const localeCookie = cookieStore.get(LOCALE_COOKIE)?.value ?? "";
+  const locale = isLocale(localeCookie) ? localeCookie : DEFAULT_LOCALE;
+  const dict = await getDictionary(locale);
+
   return (
     <html
-      lang="en"
+      lang={locale}
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased ${theme === "dark" ? "dark" : ""}`}
     >
@@ -45,7 +51,7 @@ export default async function RootLayout({
         <div className="relative z-10 flex min-h-full flex-1 flex-col">
           {children}
         </div>
-        <CookieConsentBanner />
+        <CookieConsentBanner labels={dict.cookieConsent} />
       </body>
     </html>
   );

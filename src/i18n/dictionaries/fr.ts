@@ -54,6 +54,9 @@ const fr: Dictionary = {
   },
   footer: {
     disclaimer: "Plateforme éducative. Ne constitue pas un conseil en investissement.",
+    privacyPolicy: "Politique de confidentialité",
+    termsOfService: "Conditions d'utilisation",
+    cookieSettings: "Paramètres des cookies",
   },
   auth: {
     signIn: {
@@ -79,6 +82,14 @@ const fr: Dictionary = {
       haveAccount: "Déjà un compte ?",
       signInLink: "Connexion",
       genericError: "Impossible de créer le compte.",
+      consentIntro: "Je confirme avoir lu la",
+      privacyPolicyLabel: "Politique de confidentialité",
+      consentAnd: "et les",
+      termsOfServiceLabel: "Conditions d'utilisation",
+      consentOutro: "et je consens au traitement de mes données personnelles conformément au RGPD.",
+      consentRequired: "Vous devez accepter la Politique de confidentialité et les Conditions d'utilisation avant de créer un compte.",
+      invalidData: "Veuillez vérifier que vos informations sont correctes.",
+      emailTaken: "Un utilisateur avec cet email existe déjà.",
     },
     orEmail: "ou par email",
     google: "Continuer avec Google",
@@ -253,6 +264,20 @@ const fr: Dictionary = {
     backToList: "Retour aux actualités",
     readOriginal: "Lire l'original sur {source}",
     notFound: "Article introuvable — le flux a peut-être été actualisé.",
+  },
+  cookieConsent: {
+    title: "Nous utilisons des cookies",
+    descriptionPrefix:
+      "Nous utilisons des cookies strictement nécessaires au fonctionnement d'ASTREX (connexion, thème, langue). Avec votre permission, nous aimerions également utiliser des cookies analytiques pour améliorer le produit. Consultez notre",
+    privacyPolicyLabel: "Politique de confidentialité",
+    descriptionSuffix: ".",
+    necessaryLabel: "Strictement nécessaires (toujours actifs)",
+    analyticsLabel: "Analytique",
+    marketingLabel: "Marketing",
+    savePreferences: "Enregistrer les préférences",
+    acceptAll: "Tout accepter",
+    rejectNonEssential: "Refuser le non essentiel",
+    customize: "Personnaliser",
   },
 };
 

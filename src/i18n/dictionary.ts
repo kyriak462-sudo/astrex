@@ -37,6 +37,9 @@ export type Dictionary = {
   };
   footer: {
     disclaimer: string;
+    privacyPolicy: string;
+    termsOfService: string;
+    cookieSettings: string;
   };
   auth: {
     signIn: {
@@ -62,6 +65,14 @@ export type Dictionary = {
       haveAccount: string;
       signInLink: string;
       genericError: string;
+      consentIntro: string;
+      privacyPolicyLabel: string;
+      consentAnd: string;
+      termsOfServiceLabel: string;
+      consentOutro: string;
+      consentRequired: string;
+      invalidData: string;
+      emailTaken: string;
     };
     orEmail: string;
     google: string;
@@ -232,5 +243,18 @@ export type Dictionary = {
     backToList: string;
     readOriginal: string;
     notFound: string;
+  };
+  cookieConsent: {
+    title: string;
+    descriptionPrefix: string;
+    privacyPolicyLabel: string;
+    descriptionSuffix: string;
+    necessaryLabel: string;
+    analyticsLabel: string;
+    marketingLabel: string;
+    savePreferences: string;
+    acceptAll: string;
+    rejectNonEssential: string;
+    customize: string;
   };
 };

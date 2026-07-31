@@ -54,6 +54,9 @@ const el: Dictionary = {
   },
   footer: {
     disclaimer: "Εκπαιδευτική πλατφόρμα. Δεν αποτελεί επενδυτική συμβουλή.",
+    privacyPolicy: "Πολιτική Απορρήτου",
+    termsOfService: "Όροι Χρήσης",
+    cookieSettings: "Ρυθμίσεις cookie",
   },
   auth: {
     signIn: {
@@ -79,6 +82,14 @@ const el: Dictionary = {
       haveAccount: "Έχετε ήδη λογαριασμό;",
       signInLink: "Σύνδεση",
       genericError: "Δεν ήταν δυνατή η δημιουργία λογαριασμού.",
+      consentIntro: "Επιβεβαιώνω ότι διάβασα την",
+      privacyPolicyLabel: "Πολιτική Απορρήτου",
+      consentAnd: "και τους",
+      termsOfServiceLabel: "Όρους Χρήσης",
+      consentOutro: "και συναινώ στην επεξεργασία των προσωπικών μου δεδομένων σύμφωνα με τον GDPR.",
+      consentRequired: "Πρέπει να αποδεχτείτε την Πολιτική Απορρήτου και τους Όρους Χρήσης πριν δημιουργήσετε λογαριασμό.",
+      invalidData: "Ελέγξτε ότι τα στοιχεία σας είναι σωστά.",
+      emailTaken: "Υπάρχει ήδη χρήστης με αυτό το email.",
     },
     orEmail: "ή με email",
     google: "Συνέχεια με Google",
@@ -254,6 +265,20 @@ const el: Dictionary = {
     backToList: "Πίσω στις ειδήσεις",
     readOriginal: "Διαβάστε το πρωτότυπο στο {source}",
     notFound: "Το άρθρο δεν βρέθηκε — ίσως η ροή ενημερώθηκε.",
+  },
+  cookieConsent: {
+    title: "Χρησιμοποιούμε cookies",
+    descriptionPrefix:
+      "Χρησιμοποιούμε απολύτως απαραίτητα cookies για τη λειτουργία του ASTREX (σύνδεση, θέμα, γλώσσα). Με την άδειά σας, θα θέλαμε επίσης να χρησιμοποιήσουμε cookies analytics για τη βελτίωση του προϊόντος. Δείτε την",
+    privacyPolicyLabel: "Πολιτική Απορρήτου",
+    descriptionSuffix: ".",
+    necessaryLabel: "Απολύτως απαραίτητα (πάντα ενεργά)",
+    analyticsLabel: "Analytics",
+    marketingLabel: "Μάρκετινγκ",
+    savePreferences: "Αποθήκευση προτιμήσεων",
+    acceptAll: "Αποδοχή όλων",
+    rejectNonEssential: "Απόρριψη μη απαραίτητων",
+    customize: "Προσαρμογή",
   },
 };
 

@@ -1,18 +1,29 @@
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
 import { z } from "zod";
 import { db } from "@/lib/db";
 import { issueVerificationCode } from "@/lib/verification-code";
+import { DEFAULT_LOCALE, isLocale, LOCALE_COOKIE } from "@/i18n/locales";
+import { getDictionary } from "@/i18n/get-dictionary";
 
 const verifySchema = z.object({
   email: z.string().email(),
   code: z.string().min(6).max(6),
 });
 
+async function getLocaleDict() {
+  const store = await cookies();
+  const localeCookie = store.get(LOCALE_COOKIE)?.value ?? "";
+  const locale = isLocale(localeCookie) ? localeCookie : DEFAULT_LOCALE;
+  return getDictionary(locale);
+}
+
 export async function POST(request: Request) {
+  const dict = await getLocaleDict();
   const body = await request.json().catch(() => null);
   const parsed = verifySchema.safeParse(body);
   if (!parsed.success) {
-    return NextResponse.json({ error: "Неверный код." }, { status: 400 });
+    return NextResponse.json({ error: dict.auth.verify.invalidCode }, { status: 400 });
   }
   const { email, code } = parsed.data;
 
@@ -21,7 +32,7 @@ export async function POST(request: Request) {
   });
 
   if (!token || token.expires < new Date()) {
-    return NextResponse.json({ error: "Код неверный или истёк." }, { status: 400 });
+    return NextResponse.json({ error: dict.auth.verify.invalidCode }, { status: 400 });
   }
 
   await db.$transaction([

@@ -1,9 +1,12 @@
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
 import bcrypt from "bcryptjs";
 import { z } from "zod";
 import { db } from "@/lib/db";
 import { issueVerificationCode } from "@/lib/verification-code";
 import { PRIVACY_POLICY_VERSION, TERMS_VERSION } from "@/lib/legal";
+import { DEFAULT_LOCALE, isLocale, LOCALE_COOKIE } from "@/i18n/locales";
+import { getDictionary } from "@/i18n/get-dictionary";
 
 const registerSchema = z.object({
   name: z.string().min(2).max(60),
@@ -19,6 +22,11 @@ function getClientIp(request: Request): string | null {
 }
 
 export async function POST(request: Request) {
+  const store = await cookies();
+  const localeCookie = store.get(LOCALE_COOKIE)?.value ?? "";
+  const locale = isLocale(localeCookie) ? localeCookie : DEFAULT_LOCALE;
+  const dict = await getDictionary(locale);
+
   const body = await request.json().catch(() => null);
   const parsed = registerSchema.safeParse(body);
 
@@ -27,8 +35,8 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error: consentMissing
-          ? "You must agree to the Privacy Policy and Terms of Service before creating an account."
-          : "Проверьте корректность введённых данных.",
+          ? dict.auth.signUp.consentRequired
+          : dict.auth.signUp.invalidData,
       },
       { status: 400 }
     );
@@ -39,7 +47,7 @@ export async function POST(request: Request) {
   const existing = await db.user.findUnique({ where: { email } });
   if (existing) {
     return NextResponse.json(
-      { error: "Пользователь с таким email уже существует." },
+      { error: dict.auth.signUp.emailTaken },
       { status: 409 }
     );
   }

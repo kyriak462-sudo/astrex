@@ -54,6 +54,9 @@ const uk: Dictionary = {
   },
   footer: {
     disclaimer: "Освітня платформа. Не є інвестиційною рекомендацією.",
+    privacyPolicy: "Політика конфіденційності",
+    termsOfService: "Умови використання",
+    cookieSettings: "Налаштування cookie",
   },
   auth: {
     signIn: {
@@ -79,6 +82,14 @@ const uk: Dictionary = {
       haveAccount: "Вже є акаунт?",
       signInLink: "Увійти",
       genericError: "Не вдалося створити акаунт.",
+      consentIntro: "Підтверджую ознайомлення з",
+      privacyPolicyLabel: "Політикою конфіденційності",
+      consentAnd: "і",
+      termsOfServiceLabel: "Умовами використання",
+      consentOutro: "і надаю згоду на обробку персональних даних відповідно до GDPR.",
+      consentRequired: "Потрібно погодитися з Політикою конфіденційності та Умовами використання, щоб створити акаунт.",
+      invalidData: "Перевірте правильність введених даних.",
+      emailTaken: "Користувач з такою поштою вже існує.",
     },
     orEmail: "або через email",
     google: "Продовжити з Google",
@@ -253,6 +264,20 @@ const uk: Dictionary = {
     backToList: "Назад до новин",
     readOriginal: "Читати оригінал на {source}",
     notFound: "Статтю не знайдено — можливо, стрічка оновилася.",
+  },
+  cookieConsent: {
+    title: "Ми використовуємо файли cookie",
+    descriptionPrefix:
+      "Ми використовуємо строго необхідні файли cookie для роботи ASTREX (вхід, тема, мова). За вашою згодою ми також хотіли б використовувати аналітичні файли cookie для покращення продукту. Детальніше в",
+    privacyPolicyLabel: "Політиці конфіденційності",
+    descriptionSuffix: ".",
+    necessaryLabel: "Строго необхідні (завжди увімкнені)",
+    analyticsLabel: "Аналітика",
+    marketingLabel: "Маркетинг",
+    savePreferences: "Зберегти налаштування",
+    acceptAll: "Прийняти всі",
+    rejectNonEssential: "Відхилити необов'язкові",
+    customize: "Налаштувати",
   },
 };
 
