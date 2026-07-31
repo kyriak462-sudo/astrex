@@ -12,7 +12,6 @@ export default async function NewsArticlePage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const url = decodeURIComponent(id);
 
   const store = await cookies();
   const localeCookie = store.get(LOCALE_COOKIE)?.value ?? "";
@@ -21,7 +20,7 @@ export default async function NewsArticlePage({
   const d = dict.news;
 
   const articles = await getNews();
-  const article = articles.find((a) => a.id === url);
+  const article = articles.find((a) => a.id === id);
   const fullContent = article ? await getFullArticle(article.url) : null;
 
   const dateFormatter = new Intl.DateTimeFormat(locale, { dateStyle: "medium", timeStyle: "short" });

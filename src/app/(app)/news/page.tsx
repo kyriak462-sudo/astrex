@@ -33,7 +33,7 @@ export default async function NewsPage() {
           {articles.map((a) => (
             <Link
               key={a.id}
-              href={`/news/${encodeURIComponent(a.id)}`}
+              href={`/news/${a.id}`}
               className="group flex gap-4 rounded-2xl border border-black/10 bg-black/[0.02] p-4 transition-colors hover:border-black/25 dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-white/25"
             >
               {a.imageUrl && (

@@ -1,3 +1,4 @@
+import { createHash } from "crypto";
 import { XMLParser } from "fast-xml-parser";
 
 export type NewsArticle = {
@@ -40,6 +41,12 @@ const parser = new XMLParser({
   attributeNamePrefix: "@_",
   textNodeName: "#text",
 });
+
+/** Short, URL-safe id derived from an article's link — used in /news/[id] instead of the
+ * raw (often very long, special-character-laden) source URL, which some proxies reject. */
+export function hashUrl(url: string): string {
+  return createHash("sha256").update(url).digest("base64url").slice(0, 12);
+}
 
 function stripHtml(html: string) {
   return html
@@ -87,7 +94,7 @@ async function fetchFeed(feed: {
         if (feed.category === "general" && !matchesTopic(cleanTitle, cleanBody)) return null;
 
         return {
-          id: link,
+          id: hashUrl(link),
           title: cleanTitle,
           url: link,
           imageUrl,
