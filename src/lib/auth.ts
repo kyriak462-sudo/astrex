@@ -57,17 +57,23 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         const valid = await bcrypt.compare(password, user.passwordHash);
         if (!valid) return null;
 
-        return { id: user.id, name: user.name, email: user.email, image: user.image };
+        return { id: user.id, name: user.name, email: user.email };
       },
     }),
   ],
   callbacks: {
     async jwt({ token, user }) {
       if (user) token.id = user.id;
+      // Custom avatars can be large base64 data URLs (see setCustomAvatar in
+      // settings/actions.ts) — never let that end up in the session cookie.
+      // Nothing reads session.user.image; every page fetches image/avatarId
+      // fresh from the DB, so dropping this is safe.
+      delete token.picture;
       return token;
     },
     async session({ session, token }) {
       if (session.user && token.id) session.user.id = token.id as string;
+      if (session.user) session.user.image = null;
       return session;
     },
   },
